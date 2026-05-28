@@ -24,16 +24,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 常用操作
 
-- 读取 .doc 文件：使用 PowerShell Word COM 自动化：
-  ```powershell
-  $word = New-Object -ComObject Word.Application
-  $word.Visible = $false
-  $doc = $word.Documents.Open("path/to/file.doc")
-  $text = $doc.Content.Text
-  $doc.Close(); $word.Quit()
-  ```
-- 运行拟合脚本：`python "c:\Users\郝\Desktop\claude\四氧化三铁环氧树脂拟合\fit_solute.py"`
-- 运行物理解释脚本：`python "c:\Users\郝\Desktop\claude\四氧化三铁环氧树脂拟合\physical_analysis.py"`
+### Office 文件处理（DOCX / XLSX / PDF / PPTX）
+统一入口：`python scripts\office.py <action> <file>`
+
+```bash
+python scripts\office.py read  report.docx            # 读取文本内容
+python scripts\office.py read  data.xlsx               # 读取表格数据
+python scripts\office.py read  slides.pptx             # 读取幻灯片文本
+python scripts\office.py read  paper.pdf --pages 1-5   # 读取指定页码范围
+python scripts\office.py meta  report.docx             # 查看元信息（页数、行列数等）
+python scripts\office.py new   docx  output.docx       # 创建空文件
+```
+
+依赖：`python-docx` `openpyxl` `python-pptx` `pymupdf`（已安装）
+
+### 其他
+- 运行拟合脚本：`python "四氧化三铁环氧树脂拟合\fit_solute.py"`
+- 运行物理解释脚本：`python "四氧化三铁环氧树脂拟合\physical_analysis.py"`
 
 ## 文献要求
 

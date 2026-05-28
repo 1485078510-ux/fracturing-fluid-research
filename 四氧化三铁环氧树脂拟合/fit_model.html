@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<title>分段溶质运移模型拟合</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; max-width: 960px; margin: 20px auto; padding: 0 20px; background: #f5f5f5; }
+  h1 { color: #333; }
+  .section { background: #fff; border-radius: 8px; padding: 20px; margin: 16px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: 6px 12px; border-bottom: 1px solid #eee; text-align: right; }
+  th { background: #f8f8f8; color: #555; font-weight: 600; }
+  .param { font-weight: bold; color: #2a7d2a; }
+  .metric { color: #666; }
+  canvas { display: block; margin: 10px auto; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat-card { background: #f8f9fa; border-radius: 6px; padding: 14px; text-align: center; }
+  .stat-value { font-size: 24px; font-weight: bold; color: #2a7d2a; }
+  .stat-label { font-size: 12px; color: #888; }
+  #status { color: #e67e22; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>分段溶质运移模型 — 非线性最小二乘拟合</h1>
+
+<div class="section">
+  <h3>模型公式</h3>
+  <p><b>t &lt; t₀:</b> &nbsp; C(t) = (A·d)/√(16αQt) · exp[ -(xπd² - 4Qt)² / (16αQtπd²) ]</p>
+  <p><b>t ≥ t₀:</b> &nbsp; C(t) = a/2 · erfc[ (xπd² - 4Qt) / √(16αQtπd²) ]</p>
+  <p style="color:#888; font-size:13px;">固定值: x = 100 cm, d = 5 cm, π = 3.14159... | 拟合参数: A, a, α, Q, t₀</p>
+</div>
+
+<div class="section">
+  <h3>拟合进度 &nbsp; <span id="status">初始化...</span></h3>
+  <canvas id="chart" width="900" height="500"></canvas>
+</div>
+
+<div class="section">
+  <h3>拟合参数</h3>
+  <table id="params-table">
+    <tr><th>参数</th><th>拟合值</th><th>说明</th></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h3>拟合优度</h3>
+  <div class="stats">
+    <div class="stat-card"><div class="stat-value" id="r2">--</div><div class="stat-label">R²</div></div>
+    <div class="stat-card"><div class="stat-value" id="rmse">--</div><div class="stat-label">RMSE</div></div>
+    <div class="stat-card"><div class="stat-value" id="nfeval">--</div><div class="stat-label">函数评估次数</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>数据 vs 拟合值</h3>
+  <table id="data-table">
+    <tr><th>t</th><th>实测 C</th><th>拟合 C</th><th>残差</th></tr>
+  </table>
+</div>
+
+<script>
+// ========== 数据 ==========
+const rawData = [
+  [0,0],[5,0.58438],[10,0.83879],[15,1.0],[20,0.92443],[25,0.64736],
+  [30,0.35516],[35,0.29471],[40,0.27204],[45,0.24433],[50,0.20907],
+  [55,0.21914],[60,0.19144],[65,0.19899],[70,0.17128],[75,0.20403],
+  [80,0.17884],[85,0.16373],[90,0.16877],[95,0.15617],[100,0.15617],
+  [105,0.15113]
+];
+// Skip t=0 for fitting (model singular at t=0)
+const tData = rawData.slice(1).map(r => r[0]);
+const cData = rawData.slice(1).map(r => r[1]);
+const N = tData.length;
+
+// ========== 常数 ==========
+const xVal = 100;  // cm (1 m)
+const dVal = 5;    // cm
+const PI = Math.PI;
+
+// ========== 误差函数 ==========
+function erf(x) {
+  const sign = x >= 0 ? 1 : -1;
+  const ax = Math.abs(x);
+  const p = 0.3275911;
+  const a1 = 0.254829592, a2 = -0.284496736, a3 = 1.421413741,
+        a4 = -1.453152027, a5 = 1.061405429;
+  const t = 1.0 / (1.0 + p * ax);
+  const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-ax * ax);
+  return sign * y;
+}
+
+function erfc(x) { return 1.0 - erf(x); }
+
+// ========== 模型函数 ==========
+function modelC(t, A, aParam, alpha, Q, t0) {
+  const xpid2 = xVal * PI * dVal * dVal;
+  const denom = Math.sqrt(16 * alpha * Q * t * PI * dVal * dVal);
+
+  if (t < t0) {
+    // Rising phase: Gaussian-like
+    const arg = -(xpid2 - 4 * Q * t) * (xpid2 - 4 * Q * t) / (16 * alpha * Q * t * PI * dVal * dVal);
+    return (A * dVal) / denom * Math.exp(arg);
+  } else {
+    // Falling phase: erfc
+    const z = (xpid2 - 4 * Q * t) / denom;
+    return (aParam / 2) * erfc(z);
+  }
+}
+
+// ========== 代价函数 (MSE) ==========
+function cost(params) {
+  const A = params[0];
+  const aParam = params[1];
+  const alpha = params[2];
+  const Q = params[3];
+  const t0 = params[4];
+
+  // Penalty for negative parameter values
+  if (A <= 0 || aParam <= 0 || alpha <= 0 || Q <= 0 || t0 <= 0) return 1e12;
+  if (t0 > 50) return 1e12;
+
+  let mse = 0;
+  for (let i = 0; i < N; i++) {
+    const pred = modelC(tData[i], A, aParam, alpha, Q, t0);
+    const diff = pred - cData[i];
+    mse += diff * diff;
+  }
+  return mse / N;
+}
+
+// ========== Nelder-Mead 单纯形算法 ==========
+function nelderMead(initial, options) {
+  const {
+    alpha = 1.0,    // reflection
+    gamma = 2.0,    // expansion
+    rho = 0.5,      // contraction
+    sigma = 0.5,    // shrink
+    maxIter = 2000,
+    tol = 1e-12
+  } = options || {};
+
+  const n = initial.length;
+  let simplex = [];
+  simplex.push({ x: [...initial], fx: cost(initial) });
+
+  // Build initial simplex
+  for (let i = 0; i < n; i++) {
+    const pt = [...initial];
+    pt[i] = pt[i] * 1.1 + (pt[i] === 0 ? 0.1 : 0);
+    simplex.push({ x: pt, fx: cost(pt) });
+  }
+
+  let nfev = n + 1;
+
+  for (let iter = 0; iter < maxIter; iter++) {
+    // Sort: best (lowest) to worst (highest)
+    simplex.sort((a, b) => a.fx - b.fx);
+
+    // Check convergence
+    const fBest = simplex[0].fx;
+    const fWorst = simplex[n].fx;
+    if (2 * Math.abs(fBest - fWorst) / (Math.abs(fBest) + Math.abs(fWorst) + 1e-15) < tol) break;
+
+    // Centroid of all points except worst
+    const centroid = new Array(n).fill(0);
+    for (let i = 0; i < n; i++) {
+      for (let j = 0; j < n; j++) {
+        centroid[j] += simplex[i].x[j];
+      }
+    }
+    for (let j = 0; j < n; j++) centroid[j] /= n;
+
+    // Reflect
+    const xr = new Array(n);
+    for (let j = 0; j < n; j++) xr[j] = centroid[j] + alpha * (centroid[j] - simplex[n].x[j]);
+    const fxr = cost(xr);
+    nfev++;
+
+    if (fxr < simplex[0].fx) {
+      // Expand
+      const xe = new Array(n);
+      for (let j = 0; j < n; j++) xe[j] = centroid[j] + gamma * (xr[j] - centroid[j]);
+      const fxe = cost(xe);
+      nfev++;
+      if (fxe < fxr) {
+        simplex[n] = { x: xe, fx: fxe };
+      } else {
+        simplex[n] = { x: xr, fx: fxr };
+      }
+    } else if (fxr < simplex[n - 1].fx) {
+      simplex[n] = { x: xr, fx: fxr };
+    } else {
+      // Contract
+      const xc = new Array(n);
+      for (let j = 0; j < n; j++) xc[j] = centroid[j] + rho * (simplex[n].x[j] - centroid[j]);
+      const fxc = cost(xc);
+      nfev++;
+      if (fxc < simplex[n].fx) {
+        simplex[n] = { x: xc, fx: fxc };
+      } else {
+        // Shrink toward best point
+        for (let i = 1; i <= n; i++) {
+          const xs = new Array(n);
+          for (let j = 0; j < n; j++) xs[j] = simplex[0].x[j] + sigma * (simplex[i].x[j] - simplex[0].x[j]);
+          const fxs = cost(xs);
+          nfev++;
+          simplex[i] = { x: xs, fx: fxs };
+        }
+      }
+    }
+  }
+
+  simplex.sort((a, b) => a.fx - b.fx);
+  return { x: simplex[0].x, fx: simplex[0].fx, nfev };
+}
+
+// ========== 多重启动拟合 ==========
+function fit() {
+  document.getElementById('status').textContent = '拟合中...';
+
+  // Multiple starting points to avoid local minima
+  const starts = [
+    [11.0, 2.0, 0.1, 131, 15],     // Analytical estimate
+    [8.0, 1.8, 0.05, 120, 14],
+    [15.0, 2.2, 0.2, 145, 16],
+    [5.0, 1.5, 0.01, 100, 12],
+    [20.0, 2.5, 0.5, 160, 18],
+    [3.0, 3.0, 0.02, 80, 10],
+    [25.0, 1.2, 0.3, 200, 20],
+  ];
+
+  let bestResult = null;
+  let bestCost = Infinity;
+
+  for (const start of starts) {
+    const result = nelderMead(start, { maxIter: 3000, tol: 1e-14 });
+    if (result.fx < bestCost) {
+      bestCost = result.fx;
+      bestResult = result;
+    }
+  }
+
+  const [A, aParam, alpha, Q, t0] = bestResult.x;
+  const rmse = Math.sqrt(bestCost);
+
+  // R-squared
+  const meanC = cData.reduce((s, v) => s + v, 0) / N;
+  let ssTot = 0, ssRes = 0;
+  const fitted = [];
+  for (let i = 0; i < N; i++) {
+    const pred = modelC(tData[i], A, aParam, alpha, Q, t0);
+    fitted.push(pred);
+    ssRes += (pred - cData[i]) ** 2;
+    ssTot += (cData[i] - meanC) ** 2;
+  }
+  const r2 = 1 - ssRes / ssTot;
+
+  return { A, aParam, alpha, Q, t0, rmse, r2, nfev: bestResult.nfev, fitted };
+}
+
+// ========== 运行拟合 ==========
+const result = fit();
+
+// ========== 显示结果 ==========
+document.getElementById('status').textContent = '拟合完成 ✓';
+document.getElementById('r2').textContent = result.r2.toFixed(6);
+document.getElementById('rmse').textContent = result.rmse.toFixed(6);
+document.getElementById('nfeval').textContent = result.nfev;
+
+// 参数表
+const paramNames = [
+  ['A', 'A', '上升段幅度系数'],
+  ['a', 'a', '下降段幅度系数'],
+  ['α', 'α (alpha)', '弥散度系数'],
+  ['Q', 'Q', '流量参数'],
+  ['t₀', 't₀', '分段切换时间'],
+];
+const paramValues = [result.A, result.aParam, result.alpha, result.Q, result.t0];
+let paramsHtml = '<tr><th>参数</th><th>拟合值</th><th>说明</th></tr>';
+for (let i = 0; i < paramNames.length; i++) {
+  const pname = paramNames[i][0];
+  let val = paramValues[i];
+  let valStr = val.toExponential ? val.toExponential(6) : val.toString();
+  if (Math.abs(val) >= 0.001 && Math.abs(val) <= 10000) {
+    valStr = val.toFixed ? val.toFixed(6) : val.toString();
+  }
+  paramsHtml += `<tr><td class="param">${paramNames[i][1]}</td><td>${valStr}</td><td>${paramNames[i][2]}</td></tr>`;
+}
+document.getElementById('params-table').innerHTML = paramsHtml;
+
+// 数据对比表
+let dataHtml = '<tr><th>t</th><th>实测 C</th><th>拟合 C</th><th>残差</th></tr>';
+for (let i = 0; i < N; i++) {
+  const resid = cData[i] - result.fitted[i];
+  dataHtml += `<tr><td>${tData[i]}</td><td>${cData[i].toFixed(5)}</td><td>${result.fitted[i].toFixed(5)}</td><td>${resid.toFixed(5)}</td></tr>`;
+}
+document.getElementById('data-table').innerHTML = dataHtml;
+
+// ========== 绘制图表 ==========
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+const W = canvas.width, H = canvas.height;
+const margin = { top: 30, right: 30, bottom: 50, left: 60 };
+const pw = W - margin.left - margin.right;
+const ph = H - margin.top - margin.bottom;
+
+// 生成平滑曲线点
+const tSmooth = [];
+const cSmooth = [];
+const cSmoothRise = [];
+const cSmoothFall = [];
+const dt = 0.1;
+for (let t = 0.1; t <= 110; t += dt) {
+  tSmooth.push(t);
+  cSmooth.push(modelC(t, result.A, result.aParam, result.alpha, result.Q, result.t0));
+  if (t < result.t0) {
+    cSmoothRise.push(modelC(t, result.A, result.aParam, result.alpha, result.Q, result.t0));
+    cSmoothFall.push(null);
+  } else {
+    cSmoothRise.push(null);
+    cSmoothFall.push(modelC(t, result.A, result.aParam, result.alpha, result.Q, result.t0));
+  }
+}
+
+const xScale = v => margin.left + (v / 110) * pw;
+const yScale = v => margin.top + ph - (v / 1.15) * ph;
+
+// 背景
+ctx.fillStyle = '#fff';
+ctx.fillRect(0, 0, W, H);
+
+// 网格
+ctx.strokeStyle = '#e0e0e0';
+ctx.lineWidth = 0.5;
+for (let i = 0; i <= 110; i += 10) {
+  const x = xScale(i);
+  ctx.beginPath(); ctx.moveTo(x, margin.top); ctx.lineTo(x, margin.top + ph); ctx.stroke();
+}
+for (let i = 0; i <= 1.1; i += 0.1) {
+  const y = yScale(i);
+  ctx.beginPath(); ctx.moveTo(margin.left, y); ctx.lineTo(margin.left + pw, y); ctx.stroke();
+}
+
+// 坐标轴
+ctx.strokeStyle = '#333';
+ctx.lineWidth = 1.5;
+ctx.beginPath();
+ctx.moveTo(margin.left, margin.top);
+ctx.lineTo(margin.left, margin.top + ph);
+ctx.lineTo(margin.left + pw, margin.top + ph);
+ctx.stroke();
+
+// 轴标签
+ctx.fillStyle = '#555';
+ctx.font = '12px sans-serif';
+ctx.textAlign = 'center';
+for (let i = 0; i <= 110; i += 10) {
+  ctx.fillText(i, xScale(i), margin.top + ph + 18);
+}
+ctx.textAlign = 'right';
+for (let i = 0; i <= 1.0; i += 0.2) {
+  ctx.fillText(i.toFixed(1), margin.left - 8, yScale(i) + 4);
+}
+ctx.fillStyle = '#333';
+ctx.font = '14px sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText('t (时间)', margin.left + pw / 2, margin.top + ph + 38);
+ctx.save();
+ctx.translate(14, margin.top + ph / 2);
+ctx.rotate(-PI / 2);
+ctx.fillText('C (浓度)', 0, 0);
+ctx.restore();
+
+// t₀ 分割线
+const t0x = xScale(result.t0);
+ctx.setLineDash([5, 5]);
+ctx.strokeStyle = '#e67e22';
+ctx.lineWidth = 1.2;
+ctx.beginPath();
+ctx.moveTo(t0x, margin.top);
+ctx.lineTo(t0x, margin.top + ph);
+ctx.stroke();
+ctx.setLineDash([]);
+ctx.fillStyle = '#e67e22';
+ctx.font = '11px sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText(`t₀ = ${result.t0.toFixed(2)}`, t0x, margin.top - 6);
+
+// 上升段曲线 (蓝色虚线)
+ctx.strokeStyle = 'rgba(52,152,219,0.6)';
+ctx.lineWidth = 1.5;
+ctx.setLineDash([4, 4]);
+ctx.beginPath();
+let started = false;
+for (let i = 0; i < tSmooth.length; i++) {
+  if (cSmoothRise[i] !== null) {
+    const sx = xScale(tSmooth[i]), sy = yScale(cSmoothRise[i]);
+    if (!started) { ctx.moveTo(sx, sy); started = true; }
+    else ctx.lineTo(sx, sy);
+  }
+}
+ctx.stroke();
+ctx.setLineDash([]);
+
+// 下降段曲线 (绿色虚线)
+ctx.strokeStyle = 'rgba(46,204,113,0.6)';
+ctx.lineWidth = 1.5;
+ctx.setLineDash([4, 4]);
+ctx.beginPath();
+started = false;
+for (let i = 0; i < tSmooth.length; i++) {
+  if (cSmoothFall[i] !== null) {
+    const sx = xScale(tSmooth[i]), sy = yScale(cSmoothFall[i]);
+    if (!started) { ctx.moveTo(sx, sy); started = true; }
+    else ctx.lineTo(sx, sy);
+  }
+}
+ctx.stroke();
+ctx.setLineDash([]);
+
+// 总拟合曲线 (红色实线)
+ctx.strokeStyle = '#e74c3c';
+ctx.lineWidth = 2;
+ctx.beginPath();
+for (let i = 0; i < tSmooth.length; i++) {
+  const sx = xScale(tSmooth[i]), sy = yScale(cSmooth[i]);
+  if (i === 0) ctx.moveTo(sx, sy);
+  else ctx.lineTo(sx, sy);
+}
+ctx.stroke();
+
+// 数据点
+for (let i = 0; i < N; i++) {
+  const dx = xScale(tData[i]), dy = yScale(cData[i]);
+  // 外圈
+  ctx.beginPath();
+  ctx.arc(dx, dy, 5, 0, 2 * PI);
+  ctx.fillStyle = '#2c3e50';
+  ctx.fill();
+  // 内圈
+  ctx.beginPath();
+  ctx.arc(dx, dy, 2.5, 0, 2 * PI);
+  ctx.fillStyle = '#fff';
+  ctx.fill();
+}
+
+// 图例
+const lx = margin.left + pw - 200, ly = margin.top + 10;
+ctx.fillStyle = 'rgba(255,255,255,0.9)';
+ctx.fillRect(lx - 8, ly - 4, 195, 72);
+ctx.strokeStyle = '#ccc';
+ctx.lineWidth = 1;
+ctx.strokeRect(lx - 8, ly - 4, 195, 72);
+
+ctx.fillStyle = '#e74c3c';
+ctx.fillRect(lx, ly, 16, 3);
+ctx.fillStyle = '#333';
+ctx.font = '12px sans-serif';
+ctx.textAlign = 'left';
+ctx.fillText('拟合曲线', lx + 22, ly + 5);
+
+ctx.fillStyle = '#e67e22';
+ctx.setLineDash([5,5]); ctx.strokeStyle = '#e67e22'; ctx.lineWidth = 1.2;
+ctx.beginPath(); ctx.moveTo(lx, ly + 18); ctx.lineTo(lx + 16, ly + 18); ctx.stroke();
+ctx.setLineDash([]);
+ctx.fillStyle = '#333';
+ctx.fillText(`分段线 t₀=${result.t0.toFixed(2)}`, lx + 22, ly + 21);
+
+ctx.fillStyle = '#2c3e50';
+ctx.beginPath(); ctx.arc(lx + 8, ly + 32, 4, 0, 2*PI); ctx.fill();
+ctx.beginPath(); ctx.arc(lx + 8, ly + 32, 2, 0, 2*PI); ctx.fillStyle='#fff'; ctx.fill();
+ctx.fillStyle = '#333';
+ctx.fillText('实测数据', lx + 22, ly + 35);
+
+console.log('拟合参数:', {
+  A: result.A, a: result.aParam, alpha: result.alpha,
+  Q: result.Q, t0: result.t0
+});
+console.log('R² =', result.r2, 'RMSE =', result.rmse);
+</script>
+</body>
+</html>

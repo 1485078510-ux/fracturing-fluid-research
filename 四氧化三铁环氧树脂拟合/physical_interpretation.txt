@@ -1,0 +1,115 @@
+======================================================================
+  TRACER TEST - PHYSICAL INTERPRETATION OF FITTED PARAMETERS
+======================================================================
+
+COLUMN GEOMETRY:
+  Length x        = 100 cm = 1.0 m
+  Diameter d      = 5 cm
+  Cross-section   = 19.63 cm^2
+  Pore volume Vp  = 1963.50 cm^3 (= 1.963 L)
+
+FLOW & TRANSPORT PARAMETERS:
+  Flow parameter Q         = 50.82 (cm^3 per time unit)
+  Pore velocity v          = 4Q/(pi*d^2) = 2.5884 cm/t
+  Longitudinal dispersivity = 107.09 cm
+  Dispersion coefficient D = alpha * v = 277.18 cm^2/t
+  Peclet number Pe         = x/alpha = 0.9338
+
+CHARACTERISTIC TIMES:
+  Breakthrough (1 PV) = x/v = 38.63 time units
+  Data peak at t=15    -> 0.388 PV
+  Transition t0=25.7  -> 0.66 PV
+  Measurement end t=105 -> 2.72 PV
+
+RESIDENCE TIME & MASS RECOVERY:
+  Area under C(t)  (M0)  = 36.9795
+  Mean residence time     = 37.37 time units
+  Theoretical MRT (x/v)   = 38.63 time units
+  Ratio  MRT / (x/v)      = 0.9674
+
+======================================================================
+  PHYSICAL INTERPRETATION
+======================================================================
+
+
+1. MODEL STRUCTURE
+   The fitted model describes a pulse/slug tracer injection through
+   a 1 m column (d = 5 cm). Concentration is measured at the outlet.
+
+   Three regimes, blended smoothly via tanh(sigma=3.96):
+
+   (a) RISING PHASE (t < ~20):
+       Gaussian component dominates. Represents the advective-dispersive
+       front of the tracer pulse arriving at the measurement point.
+       Shape: C ~ exp[-(x-vt)^2/(4Dt)]  (ADE pulse solution).
+
+   (b) FALLING PHASE (t ~ 20-50):
+       erfc(-z) component dominates. Represents "tailing" - slow release
+       of tracer from stagnant/immobile zones, dead-end pores, or
+       rate-limited mass transfer (sorption/desorption, matrix diffusion).
+       Decays more slowly than exponential.
+
+   (c) PLATEAU PHASE (t > ~50):
+       Approaches c_bg = 0.0459, representing either:
+       - Irreversibly trapped tracer fraction
+       - Instrument baseline / detection limit
+       - Very slow ongoing desorption
+
+2. KEY PHYSICAL PARAMETERS AND THEIR MEANING
+
+   Longitudinal dispersivity alpha = 107.1 cm
+   -------------------------------------------------
+   - A property of the porous medium (not flow-rate dependent).
+   - Describes the scale of mechanical mixing + molecular diffusion.
+   - Typical values: lab columns alpha ~ 0.1-2 cm (homogeneous).
+   - Our value alpha ~ 107 cm for a 100 cm column -> Pe = 0.934
+   - Pe << 1 indicates DISPERSION-DOMINATED transport. This is
+     unusually low for a homogeneous lab column, suggesting:
+     >> Strong heterogeneity in packing
+     >> Significant immobile/stagnant water zones (mobile-immobile model)
+     >> alpha here is a "lumped" parameter capturing both physical
+        dispersion AND mass-transfer limitations
+
+   Pore water velocity v = 2.59 cm/t
+   -------------------------------------------------
+   - Average linear velocity of water in connected pores.
+   - v = 4Q/(pi*d^2) = Q / A_cross
+   - 1 pore volume displaced at t = 38.6 time units
+   - Data peak at t=15 corresponds to ~0.39 PV.
+     In ideal ADE, the peak should arrive at 1 PV. The earlier
+     arrival (~0.39 PV) is due to dispersion spreading
+     and asymmetry.
+
+   Transition time t0 = 25.7
+   -------------------------------------------------
+   - Marks the shift from pulse-dominated to tail-dominated regime.
+   - Occurs at ~0.7 PV, well after the peak.
+   - Smooth blending (sigma = 4.0) over ~8
+     time units reflects gradual change in dominant mechanism.
+
+   Background c_bg = 0.0459
+   -------------------------------------------------
+   - Asymptotic baseline concentration.
+   - May represent: (a) trapped/immobile tracer fraction,
+     (b) instrument baseline, or (c) very slow desorption tail.
+
+3. NON-IDEAL TRANSPORT INDICATORS
+   - Strong right-skew (asymmetry): Ideal ADE pulse is symmetric Gaussian.
+     Our BTC has a pronounced long tail extending >4 PV.
+   - Tailing: C > 0.1 beyond 4 PV indicates physical or chemical
+     non-equilibrium (mobile-immobile water, rate-limited sorption).
+   - Low Pe = 0.934: Confirms non-ideal transport.
+
+4. SUMMARY TABLE
+   +----------------------+-----------+----------------------------+
+   | Parameter            | Value     | Physical Meaning           |
+   +----------------------+-----------+----------------------------+
+   | Pore velocity v      |     2.59 | cm/t (avg. water speed)   |
+   | Dispersivity alpha   |    107.1 | cm (medium property)      |
+   | Dispersion coeff D   |    277.2 | cm^2/t (spreading rate)   |
+   | Peclet number Pe     |    0.934 | x/alpha (<1 = disp-dom)   |
+   | 1 PV breakthrough    |    38.63 | t (theoretical MRT)       |
+   | Mean residence time  |    37.37 | t (actual MRT)            |
+   | Mass recovery M0     |   36.980 | area under BTC            |
+   | Background c_bg      |   0.0459 | baseline/irreversible     |
+   +----------------------+-----------+----------------------------+

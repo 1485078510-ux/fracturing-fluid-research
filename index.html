@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍰 100天公主变形记</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pink: #FF8FAB;
+    --light-pink: #FFD1DC;
+    --peach: #FFD6BA;
+    --lavender: #D4C5F0;
+    --mint: #B8E8D0;
+    --cream: #FFF5EE;
+    --white: #FFFFFF;
+    --text: #5D4E6D;
+    --text-light: #9B8EAB;
+    --shadow: 0 8px 32px rgba(200, 160, 180, 0.25);
+  }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: linear-gradient(180deg, #FFF0F3 0%, #FFF5EE 30%, #F8F0FF 60%, #FFF0F3 100%);
+    background-attachment: fixed;
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ============ 飘落装饰 ============ */
+  .floating-decor {
+    position: fixed; pointer-events: none; z-index: 0;
+    font-size: 28px; opacity: 0.5;
+    animation: floatAround 8s ease-in-out infinite;
+  }
+
+  @keyframes floatAround {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(15px, -20px) rotate(8deg); }
+    50% { transform: translate(-5px, -35px) rotate(-5deg); }
+    75% { transform: translate(-15px, -15px) rotate(3deg); }
+  }
+
+  /* ============ 主容器 ============ */
+  .container {
+    position: relative; z-index: 1;
+    max-width: 700px; margin: 0 auto; padding: 20px;
+  }
+
+  /* ============ 顶部 Hero ============ */
+  .hero {
+    text-align: center; padding: 40px 20px 20px;
+    position: relative;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--white);
+    border: 2px solid var(--light-pink);
+    border-radius: 50px;
+    padding: 8px 22px;
+    font-size: 13px; color: var(--pink); font-weight: 600;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 16px rgba(255,143,171,0.15);
+    animation: bounceBadge 2s ease-in-out infinite;
+  }
+
+  @keyframes bounceBadge {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .hero .princess-icon {
+    font-size: 70px; display: block; margin: 10px 0;
+    animation: wiggle 2.5s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    color: #E87890;
+    margin: 8px 0;
+    text-shadow: 2px 2px 0px rgba(255,143,171,0.15);
+  }
+
+  .hero .subtitle {
+    font-size: 16px; color: var(--text-light); font-weight: 400;
+    letter-spacing: 2px; margin-top: 4px;
+  }
+
+  /* 小云朵分割线 */
+  .cloud-divider {
+    text-align: center; font-size: 24px; letter-spacing: 8px;
+    padding: 10px 0; opacity: 0.6;
+    animation: cloudBounce 3s ease-in-out infinite;
+  }
+
+  @keyframes cloudBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  /* ============ 倒计时 ============ */
+  .countdown-section {
+    text-align: center; padding: 0 0 25px;
+  }
+
+  .countdown-label {
+    font-size: 14px; color: var(--text-light); margin-bottom: 12px;
+    letter-spacing: 3px;
+  }
+
+  .countdown-grid {
+    display: flex; justify-content: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .countdown-item {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 16px 18px; min-width: 72px;
+    box-shadow: var(--shadow);
+    border: 2px solid #FFE8EE;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .countdown-item:hover {
+    transform: translateY(-4px) scale(1.04);
+    border-color: var(--pink);
+  }
+
+  .countdown-item .number {
+    font-size: 38px; font-weight: 900;
+    color: #E87890;
+    line-height: 1;
+  }
+
+  .countdown-item .label {
+    font-size: 11px; color: var(--text-light);
+    letter-spacing: 2px; margin-top: 4px;
+  }
+
+  /* ============ 通用卡片 ============ */
+  .card {
+    background: var(--white);
+    border-radius: 28px;
+    padding: 28px 24px; margin-bottom: 22px;
+    box-shadow: var(--shadow);
+    border: 2px solid #FFE8EE;
+    position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute; top: -30px; right: -30px;
+    width: 80px; height: 80px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,209,220,0.3), transparent 70%);
+    pointer-events: none;
+  }
+
+  .card h2 {
+    font-size: 18px; font-weight: 700; margin-bottom: 18px;
+    display: flex; align-items: center; gap: 8px;
+    color: #C8758A;
+  }
+
+  /* ============ 进度条 ============ */
+  .progress-bar-wrap {
+    background: #FFF0F3; border-radius: 20px;
+    height: 22px; overflow: hidden; margin: 12px 0;
+    border: 2px solid #FFE0E8;
+  }
+
+  .progress-bar-fill {
+    height: 100%; border-radius: 20px;
+    background: linear-gradient(90deg, #FFB3C6, #FF8FAB, #FFB3C6);
+    background-size: 200% 100%;
+    animation: shimmer 2.5s ease-in-out infinite;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%;
+    display: flex; align-items: center; justify-content: flex-end;
+    padding-right: 12px; font-size: 11px; font-weight: 700; color: #fff;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .progress-labels {
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: var(--text-light);
+  }
+
+  .weight-track {
+    display: flex; justify-content: space-around; align-items: center;
+    margin-top: 20px; padding: 16px 12px;
+    background: linear-gradient(135deg, #FFF5EE, #FFF0F3);
+    border-radius: 20px; border: 2px dashed #FFD1DC;
+  }
+
+  .weight-item { text-align: center; }
+
+  .weight-item .val {
+    font-size: 26px; font-weight: 900; color: #E87890;
+  }
+
+  .weight-item .lbl {
+    font-size: 12px; color: var(--text-light); margin-top: 3px;
+  }
+
+  .weight-arrow {
+    font-size: 24px; color: var(--pink);
+    animation: arrowPulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes arrowPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* ============ 每日语录 ============ */
+  .quote-card {
+    background: linear-gradient(135deg, #FFE8EE, #F8F0FF, #FFF5EE);
+    border-radius: 28px; padding: 30px 24px; margin-bottom: 22px;
+    text-align: center; position: relative; overflow: hidden;
+    box-shadow: var(--shadow); border: 2px solid #FFE0E8;
+  }
+
+  .quote-card::before {
+    content: '💬'; position: absolute; top: 12px; left: 20px;
+    font-size: 28px; opacity: 0.5;
+  }
+
+  .quote-card .quote-text {
+    font-size: 18px; font-weight: 500; line-height: 1.8;
+    color: #6D5D7A; position: relative; z-index: 1;
+    transition: opacity 0.3s;
+  }
+
+  .quote-card .quote-author {
+    margin-top: 12px; font-size: 13px; color: #C0A8C8;
+    letter-spacing: 2px; font-style: italic;
+  }
+
+  .quote-nav {
+    display: flex; justify-content: center; gap: 8px; margin-top: 14px;
+  }
+
+  .quote-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #FFD1DC; cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .quote-dot.active {
+    background: var(--pink);
+    width: 28px; border-radius: 6px;
+  }
+
+  /* ============ 鼓励卡片网格 ============ */
+  .encourage-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin-bottom: 22px;
+  }
+
+  @media (max-width: 500px) {
+    .encourage-grid { grid-template-columns: 1fr; }
+  }
+
+  .encourage-card {
+    background: var(--white); border-radius: 24px; padding: 22px 16px;
+    text-align: center; cursor: pointer;
+    border: 2px solid #FFE8EE;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(200,160,180,0.15);
+    position: relative; overflow: hidden;
+  }
+
+  .encourage-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--pink);
+    box-shadow: 0 12px 36px rgba(255,143,171,0.25);
+  }
+
+  .encourage-card:active {
+    transform: scale(0.95);
+  }
+
+  .encourage-card .icon {
+    font-size: 40px; margin-bottom: 8px;
+    display: block; transition: transform 0.3s;
+  }
+
+  .encourage-card:hover .icon {
+    transform: scale(1.2) rotate(-10deg);
+  }
+
+  .encourage-card .title {
+    font-size: 15px; font-weight: 700; margin-bottom: 5px;
+    color: #C8758A;
+  }
+
+  .encourage-card .desc {
+    font-size: 12px; color: var(--text-light); line-height: 1.6;
+  }
+
+  /* ============ 里程碑时间线 ============ */
+  .timeline { position: relative; padding-left: 28px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute; left: 10px; top: 8px; bottom: 8px;
+    width: 3px; border-radius: 2px;
+    background: linear-gradient(180deg, #FFB3C6, #D4C5F0, #B8E8D0, #FFD6BA);
+  }
+
+  .timeline-item {
+    position: relative; margin-bottom: 20px; padding-left: 8px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -22px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--white);
+    border: 3px solid var(--pink);
+    box-shadow: 0 2px 8px rgba(255,143,171,0.3);
+  }
+
+  .timeline-item .tl-date {
+    font-size: 12px; color: var(--pink); font-weight: 600;
+    margin-bottom: 2px; letter-spacing: 1px;
+  }
+
+  .timeline-item .tl-title {
+    font-size: 15px; font-weight: 600; color: #5D4E6D;
+  }
+
+  .timeline-item .tl-desc {
+    font-size: 12px; color: var(--text-light); margin-top: 3px;
+  }
+
+  /* ============ 每日打卡按钮 ============ */
+  .checkin-section {
+    text-align: center; margin-bottom: 22px;
+  }
+
+  .checkin-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF8FAB, #FFB3C6);
+    color: white; border: none;
+    font-size: 18px; font-weight: 700;
+    padding: 16px 40px; border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    box-shadow: 0 8px 28px rgba(255,143,171,0.35);
+    transition: all 0.3s;
+    font-family: inherit;
+  }
+
+  .checkin-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 36px rgba(255,143,171,0.45);
+  }
+
+  .checkin-btn:active {
+    transform: scale(0.94);
+  }
+
+  .checkin-btn.done {
+    background: linear-gradient(135deg, #B8E8D0, #7ECBA1);
+    box-shadow: 0 8px 28px rgba(126,203,161,0.3);
+    pointer-events: none;
+  }
+
+  .streak-info {
+    margin-top: 12px; font-size: 13px; color: var(--text-light);
+  }
+
+  .streak-info strong { color: var(--pink); }
+
+  /* ============ 底部 ============ */
+  .footer {
+    text-align: center; padding: 20px 20px 50px;
+    font-size: 14px; color: #C0A8C8;
+    line-height: 2;
+  }
+
+  .footer .heart {
+    color: #FF8FAB;
+    animation: heartbeat 1.2s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.35); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.35); }
+  }
+
+  /* ============ 点击彩蛋 ============ */
+  .confetti {
+    position: fixed; pointer-events: none; z-index: 999;
+    animation: confettiFall 3s ease-out forwards;
+    font-size: 26px;
+  }
+
+  @keyframes confettiFall {
+    0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(0.8); }
+    50% { opacity: 1; transform: translateY(40vh) rotate(360deg) scale(1.3); }
+    100% { opacity: 0; transform: translateY(100vh) rotate(720deg) scale(0.3); }
+  }
+
+  /* Toast 提示 */
+  .toast {
+    position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+    background: var(--white); color: #E87890; font-weight: 700;
+    padding: 14px 28px; border-radius: 50px;
+    box-shadow: 0 12px 40px rgba(255,143,171,0.35);
+    border: 2px solid #FFE0E8;
+    z-index: 1000; font-size: 15px;
+    animation: toastIn 0.4s ease-out, toastOut 0.4s 1.8s ease-in forwards;
+    pointer-events: none;
+  }
+
+  @keyframes toastIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  @keyframes toastOut {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+  }
+
+  /* ============ 响应式 ============ */
+  @media (max-width: 600px) {
+    .countdown-item { min-width: 58px; padding: 12px 10px; }
+    .countdown-item .number { font-size: 28px; }
+    .hero { padding: 24px 10px 12px; }
+    .princess-icon { font-size: 50px !important; }
+    .card { padding: 22px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 飘落装饰 -->
+<div class="floating-decor" style="top:8%;left:5%;animation-delay:0s;">🌸</div>
+<div class="floating-decor" style="top:15%;right:8%;animation-delay:1.5s;">⭐</div>
+<div class="floating-decor" style="top:35%;left:4%;animation-delay:3s;">🎀</div>
+<div class="floating-decor" style="top:50%;right:5%;animation-delay:4.5s;">🦋</div>
+<div class="floating-decor" style="top:65%;left:7%;animation-delay:6s;">💖</div>
+<div class="floating-decor" style="top:75%;right:6%;animation-delay:2s;">✨</div>
+<div class="floating-decor" style="top:85%;left:8%;animation-delay:5s;">🌸</div>
+
+<div class="container">
+
+  <!-- ========== Hero ========== -->
+  <div class="hero">
+    <div class="hero-badge">✨ PRINCESS PROJECT ✨</div>
+    <span class="princess-icon">👸🏻</span>
+    <h1>100天公主变形记</h1>
+    <p class="subtitle" id="greeting">早安呀，今天也要元气满满喔～</p>
+  </div>
+
+  <div class="cloud-divider">☁️  ☁️  ☁️</div>
+
+  <!-- ========== 倒计时 ========== -->
+  <div class="countdown-section">
+    <div class="countdown-label">⏳ 距离变身还有</div>
+    <div class="countdown-grid">
+      <div class="countdown-item">
+        <div class="number" id="count-days">100</div>
+        <div class="label">天</div>
+      </div>
+      <div class="countdown-item">
+        <div class="number" id="count-hours">00</div>
+        <div class="label">时</div>
+      </div>
+      <div class="countdown-item">
+        <div class="number" id="count-mins">00</div>
+        <div class="label">分</div>
+      </div>
+      <div class="countdown-item">
+        <div class="number" id="count-secs">00</div>
+        <div class="label">秒</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 每日打卡 ========== -->
+  <div class="checkin-section">
+    <button class="checkin-btn" id="checkinBtn" onclick="dailyCheckin()">
+      💖 今日打卡
+    </button>
+    <div class="streak-info">
+      已连续坚持 <strong id="streakCount">0</strong> 天 &nbsp;·&nbsp;
+      最长记录 <strong id="bestStreak">0</strong> 天
+    </div>
+  </div>
+
+  <!-- ========== 进度卡片 ========== -->
+  <div class="card">
+    <h2>📊 变身进度条</h2>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressBar">0%</div>
+    </div>
+    <div class="progress-labels">
+      <span>🐣 Day 1</span><span>🦋 Day 100</span>
+    </div>
+    <div class="weight-track">
+      <div class="weight-item">
+        <div class="val">75<span style="font-size:14px"> kg</span></div>
+        <div class="lbl">🌸 现在</div>
+      </div>
+      <div class="weight-arrow">✨</div>
+      <div class="weight-item">
+        <div class="val" style="font-size:18px; color:#FF8FAB;">−10 kg</div>
+        <div class="lbl">💪 目标</div>
+      </div>
+      <div class="weight-arrow">✨</div>
+      <div class="weight-item">
+        <div class="val">65<span style="font-size:14px"> kg</span></div>
+        <div class="lbl">👑 公主</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 每日语录 ========== -->
+  <div class="quote-card" id="quoteCard">
+    <div class="quote-text" id="quoteText"></div>
+    <div class="quote-author" id="quoteAuthor"></div>
+    <div class="quote-nav" id="quoteDots"></div>
+  </div>
+
+  <!-- ========== 鼓励卡片 ========== -->
+  <div class="encourage-grid">
+    <div class="encourage-card" onclick="burstConfetti(this)">
+      <span class="icon">🍓</span>
+      <div class="title">吃好才能瘦好</div>
+      <div class="desc">每一顿营养餐，都是在喂养更美的自己</div>
+    </div>
+    <div class="encourage-card" onclick="burstConfetti(this)">
+      <span class="icon">🩰</span>
+      <div class="title">慢就是快</div>
+      <div class="desc">稳稳地每周0.7kg，不反弹才是真仙女</div>
+    </div>
+    <div class="encourage-card" onclick="burstConfetti(this)">
+      <span class="icon">👗</span>
+      <div class="title">衣橱在等你</div>
+      <div class="desc">那些小裙子已经在期待100天后的主人了</div>
+    </div>
+    <div class="encourage-card" onclick="burstConfetti(this)">
+      <span class="icon">🪞</span>
+      <div class="title">镜子里的人</div>
+      <div class="desc">每天变美一点点，你会爱上镜子里的自己</div>
+    </div>
+  </div>
+
+  <!-- ========== 里程碑 ========== -->
+  <div class="card">
+    <h2>🗺️ 公主变形路线图</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-date">🐣 Day 1 - 14</div>
+        <div class="tl-title">适应期 · 75→73 kg</div>
+        <div class="tl-desc">身体慢慢习惯16:8节奏，开始掉秤啦</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">🌸 Day 15 - 40</div>
+        <div class="tl-title">燃脂期 · 73→69 kg</div>
+        <div class="tl-desc">进入稳稳的掉秤通道，力气也变大咯</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">🦋 Day 41 - 75</div>
+        <div class="tl-title">加速期 · 69→66 kg</div>
+        <div class="tl-desc">周围人开始说"你瘦了诶！"衣服变宽松～</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-date">👑 Day 76 - 100</div>
+        <div class="tl-title">冲刺期 · 66→65 kg</div>
+        <div class="tl-desc">最后冲刺！变身完成，公主驾到 ✨</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 底部 ========== -->
+  <div class="footer">
+    <p>Made with <span class="heart">💗</span> · 陪你走过闪闪发光的每一天</p>
+    <p>每天点开看一眼，美美地去训练吧～ 🎀</p>
+  </div>
+
+</div>
+
+<script>
+// ==================== 问候语 ====================
+const hour = new Date().getHours();
+let greeting = '早安呀，今天也要元气满满喔～ 🌞';
+if (hour >= 11 && hour < 13) greeting = '午安呀，记得好好吃饭喔～ 🍱';
+else if (hour >= 13 && hour < 17) greeting = '下午好呀，困了就起来走走吧～ ☕';
+else if (hour >= 17 && hour < 20) greeting = '傍晚好呀，今天的训练安排上了吗～ 🏃‍♀️';
+else if (hour >= 20 || hour < 5) greeting = '晚安呀，早点休息明天继续变美～ 🌙';
+document.getElementById('greeting').textContent = greeting;
+
+// ==================== 倒计时 ====================
+const startDate = new Date();
+const endDate = new Date(startDate.getTime() + 100 * 24 * 60 * 60 * 1000);
+
+function updateCountdown() {
+  const diff = endDate - new Date();
+  if (diff <= 0) {
+    document.getElementById('count-days').textContent = '🎉';
+    document.getElementById('count-hours').textContent = '00';
+    document.getElementById('count-mins').textContent = '00';
+    document.getElementById('count-secs').textContent = '00';
+    document.getElementById('progressBar').style.width = '100%';
+    document.getElementById('progressBar').textContent = '🏆';
+    return;
+  }
+  const days = Math.floor(diff / 86400000);
+  const hrs  = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  const secs = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('count-days').textContent = days;
+  document.getElementById('count-hours').textContent = String(hrs).padStart(2, '0');
+  document.getElementById('count-mins').textContent = String(mins).padStart(2, '0');
+  document.getElementById('count-secs').textContent = String(secs).padStart(2, '0');
+
+  const progress = Math.min(100 - days, 100);
+  const bar = document.getElementById('progressBar');
+  bar.style.width = progress + '%';
+  bar.textContent = progress > 5 ? Math.round(progress) + '%' : '';
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ==================== 每日打卡 ====================
+const STORAGE_KEY = 'princess_checkin';
+function loadCheckin() {
+  try {
+    const d = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return d || { streak: 0, best: 0, lastDate: null };
+  } catch(e) { return { streak: 0, best: 0, lastDate: null }; }
+}
+
+function saveCheckin(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function updateCheckinUI(data) {
+  document.getElementById('streakCount').textContent = data.streak;
+  document.getElementById('bestStreak').textContent = data.best;
+  const btn = document.getElementById('checkinBtn');
+  const today = new Date().toDateString();
+  if (data.lastDate === today) {
+    btn.textContent = '✅ 已打卡';
+    btn.classList.add('done');
+  } else {
+    btn.textContent = '💖 今日打卡';
+    btn.classList.remove('done');
+  }
+}
+
+let checkinData = loadCheckin();
+
+// 跨天自动重置
+const todayStr = new Date().toDateString();
+if (checkinData.lastDate) {
+  const last = new Date(checkinData.lastDate);
+  const diffDays = Math.floor((new Date(todayStr) - new Date(last.toDateString())) / 86400000);
+  if (diffDays > 1) {
+    checkinData.streak = 0;
+  }
+}
+
+function dailyCheckin() {
+  const today = new Date().toDateString();
+  if (checkinData.lastDate === today) return;
+
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  if (checkinData.lastDate === yesterday || checkinData.lastDate === null) {
+    checkinData.streak += 1;
+  } else {
+    checkinData.streak = 1;
+  }
+  checkinData.lastDate = today;
+  if (checkinData.streak > checkinData.best) {
+    checkinData.best = checkinData.streak;
+  }
+  saveCheckin(checkinData);
+  updateCheckinUI(checkinData);
+
+  // Toast
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  const msgs = [
+    '太棒啦！今天也是满分公主～ 👑',
+    '又坚持了一天！你就是最棒的！💗',
+    '打卡成功！离目标又近了一步～ 🌸',
+    '嘿嘿，自律的女生最美！🦋',
+    '就是这个节奏！冲冲冲～ 🎀',
+  ];
+  toast.textContent = msgs[Math.floor(Math.random() * msgs.length)];
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2400);
+
+  // 按钮撒花
+  burstConfetti(document.getElementById('checkinBtn'));
+}
+updateCheckinUI(checkinData);
+
+// ==================== 轮播语录 ====================
+const quotes = [
+  { text: '今天的每一滴汗水，都是明天穿上漂亮裙子的底气。', author: '—— 写给100天后的自己 💌' },
+  { text: '你不用跟别人比，你只需要比昨天的自己更好一点点。', author: '—— 悄悄变美法则 ✨' },
+  { text: '变美不是惩罚自己，而是好好爱自己的方式。', author: '—— 公主心法第一条 👸🏻' },
+  { text: '慢慢来，比较快。所有的美好都会如约而至。', author: '—— 不急不躁 🌷' },
+  { text: '饿的时候想一想：是嘴巴想吃，还是身体需要？', author: '—— 16:8选择题 🍽️' },
+  { text: '连自己体重都掌控得了的女生，还有什么做不到？', author: '—— 霸气小公主 💪' },
+  { text: '每一次说"不"，都是在为更美的自己投票。', author: '—— 拒绝对我说 🗳️' },
+  { text: '你已经很棒了，但100天后的你会更棒。', author: '—— 真的真的真的 ❤️' },
+];
+
+let quoteIdx = 0;
+const quoteText = document.getElementById('quoteText');
+const quoteAuthor = document.getElementById('quoteAuthor');
+const quoteDots = document.getElementById('quoteDots');
+
+quotes.forEach((_, i) => {
+  const dot = document.createElement('span');
+  dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => showQuote(i);
+  quoteDots.appendChild(dot);
+});
+
+function showQuote(idx) {
+  quoteIdx = idx;
+  quoteText.style.opacity = '0';
+  quoteAuthor.style.opacity = '0';
+  setTimeout(() => {
+    quoteText.textContent = quotes[idx].text;
+    quoteAuthor.textContent = quotes[idx].author;
+    quoteText.style.opacity = '1';
+    quoteAuthor.style.opacity = '1';
+    document.querySelectorAll('.quote-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === idx);
+    });
+  }, 250);
+}
+
+showQuote(0);
+setInterval(() => showQuote((quoteIdx + 1) % quotes.length), 5000);
+
+// ==================== 点击撒花 ====================
+function burstConfetti(el) {
+  const rect = el.getBoundingClientRect();
+  const cx = rect.left + rect.width / 2;
+  const cy = rect.top + rect.height / 2;
+  const emojis = ['🌸','🦋','🎀','💖','✨','🍰','💗','⭐','🫧','🧸','🍓','💝'];
+
+  for (let i = 0; i < 20; i++) {
+    const span = document.createElement('span');
+    span.className = 'confetti';
+    span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    span.style.left = cx + (Math.random() - 0.5) * 160 + 'px';
+    span.style.top = cy + (Math.random() - 0.5) * 40 + 'px';
+    span.style.animationDuration = (Math.random() * 2 + 2.5) + 's';
+    span.style.animationDelay = Math.random() * 0.4 + 's';
+    document.body.appendChild(span);
+    setTimeout(() => span.remove(), 4000);
+  }
+}
+
+// ==================== 控制台彩蛋 ====================
+console.log('%c👸🏻 欢迎来到公主变形记！%c',
+  'font-size:20px;color:#FF8FAB;font-weight:bold;', '');
+console.log('%c💗 100天后，你会感谢今天点开这个页面的自己 %c',
+  'font-size:13px;color:#D4C5F0;', '');
+console.log('%c🌸 你值得所有的美好 %c',
+  'font-size:13px;color:#FFB3C6;', '');
+</script>
+</body>
+</html>

@@ -125,6 +125,18 @@
   /* speaking prompt */
   #sp-prompt-text{white-space:pre-wrap;}
   #sentence-target{white-space:pre-wrap;}
+  /* pronunciation result */
+  #sp-pron-result{background:rgba(0,0,0,.25);border-radius:10px;padding:16px 20px;border:1px solid var(--border);}
+  #sp-pron-result .pron-score{font-size:1.4rem;font-weight:700;margin-bottom:10px;}
+  #sp-pron-result .pron-score.good{color:var(--correct);}
+  #sp-pron-result .pron-score.ok{color:var(--accent);}
+  #sp-pron-result .pron-score.poor{color:var(--incorrect);}
+  #sp-pron-result .word{display:inline-block;padding:2px 6px;margin:1px;border-radius:3px;font-size:1rem;font-family:'Cascadia Code','Fira Code',monospace;}
+  #sp-pron-result .word.correct{background:rgba(34,197,94,.2);color:var(--correct);}
+  #sp-pron-result .word.incorrect{background:rgba(239,68,68,.2);color:var(--incorrect);text-decoration:line-through;}
+  #sp-pron-result .word.missing{background:rgba(239,68,68,.1);color:var(--incorrect);border-bottom:2px dashed var(--incorrect);}
+  #sp-pron-result .word.extra{background:rgba(239,68,68,.15);color:#f87171;font-style:italic;}
+  #sp-pron-result .pron-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px;}
   /* scrollbar */
   .passage-card::-webkit-scrollbar{width:6px;}
   .passage-card::-webkit-scrollbar-track{background:transparent;}
@@ -215,6 +227,7 @@
         <button class="btn btn-outline" id="btn-new-sp">New Prompt</button>
       </div>
       <audio id="sp-audio" controls style="display:none;width:100%;margin-top:12px;border-radius:8px;"></audio>
+      <div id="sp-pron-result" style="display:none;margin-top:14px;text-align:left;"></div>
       <p id="sp-error" style="color:#ef4444;font-size:.85rem;margin-top:8px;display:none;"></p>
     </div>
 
@@ -442,12 +455,14 @@ document.querySelectorAll("#writing-type-bar .type-btn").forEach(btn=>{ btn.addE
 // ══════════════════════════════════════════════════════════════
 
 let spType="repeat", spRecTimer=null, spRecSec=0, spMediaRecorder=null, spChunks=[], spDoneCount=0;
+let spRecognition=null, spTranscript="";
 
 const spListenEl=document.getElementById("sp-listen"), spRecEl=document.getElementById("sp-rec");
 const spStatusEl=document.getElementById("sp-status"), spCountEl=document.getElementById("sp-count");
 const spTag=document.getElementById("sp-tag"), spField=document.getElementById("sp-field-label");
 const spPrompt=document.getElementById("sp-prompt-text"), spAudio=document.getElementById("sp-audio");
 const spError=document.getElementById("sp-error"), recInd=document.getElementById("rec-indicator");
+const spPronResult=document.getElementById("sp-pron-result");
 const btnListen=document.getElementById("btn-listen"), btnStartRec=document.getElementById("btn-start-rec");
 const btnStopRec=document.getElementById("btn-stop-rec"), btnNewSp=document.getElementById("btn-new-sp");
 
@@ -471,14 +486,17 @@ function loadSpeakingPrompt(type){
   }
   spStatusEl.textContent="Ready"; spStatusEl.style.color="#94a3b8";
   btnListen.style.display=""; btnStartRec.style.display="none"; btnStopRec.style.display="none";
-  spAudio.style.display="none"; spError.style.display="none"; recInd.style.display="none";
-  spAudio.src=""; document.getElementById("sp-card").scrollTop=0;
+  spAudio.style.display="none"; spPronResult.style.display="none"; spPronResult.innerHTML="";
+  spError.style.display="none"; recInd.style.display="none";
+  spAudio.src=""; spTranscript=""; document.getElementById("sp-card").scrollTop=0;
 }
 
 function resetSpeaking(){
   clearInterval(spRecTimer); spRecTimer=null;
   if(spMediaRecorder&&spMediaRecorder.state==="recording")spMediaRecorder.stop();
   spMediaRecorder=null; spChunks=[];
+  if(spRecognition){ try{spRecognition.stop();}catch(e){} spRecognition=null; }
+  spTranscript="";
 }
 
 function speakText(){
@@ -493,8 +511,29 @@ function speakText(){
 }
 
 function startRecording(){
-  spError.style.display="none"; btnStartRec.style.display="none"; btnListen.style.display="none";
+  spError.style.display="none"; spPronResult.style.display="none"; spPronResult.innerHTML="";
+  btnStartRec.style.display="none"; btnListen.style.display="none";
   if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){ spError.textContent="Recording not supported. Use Chrome, Edge, or Firefox."; spError.style.display=""; return; }
+
+  // Start speech recognition if in repeat mode
+  spTranscript="";
+  if(spType==="repeat"){
+    const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(SpeechRecognition){
+      spRecognition=new SpeechRecognition();
+      spRecognition.lang="en-US";
+      spRecognition.interimResults=true;
+      spRecognition.continuous=true;
+      spRecognition.onresult=e=>{
+        let t="";
+        for(let i=e.resultIndex;i<e.results.length;i++)t+=e.results[i][0].transcript;
+        spTranscript=t.trim();
+      };
+      spRecognition.onerror=()=>{}; // silently ignore errors
+      spRecognition.start();
+    }
+  }
+
   navigator.mediaDevices.getUserMedia({audio:true}).then(stream=>{
     spMediaRecorder=new MediaRecorder(stream,{mimeType:MediaRecorder.isTypeSupported("audio/webm")?"audio/webm":"audio/mp4"});
     spChunks=[]; spMediaRecorder.ondataavailable=e=>{if(e.data.size>0)spChunks.push(e.data);};
@@ -512,8 +551,55 @@ function stopRecording(){
   clearInterval(spRecTimer); recInd.style.display="none"; btnStopRec.style.display="none";
   btnListen.style.display=""; spStatusEl.textContent="Done"; spStatusEl.style.color="#22c55e";
   spDoneCount++; spCountEl.textContent=spDoneCount+"/"+(SPEAKING.repeat.length+SPEAKING.interview.length);
+
+  // Stop recognition
+  if(spRecognition){ try{spRecognition.stop();}catch(e){} spRecognition=null; }
+
   if(spMediaRecorder&&spMediaRecorder.state==="recording")spMediaRecorder.stop();
   spMediaRecorder=null; spRecEl.textContent="—";
+
+  // Show pronunciation comparison for repeat mode
+  if(spType==="repeat"&&spTranscript){
+    setTimeout(()=>showPronunciationResult(),300);
+  }
+}
+
+function showPronunciationResult(){
+  const target=spPrompt.textContent.trim().toLowerCase().replace(/[,.!?;:]/g,"");
+  const spoken=spTranscript.toLowerCase().replace(/[,.!?;:]/g,"");
+  const targetWords=target.split(/\s+/).filter(Boolean);
+  const spokenWords=spoken.split(/\s+/).filter(Boolean);
+  if(!targetWords.length||!spokenWords.length){ spPronResult.style.display="none"; return; }
+
+  // Simple word-by-word alignment
+  let correct=0, html="";
+  const maxLen=Math.max(targetWords.length,spokenWords.length);
+  for(let i=0;i<maxLen;i++){
+    const tw=targetWords[i]||"", sw=spokenWords[i]||"";
+    if(tw&&sw&&tw===sw){ correct++; html+='<span class="word correct">'+escapeHtml(targetWords[i])+'</span>'; }
+    else if(tw&&sw&&tw!==sw){ html+='<span class="word incorrect">'+escapeHtml(targetWords[i])+'</span>'; }
+    else if(tw&&!sw){ html+='<span class="word missing">'+escapeHtml(targetWords[i])+'</span>'; }
+  }
+  // Extra spoken words
+  if(spokenWords.length>targetWords.length){
+    for(let i=targetWords.length;i<spokenWords.length;i++){
+      html+='<span class="word extra">+'+escapeHtml(spokenWords[i])+'</span>';
+    }
+  }
+
+  const pct=Math.round((correct/targetWords.length)*100);
+  let cls=pct>=90?"good":pct>=60?"ok":"poor";
+  let grade=pct>=90?"Excellent":"":"";
+  if(pct>=75&&pct<90)grade="Good";
+  else if(pct>=60&&pct<75)grade="Needs Work";
+  else if(pct<60)grade="Try Again";
+
+  spPronResult.innerHTML=
+    '<div class="pron-label">Pronunciation Accuracy</div>'+
+    '<div class="pron-score '+cls+'">'+pct+'% — '+grade+'</div>'+
+    '<div style="margin-top:8px;">'+html+'</div>'+
+    '<div style="font-size:.7rem;color:var(--muted);margin-top:8px;">You said: "'+escapeHtml(spTranscript)+'"</div>';
+  spPronResult.style.display="";
 }
 
 btnListen.addEventListener("click",speakText);

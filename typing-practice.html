@@ -518,19 +518,27 @@ function startRecording(){
   // Start speech recognition if in repeat mode
   spTranscript="";
   if(spType==="repeat"){
-    const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
-    if(SpeechRecognition){
-      spRecognition=new SpeechRecognition();
-      spRecognition.lang="en-US";
-      spRecognition.interimResults=true;
-      spRecognition.continuous=true;
-      spRecognition.onresult=e=>{
-        let t="";
-        for(let i=e.resultIndex;i<e.results.length;i++)t+=e.results[i][0].transcript;
-        spTranscript=t.trim();
-      };
-      spRecognition.onerror=()=>{}; // silently ignore errors
-      spRecognition.start();
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(SR){
+      try{
+        spRecognition=new SR();
+        spRecognition.lang="en-US";
+        spRecognition.interimResults=true;
+        spRecognition.continuous=true;
+        spRecognition.onresult=function(e){
+          let t="";
+          for(let i=e.resultIndex;i<e.results.length;i++){
+            if(e.results[i].isFinal){ t+=e.results[i][0].transcript+" "; }
+          }
+          if(t)spTranscript=t.trim();
+        };
+        spRecognition.onerror=function(e){ console.log("Speech error:",e.error); };
+        // When recognition stops naturally, show result
+        spRecognition.onend=function(){
+          if(spTranscript)showPronunciationResult();
+        };
+        spRecognition.start();
+      }catch(e){ console.log("Speech init error:",e); spRecognition=null; }
     }
   }
 
@@ -552,16 +560,11 @@ function stopRecording(){
   btnListen.style.display=""; spStatusEl.textContent="Done"; spStatusEl.style.color="#22c55e";
   spDoneCount++; spCountEl.textContent=spDoneCount+"/"+(SPEAKING.repeat.length+SPEAKING.interview.length);
 
-  // Stop recognition
-  if(spRecognition){ try{spRecognition.stop();}catch(e){} spRecognition=null; }
+  // Stop recognition — onend will call showPronunciationResult
+  if(spRecognition){ try{spRecognition.stop();}catch(e){} }
 
   if(spMediaRecorder&&spMediaRecorder.state==="recording")spMediaRecorder.stop();
   spMediaRecorder=null; spRecEl.textContent="—";
-
-  // Show pronunciation comparison for repeat mode
-  if(spType==="repeat"&&spTranscript){
-    setTimeout(()=>showPronunciationResult(),300);
-  }
 }
 
 function showPronunciationResult(){
@@ -571,35 +574,47 @@ function showPronunciationResult(){
   const spokenWords=spoken.split(/\s+/).filter(Boolean);
   if(!targetWords.length||!spokenWords.length){ spPronResult.style.display="none"; return; }
 
-  // Simple word-by-word alignment
+  // Align words via LCS-like greedy match
   let correct=0, html="";
-  const maxLen=Math.max(targetWords.length,spokenWords.length);
-  for(let i=0;i<maxLen;i++){
-    const tw=targetWords[i]||"", sw=spokenWords[i]||"";
-    if(tw&&sw&&tw===sw){ correct++; html+='<span class="word correct">'+escapeHtml(targetWords[i])+'</span>'; }
-    else if(tw&&sw&&tw!==sw){ html+='<span class="word incorrect">'+escapeHtml(targetWords[i])+'</span>'; }
-    else if(tw&&!sw){ html+='<span class="word missing">'+escapeHtml(targetWords[i])+'</span>'; }
-  }
-  // Extra spoken words
-  if(spokenWords.length>targetWords.length){
-    for(let i=targetWords.length;i<spokenWords.length;i++){
-      html+='<span class="word extra">+'+escapeHtml(spokenWords[i])+'</span>';
+  let si=0; // spoken index
+  for(let ti=0;ti<targetWords.length;ti++){
+    const tw=targetWords[ti];
+    if(si<spokenWords.length&&spokenWords[si]===tw){
+      correct++; html+='<span class="word correct">'+escapeHtml(targetWords[ti])+'</span>'; si++;
+    }else{
+      // Check if this word appears within next 2 spoken words (slight misalignment)
+      let found=false;
+      for(let k=si;k<Math.min(si+3,spokenWords.length);k++){
+        if(spokenWords[k]===tw){ found=true; break; }
+      }
+      if(found){
+        // Mark skipped spoken words as extra
+        while(si<spokenWords.length&&spokenWords[si]!==tw){
+          html+='<span class="word extra">+'+escapeHtml(spokenWords[si])+'</span>'; si++;
+        }
+        correct++; html+='<span class="word correct">'+escapeHtml(targetWords[ti])+'</span>'; si++;
+      }else{
+        html+='<span class="word incorrect">'+escapeHtml(targetWords[ti])+'</span>';
+        if(si<spokenWords.length&&spokenWords[si]!==tw)si++; // skip one spoken mismatch
+      }
     }
+  }
+  // Remaining extra spoken words
+  while(si<spokenWords.length){
+    html+='<span class="word extra">+'+escapeHtml(spokenWords[si])+'</span>'; si++;
   }
 
   const pct=Math.round((correct/targetWords.length)*100);
   let cls=pct>=90?"good":pct>=60?"ok":"poor";
-  let grade=pct>=90?"Excellent":"":"";
-  if(pct>=75&&pct<90)grade="Good";
-  else if(pct>=60&&pct<75)grade="Needs Work";
-  else if(pct<60)grade="Try Again";
+  let grade=pct>=90?"Excellent":pct>=75?"Good":pct>=60?"Needs Work":"Try Again";
 
   spPronResult.innerHTML=
     '<div class="pron-label">Pronunciation Accuracy</div>'+
     '<div class="pron-score '+cls+'">'+pct+'% — '+grade+'</div>'+
-    '<div style="margin-top:8px;">'+html+'</div>'+
+    '<div style="margin-top:8px;line-height:2.2;">'+html+'</div>'+
     '<div style="font-size:.7rem;color:var(--muted);margin-top:8px;">You said: "'+escapeHtml(spTranscript)+'"</div>';
   spPronResult.style.display="";
+  spRecognition=null;
 }
 
 btnListen.addEventListener("click",speakText);

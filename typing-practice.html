@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOEFL Writing Typing Practice</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --surface: #1e293b;
+    --accent: #f59e0b;
+    --accent2: #3b82f6;
+    --correct: #22c55e;
+    --incorrect: #ef4444;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #334155;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px 60px;
+  }
+
+  .container { width: 100%; max-width: 900px; }
+
+  /* ── Header ───────────────────── */
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--accent), #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .header .subtitle { color: var(--muted); font-size: 0.83rem; margin-top: 3px; }
+
+  /* ── Stats panel ──────────────── */
+  .stats-panel {
+    display: flex; justify-content: center; gap: 16px;
+    margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 20px; text-align: center; min-width: 85px;
+  }
+  .stat-card .value {
+    font-size: 1.7rem; font-weight: 700;
+    font-family: 'Cascadia Code','Fira Code','JetBrains Mono',monospace; line-height: 1.1;
+  }
+  .stat-card .value.wpm  { color: var(--accent); }
+  .stat-card .value.acc  { color: var(--correct); }
+  .stat-card .value.time { color: var(--accent2); }
+  .stat-card .value.prog { color: #a78bfa; }
+  .stat-card .label {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.2px;
+    color: var(--muted); margin-top: 2px;
+  }
+
+  /* ── Progress ─────────────────── */
+  .progress-wrap { margin-bottom: 14px; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--correct); border-radius: 2px; transition: width 0.15s; width: 0%; }
+
+  /* ── Task type selector ───────── */
+  .type-bar {
+    display: flex; justify-content: center; gap: 10px;
+    margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .type-btn {
+    padding: 8px 20px; border-radius: 22px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--muted); cursor: pointer; font-size: 0.84rem;
+    transition: all 0.2s; display: flex; align-items: center; gap: 6px;
+  }
+  .type-btn:hover { border-color: var(--accent); color: var(--text); }
+  .type-btn.active { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 600; }
+  .type-btn .badge {
+    font-size: 0.65rem; background: rgba(255,255,255,.15);
+    padding: 2px 8px; border-radius: 10px; letter-spacing: 0.5px;
+  }
+  .type-btn.active .badge { background: rgba(0,0,0,.15); }
+
+  /* ── Passage card ─────────────── */
+  .passage-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 26px 30px; margin-bottom: 14px;
+    max-height: 420px; overflow-y: auto;
+  }
+  .passage-card .meta-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 14px; flex-wrap: wrap; gap: 8px;
+  }
+  .passage-card .task-type-tag {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 700; padding: 3px 10px; border-radius: 4px;
+  }
+  .tag-integrated { color: #fbbf24; background: rgba(251,191,36,.12); }
+  .tag-discussion { color: #60a5fa; background: rgba(96,165,250,.12); }
+  .tag-email     { color: #34d399; background: rgba(52,211,153,.12); }
+  .tag-academic  { color: #c084fc; background: rgba(192,132,252,.12); }
+
+  .passage-card .field-label {
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--muted); margin-bottom: 6px; font-weight: 600;
+  }
+
+  .passage-card .passage-text {
+    font-size: 1.06rem; line-height: 2; letter-spacing: 0.2px;
+    user-select: none; word-break: break-word;
+  }
+
+  .passage-text span { position: relative; transition: color 0.08s; }
+  .passage-text span.correct   { color: var(--correct); }
+  .passage-text span.incorrect { color: var(--incorrect); background: rgba(239,68,68,.15); border-radius: 2px; }
+  .passage-text span.current   { background: rgba(245,158,11,.35); border-radius: 2px; animation: blink 1s step-end infinite; }
+  .passage-text span.pending   { color: var(--muted); }
+  .passage-text span.nl        { font-size: 0.7rem; color: var(--muted); padding: 0 2px; }
+  .passage-text span.nl.correct { color: var(--correct); }
+  .passage-text span.nl.incorrect { color: var(--incorrect); background: rgba(239,68,68,.15); border-radius: 2px; }
+  .passage-text span.nl.current { background: rgba(245,158,11,.35); border-radius: 2px; animation: blink 1s step-end infinite; }
+
+  @keyframes blink {
+    0%,100% { background: rgba(245,158,11,.35); }
+    50%     { background: transparent; }
+  }
+
+  /* Role labels in discussion mode */
+  .role-professor { color: #fbbf24; font-weight: 600; }
+  .role-student   { color: #60a5fa; font-weight: 600; }
+
+  /* ── Input ────────────────────── */
+  .input-area { margin-bottom: 14px; }
+  #typing-input {
+    width: 100%; padding: 16px 20px; font-size: 1.05rem;
+    font-family: 'Cascadia Code','Fira Code','JetBrains Mono',monospace;
+    background: var(--surface); border: 2px solid var(--border);
+    border-radius: 12px; color: var(--text); outline: none;
+    resize: vertical; transition: border-color 0.2s;
+    line-height: 1.7; min-height: 90px;
+  }
+  #typing-input:focus { border-color: var(--accent); }
+  #typing-input::placeholder { color: var(--muted); opacity: 0.4; }
+
+  /* ── Buttons ──────────────────── */
+  .actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+  .btn {
+    padding: 9px 22px; border-radius: 8px; border: none;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+  }
+  .btn-accent  { background: var(--accent); color: #000; }
+  .btn-accent:hover  { background: #e8900a; transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .btn-outline:hover { border-color: var(--muted); }
+
+  .key-hints {
+    display: flex; justify-content: center; gap: 18px; flex-wrap: wrap;
+    font-size: 0.74rem; color: var(--muted);
+  }
+  .key-hints kbd {
+    background: rgba(255,255,255,.07); padding: 1px 7px; border-radius: 4px;
+    border: 1px solid var(--border); font-family: inherit;
+  }
+
+  /* ── Results overlay ──────────── */
+  .overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,.65);
+    z-index: 100; justify-content: center; align-items: center;
+  }
+  .overlay.show { display: flex; }
+  .results-card {
+    background: var(--surface); border-radius: 18px; padding: 34px 30px;
+    text-align: center; max-width: 440px; width: 92%;
+    border: 1px solid var(--border); box-shadow: 0 24px 64px rgba(0,0,0,.5);
+  }
+  .results-card h2 { font-size: 1.35rem; margin-bottom: 20px; }
+  .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .result-item { background: rgba(0,0,0,.25); border-radius: 10px; padding: 14px; }
+  .result-item .r-val {
+    font-size: 1.7rem; font-weight: 700;
+    font-family: 'Cascadia Code','Fira Code',monospace;
+  }
+  .result-item .r-lbl { font-size: 0.7rem; text-transform: uppercase; color: var(--muted); letter-spacing: 1px; }
+  .r-amber  { color: var(--accent); }
+  .r-green  { color: var(--correct); }
+  .r-blue   { color: var(--accent2); }
+  .r-purple { color: #a78bfa; }
+  .overlay .hint { color: var(--muted); font-size: 0.8rem; margin-top: 12px; }
+
+  /* ── Scrollbar ────────────────── */
+  .passage-card::-webkit-scrollbar { width: 6px; }
+  .passage-card::-webkit-scrollbar-track { background: transparent; }
+  .passage-card::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  @media (max-width: 600px) {
+    .passage-card { padding: 16px; max-height: 300px; }
+    .passage-card .passage-text { font-size: 0.92rem; line-height: 1.8; }
+    .stats-panel { gap: 6px; }
+    .stat-card { padding: 8px 12px; min-width: 68px; }
+    .stat-card .value { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>TOEFL iBT Writing — Typing Practice</h1>
+    <p class="subtitle">Real question formats: Integrated Writing &amp; Academic Discussion</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-panel">
+    <div class="stat-card"><div class="value wpm" id="wpm">0</div><div class="label">WPM</div></div>
+    <div class="stat-card"><div class="value acc" id="accuracy">100</div><div class="label">Accuracy</div></div>
+    <div class="stat-card"><div class="value time" id="timer">0:00</div><div class="label">Time</div></div>
+    <div class="stat-card"><div class="value prog" id="progress">0%</div><div class="label">Done</div></div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="progress-wrap"><div class="progress-fill" id="progress-bar"></div></div>
+
+  <!-- Task type selector -->
+  <div class="type-bar">
+    <button class="type-btn active" data-type="integrated">
+      Integrated Writing <span class="badge">~300w</span>
+    </button>
+    <button class="type-btn" data-type="discussion">
+      Academic Discussion <span class="badge">~180w</span>
+    </button>
+    <button class="type-btn" data-type="academic">
+      Academic Writing <span class="badge">~120w</span>
+    </button>
+    <button class="type-btn" data-type="email">
+      Email Writing <span class="badge">~100w</span>
+    </button>
+  </div>
+
+  <!-- Passage -->
+  <div class="passage-card">
+    <div class="meta-row">
+      <span class="task-type-tag tag-integrated" id="task-type-tag">Integrated Writing</span>
+    </div>
+    <div class="field-label" id="field-label"></div>
+    <div class="passage-text" id="passage-text"></div>
+  </div>
+
+  <!-- Input -->
+  <div class="input-area">
+    <textarea id="typing-input" rows="4" placeholder="Start typing the passage above..."
+      autofocus spellcheck="false" autocorrect="off" autocapitalize="off"></textarea>
+  </div>
+
+  <!-- Buttons -->
+  <div class="actions">
+    <button class="btn btn-accent" id="btn-restart">New Passage</button>
+    <button class="btn btn-outline" id="btn-shuffle">Shuffle</button>
+    <button class="btn btn-outline" id="btn-reset">Reset</button>
+  </div>
+
+  <div class="key-hints">
+    <span><kbd>Tab</kbd> new passage</span>
+    <span><kbd>Esc</kbd> reset</span>
+    <span><kbd>Enter</kbd> close results</span>
+  </div>
+</div>
+
+<!-- Results -->
+<div class="overlay" id="overlay">
+  <div class="results-card">
+    <h2>Practice Complete!</h2>
+    <div class="results-grid">
+      <div class="result-item"><div class="r-val r-amber" id="r-wpm">0</div><div class="r-lbl">WPM</div></div>
+      <div class="result-item"><div class="r-val r-green" id="r-acc">100</div><div class="r-lbl">Accuracy %</div></div>
+      <div class="result-item"><div class="r-val r-purple" id="r-chars">0</div><div class="r-lbl">Characters</div></div>
+      <div class="result-item"><div class="r-val r-blue" id="r-time">0:00</div><div class="r-lbl">Time</div></div>
+    </div>
+    <button class="btn btn-accent" onclick="closeResults()">Next Passage</button>
+    <p class="hint">or press <kbd>Enter</kbd></p>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+//  TOEFL iBT Writing — Real Question Formats
+// ══════════════════════════════════════════════════════════════
+
+const PASSAGES = {
+
+  // ──────────────────────────────────────────────────────────
+  //  Integrated Writing 阅读段
+  //  结构：背景引入 → 中心论点 → 论据1 → 论据2 → 论据3
+  //  每篇 ~280–350 词，模拟真实 TOEFL 综合写作阅读材料
+  // ──────────────────────────────────────────────────────────
+  integrated: [
+    {
+      topic: "Biology / Ecology",
+      thesis: "The decline of honeybee populations is primarily driven by a combination of pesticide exposure, habitat loss, and climate change rather than any single factor.",
+      text: "The worldwide decline of honeybee populations has emerged as a critical environmental concern with far-reaching implications for global agriculture and ecosystem stability. While researchers have investigated numerous potential causes, a growing consensus points to the interaction of three primary factors: neonicotinoid pesticide exposure, the progressive loss of wild foraging habitats, and climate-driven disruptions to seasonal flowering cycles. Although each of these stressors alone can harm bee colonies, evidence increasingly suggests that their combined effect is substantially greater than the sum of their individual impacts, creating a synergistic threat that demands a coordinated, multi-pronged policy response.\n\nFirst, neonicotinoid pesticides, which are widely used in commercial agriculture, have been shown to impair honeybee navigation, foraging efficiency, and reproductive success even at sublethal concentrations. Studies conducted across multiple continents have documented that colonies exposed to these chemicals exhibit markedly higher rates of queen failure and worker disorientation compared to unexposed control groups. The European Union's partial ban on neonicotinoids in 2013 provided researchers with a natural experiment, and subsequent data indicated partial colony recovery in regions where the restrictions were enforced most rigorously.\n\nSecond, the conversion of diverse natural landscapes into monoculture farmland has dramatically reduced the availability of the pollen and nectar sources that honeybees require for balanced nutrition throughout the year. When bees are forced to rely on a single crop species that blooms for only a few weeks annually, colonies experience nutritional stress during the remaining months, compromising their immune function and increasing their vulnerability to pathogens. Conservation programs that establish wildflower corridors adjacent to agricultural land have demonstrated measurable improvements in colony health metrics, providing strong evidence for the importance of habitat diversity.\n\nFinally, climate change is shifting the timing of flowering periods in many regions, creating phenological mismatches between the period when bee colonies are most active and the availability of their primary food sources. Unusually warm winters can also cause colonies to emerge from their dormant phase prematurely, expending energy reserves before sufficient forage is available. These climate-induced disruptions compound the effects of pesticide exposure and habitat loss, as nutritionally stressed colonies are less able to detoxify environmental contaminants and resist disease."
+    },
+    {
+      topic: "Archaeology / History",
+      thesis: "The collapse of the Bronze Age civilizations in the eastern Mediterranean around 1200 BCE resulted from a systems collapse triggered by interconnected environmental, economic, and military pressures.",
+      text: "The sudden and nearly simultaneous collapse of several major Bronze Age civilizations in the eastern Mediterranean around 1200 BCE—including the Mycenaean kingdoms of Greece, the Hittite Empire in Anatolia, and numerous city-states along the Levantine coast—has puzzled historians and archaeologists for generations. Early scholarship tended to attribute this widespread societal dissolution to a single catastrophic cause, most commonly the invasion of the so-called Sea Peoples mentioned in Egyptian records. However, more recent interdisciplinary research, integrating archaeological evidence with paleoclimate data and textual analysis, supports a more nuanced interpretation: the collapse resulted from the catastrophic intersection of multiple environmental and socioeconomic stressors that collectively overwhelmed the adaptive capacity of these complex, interdependent societies.\n\nFirst, paleoclimate data from sediment cores, speleothems, and pollen records indicates that the eastern Mediterranean experienced a prolonged period of aridification beginning in the late thirteenth century BCE. This drought, which may have persisted for several decades, would have severely reduced agricultural yields across a region already operating near the limits of its productive capacity. Grain storage facilities excavated at multiple sites show evidence of having been emptied and abandoned rather than destroyed, suggesting gradual economic decline rather than sudden conquest.\n\nSecond, the Bronze Age economy was built upon long-distance trade networks that circulated essential raw materials—particularly copper and tin for bronze production—across vast distances. These networks, which depended on political stability and the protection of coastal shipping routes, appear to have fractured rapidly once environmental pressures began to undermine the authority of the palace-based administrations that managed them. The disruption of trade would have had cascading consequences, as communities that had specialized in particular economic activities found themselves unable to obtain the resources on which their specialized production depended, setting off a chain reaction of economic contraction.\n\nThird, the very complexity that had enabled Bronze Age civilizations to flourish may have rendered them especially vulnerable to systemic collapse. Palace economies that concentrated resources, population, and administrative power in urban centers proved brittle when those centers could no longer maintain the redistributive systems—particularly grain storage and distribution—on which their legitimacy partly rested. As central authority weakened, the social contract that had sustained these hierarchical societies unraveled, and populations dispersed into smaller, more resilient settlement patterns that characterize the subsequent Iron Age. The Bronze Age collapse thus offers a sobering historical example of how environmental stress can trigger cascading failure in complex societies when multiple pressure points are activated simultaneously."
+    },
+    {
+      topic: "Economics / Policy",
+      thesis: "Universal Basic Income, while costly, may prove more efficient than the current patchwork of conditional welfare programs by eliminating administrative overhead and reducing poverty traps.",
+      text: "Universal Basic Income—the policy proposal to provide all citizens with a regular, unconditional cash payment sufficient to cover basic living expenses—has attracted growing attention from policymakers, economists, and technology leaders concerned about the disruptive potential of automation on labor markets. While critics often raise concerns about the fiscal feasibility and potential disincentive effects of such a program, a careful examination of the evidence from pilot studies and economic modeling suggests that UBI may address structural weaknesses in existing welfare systems that conditional assistance programs have been unable to resolve. Specifically, three lines of argument support the case for UBI over the current patchwork approach: the elimination of administrative complexity, the removal of poverty traps created by means testing, and the recognition of unpaid but socially valuable contributions.\n\nFirst, the administrative costs associated with means-tested welfare programs are substantial. Governments must maintain extensive bureaucracies to determine eligibility, process applications, monitor compliance, and adjudicate disputes. By providing payments universally and recovering them from higher earners through the tax system, UBI dramatically simplifies administration. A universal program eliminates the need for intrusive eligibility assessments that many potential beneficiaries find stigmatizing, and it removes the compliance monitoring that can create adversarial relationships between recipients and the state.\n\nSecond, means-tested programs create perverse incentives that trap recipients in poverty. When benefits are reduced or eliminated as earned income rises, recipients can face effective marginal tax rates that exceed one hundred percent in some circumstances, meaning that accepting employment or working additional hours leaves them financially worse off. UBI, by providing payments unconditionally, ensures that every additional dollar earned through work translates into a net increase in household income, thereby maintaining incentives for labor force participation.\n\nThird, a UBI would provide economic recognition for forms of socially valuable work that markets do not compensate. Caregiving for children, elderly relatives, and individuals with disabilities contributes enormously to social welfare but is largely invisible in economic accounting. Similarly, volunteer work, community organizing, and creative pursuits that enrich cultural life often go uncompensated. By providing a baseline income floor, UBI would enable individuals to make choices about how to allocate their time and energy based on a broader conception of contribution than market wages alone can capture."
+    },
+    {
+      topic: "Psychology / Cognitive Science",
+      thesis: "Multitasking impairs cognitive performance not merely by dividing attention but by increasing cognitive load through task-switching costs that the brain cannot avoid.",
+      text: "The belief that individuals can effectively perform multiple cognitively demanding tasks simultaneously is widespread in contemporary work culture, where the ability to multitask is often celebrated as a valuable professional skill. However, a substantial body of research in cognitive psychology and neuroscience challenges this assumption, demonstrating that what is commonly described as multitasking is more accurately characterized as rapid task-switching, and that this switching imposes measurable costs on performance, accuracy, and long-term cognitive health. The evidence converges on three central findings: the inherent limitations of attentional resources, the metabolic costs of task switching in prefrontal brain regions, and the negative effects of chronic divided attention on the capacity for sustained focus.\n\nFirst, attentional resources are fundamentally limited. The human brain's capacity to process information consciously at any given moment is constrained by the architecture of working memory and the sequential nature of conscious processing. When individuals attempt to monitor multiple streams of information simultaneously—reading an email while participating in a conference call, for example—they do not process both streams in parallel but rather alternate their attention between them, creating gaps in comprehension and retention that are often not consciously perceived by the multitasker. Experimental studies using eye-tracking and comprehension tests demonstrate that subjects consistently overestimate their ability to divide attention effectively.\n\nSecond, neuroimaging research using functional magnetic resonance imaging has revealed that task switching imposes measurable metabolic costs in the prefrontal cortex, the brain region responsible for executive functions including planning, decision-making, and impulse control. Each switch between tasks requires the brain to deactivate the neural circuits associated with the previous task and activate those appropriate to the new one, a process that consumes both time and glucose. The cumulative effect of frequent switching over the course of a workday may contribute to the subjective experience of mental fatigue that many knowledge workers report.\n\nThird, longitudinal evidence suggests that chronic media multitasking—the habitual consumption of multiple streams of digital content simultaneously—may reshape attentional capacities over time. Heavy media multitaskers perform worse than light multitaskers on tasks requiring sustained attention and the filtering of irrelevant distractors, even when they are not actively multitasking during the assessment. This finding raises the possibility that the cognitive habits cultivated in digitally saturated environments may have lasting effects on the fundamental architecture of attention."
+    },
+    {
+      topic: "Environmental Science",
+      thesis: "Reforestation, while beneficial, cannot substitute for reducing fossil fuel emissions in addressing climate change because of limitations in scale, permanence, and the timescale of carbon sequestration.",
+      text: "Reforestation and afforestation have been widely promoted as natural climate solutions capable of removing significant quantities of carbon dioxide from the atmosphere while providing co-benefits for biodiversity, water quality, and rural livelihoods. Ambitious international initiatives have set targets for restoring hundreds of millions of hectares of forest cover globally. While the potential contributions of forest restoration to climate mitigation are genuine and should be pursued vigorously, relying on reforestation as a primary strategy for addressing climate change is problematic for three interconnected reasons: the physical limits on the scale of carbon sequestration that terrestrial ecosystems can provide, the vulnerability of forest carbon stocks to reversal through fire, disease, and land-use change, and the temporal mismatch between the urgent need for emissions reductions and the decades required for newly planted forests to reach their maximum carbon storage potential.\n\nFirst, the total amount of carbon that can realistically be sequestered through global reforestation is bounded by the finite area of land that is both ecologically suitable for forest cover and not required for food production, urban development, or other essential land uses. While estimates of the global reforestation potential vary, even the most optimistic assessments conclude that forest restoration can offset only a fraction of cumulative historical emissions—and far less than what would be required to compensate for continued fossil fuel combustion at current rates. Treating reforestation as an alternative to emissions reductions rather than a complement to them is therefore physically incoherent.\n\nSecond, carbon stored in forest ecosystems is inherently vulnerable to reversal. Wildfires, which are increasing in frequency and intensity in many regions due to climate change itself, can release decades of accumulated carbon sequestration back into the atmosphere in a matter of weeks. Insect outbreaks, droughts, and diseases—all of which are exacerbated by warming temperatures—further threaten the permanence of forest carbon stocks. Additionally, economic pressures to convert forested land to other uses may intensify as populations grow and demand for agricultural commodities increases, making the long-term protection of reforested areas an ongoing governance challenge.\n\nThird, newly planted forests require decades to reach ecological maturity and achieve their maximum rate of carbon uptake. In the critical near-term window during which emissions must be reduced dramatically to avoid triggering irreversible climate tipping points, reforestation cannot provide carbon removal at the necessary scale or speed. This temporal mismatch means that reforestation should be understood as a long-term carbon removal strategy that complements, but can never replace, the immediate and aggressive reduction of fossil fuel emissions."
+    },
+    {
+      topic: "Education / Technology",
+      thesis: "The replacement of traditional textbooks with digital learning materials in K-12 education offers advantages in cost, adaptability, and engagement but introduces challenges related to screen time, equitable access, and retention that must be carefully managed.",
+      text: "The transition from traditional printed textbooks to digital learning materials in primary and secondary education represents one of the most significant shifts in classroom practice since the widespread adoption of compulsory schooling. School districts across numerous countries have invested substantial resources in providing students with tablets, laptops, and access to digital curriculum platforms, motivated by the promise of reduced material costs, continuously updated content, and more engaging, interactive learning experiences. While the potential benefits of this transition are real, a careful examination of the evidence reveals that the shift to digital learning materials also introduces significant challenges that must be addressed through deliberate policy design: concerns about the effects of increased screen time on student health and attention, the persistence of digital access inequities that risk widening achievement gaps, and evidence suggesting that reading comprehension may be reduced when material is presented on screens rather than on paper.\n\nFirst, the health implications of increasing the already substantial amount of time that children and adolescents spend in front of screens warrant serious consideration. Optometrists have documented rising rates of digital eye strain among young people, including symptoms such as dry eyes, headaches, and blurred vision. More concerning, a growing body of epidemiological research has identified associations between excessive screen time and adverse outcomes including sleep disruption, reduced physical activity, and increased rates of anxiety and depression among adolescents. Introducing digital textbooks into classrooms, where students already spend many hours, necessarily adds to their cumulative screen exposure, raising questions about whether the educational benefits justify the potential health costs.\n\nSecond, the promise of digital learning materials to democratize access to high-quality educational content depends on the availability of reliable internet connectivity and appropriate devices in students' homes as well as in their schools. Students from lower-income households are significantly more likely to lack broadband internet access and to share devices with multiple family members, constraining their ability to complete homework assignments and engage with digital materials outside of school hours. Without deliberate policies to close these infrastructure gaps, the shift to digital learning environments risks compounding the very inequities it was hoped to address.\n\nThird, a meta-analysis of studies comparing reading comprehension across print and digital formats has found a small but consistent advantage for print, particularly when readers are under time pressure, when texts are longer and more complex, and when readers are asked to reconstruct the sequence of information rather than simply recall isolated facts. The mechanisms underlying this difference are not fully understood, but researchers hypothesize that the tactile and spatial cues provided by physical pages—the sense of how far one has progressed through a book, the ability to physically annotate and flip between sections—support the construction of coherent mental models in ways that scrolling interfaces do not replicate."
+    },
+    {
+      topic: "Sociology / Technology",
+      thesis: "Remote work, accelerated by the pandemic, has fundamentally restructured the relationship between labor, place, and organizational culture, producing both liberation from geographic constraints and new forms of precarity.",
+      text: "The rapid, large-scale transition to remote work precipitated by the COVID-19 pandemic has evolved from an emergency measure into a durable restructuring of professional employment across numerous sectors of the economy. What began as a temporary public health accommodation has, for millions of knowledge workers, become a permanent or hybrid arrangement, fundamentally altering the relationship between employment, geography, and daily life. The normalization of remote work brings genuine benefits: the decoupling of career opportunities from expensive metropolitan housing markets, the reduction of commuting-related carbon emissions and time burdens, and increased flexibility for workers with caregiving responsibilities. However, a more critical examination reveals that this transformation also introduces new challenges that existing labor laws and social policies are poorly equipped to address.\n\nFirst, the spatial decoupling of work from the office enables employers to access labor markets in regions with lower costs of living, which may lead to downward pressure on wages as workers in high-cost areas find themselves competing with a geographically expanded labor pool. Simultaneously, the erosion of the physical workplace weakens the social networks and informal mentorship relationships that have historically been crucial for career advancement, potentially exacerbating existing inequalities in professional trajectories along lines of gender, race, and class. Early evidence suggests that junior employees and those from underrepresented backgrounds may be disproportionately disadvantaged by reduced access to the informal professional development that occurs in physical workplaces.\n\nSecond, the boundary between work and personal life, which the physical commute and the separation of office from home formerly enforced, has become increasingly permeable. Remote workers report longer working hours on average than their office-based counterparts, as the absence of clear spatial and temporal boundaries makes it more difficult to disengage from work. The always-available expectation, enabled by mobile devices and collaboration platforms, can lead to a state of continuous partial attention to work responsibilities that erodes the restorative leisure time essential for long-term well-being and creativity.\n\nThird, the regulatory framework governing employment—including occupational health and safety standards, workers' compensation, and protections against discrimination and harassment—was designed for centralized workplaces where employers have visibility into working conditions and interpersonal dynamics. Extending these protections to distributed, home-based work environments presents unresolved legal and practical challenges. As the proportion of work performed outside traditional workplaces continues to grow, updating the social contract between employers and employees to account for these new realities represents an urgent policy priority that extends far beyond the technical question of which video conferencing platform to adopt."
+    },
+    {
+      topic: "Public Health",
+      thesis: "The global rise in antimicrobial resistance constitutes a slow-motion pandemic that requires coordinated international action across human medicine, agriculture, and pharmaceutical development.",
+      text: "Antimicrobial resistance, the process by which bacteria, viruses, fungi, and parasites evolve to withstand the drugs designed to eliminate them, has been recognized by the World Health Organization as one of the top ten global public health threats facing humanity. Unlike acute health crises that dominate headlines and provoke immediate political responses, antimicrobial resistance advances incrementally, accumulating genetic mutations across microbial populations over years and decades until once-treatable infections become life-threatening. The scope of the problem is staggering: a landmark study published in The Lancet estimated that bacterial antimicrobial resistance directly caused over one million deaths globally in a single recent year and was associated with nearly five million additional deaths. Addressing this crisis effectively requires coordinated action across three domains that are typically governed by separate policy regimes: the stewardship of existing antibiotics in human medicine, the regulation of antibiotic use in livestock agriculture, and the development of economic incentives to revitalize the stagnant antibiotic research pipeline.\n\nFirst, the overuse and misuse of antibiotics in human healthcare remains a primary driver of resistance. In many countries, antibiotics are available without prescriptions, leading to their widespread use for viral infections against which they are entirely ineffective. Even in settings with stronger regulatory frameworks, clinical uncertainty, patient demand, and defensive medical practices contribute to prescribing rates that exceed clinical necessity. Antimicrobial stewardship programs that provide clinicians with rapid diagnostic tools, evidence-based prescribing guidelines, and feedback on their prescribing patterns have demonstrated significant reductions in inappropriate antibiotic use without compromising patient outcomes, yet implementation remains inconsistent across healthcare systems.\n\nSecond, approximately seventy percent of medically important antibiotics globally are administered to livestock, not humans—primarily for growth promotion and disease prevention in intensively farmed animals rather than for treating diagnosed infections. This practice creates enormous selective pressure favoring resistant bacterial strains, which can then transfer to human populations through food consumption, direct animal contact, and environmental contamination of water and soil. Several European countries have demonstrated that phasing out the routine agricultural use of medically important antibiotics is feasible without catastrophic economic consequences for farmers, but resistance from agricultural interests has impeded similar reforms in many other jurisdictions, including the United States.\n\nThird, the economic model for antibiotic development is fundamentally broken. Antibiotics, unlike medications for chronic conditions, are typically taken for short courses, and new antibiotics must be used sparingly to preserve their effectiveness—both factors that limit revenue potential. Most major pharmaceutical companies have abandoned antibiotic research, and the pipeline of novel antimicrobial agents is dangerously thin. Innovative policy mechanisms, including market entry rewards that delink revenue from sales volume, subscription models for hospital systems, and public-private partnerships for early-stage research, represent promising approaches to revitalizing antibiotic development, but these efforts remain dramatically underfunded relative to the scale of the threat."
+    },
+  ],
+
+  // ──────────────────────────────────────────────────────────
+  //  Academic Discussion 题目
+  //  结构：教授提问 + 两位学生观点
+  //  每篇 ~150–220 词，模拟真实 TOEFL 学术讨论写作题型
+  // ──────────────────────────────────────────────────────────
+  discussion: [
+    {
+      topic: "Education",
+      professor: "Dr. Chen",
+      question: "Should universities eliminate standardized test scores from their admissions processes, or do these tests provide valuable information that other application components cannot capture?",
+      text: 'Dr. Chen: This week, we have been discussing the role of standardized testing in college admissions. Many universities have adopted test-optional policies in recent years, arguing that standardized test scores are correlated with socioeconomic background and do not reliably predict academic success. Others maintain that these tests provide an important common metric for comparing students from different high schools with varying grading standards. In your view, should universities permanently eliminate standardized test score requirements from their admissions processes?\n\nEmily: I believe universities should continue to move away from standardized test requirements. The research I have reviewed shows that high school GPA is actually a stronger predictor of college graduation rates than SAT or ACT scores, and GPA reflects sustained effort over years rather than performance on a single Saturday morning. Furthermore, the test prep industry has created an uneven playing field where families who can afford expensive tutoring give their children an advantage that has nothing to do with academic potential. Wealthier students also have access to accommodations for learning differences that less privileged students may never receive diagnoses for, creating a compounding inequality in test-taking conditions.\n\nMarcus: While I agree that standardized tests have real equity problems, I am concerned that eliminating them entirely removes an important pathway for talented students from less well-known high schools to demonstrate their abilities. Admissions officers may be unfamiliar with the rigor of curricula at smaller or rural schools, and a strong test score can provide objective evidence of readiness for college-level work that a high GPA from an unknown school cannot convey. Rather than abandoning tests altogether, I think universities should invest in making tests more accessible—offering them during the school day at no cost, for example—while also considering scores in the broader context of each applicant\'s opportunities and challenges.'
+    },
+    {
+      topic: "Technology & Ethics",
+      professor: "Dr. Nakamura",
+      question: "Should companies be required to disclose when content has been generated by artificial intelligence, or is such labeling unnecessary or even counterproductive?",
+      text: 'Dr. Nakamura: As generative artificial intelligence becomes increasingly capable of producing text, images, and video that are difficult to distinguish from human-created content, policymakers in several countries have proposed mandatory disclosure requirements. The European Union\'s AI Act includes provisions requiring that AI-generated content be clearly labeled as such in certain contexts. Proponents argue that transparency is essential for maintaining trust in information ecosystems; opponents contend that mandatory labeling could stigmatize beneficial uses of AI, impose compliance costs on businesses, and prove technically unenforceable. Should governments require that AI-generated content be labeled as such, and if so, in what contexts?\n\nSophia: I strongly support mandatory labeling requirements, particularly for content that could influence political opinions, consumer behavior, or public health decisions. When people encounter an article, a product review, or a social media post, they make judgments about its credibility partly based on assumptions about its origin. Knowing whether content was produced by a human or an AI system is relevant information for those judgments. Labeling does not prevent anyone from using AI tools; it simply ensures that audiences can make informed assessments. The objection that labeling is technically unenforceable seems overstated to me—we have successfully implemented labeling regimes for food ingredients, country of origin for manufactured goods, and financial disclosures.\n\nDavid: I worry that mandatory labeling requirements could backfire in practice. First, there is no clear boundary between AI-generated and AI-assisted content. If I use an AI tool to help brainstorm ideas but write the final text myself, does that require a label? What if an AI drafts text that I substantially edit? These gray areas would create compliance uncertainty and likely litigation. Second, labeling could create a false sense of security, leading people to trust unlabeled content more than they should. A determined bad actor seeking to spread misinformation would simply ignore the labeling requirements, while legitimate users would bear the compliance burden. Resources might be better directed toward media literacy education that helps people evaluate content critically regardless of its source.'
+    },
+    {
+      topic: "Economics / Urban Policy",
+      professor: "Dr. Patel",
+      question: "Should cities invest heavily in expanding public transportation, or will autonomous vehicles make such investments obsolete before they are completed?",
+      text: 'Dr. Patel: Urban transportation infrastructure involves investments with lifetimes measured in decades, yet the pace of technological change in transportation has accelerated dramatically. Several major cities are currently planning or constructing subway extensions, light rail lines, and bus rapid transit systems that will take ten to twenty years to complete and cost billions of dollars. At the same time, autonomous vehicle technology is advancing rapidly, with some analysts predicting that self-driving cars will fundamentally reshape urban transportation within the next decade. Given this uncertainty, should cities continue investing in traditional public transit infrastructure, or should they redirect those resources toward preparing for an autonomous vehicle future?\n\nOlivia: I believe continued investment in public transit is essential, and the argument that autonomous vehicles will make transit obsolete fundamentally misunderstands the geometry of urban transportation. Even if every vehicle on the road were autonomous, a city of millions of people cannot physically accommodate everyone traveling in individual vehicles during peak hours—the road space simply does not exist. A single subway line can move tens of thousands of people per hour through a corridor that, if used by cars, could accommodate perhaps two thousand. Autonomous vehicles might complement public transit by solving the last-mile problem, but they cannot replace high-capacity transit in dense urban environments without producing gridlock that no amount of algorithmic optimization can resolve.\n\nKevin: I think the binary framing of this question obscures more productive approaches. Rather than choosing between traditional transit and autonomous vehicles, cities should invest in flexible infrastructure that can serve multiple modes and adapt as technology evolves. Dedicated lanes for high-occupancy vehicles, whether they are buses today or shared autonomous shuttles tomorrow, represent a more robust investment than fixed rail systems that lock cities into specific technologies and routes for decades. Additionally, the operational cost savings from autonomous technology—driverless buses, for example—could make public transit more financially sustainable and enable higher-frequency service on routes that cannot currently justify frequent human-operated service.'
+    },
+    {
+      topic: "Psychology / Education",
+      professor: "Dr. Williams",
+      question: "Is the growing emphasis on growth mindset in education backed by strong evidence, or has the concept been oversimplified and oversold?",
+      text: 'Dr. Williams: Carol Dweck\'s concept of growth mindset—the belief that intelligence and abilities can be developed through effort, learning, and persistence rather than being fixed traits—has become extraordinarily influential in education over the past two decades. Schools around the world have implemented growth mindset interventions, and the concept has been embraced by educational policymakers as a low-cost strategy for improving student outcomes. However, recent large-scale replication studies have produced mixed results, with some finding very small effects and others finding none at all. In light of this evidence, should schools continue to invest time and resources in growth mindset interventions, or has the enthusiasm outpaced the evidence?\n\nLiam: I think the growth mindset concept retains value despite the mixed replication results, but the way it has been implemented in many schools reflects a superficial understanding of the research. Telling students to simply "try harder" or praising effort when students are not making progress is not what Dweck\'s research actually recommends. Effective growth mindset interventions involve teaching students about the neuroscience of learning—that the brain forms new connections when grappling with challenging material—and creating classroom environments where mistakes are genuinely treated as learning opportunities rather than failures. The problem is not with the concept but with its shallow implementation in contexts where grading practices and school cultures continue to communicate fixed-ability messages.\n\nAisha: The replication difficulties with growth mindset research should give us serious pause about directing limited educational resources toward these interventions. The original studies reported effect sizes that the larger replication efforts have been unable to reproduce, which is a pattern that has emerged across multiple areas of psychological science in recent years. Moreover, focusing on individual students\' beliefs about their abilities may distract from addressing structural factors—such as unequal school funding, large class sizes, and curriculum quality—that have far stronger evidentiary support as determinants of educational outcomes. I am not suggesting that encouraging students to persevere is harmful; I am suggesting that we should not expect mindset interventions to compensate for systemic inequities in educational opportunity.'
+    },
+    {
+      topic: "Environmental Policy",
+      professor: "Dr. Okonkwo",
+      question: "Should consumers bear primary responsibility for reducing plastic waste through their purchasing decisions, or should regulatory action target producers?",
+      text: 'Dr. Okonkwo: Plastic pollution has become one of the most visible environmental challenges of our time, with images of plastic-choked waterways and marine animals entangled in debris generating widespread public concern. In response, many campaigns have encouraged consumers to reduce their plastic consumption by using reusable bags, refusing single-use straws, and choosing products with less packaging. Others argue that placing responsibility on individual consumers is both ineffective and a strategic distraction from the regulatory measures needed to address plastic pollution at its source. Where should the primary responsibility for reducing plastic waste lie—with individual consumers or with producers and regulators?\n\nYuki: While I understand the appeal of focusing on consumer responsibility, I believe this approach has been largely ineffective and serves to deflect attention from the systemic changes that are actually needed. The vast majority of plastic waste is generated before products ever reach consumers, in industrial packaging, supply chains, and manufacturing processes. Even the most conscientious individual cannot avoid plastic when it is embedded in the infrastructure of modern retail and distribution. Meaningful progress will require regulations such as extended producer responsibility laws that make manufacturers financially and operationally responsible for the end-of-life management of their products and packaging. When producers bear the costs of disposal, they have powerful incentives to design products that generate less waste.\n\nCarlos: I think both individual and systemic action are necessary, and framing them as competing alternatives creates a false choice. Individual consumer choices have driven significant changes in corporate behavior—the proliferation of plastic-free product lines and reusable packaging options in mainstream retailers did not emerge from regulatory mandates but from companies responding to consumer demand. Furthermore, the experience of making sustainable choices in daily life can build the political constituency for more ambitious regulatory action. People who have already changed their own behavior are more likely to support policies that require those changes of everyone. Rather than debating who bears primary responsibility, we should be asking how individual action and structural reform can reinforce each other.'
+    },
+    {
+      topic: "Media / Society",
+      professor: "Dr. Thompson",
+      question: "Has the rise of algorithmically curated news feeds strengthened or weakened public discourse in democratic societies?",
+      text: 'Dr. Thompson: The transition from editor-curated news—in which professional journalists and editors decided which stories deserved prominence—to algorithmically curated feeds that personalize content based on user behavior represents a fundamental shift in how citizens encounter information about public affairs. Social media platforms and news aggregators now serve as primary news sources for a substantial portion of the population in many democracies. These algorithms are designed to maximize user engagement, which may not align with the information needs of an informed citizenry. Has this algorithmic curation, on balance, strengthened or weakened the quality of public discourse?\n\nHannah: I believe the evidence strongly indicates that algorithmic curation has degraded public discourse. These algorithms optimize for engagement, and content that provokes outrage, fear, or partisan anger consistently generates more engagement than measured, nuanced analysis. The result is an information environment that systematically amplifies the most emotionally charged and divisive voices while marginalizing the kinds of careful, qualified discourse that democratic deliberation requires. Moreover, algorithmic personalization creates fragmented information spheres in which citizens inhabit different factual realities, making the shared understanding necessary for democratic compromise increasingly difficult to achieve.\n\nRaj: I would offer a more nuanced assessment. While the problems Hannah identifies are real, algorithmic curation has also dramatically expanded access to diverse perspectives that were simply unavailable to most people under the previous media regime. Before the internet, most communities had access to a handful of newspapers and television channels that represented a narrow range of perspectives determined by a small group of editors and owners. Today, voices from marginalized communities, independent researchers, and international perspectives can reach audiences that were entirely inaccessible to them previously. The challenge is not that algorithmic curation is inherently destructive of public discourse but that we have not yet developed the regulatory frameworks and digital literacy education needed to harness its benefits while mitigating its harms.'
+    },
+    {
+      topic: "Biology / Ethics",
+      professor: "Dr. Rivera",
+      question: "Should gene editing technologies like CRISPR be used to enhance human traits beyond treating disease, and who should decide where the line is drawn?",
+      text: 'Dr. Rivera: The development of CRISPR-Cas9 and related gene-editing technologies has made precise modifications to the human genome technically feasible in ways that were science fiction just a generation ago. There is broad consensus that using these technologies to treat or prevent serious genetic diseases is ethically appropriate, and clinical trials for conditions such as sickle cell disease are already showing remarkable results. Far more controversial is the prospect of using gene editing for human enhancement—modifying genes to increase height, muscle mass, cognitive function, or other traits in individuals who do not suffer from any diagnosed medical condition. Should gene editing be permitted for purposes of human enhancement, and if some enhancements are acceptable while others are not, what principles should guide the drawing of that line?\n\nGrace: I believe we should maintain a firm distinction between therapy and enhancement, permitting gene editing only to prevent or treat disease and disability. The therapy-enhancement boundary may be difficult to define precisely at the margins, but this is true of many important distinctions in law and ethics, and the difficulty of drawing precise lines does not mean the distinction lacks moral significance. Allowing enhancement would create a genetic arms race in which parents who can afford these technologies give their children advantages that widen already unacceptable levels of inequality. Moreover, the long-term effects of genetic modifications would not be known for generations, and errors made in enhancement contexts—where the intervention was medically unnecessary—would represent an ethical failure of a different magnitude than adverse outcomes in therapeutic contexts.\n\nEthan: I am skeptical that the therapy-enhancement distinction can bear the moral weight that Grace places on it. Many interventions that we now consider clearly therapeutic—vaccines that enhance the immune system beyond its natural state, for example—would have been considered enhancements by the standards of an earlier era. The boundary between therapy and enhancement is not a natural fact but a social construction that shifts over time. Rather than attempting to enforce a rigid distinction that will inevitably be contested, I believe we should focus on developing governance frameworks that ensure equitable access to beneficial genetic technologies regardless of how we categorize them, while establishing robust safety testing requirements and creating deliberative processes that include diverse public voices in decisions about which applications to pursue.'
+    },
+    {
+      topic: "History / Culture",
+      professor: "Dr. Kowalski",
+      question: "Should museums return artifacts acquired during colonial periods to their countries of origin, even when this would diminish the collections of major Western museums?",
+      text: 'Dr. Kowalski: The debate over the repatriation of cultural artifacts acquired during colonial periods has intensified significantly in recent years, with several major museums announcing the return of disputed objects to their countries of origin. Institutions such as the British Museum, which holds extensive collections assembled during the period of British imperial expansion, face growing pressure to return items ranging from the Parthenon Marbles to Greece to the Benin Bronzes to Nigeria. Proponents of repatriation argue that many of these objects were acquired through coercion, theft, or highly unequal transactions that would be considered illegitimate by contemporary standards. Opponents contend that universal museums serve a valuable function by presenting artifacts from diverse cultures in a comparative context, and that returning objects would set a precedent that could effectively dismantle encyclopedic collections. How should museums and governments resolve these competing claims?\n\nAmara: I believe repatriation is a moral imperative in cases where the circumstances of acquisition clearly violated the principles of consent and fair dealing that we would expect today. The argument that universal museums benefit humanity by bringing artifacts together in one place assumes that the current holders are the appropriate stewards of these objects and that the communities from which they were taken are incapable of preserving and presenting their own cultural heritage—assumptions that are both patronizing and demonstrably false. Several nations that have received repatriated artifacts have built world-class museums and research facilities to house them, demonstrating that returning objects does not mean removing them from public access but rather relocating that access closer to the cultures that produced them.\n\nJacob: While I support repatriation in clear cases of theft or coercive acquisition, I worry that a blanket approach to repatriation could have unintended consequences that actually harm our understanding of human history. Many artifacts have complex histories that do not fit neatly into narratives of colonial theft—they may have been legitimate purchases by the standards of their time, created through cultural exchange and hybrid traditions, or claimed by multiple communities with competing assertions of cultural ownership. Additionally, some objects that are claimed by modern nation-states were produced by cultures and civilizations that predate those states by centuries or millennia, raising questions about the continuity of cultural ownership. Each case deserves careful, evidence-based evaluation rather than the application of a one-size-fits-all principle that may serve political interests more than historical justice.'
+    },
+  ],
+
+  // ──────────────────────────────────────────────────────────
+  //  Academic Writing (~100–140 words)
+  //  结构：学术议论文小段 / 摘要 / 方法论描述
+  // ──────────────────────────────────────────────────────────
+  academic: [
+    {
+      topic: "Education",
+      text: "The effectiveness of online learning compared to traditional classroom instruction has been the subject of extensive research, particularly following the rapid shift to remote education during the COVID-19 pandemic. Studies generally find that well-designed online courses can produce learning outcomes comparable to face-to-face instruction, but this equivalence depends heavily on factors such as student motivation, access to reliable technology, and the quality of instructional design. Self-directed learners tend to perform well in online environments, while students who require more structured guidance often benefit from in-person interaction with instructors and peers. Hybrid models that combine the flexibility of digital platforms with the interpersonal engagement of physical classrooms are increasingly viewed as the most promising path forward, though implementing such models effectively requires significant investment in both technology infrastructure and faculty training."
+    },
+    {
+      topic: "Technology",
+      text: "Artificial intelligence systems have demonstrated remarkable capabilities in pattern recognition, natural language processing, and strategic decision-making, often matching or exceeding human performance on narrowly defined tasks. However, these systems fundamentally differ from human intelligence in important respects. Current AI lacks genuine understanding of the content it processes, operating instead through statistical associations derived from vast training datasets. This limitation becomes apparent when systems encounter situations that deviate from their training distribution, where they may produce confident but entirely incorrect outputs. The development of artificial general intelligence that can reason flexibly across diverse domains remains a distant goal, and many researchers argue that achieving it will require conceptual breakthroughs beyond simply scaling existing architectures to larger datasets and more parameters."
+    },
+    {
+      topic: "Environmental Science",
+      text: "The concept of ecological tipping points has become central to climate change research and policy discussions. A tipping point occurs when a natural system crosses a threshold beyond which it undergoes rapid, self-reinforcing change that is difficult or impossible to reverse. Examples include the collapse of the Greenland ice sheet, the dieback of the Amazon rainforest, and the disruption of ocean circulation patterns. What makes tipping points particularly concerning is the potential for cascading effects: the crossing of one threshold may increase the likelihood of crossing others, creating a domino effect that amplifies the original perturbation. The precise location of many tipping thresholds remains uncertain, but the precautionary principle suggests that this uncertainty should motivate more aggressive emissions reductions rather than delaying action pending greater precision."
+    },
+    {
+      topic: "Economics",
+      text: "Inflation, the sustained increase in the general price level of goods and services, erodes purchasing power and can distort economic decision-making when it becomes unpredictable. Moderate inflation is generally considered manageable and even desirable by central banks, as it provides a buffer against deflation and encourages spending and investment. However, high or volatile inflation imposes significant costs: it arbitrarily redistributes wealth between borrowers and lenders, complicates long-term financial planning for businesses and households, and can trigger wage-price spirals as workers demand higher pay to keep pace with rising living costs. Central banks typically address inflation by raising interest rates, which cools economic activity by making borrowing more expensive. The challenge lies in calibrating these interventions precisely enough to bring inflation under control without tipping the economy into recession."
+    },
+    {
+      topic: "Psychology",
+      text: "Cognitive biases are systematic patterns of deviation from rationality in human judgment and decision-making. First extensively documented by psychologists Daniel Kahneman and Amos Tversky in the 1970s, these biases arise from the mental shortcuts, or heuristics, that the brain uses to process information efficiently. Confirmation bias, for instance, leads people to seek out and interpret information in ways that confirm their preexisting beliefs, while the availability heuristic causes individuals to overestimate the likelihood of events that are easily recalled, often because they are vivid or emotionally salient. Understanding cognitive biases has practical implications across numerous domains, from improving medical diagnosis and financial decision-making to designing public policies that account for the predictable ways in which human reasoning departs from formal logic."
+    },
+    {
+      topic: "Public Health",
+      text: "Vaccination represents one of the most significant public health achievements in human history, responsible for the eradication of smallpox, the near-elimination of polio, and dramatic reductions in mortality from diseases such as measles, diphtheria, and tetanus. The principle underlying vaccination is elegantly simple: exposing the immune system to a harmless version of a pathogen trains it to recognize and respond rapidly to future encounters with the real threat. Despite the overwhelming evidence of vaccine safety and efficacy, vaccine hesitancy remains a significant public health challenge in many communities. Addressing this hesitancy requires understanding its diverse roots, which may include concerns about safety, distrust of pharmaceutical companies and government agencies, religious or philosophical objections, and exposure to misinformation through social media. Effective communication strategies that acknowledge concerns respectfully while providing accurate information have proven more successful than approaches that dismiss hesitant individuals as simply irrational."
+    },
+    {
+      topic: "Sociology",
+      text: "Social stratification refers to the hierarchical organization of individuals and groups within a society based on factors such as wealth, income, education, occupation, and social status. All known societies exhibit some degree of stratification, but the degree of inequality, the mechanisms by which it is maintained, and the extent of mobility between strata vary considerably across cultures and historical periods. Sociologists distinguish between open stratification systems, in which individual achievement can lead to upward mobility, and closed systems, in which social position is largely determined by characteristics present at birth. Contemporary industrialized societies are generally characterized as relatively open, yet research consistently demonstrates that family background remains a powerful predictor of educational attainment, occupational status, and lifetime earnings, suggesting that the ideal of meritocratic mobility is more aspirational than descriptive in practice."
+    },
+    {
+      topic: "History",
+      text: "The invention of the printing press by Johannes Gutenberg in the mid-fifteenth century is widely regarded as one of the most transformative technological innovations in human history. By dramatically reducing the cost of producing written texts, movable-type printing broke the monopoly on knowledge that had been maintained by religious and political elites who controlled access to handwritten manuscripts. The subsequent explosion in the availability of books and pamphlets fueled the spread of literacy, accelerated the dissemination of scientific discoveries, and played a crucial role in the Protestant Reformation by enabling the rapid circulation of Martin Luther's writings. While historians debate the precise magnitude of the printing press's impact relative to other factors, there is broad consensus that it fundamentally altered the conditions under which knowledge was created, preserved, and transmitted across generations."
+    },
+    {
+      topic: "Philosophy",
+      text: "The ethical framework of utilitarianism, most closely associated with the nineteenth-century philosophers Jeremy Bentham and John Stuart Mill, holds that the right course of action is the one that produces the greatest good for the greatest number of people. In its classical formulation, utility is understood in terms of pleasure and the absence of pain, and all individuals' interests are counted equally in the moral calculus. Utilitarianism's appeal lies in its simplicity, its impartiality, and its direct connection to the consequences of actions rather than abstract rules or intentions. However, critics have raised several powerful objections: the framework can seemingly justify actions that violate individual rights if doing so produces sufficient aggregate benefit; it demands calculations about future consequences that are often impossible to perform with confidence; and it may require individuals to sacrifice their own deeply held commitments and relationships when doing so would produce marginally greater overall utility. These critiques have prompted sophisticated refinements to utilitarian theory while also motivating the development of alternative ethical frameworks."
+    },
+    {
+      topic: "Business / Management",
+      text: "Organizational culture encompasses the shared values, beliefs, norms, and practices that shape behavior within a company or institution. A strong organizational culture can provide employees with a clear sense of purpose and identity, facilitate coordination by establishing common expectations, and attract talent aligned with the organization's mission. However, cultures that are excessively rigid can stifle innovation, marginalize dissenting perspectives, and create environments in which unethical behavior becomes normalized because challenging the status quo is implicitly discouraged. Leaders play a disproportionately influential role in shaping and maintaining organizational culture through the behaviors they model, the priorities they communicate, and the criteria they use for hiring, promotion, and termination. Changing an established culture is notoriously difficult, as the norms and assumptions that constitute it are often taken for granted by participants and reinforced through countless daily interactions that are not easily redirected through formal policy changes alone."
+    },
+  ],
+
+  // ──────────────────────────────────────────────────────────
+  //  Email Writing (~80–120 words)
+  //  结构：正式/半正式学术及职场邮件
+  // ──────────────────────────────────────────────────────────
+  email: [
+    {
+      topic: "Requesting a Recommendation Letter",
+      text: "Dear Professor Williams,\n\nI hope this message finds you well. I am writing to respectfully request whether you would be willing to provide a letter of recommendation in support of my application to the graduate program in Environmental Science at Stanford University. I thoroughly enjoyed your course on Climate Policy last semester, and I believe your perspective on my academic abilities and research potential would be particularly valuable to the admissions committee. The application deadline is January 15th, and I would be happy to provide my resume, personal statement, and any additional information that might assist you. I completely understand if your current commitments do not permit this, and I greatly appreciate your consideration either way.\n\nWarm regards,\nSarah Chen"
+    },
+    {
+      topic: "Following Up After a Conference",
+      text: "Dear Dr. Nakamura,\n\nIt was a pleasure meeting you at the International Conference on Artificial Intelligence and Ethics last week. I found your presentation on algorithmic fairness particularly thought-provoking, and our subsequent conversation about bias mitigation strategies has given me several ideas that I plan to explore in my own research. As you kindly suggested, I am writing to express my interest in the possibility of collaborating with your research group during the upcoming academic year. I have attached my current research statement for your reference, and I would welcome the opportunity to discuss potential synergies at your convenience. Thank you again for your time and the valuable feedback you offered on my poster presentation.\n\nBest regards,\nJames Liu"
+    },
+    {
+      topic: "Inquiring About an Internship",
+      text: "Dear Ms. Rodriguez,\n\nI recently learned about the summer internship program at GreenTech Solutions through the university career services portal, and I am writing to inquire about research opportunities within your environmental policy division. As a junior majoring in Public Policy with a concentration in environmental regulation, I have developed a strong foundation in quantitative policy analysis and have completed coursework in environmental economics and statistical methods. I am particularly drawn to GreenTech's work on carbon pricing mechanisms, which aligns closely with my academic interests. I would be grateful to know whether any positions remain available for the upcoming summer term and what the application timeline looks like. Thank you for your time and consideration.\n\nSincerely,\nMichael Torres"
+    },
+    {
+      topic: "Rescheduling a Meeting",
+      text: "Dear Professor Kim,\n\nI am writing to apologize and to request whether we might reschedule our advising meeting originally set for this Thursday at 2:00 PM. I have just learned that I am required to attend a mandatory academic conference that afternoon, and unfortunately the timing cannot be adjusted. I remain very keen to discuss my thesis proposal with you, particularly your feedback on my methodology section. Would it be possible to meet the following week, perhaps Tuesday or Wednesday afternoon? I am happy to accommodate whichever time works best with your schedule. Thank you for your understanding, and my apologies again for any inconvenience this change may cause.\n\nWith appreciation,\nEmily Park"
+    },
+    {
+      topic: "Submitting a Revised Manuscript",
+      text: 'Dear Editor,\n\nThank you for the opportunity to revise and resubmit our manuscript entitled "Effects of Microplastic Exposure on Freshwater Invertebrate Communities." We greatly appreciate the constructive comments provided by the three reviewers, which have substantially improved the paper. We have carefully addressed each comment, and our detailed point-by-point responses are included in the accompanying document. The major revisions include additional statistical analyses to address concerns about sample size, expanded discussion of the limitations of our experimental design, and the inclusion of new figures comparing our results with previously published data. We believe these changes address all substantive concerns raised during the review process, and we hope the revised manuscript is now suitable for publication.\n\nSincerely,\nDr. Zhang, on behalf of all authors'
+    },
+    {
+      topic: "Requesting Access to Research Data",
+      text: "Dear Dr. Anderson,\n\nI am a doctoral candidate in the Department of Sociology at the University of Michigan, currently conducting dissertation research on urban migration patterns and their relationship to labor market outcomes. I recently read your 2024 article in the American Sociological Review with great interest, and I believe the dataset you developed for that study could provide a valuable comparative dimension for my analysis. I am writing to inquire whether the dataset might be available for use by other researchers and, if so, what the procedure would be to request access. I fully understand if confidentiality constraints limit data sharing, and I would be equally grateful for any summary statistics or methodological guidance you might be able to offer.\n\nRespectfully,\nDavid Okafor"
+    },
+    {
+      topic: "Thanking a Guest Speaker",
+      text: "Dear Ms. Patel,\n\nOn behalf of the Undergraduate Business Association, I want to extend our sincere gratitude for your engaging and insightful presentation on sustainable supply chain management last evening. Our members found your discussion of how companies can balance profitability with environmental responsibility both practical and inspiring. Several students have mentioned that your talk gave them a new perspective on career paths they had not previously considered. Your willingness to stay afterward and answer individual questions was especially generous, and it made a meaningful impression on everyone who attended. We hope to have the opportunity to welcome you back to campus for future events. Thank you again for sharing your time and expertise with us.\n\nWith thanks,\nJessica Wong, UBA President"
+    },
+    {
+      topic: "Proposing a Panel Discussion",
+      text: "Dear Colleagues,\n\nI am writing to propose organizing a panel discussion on the ethical implications of generative artificial intelligence in higher education for the upcoming Faculty Development Conference in March. As these technologies become increasingly integrated into both teaching and research practices, I believe a structured conversation about how our institution should approach them would be both timely and valuable. I have reached out to Dr. Chen from Computer Science and Professor Williams from the School of Education, both of whom have expressed interest in participating. If you think this topic would fit the conference program, I would be happy to develop a more detailed proposal including learning objectives, discussion questions, and a proposed format. I welcome any thoughts or suggestions you might have.\n\nBest regards,\nRobert Kim"
+    },
+    {
+      topic: "Withdrawing an Application",
+      text: "Dear Admissions Committee,\n\nI am writing to respectfully withdraw my application for admission to the Master of Public Health program for the Fall 2026 term. I remain deeply impressed by your program's commitment to community-based health interventions and its outstanding faculty, and the decision to withdraw was a difficult one. However, I have recently accepted a research fellowship that requires my full-time commitment and aligns very closely with my long-term career goals in global health policy. I am genuinely grateful for the time and consideration the committee has already devoted to reviewing my application materials. I hope to have the opportunity to engage with your program in the future, perhaps through professional collaborations or continuing education.\n\nRespectfully,\nAmara Obi"
+    },
+    {
+      topic: "Asking for Clarification on an Assignment",
+      text: "Dear Professor Garcia,\n\nI hope you are having a good week. I am writing to ask for clarification regarding the research paper due on November 20th. The assignment description mentions that we should incorporate at least five primary sources, but I want to confirm whether government reports and official policy documents count as primary sources for this purpose, or whether you are specifically expecting peer-reviewed journal articles. I want to make sure I am on the right track before I proceed further with my literature search. Thank you for your guidance, and I apologize for troubling you with this question. I will be sure to attend your office hours next week if a more detailed discussion would be helpful.\n\nBest,\nChris Tanaka"
+    },
+  ]
+};
+
+// ══════════════════════════════════════════════════════════════
+//  Application State
+// ══════════════════════════════════════════════════════════════
+
+let targetText = "";
+let startTime = null;
+let finished = false;
+let totalKeystrokes = 0;
+let correctKeystrokes = 0;
+let timerInterval = null;
+let currentType = "integrated";
+
+// DOM
+const passageTextEl  = document.getElementById("passage-text");
+const typingInput    = document.getElementById("typing-input");
+const taskTypeTag    = document.getElementById("task-type-tag");
+const fieldLabel     = document.getElementById("field-label");
+const wpmEl          = document.getElementById("wpm");
+const accuracyEl     = document.getElementById("accuracy");
+const timerEl        = document.getElementById("timer");
+const progressEl     = document.getElementById("progress");
+const progressBar    = document.getElementById("progress-bar");
+const overlay        = document.getElementById("overlay");
+
+// ── Helpers ───────────────────────────────────────
+
+function pickEntry(type) {
+  const pool = PASSAGES[type];
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function escapeHtml(str) {
+  const map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
+  return str.replace(/[&<>"]/g, c => map[c]);
+}
+
+// ── Load ──────────────────────────────────────────
+
+function loadPassage(type) {
+  const entry = pickEntry(type);
+  targetText = entry.text;
+  totalKeystrokes = 0;
+  correctKeystrokes = 0;
+  finished = false;
+  startTime = null;
+  clearInterval(timerInterval);
+
+  // Update tags & labels
+  if (type === "integrated") {
+    taskTypeTag.textContent = "Integrated Writing";
+    taskTypeTag.className = "task-type-tag tag-integrated";
+    fieldLabel.textContent = entry.topic + "  ·  " + (entry.thesis || "");
+  } else if (type === "discussion") {
+    taskTypeTag.textContent = "Academic Discussion";
+    taskTypeTag.className = "task-type-tag tag-discussion";
+    fieldLabel.textContent = entry.topic + "  ·  Prof. " + (entry.professor || "");
+  } else if (type === "academic") {
+    taskTypeTag.textContent = "Academic Writing";
+    taskTypeTag.className = "task-type-tag tag-academic";
+    fieldLabel.textContent = entry.topic;
+  } else if (type === "email") {
+    taskTypeTag.textContent = "Email Writing";
+    taskTypeTag.className = "task-type-tag tag-email";
+    fieldLabel.textContent = entry.topic;
+  }
+
+  typingInput.value = "";
+  typingInput.disabled = false;
+  typingInput.focus();
+
+  renderPassage();
+  updateStats(true);
+  overlay.classList.remove("show");
+}
+
+// ── Render ────────────────────────────────────────
+
+function renderPassage() {
+  const input = typingInput.value;
+  let html = "";
+
+  for (let i = 0; i < targetText.length; i++) {
+    const ch = targetText[i];
+    if (ch === "\n") {
+      let cls = "pending";
+      if (i < input.length) {
+        cls = input[i] === "\n" ? "correct" : "incorrect";
+      } else if (i === input.length) {
+        cls = "current";
+      }
+      html += `<span class="${cls} nl">&#8629;</span><br>`;
+      continue;
+    }
+    let cls = "pending";
+    if (i < input.length) {
+      cls = input[i] === ch ? "correct" : "incorrect";
+    } else if (i === input.length) {
+      cls = "current";
+    }
+    html += `<span class="${cls}">${escapeHtml(ch)}</span>`;
+  }
+
+  passageTextEl.innerHTML = html;
+
+  // Auto-scroll
+  const cur = passageTextEl.querySelector("span.current");
+  if (cur) cur.scrollIntoView({ block: "nearest", behavior: "smooth" });
+
+  // Done?
+  if (input.length >= targetText.length && !finished) finish();
+}
+
+// ── Stats ─────────────────────────────────────────
+
+function updateStats(reset) {
+  if (reset) {
+    wpmEl.textContent = "0";
+    accuracyEl.textContent = "100";
+    timerEl.textContent = "0:00";
+    progressEl.textContent = "0%";
+    progressBar.style.width = "0%";
+    return;
+  }
+  if (totalKeystrokes > 0) {
+    accuracyEl.textContent = Math.round((correctKeystrokes / totalKeystrokes) * 100);
+  }
+  if (startTime) {
+    const mins = (Date.now() - startTime) / 60000;
+    if (mins > 0.005) wpmEl.textContent = Math.round((correctKeystrokes / 5) / mins);
+    const s = Math.floor((Date.now() - startTime) / 1000);
+    timerEl.textContent = `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, "0")}`;
+  }
+  if (targetText.length > 0) {
+    const pct = Math.round((typingInput.value.length / targetText.length) * 100);
+    progressEl.textContent = pct + "%";
+    progressBar.style.width = pct + "%";
+  }
+}
+
+// ── Timer ─────────────────────────────────────────
+
+function startTimer() {
+  if (!startTime) {
+    startTime = Date.now();
+    timerInterval = setInterval(() => updateStats(), 200);
+  }
+}
+
+// ── Finish ────────────────────────────────────────
+
+function finish() {
+  finished = true;
+  typingInput.disabled = true;
+  clearInterval(timerInterval);
+  updateStats();
+
+  const mins = (Date.now() - startTime) / 60000;
+  const wpm = mins > 0 ? Math.round((correctKeystrokes / 5) / mins) : 0;
+  const acc = totalKeystrokes > 0 ? Math.round((correctKeystrokes / totalKeystrokes) * 100) : 100;
+  const s = Math.floor((Date.now() - startTime) / 1000);
+
+  document.getElementById("r-wpm").textContent   = wpm;
+  document.getElementById("r-acc").textContent   = acc;
+  document.getElementById("r-chars").textContent = targetText.length;
+  document.getElementById("r-time").textContent  =
+    `${Math.floor(s / 60)}:${(s % 60).toString().padStart(2, "0")}`;
+
+  setTimeout(() => overlay.classList.add("show"), 350);
+}
+
+function closeResults() { loadPassage(currentType); }
+
+// ── Input ─────────────────────────────────────────
+
+typingInput.addEventListener("input", () => {
+  if (finished) return;
+  const val = typingInput.value;
+  const prev = totalKeystrokes;
+
+  if (val.length > prev) {
+    const added = val.length - prev;
+    totalKeystrokes += added;
+    for (let i = prev; i < val.length; i++) {
+      if (i < targetText.length && val[i] === targetText[i]) correctKeystrokes++;
+    }
+  } else if (val.length < prev) {
+    totalKeystrokes += (prev - val.length);
+  }
+
+  startTimer();
+  renderPassage();
+  updateStats();
+});
+
+typingInput.addEventListener("paste", e => e.preventDefault());
+
+// ── Buttons ───────────────────────────────────────
+
+document.getElementById("btn-restart").addEventListener("click", () => loadPassage(currentType));
+document.getElementById("btn-shuffle").addEventListener("click", () => loadPassage(currentType));
+document.getElementById("btn-reset").addEventListener("click", () => {
+  typingInput.value = "";
+  totalKeystrokes = 0;
+  correctKeystrokes = 0;
+  startTime = null;
+  clearInterval(timerInterval);
+  renderPassage();
+  updateStats(true);
+});
+
+// Task-type toggle
+document.querySelectorAll(".type-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".type-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentType = btn.dataset.type;
+    loadPassage(currentType);
+  });
+});
+
+// ── Keyboard shortcuts ────────────────────────────
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Tab") { e.preventDefault(); loadPassage(currentType); }
+  if (e.key === "Escape" && document.activeElement === typingInput && !finished) {
+    typingInput.value = "";
+    totalKeystrokes = 0;
+    correctKeystrokes = 0;
+    startTime = null;
+    clearInterval(timerInterval);
+    renderPassage();
+    updateStats(true);
+  }
+  if (e.key === "Enter" && overlay.classList.contains("show")) closeResults();
+});
+
+// ── Start ─────────────────────────────────────────
+
+loadPassage(currentType);
+</script>
+</body>
+</html>

@@ -209,7 +209,7 @@
   <div class="panel" id="panel-speaking">
     <div class="stats-panel">
       <div class="stat-card"><div class="value" id="sp-listen" style="color:#fbbf24">—</div><div class="label">Listen</div></div>
-      <div class="stat-card"><div class="value" id="sp-rec" style="color:#ef4444">—</div><div class="label">Record</div></div>
+      <div class="stat-card"><div class="value" id="sp-rec" style="color:#ef4444">40s</div><div class="label">Record(max)</div></div>
       <div class="stat-card"><div class="value" id="sp-status" style="color:#94a3b8;font-size:1rem;">Ready</div><div class="label">Status</div></div>
       <div class="stat-card"><div class="value" id="sp-count" style="color:#a78bfa;font-size:1.2rem;">0/22</div><div class="label">Done</div></div>
     </div>
@@ -501,13 +501,13 @@ function loadSpeakingPrompt(type){
     spTag.textContent="Listen and Repeat"; spTag.className="task-type-tag tag-repeat";
     spField.textContent="Listen to the sentence, then repeat it aloud";
     spPrompt.textContent=spCurrentEntry.sentence;
-    spListenEl.textContent="—"; spRecEl.textContent="—";
+    spListenEl.textContent="—"; spRecEl.textContent="40s";
     btnShowAnswer.style.display="none";
   }else{
     spTag.textContent="Take an Interview"; spTag.className="task-type-tag tag-interview";
     spField.textContent="Question  |  "+spCurrentEntry.topic;
     spPrompt.textContent=spCurrentEntry.question;
-    spListenEl.textContent="—"; spRecEl.textContent="—";
+    spListenEl.textContent="—"; spRecEl.textContent="40s";
     btnShowAnswer.style.display="";
     btnShowAnswer.textContent="Show Answer";
   }
@@ -577,8 +577,12 @@ function startRecording(){
       spAudio.src=URL.createObjectURL(new Blob(spChunks,{type:spMediaRecorder.mimeType})); spAudio.style.display=""; };
     spMediaRecorder.start(); btnStopRec.style.display=""; recInd.style.display="";
     spStatusEl.textContent="Recording"; spStatusEl.style.color="#ef4444";
-    spRecSec=0; spRecEl.textContent="0s";
-    spRecTimer=setInterval(()=>{ spRecSec++; spRecEl.textContent=spRecSec+"s"; },1000);
+    spRecSec=40; spRecEl.textContent=spRecSec+"s";
+    spRecTimer=setInterval(()=>{
+      spRecSec--; spRecEl.textContent=spRecSec+"s";
+      if(spRecSec<=5)spRecEl.classList.add("timer-warn");
+      if(spRecSec<=0){ clearInterval(spRecTimer); stopRecording(); }
+    },1000);
   }).catch(()=>{ spError.textContent="Microphone access denied. Please allow mic permissions."; spError.style.display="";
     spStatusEl.textContent="Blocked"; spStatusEl.style.color="#ef4444"; btnListen.style.display=""; });
 }
@@ -591,8 +595,9 @@ function stopRecording(){
   // Stop recognition — onend will call showPronunciationResult
   if(spRecognition){ try{spRecognition.stop();}catch(e){} }
 
+  spRecEl.classList.remove("timer-warn");
   if(spMediaRecorder&&spMediaRecorder.state==="recording")spMediaRecorder.stop();
-  spMediaRecorder=null; spRecEl.textContent="—";
+  spMediaRecorder=null; spRecEl.textContent="40s";
 }
 
 function showPronunciationResult(){

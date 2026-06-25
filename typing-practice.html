@@ -72,6 +72,8 @@
   .passage-text span.current{background:rgba(245,158,11,.35);border-radius:2px;animation:blink 1s step-end infinite;}
   .passage-text span.pending{color:var(--muted);}
   .passage-text span.word-highlight{background:rgba(59,130,246,.4);border-radius:2px;}
+  .passage-text span.phrase-mark{color:rgba(245,158,11,.5);font-weight:400;cursor:default;pointer-events:none;}
+  .passage-text span.phrase-mark:hover{background:transparent;}
   .passage-text span.nl{font-size:.7rem;color:var(--muted);padding:0 2px;}
   .passage-text span.nl.correct{color:var(--correct);}
   .passage-text span.nl.incorrect{color:var(--incorrect);background:rgba(239,68,68,.15);border-radius:2px;}
@@ -345,46 +347,46 @@ const SPEAKING = {
 
   // Listen and Repeat — hear a sentence, repeat aloud
   repeat: [
-    "The library will remain open until midnight during final exams.",
-    "Students should submit their applications before the deadline.",
-    "The professor emphasized the importance of critical thinking skills.",
-    "Renewable energy sources are becoming increasingly affordable worldwide.",
-    "Climate change poses a significant threat to coastal communities.",
-    "The research findings were published in a peer-reviewed journal.",
-    "Effective communication is essential for successful teamwork.",
-    "Many species are at risk of extinction due to habitat loss.",
-    "The university offers a wide range of extracurricular activities.",
-    "Technological innovation has transformed how we access information.",
-    "Public transportation reduces traffic congestion and air pollution.",
-    "Regular exercise contributes to both physical and mental well-being.",
-    "Understanding cultural differences is important in a globalized world.",
-    "The government has implemented new policies to promote sustainable development.",
-    "Reading extensively helps improve vocabulary and writing skills.",
+    "The library / will remain open / until midnight / during final exams.",
+    "Students should submit / their applications / before the deadline.",
+    "The professor emphasized / the importance / of critical thinking skills.",
+    "Renewable energy sources / are becoming increasingly affordable / worldwide.",
+    "Climate change / poses a significant threat / to coastal communities.",
+    "The research findings / were published / in a peer-reviewed journal.",
+    "Effective communication / is essential / for successful teamwork.",
+    "Many species / are at risk of extinction / due to habitat loss.",
+    "The university offers / a wide range / of extracurricular activities.",
+    "Technological innovation / has transformed / how we access information.",
+    "Public transportation / reduces traffic congestion / and air pollution.",
+    "Regular exercise / contributes to both / physical and mental well-being.",
+    "Understanding cultural differences / is important / in a globalized world.",
+    "The government / has implemented new policies / to promote sustainable development.",
+    "Reading extensively / helps improve / vocabulary and writing skills.",
   ],
 
   // Take an Interview — answer short conversational questions
   interview: [
     { topic:"Personal",
       question:"Tell me about a teacher or professor who had a significant influence on your education. What did they do that made such an impact on you?",
-      answer:"My high school physics teacher, Mr. Anderson, had a huge influence on me. Before his class, I saw science as just memorizing formulas. He changed that by starting every lesson with a real-world problem—like calculating a basketball's trajectory—and guiding us to figure out the physics behind it. He showed me that science is about curiosity, not memorization. More importantly, when I struggled with a difficult topic, he stayed after school to explain it in different ways until I understood. His belief in me gave me the confidence to pursue engineering in college. I think the best teachers not only teach their subject well but also make students believe in themselves." },
+      answer:"My high school physics teacher, / Mr. Anderson, / had a huge influence on me. / Before his class, / I saw science / as just memorizing formulas. / He changed that / by starting every lesson / with a real-world problem / and guiding us to figure out / the physics behind it. / He showed me / that science is about curiosity, / not memorization. / When I struggled, / he stayed after school / to explain it in different ways / until I understood. / His belief in me / gave me the confidence / to pursue engineering. / The best teachers / make students believe in themselves." },
     { topic:"Personal",
       question:"Describe a place you have visited that left a strong impression on you. What made it memorable, and would you recommend others visit it?",
-      answer:"Zhangjiajie National Forest Park in Hunan Province left a strong impression on me when I visited two years ago. The landscape is incredible—thousands of towering sandstone pillars covered in green vegetation, rising straight up like something from another world. I stood on a glass bridge suspended between cliffs, looking down at the forest hundreds of meters below, and felt an unforgettable mix of awe and excitement. What made it truly special was the mist drifting between the peaks, giving everything a mysterious, almost magical quality. I would definitely recommend others visit, but I suggest going in spring or autumn when there are fewer crowds. Finding quiet moments to absorb the beauty makes the experience much more meaningful." },
+      answer:"Zhangjiajie National Forest Park / left a strong impression on me. / The landscape is incredible — / thousands of towering sandstone pillars / covered in green vegetation, / rising straight up / like something from another world. / I stood on a glass bridge / suspended between cliffs, / looking down at the forest / hundreds of meters below, / and felt an unforgettable mix / of awe and excitement. / The mist drifting between the peaks / gave everything a mysterious quality. / I would definitely recommend visiting, / especially in spring or autumn / when there are fewer crowds." },
     { topic:"Personal",
       question:"What is a skill you would like to learn in the future, and why is it important to you? How do you plan to go about learning it?",
-      answer:"I would love to learn data visualization using tools like Python. We are surrounded by enormous amounts of data today, but raw numbers rarely tell a compelling story on their own. People who can turn complex data into clear, engaging charts have a real advantage in influencing decisions. To learn this, I plan to first take an online course on Coursera, then practice with real datasets on topics I care about—like environmental statistics—because learning is more motivating when the subject matters to you. Finally, I would create a small online portfolio of visualizations to get feedback from experienced practitioners, which I think is the fastest way to improve." },
+      answer:"I would love to learn / data visualization / using tools like Python. / We are surrounded by data, / but raw numbers / rarely tell a compelling story. / People who can turn complex data / into clear, engaging charts / have a real advantage. / To learn this, / I plan to take an online course first, / then practice with real datasets / on topics I care about. / Finally, / I would create a small portfolio / to get feedback / from experienced practitioners, / which is the fastest way to improve." },
     { topic:"Personal",
       question:"Talk about a challenge you faced and how you overcame it. What did you learn from that experience?",
-      answer:"During my first semester of university, I really struggled with academic writing. In high school I had always earned good grades on essays, but my first college paper came back covered in feedback about weak arguments and poor structure. I felt discouraged, but instead of giving up, I visited the university writing center regularly. The tutors there taught me how to build a clear thesis and organize evidence logically. I rewrote that same paper three times that semester, applying what I learned each time. By year's end, my writing had improved dramatically. This taught me that early failure is often the best teacher, and that skills aren't innate—they come from deliberate practice and being willing to ask for help." },
+      answer:"During my first semester of university, / I really struggled / with academic writing. / My first college paper / came back covered in feedback / about weak arguments and poor structure. / I felt discouraged, / but instead of giving up, / I visited the writing center regularly. / The tutors taught me / how to build a clear thesis / and organize evidence logically. / I rewrote that paper / three times that semester. / By year's end, / my writing had improved dramatically. / Early failure / is often the best teacher, / and skills come from deliberate practice / and being willing to ask for help." },
     { topic:"Personal",
       question:"Describe your ideal job or career. What kind of work would you be doing, and what would make it fulfilling for you?",
-      answer:"My ideal career would be working as an environmental policy advisor, connecting scientific research with government decisions. I would analyze climate data and translate complex findings into clear policy recommendations that leaders can actually use. What makes this fulfilling is the combination of intellectual challenge and real impact—solving problems that genuinely matter. I would constantly be learning about ecology, economics, and human behavior while applying that knowledge to protect the environment. For me, a meaningful career isn't just about personal success or salary. It is about knowing my work contributes, even in a small way, to a healthier planet and a better future for the next generation." },
+      answer:"My ideal career / would be working / as an environmental policy advisor, / connecting scientific research / with government decisions. / I would analyze climate data / and translate complex findings / into clear recommendations. / What makes this fulfilling / is the combination / of intellectual challenge / and real impact. / I would constantly be learning / about ecology, economics, and human behavior / while applying that knowledge / to protect the environment. / For me, / a meaningful career / means knowing my work contributes, / even in a small way, / to a healthier planet." },
     { topic:"Personal",
       question:"What do you usually do to relax or relieve stress? Why do you find these activities effective?",
-      answer:"When I need to relax, I go for a long walk in a park or anywhere with trees away from traffic. I find this effective for a couple of reasons. First, physical movement helps release the tension that builds up after sitting at a desk for hours. I can literally feel my shoulders relax as I walk. Second, being around greenery and hearing natural sounds like birds and wind is calming in a way that is hard to replicate indoors. Research actually shows that time in nature reduces stress hormones, which matches my experience. Third, walking gives my mind space to wander. When I'm stuck on a problem, stepping away often helps a solution come to me naturally." },
+      answer:"When I need to relax, / I go for a long walk / in a park or anywhere with trees. / Physical movement / helps release the tension / that builds up after sitting for hours. / I can literally feel / my shoulders relax as I walk. / Being around greenery / and hearing natural sounds / is calming / in a way that is hard to replicate indoors. / Research shows / that time in nature / reduces stress hormones. / Walking also gives my mind / space to wander. / When I'm stuck on a problem, / stepping away / often helps a solution / come to me naturally." },
     { topic:"Personal",
       question:"If you could change one thing about your hometown or current city, what would it be and why? How would that change improve life for residents?",
-      answer:"I would significantly expand the public transportation system by adding more metro lines and dedicated bus lanes. Like many growing cities, my hometown suffers from terrible traffic that wastes people's time, pollutes the air, and makes daily life stressful. Better public transit would mean fewer cars, cleaner air, and healthier residents. Commute times would become more predictable, giving people more time for family, exercise, and hobbies. It also promotes fairness because car ownership is expensive, and the burden of long commutes falls hardest on lower-income families. I have visited cities like Tokyo and Copenhagen where great transit makes getting around genuinely pleasant, and I believe everyone deserves that quality of life." },
+      answer:"I would significantly expand / the public transportation system / by adding more metro lines / and dedicated bus lanes. / Like many growing cities, / my hometown suffers from terrible traffic / that wastes time / and pollutes the air. / Better public transit / would mean fewer cars, / cleaner air, / and healthier residents. / Commute times would become more predictable, / giving people more time / for family and hobbies. / It also promotes fairness / because car ownership is expensive, / and long commutes / affect lower-income families the most. / Everyone deserves / a city with great public transit." },
   ]
 };
 
@@ -406,6 +408,9 @@ function pickEntry(type){ const pool=PASSAGES[type]; return pool[Math.floor(Math
 function escapeHtml(str){ const m={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}; return str.replace(/[&<>"]/g,c=>m[c]); }
 
 // Click-to-speak: extract word at position and read aloud
+// Strip phrase markers for TTS
+function cleanForSpeech(txt){ return txt.replace(/\s*\/\s*/g," "); }
+
 function speakWordAt(text,idx){
   if(idx<0||idx>=text.length||!/[a-zA-Z]/.test(text[idx]))return;
   let s=idx,e=idx;
@@ -446,6 +451,7 @@ function renderClickableText(text){
   for(let i=0;i<text.length;i++){
     const ch=text[i];
     if(ch==="\n"){ html+='<span class="pending nl" data-idx="'+i+'">&#8629;</span><br>'; }
+    else if(ch==="/"){ html+='<span class="pending phrase-mark" data-idx="'+i+'"> / </span>'; }
     else{ html+='<span class="pending" data-idx="'+i+'">'+escapeHtml(ch)+'</span>'; }
   }
   return html;
@@ -578,8 +584,8 @@ function resetSpeaking(){
 }
 
 function speakText(){
-  const txt=(spPrompt.dataset.fullText||spPrompt.textContent).trim();
-  if(!window.speechSynthesis){ spError.textContent="Your browser does not support text-to-speech."; spError.style.display=""; return; }
+  const txt=cleanForSpeech(spPrompt.dataset.fullText||spPrompt.textContent||"");
+  if(!txt||!window.speechSynthesis){ spError.textContent="Your browser does not support text-to-speech."; spError.style.display=""; return; }
   window.speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(txt); u.lang="en-US"; u.rate=.9;
   spStatusEl.textContent="Speaking..."; spStatusEl.style.color="#fbbf24";
@@ -651,7 +657,7 @@ function stopRecording(){
 }
 
 function showPronunciationResult(){
-  const target=(spPrompt.dataset.fullText||spPrompt.textContent).trim().toLowerCase().replace(/[,.!?;:]/g,"");
+  const target=cleanForSpeech(spPrompt.dataset.fullText||spPrompt.textContent||"").trim().toLowerCase().replace(/[,.!?;:]/g,"");
   const spoken=spTranscript.toLowerCase().replace(/[,.!?;:]/g,"");
   const targetWords=target.split(/\s+/).filter(Boolean);
   const spokenWords=spoken.split(/\s+/).filter(Boolean);
@@ -733,7 +739,7 @@ btnShowAnswer.addEventListener("click",()=>{
 
 // Read answer aloud via TTS
 function readAnswerAloud(){
-  const txt=spAnswer.dataset.text||"";
+  const txt=cleanForSpeech(spAnswer.dataset.text||"");
   if(!txt||!window.speechSynthesis)return;
   window.speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(txt);

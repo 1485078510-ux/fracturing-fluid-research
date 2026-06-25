@@ -65,11 +65,13 @@
   .passage-card .field-label{font-size:.68rem;text-transform:uppercase;letter-spacing:1px;
     color:var(--muted);margin-bottom:6px;font-weight:600;}
   .passage-card .passage-text{font-size:1.06rem;line-height:2;letter-spacing:.2px;user-select:none;word-break:break-word;}
-  .passage-text span{position:relative;transition:color .08s;}
+  .passage-text span{position:relative;transition:color .08s;cursor:pointer;}
+  .passage-text span:hover{background:rgba(245,158,11,.15);}
   .passage-text span.correct{color:var(--correct);}
   .passage-text span.incorrect{color:var(--incorrect);background:rgba(239,68,68,.15);border-radius:2px;}
   .passage-text span.current{background:rgba(245,158,11,.35);border-radius:2px;animation:blink 1s step-end infinite;}
   .passage-text span.pending{color:var(--muted);}
+  .passage-text span.word-highlight{background:rgba(59,130,246,.4);border-radius:2px;}
   .passage-text span.nl{font-size:.7rem;color:var(--muted);padding:0 2px;}
   .passage-text span.nl.correct{color:var(--correct);}
   .passage-text span.nl.incorrect{color:var(--incorrect);background:rgba(239,68,68,.15);border-radius:2px;}
@@ -403,6 +405,52 @@ const progressBar=document.getElementById("progress-bar"), overlay=document.getE
 function pickEntry(type){ const pool=PASSAGES[type]; return pool[Math.floor(Math.random()*pool.length)]; }
 function escapeHtml(str){ const m={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}; return str.replace(/[&<>"]/g,c=>m[c]); }
 
+// Click-to-speak: extract word at position and read aloud
+function speakWordAt(text,idx){
+  if(idx<0||idx>=text.length||!/[a-zA-Z]/.test(text[idx]))return;
+  let s=idx,e=idx;
+  while(s>0&&/[a-zA-Z'-]/.test(text[s-1]))s--;
+  while(e<text.length&&/[a-zA-Z'-]/.test(text[e]))e++;
+  const word=text.slice(s,e);
+  if(word.length<2)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(word);
+  u.lang="en-US";u.rate=.85;
+  window.speechSynthesis.speak(u);
+  return{s,e};
+}
+
+// Word click: delegate from passage containers
+function handleWordClick(e,textEl,targetFn){
+  const span=e.target.closest("span");
+  if(!span||span.classList.contains("nl"))return;
+  const idx=parseInt(span.dataset.idx);
+  if(isNaN(idx))return;
+  const text=targetFn();
+  const range=speakWordAt(text,idx);
+  if(range){
+    // Highlight
+    const all=textEl.querySelectorAll("span");
+    all.forEach(s=>{ const i=parseInt(s.dataset.idx); if(!isNaN(i)&&i>=range.s&&i<range.e)s.classList.add("word-highlight"); });
+    setTimeout(()=>{ all.forEach(s=>s.classList.remove("word-highlight")); },1200);
+  }
+}
+
+// Set up word-click on a passage container
+passageTextEl.addEventListener("click",e=>{handleWordClick(e,passageTextEl,()=>targetText);});
+document.getElementById("sp-prompt-text").addEventListener("click",e=>{handleWordClick(e,document.getElementById("sp-prompt-text"),()=>spPrompt.dataset.fullText||"");});
+
+// Render text as clickable spans (for speaking prompt)
+function renderClickableText(text){
+  let html="";
+  for(let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(ch==="\n"){ html+='<span class="pending nl" data-idx="'+i+'">&#8629;</span><br>'; }
+    else{ html+='<span class="pending" data-idx="'+i+'">'+escapeHtml(ch)+'</span>'; }
+  }
+  return html;
+}
+
 function loadPassage(type){
   const entry=pickEntry(type);
   targetText=entry.solution||entry.text;
@@ -429,9 +477,9 @@ function renderPassage(){
   for(let i=0;i<targetText.length;i++){
     const ch=targetText[i];
     if(ch==="\n"){ let cls="pending"; if(i<input.length){ cls=input[i]==="\n"?"correct":"incorrect"; }else if(i===input.length){ cls="current"; }
-      html+='<span class="'+cls+' nl">&#8629;</span><br>'; continue; }
+      html+='<span class="'+cls+' nl" data-idx="'+i+'">&#8629;</span><br>'; continue; }
     let cls="pending"; if(i<input.length){ cls=input[i]===ch?"correct":"incorrect"; }else if(i===input.length){ cls="current"; }
-    html+='<span class="'+cls+'">'+escapeHtml(ch)+'</span>';
+    html+='<span class="'+cls+'" data-idx="'+i+'">'+escapeHtml(ch)+'</span>';
   }
   passageTextEl.innerHTML=html;
   const cur=passageTextEl.querySelector("span.current"); if(cur)cur.scrollIntoView({block:"nearest",behavior:"smooth"});
@@ -500,13 +548,15 @@ function loadSpeakingPrompt(type){
   if(type==="repeat"){
     spTag.textContent="Listen and Repeat"; spTag.className="task-type-tag tag-repeat";
     spField.textContent="Listen to the sentence, then repeat it aloud";
-    spPrompt.textContent=spCurrentEntry.sentence;
+    spPrompt.innerHTML=renderClickableText(spCurrentEntry.sentence);
+    spPrompt.dataset.fullText=spCurrentEntry.sentence;
     spListenEl.textContent="—"; spRecEl.textContent="40s";
     btnShowAnswer.style.display="none";
   }else{
     spTag.textContent="Take an Interview"; spTag.className="task-type-tag tag-interview";
     spField.textContent="Question  |  "+spCurrentEntry.topic;
-    spPrompt.textContent=spCurrentEntry.question;
+    spPrompt.innerHTML=renderClickableText(spCurrentEntry.question);
+    spPrompt.dataset.fullText=spCurrentEntry.question;
     spListenEl.textContent="—"; spRecEl.textContent="40s";
     btnShowAnswer.style.display="";
     btnShowAnswer.textContent="Show Answer";
@@ -528,7 +578,7 @@ function resetSpeaking(){
 }
 
 function speakText(){
-  const txt=spPrompt.textContent.trim();
+  const txt=(spPrompt.dataset.fullText||spPrompt.textContent).trim();
   if(!window.speechSynthesis){ spError.textContent="Your browser does not support text-to-speech."; spError.style.display=""; return; }
   window.speechSynthesis.cancel();
   const u=new SpeechSynthesisUtterance(txt); u.lang="en-US"; u.rate=.9;
@@ -601,7 +651,7 @@ function stopRecording(){
 }
 
 function showPronunciationResult(){
-  const target=spPrompt.textContent.trim().toLowerCase().replace(/[,.!?;:]/g,"");
+  const target=(spPrompt.dataset.fullText||spPrompt.textContent).trim().toLowerCase().replace(/[,.!?;:]/g,"");
   const spoken=spTranscript.toLowerCase().replace(/[,.!?;:]/g,"");
   const targetWords=target.split(/\s+/).filter(Boolean);
   const spokenWords=spoken.split(/\s+/).filter(Boolean);

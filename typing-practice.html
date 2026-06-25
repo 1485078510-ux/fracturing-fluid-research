@@ -708,21 +708,23 @@ btnShowAnswer.addEventListener("click",()=>{
   if(spAnswer.style.display==="none"){
     let textToRead="";
     if(spCurrentEntry&&spCurrentEntry.answer){
+      textToRead=spCurrentEntry.answer;
       spAnswer.innerHTML=
         '<div class="ans-label">Sample Answer '+
         '<button class="btn-read-aloud" onclick="readAnswerAloud()" title="Read aloud">🔊 Listen</button></div>'+
-        '<div class="ans-text" id="ans-text-content">'+escapeHtml(spCurrentEntry.answer)+'</div>';
-      textToRead=spCurrentEntry.answer;
+        '<div class="ans-text" id="ans-text-content">'+renderClickableText(textToRead)+'</div>';
     }else if(spType==="repeat"){
+      textToRead=spPrompt.dataset.fullText||spPrompt.textContent;
       spAnswer.innerHTML=
         '<div class="ans-label">Target Sentence '+
         '<button class="btn-read-aloud" onclick="readAnswerAloud()" title="Read aloud">🔊 Listen</button></div>'+
-        '<div class="ans-text" id="ans-text-content">'+escapeHtml(spPrompt.textContent)+'</div>';
-      textToRead=spPrompt.textContent;
+        '<div class="ans-text" id="ans-text-content">'+renderClickableText(textToRead)+'</div>';
     }
     spAnswer.style.display=""; btnShowAnswer.textContent="Hide Answer";
-    // Store text for read-aloud
     spAnswer.dataset.text=textToRead;
+    // Set up click-to-speak on answer content
+    const ansTextEl=document.getElementById("ans-text-content");
+    if(ansTextEl)ansTextEl.addEventListener("click",e=>{handleWordClick(e,ansTextEl,()=>spAnswer.dataset.text||"");});
   }else{
     spAnswer.style.display="none"; btnShowAnswer.textContent="Show Answer";
     window.speechSynthesis.cancel();

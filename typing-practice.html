@@ -137,6 +137,11 @@
   #sp-pron-result .word.missing{background:rgba(239,68,68,.1);color:var(--incorrect);border-bottom:2px dashed var(--incorrect);}
   #sp-pron-result .word.extra{background:rgba(239,68,68,.15);color:#f87171;font-style:italic;}
   #sp-pron-result .pron-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px;}
+  /* answer display */
+  #sp-answer{background:rgba(0,0,0,.25);border-radius:10px;padding:16px 20px;border:1px solid var(--border);}
+  #sp-answer .ans-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--correct);margin-bottom:6px;font-weight:600;}
+  #sp-answer .ans-text{font-size:.95rem;line-height:1.85;color:var(--text);white-space:pre-wrap;}
+  #sp-answer .ans-text .highlight{background:rgba(34,197,94,.15);color:var(--correct);padding:1px 4px;border-radius:3px;}
   /* scrollbar */
   .passage-card::-webkit-scrollbar{width:6px;}
   .passage-card::-webkit-scrollbar-track{background:transparent;}
@@ -225,13 +230,15 @@
         <button class="btn btn-outline" id="btn-start-rec" style="display:none;">Start Recording</button>
         <button class="btn btn-accent" id="btn-stop-rec" style="display:none;">Stop</button>
         <button class="btn btn-outline" id="btn-new-sp">New Prompt</button>
+        <button class="btn btn-outline" id="btn-show-answer">Show Answer</button>
       </div>
       <audio id="sp-audio" controls style="display:none;width:100%;margin-top:12px;border-radius:8px;"></audio>
       <div id="sp-pron-result" style="display:none;margin-top:14px;text-align:left;"></div>
+      <div id="sp-answer" style="display:none;margin-top:14px;text-align:left;"></div>
       <p id="sp-error" style="color:#ef4444;font-size:.85rem;margin-top:8px;display:none;"></p>
     </div>
 
-    <div class="key-hints"><span><kbd>Space</kbd> listen</span><span><kbd>R</kbd> record / stop</span><span><kbd>N</kbd> new</span></div>
+    <div class="key-hints"><span><kbd>Space</kbd> listen</span><span><kbd>R</kbd> record / stop</span><span><kbd>N</kbd> new</span><span><kbd>A</kbd> answer</span></div>
   </div>
 </div>
 
@@ -353,13 +360,27 @@ const SPEAKING = {
 
   // Take an Interview — answer short conversational questions
   interview: [
-    { topic:"Personal", question:"Tell me about a teacher or professor who had a significant influence on your education. What did they do that made such an impact on you?" },
-    { topic:"Personal", question:"Describe a place you have visited that left a strong impression on you. What made it memorable, and would you recommend others visit it?" },
-    { topic:"Personal", question:"What is a skill you would like to learn in the future, and why is it important to you? How do you plan to go about learning it?" },
-    { topic:"Personal", question:"Talk about a challenge you faced and how you overcame it. What did you learn from that experience?" },
-    { topic:"Personal", question:"Describe your ideal job or career. What kind of work would you be doing, and what would make it fulfilling for you?" },
-    { topic:"Personal", question:"What do you usually do to relax or relieve stress? Why do you find these activities effective?" },
-    { topic:"Personal", question:"If you could change one thing about your hometown or current city, what would it be and why? How would that change improve life for residents?" },
+    { topic:"Personal",
+      question:"Tell me about a teacher or professor who had a significant influence on your education. What did they do that made such an impact on you?",
+      answer:"One teacher who had a significant influence on my education was my high school physics teacher, Mr. Anderson. Before taking his class, I had always thought of science as just memorizing formulas and facts. Mr. Anderson changed that completely. Instead of simply lecturing from the textbook, he would start each class with a real-world problem—like calculating the trajectory of a basketball shot or understanding how a microwave heats food—and then guide us through the physics principles needed to solve it. He made me realize that science is not about memorization but about curiosity and problem-solving. More importantly, he took the time to encourage me personally when I was struggling with a difficult concept, staying after school to explain it in different ways until I understood. His belief in my abilities gave me the confidence to pursue engineering in college, which I might not have done otherwise. I think the best teachers are those who not only teach their subject well but also make students believe in their own potential." },
+    { topic:"Personal",
+      question:"Describe a place you have visited that left a strong impression on you. What made it memorable, and would you recommend others visit it?",
+      answer:"A place that left a strong impression on me was Zhangjiajie National Forest Park in Hunan Province. I visited there two years ago with my family, and I still think about it often. What made it so memorable was the sheer scale and uniqueness of the landscape—thousands of towering sandstone pillars covered in dense green vegetation, rising vertically out of the ground like something from another planet. Many people know it as the inspiration for the floating mountains in the movie Avatar, but seeing it in person is far more powerful than any film could capture. I remember standing on a glass bridge suspended between two cliffs, looking down at the forest hundreds of meters below, and feeling a mix of terror and awe that I had never experienced before. The mist that often hangs between the peaks gives the whole place an ethereal, mystical quality. I would absolutely recommend others visit, but I would suggest going during the shoulder season in spring or autumn to avoid the largest crowds, because the experience is much more profound when you can find moments of quiet to fully absorb the beauty of the landscape." },
+    { topic:"Personal",
+      question:"What is a skill you would like to learn in the future, and why is it important to you? How do you plan to go about learning it?",
+      answer:"A skill I would really like to learn in the future is data visualization and statistical programming, particularly using tools like Python and R. In today's world, we are surrounded by enormous amounts of data, but raw numbers alone rarely tell a compelling story. I have noticed that the people who can take complex datasets and transform them into clear, visually engaging charts and dashboards have an almost superhuman ability to influence decisions and communicate insights. In my future career, whether I end up in business, research, or public policy, being able to make data accessible and persuasive will be a tremendous advantage. My plan to learn this skill involves a few steps. First, I would take an online course in Python for data analysis—there are excellent free resources on platforms like Coursera and Kaggle. Second, I would practice by working with real datasets that interest me, perhaps analyzing environmental data or education statistics, because learning is always more motivating when the subject matter is personally meaningful. Finally, I would try to contribute to an open-source project or create a portfolio of visualizations to share online, because getting feedback from more experienced practitioners is one of the fastest ways to improve." },
+    { topic:"Personal",
+      question:"Talk about a challenge you faced and how you overcame it. What did you learn from that experience?",
+      answer:"A significant challenge I faced was during my first semester of university when I struggled badly with academic writing. In high school, I had always received good grades on my essays, so I assumed my writing skills were strong. However, my first university research paper came back with extensive feedback pointing out that my arguments lacked structure, my sources were not properly integrated, and my conclusions were too vague. I received a grade that was much lower than anything I had experienced before, and I felt genuinely discouraged. Rather than giving up, I decided to take a systematic approach to improvement. I visited the university writing center regularly, where tutors helped me understand how to construct a clear thesis statement and organize supporting evidence logically. I also started reading academic papers not just for their content but to analyze how the authors structured their arguments. Over the course of that semester, I rewrote that same paper three times, each time incorporating more of what I had learned. By the end of the year, my writing had improved dramatically. From this experience, I learned that early failure is often the best teacher, and that skills which seem innate are usually the result of deliberate practice. I also learned not to be embarrassed about seeking help—the students who improve the fastest are often the ones most willing to admit what they do not yet know." },
+    { topic:"Personal",
+      question:"Describe your ideal job or career. What kind of work would you be doing, and what would make it fulfilling for you?",
+      answer:"My ideal career would be working as an environmental policy advisor, bridging the gap between scientific research and government decision-making. In this role, I would spend my time analyzing the latest climate and environmental data, translating complex scientific findings into actionable policy recommendations, and communicating with both technical experts and political leaders to build consensus around effective solutions. What would make this work fulfilling for me is the combination of intellectual challenge and tangible impact. I would be constantly learning—about ecology, economics, law, and human behavior—while applying that knowledge to address problems that genuinely matter for the future of the planet and the well-being of communities. I also value variety, and this career would involve a mix of solitary analytical work, collaborative team projects, and public communication. Beyond the day-to-day work, I would find deep satisfaction in knowing that my efforts contributed, even in a small way, to creating policies that protect natural ecosystems, promote sustainable development, and ensure a livable climate for future generations. For me, a meaningful career is not just about personal achievement or financial success—it is about making a positive difference in the world." },
+    { topic:"Personal",
+      question:"What do you usually do to relax or relieve stress? Why do you find these activities effective?",
+      answer:"When I need to relax or relieve stress, my go-to activity is going for a long walk in a natural setting, preferably a park or a tree-lined path away from busy streets. I find this effective for several reasons. First, the physical movement itself helps release tension that accumulates in my body when I have been sitting and staring at a screen for hours. I can literally feel my shoulders dropping and my breathing becoming deeper as I walk. Second, being surrounded by greenery and natural sounds—birds, wind through leaves, the crunch of gravel underfoot—has a calming effect that is difficult to replicate indoors. There is actually research showing that spending time in nature lowers cortisol levels and reduces rumination, which matches my personal experience. Third, walking gives my mind permission to wander. When I am at my desk trying to solve a difficult problem, my thinking can become rigid and repetitive. Stepping away and moving through a different environment often allows solutions to emerge naturally, without the pressure of forcing them. Sometimes I will come back from a walk with a completely new perspective on something I had been stuck on. I think the key is that walking engages my body just enough to quiet the anxious parts of my mind while leaving enough mental space for creative thought to flourish." },
+    { topic:"Personal",
+      question:"If you could change one thing about your hometown or current city, what would it be and why? How would that change improve life for residents?",
+      answer:"If I could change one thing about my city, I would significantly expand and improve the public transportation system, particularly by adding more metro lines and dedicated bus lanes. Currently, like many rapidly growing cities, my hometown suffers from severe traffic congestion that wastes hours of people's time every day, increases air pollution to unhealthy levels, and makes the city a more stressful place to live. A comprehensive, reliable, and affordable public transit network would address all of these problems simultaneously. Fewer private cars on the road would mean cleaner air, which directly improves public health—especially for children, the elderly, and people with respiratory conditions. Commute times would become more predictable, giving residents more time to spend with their families, exercise, or pursue hobbies rather than sitting frustrated in traffic. Furthermore, better public transit promotes social equity, because car ownership is expensive and the burden of long, congested commutes falls disproportionately on lower-income residents who often live farthest from job centers. I have visited cities like Tokyo, Singapore, and Copenhagen where excellent public transit makes getting around not only efficient but genuinely pleasant, and I believe every resident of a modern city deserves that quality of life. The initial investment would be substantial, but the long-term returns—in health, productivity, environmental quality, and social equity—would far outweigh the costs." },
   ]
 };
 
@@ -455,16 +476,17 @@ document.querySelectorAll("#writing-type-bar .type-btn").forEach(btn=>{ btn.addE
 // ══════════════════════════════════════════════════════════════
 
 let spType="repeat", spRecTimer=null, spRecSec=0, spMediaRecorder=null, spChunks=[], spDoneCount=0;
-let spRecognition=null, spTranscript="";
+let spRecognition=null, spTranscript="", spCurrentEntry=null;
 
 const spListenEl=document.getElementById("sp-listen"), spRecEl=document.getElementById("sp-rec");
 const spStatusEl=document.getElementById("sp-status"), spCountEl=document.getElementById("sp-count");
 const spTag=document.getElementById("sp-tag"), spField=document.getElementById("sp-field-label");
 const spPrompt=document.getElementById("sp-prompt-text"), spAudio=document.getElementById("sp-audio");
 const spError=document.getElementById("sp-error"), recInd=document.getElementById("rec-indicator");
-const spPronResult=document.getElementById("sp-pron-result");
+const spPronResult=document.getElementById("sp-pron-result"), spAnswer=document.getElementById("sp-answer");
 const btnListen=document.getElementById("btn-listen"), btnStartRec=document.getElementById("btn-start-rec");
 const btnStopRec=document.getElementById("btn-stop-rec"), btnNewSp=document.getElementById("btn-new-sp");
+const btnShowAnswer=document.getElementById("btn-show-answer");
 
 function pickSpeaking(type){
   if(type==="repeat"){ const pool=SPEAKING.repeat; return {sentence:pool[Math.floor(Math.random()*pool.length)]}; }
@@ -472,21 +494,25 @@ function pickSpeaking(type){
 }
 
 function loadSpeakingPrompt(type){
-  resetSpeaking(); const entry=pickSpeaking(type); spType=type;
+  resetSpeaking(); spCurrentEntry=pickSpeaking(type); spType=type;
   if(type==="repeat"){
     spTag.textContent="Listen and Repeat"; spTag.className="task-type-tag tag-repeat";
     spField.textContent="Listen to the sentence, then repeat it aloud";
-    spPrompt.textContent=entry.sentence;
+    spPrompt.textContent=spCurrentEntry.sentence;
     spListenEl.textContent="—"; spRecEl.textContent="—";
+    btnShowAnswer.style.display="none";
   }else{
     spTag.textContent="Take an Interview"; spTag.className="task-type-tag tag-interview";
-    spField.textContent="Question  |  "+entry.topic;
-    spPrompt.textContent=entry.question;
+    spField.textContent="Question  |  "+spCurrentEntry.topic;
+    spPrompt.textContent=spCurrentEntry.question;
     spListenEl.textContent="—"; spRecEl.textContent="—";
+    btnShowAnswer.style.display="";
+    btnShowAnswer.textContent="Show Answer";
   }
   spStatusEl.textContent="Ready"; spStatusEl.style.color="#94a3b8";
   btnListen.style.display=""; btnStartRec.style.display="none"; btnStopRec.style.display="none";
   spAudio.style.display="none"; spPronResult.style.display="none"; spPronResult.innerHTML="";
+  spAnswer.style.display="none"; spAnswer.innerHTML="";
   spError.style.display="none"; recInd.style.display="none";
   spAudio.src=""; spTranscript=""; document.getElementById("sp-card").scrollTop=0;
 }
@@ -621,6 +647,19 @@ btnListen.addEventListener("click",speakText);
 btnStartRec.addEventListener("click",startRecording);
 btnStopRec.addEventListener("click",stopRecording);
 btnNewSp.addEventListener("click",()=>{resetSpeaking();loadSpeakingPrompt(spType);});
+btnShowAnswer.addEventListener("click",()=>{
+  if(spAnswer.style.display==="none"){
+    if(spCurrentEntry&&spCurrentEntry.answer){
+      spAnswer.innerHTML='<div class="ans-label">Sample Answer</div><div class="ans-text">'+escapeHtml(spCurrentEntry.answer)+'</div>';
+      spAnswer.style.display=""; btnShowAnswer.textContent="Hide Answer";
+    }else if(spType==="repeat"){
+      spAnswer.innerHTML='<div class="ans-label">Target Sentence</div><div class="ans-text">'+escapeHtml(spPrompt.textContent)+'</div>';
+      spAnswer.style.display=""; btnShowAnswer.textContent="Hide Answer";
+    }
+  }else{
+    spAnswer.style.display="none"; btnShowAnswer.textContent="Show Answer";
+  }
+});
 
 document.querySelectorAll("#speaking-type-bar .type-btn").forEach(btn=>{ btn.addEventListener("click",()=>{
   document.querySelectorAll("#speaking-type-bar .type-btn").forEach(b=>b.classList.remove("active"));
@@ -648,6 +687,7 @@ document.addEventListener("keydown",e=>{
       if(spStatusEl.textContent==="Ready to record")startRecording();
       else if(spStatusEl.textContent==="Recording")stopRecording(); }
     if(e.key==="n"||e.key==="N"){resetSpeaking();loadSpeakingPrompt(spType);}
+    if(e.key==="a"||e.key==="A"){btnShowAnswer.click();}
   }
 });
 

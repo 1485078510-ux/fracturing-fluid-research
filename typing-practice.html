@@ -142,6 +142,8 @@
   #sp-answer .ans-label{font-size:.65rem;text-transform:uppercase;letter-spacing:1px;color:var(--correct);margin-bottom:6px;font-weight:600;}
   #sp-answer .ans-text{font-size:.95rem;line-height:1.85;color:var(--text);white-space:pre-wrap;}
   #sp-answer .ans-text .highlight{background:rgba(34,197,94,.15);color:var(--correct);padding:1px 4px;border-radius:3px;}
+  .btn-read-aloud{background:rgba(245,158,11,.15);border:1px solid var(--accent);color:var(--accent);padding:3px 10px;border-radius:12px;cursor:pointer;font-size:.7rem;margin-left:8px;transition:all .2s;}
+  .btn-read-aloud:hover{background:var(--accent);color:#000;}
   /* scrollbar */
   .passage-card::-webkit-scrollbar{width:6px;}
   .passage-card::-webkit-scrollbar-track{background:transparent;}
@@ -649,17 +651,38 @@ btnStopRec.addEventListener("click",stopRecording);
 btnNewSp.addEventListener("click",()=>{resetSpeaking();loadSpeakingPrompt(spType);});
 btnShowAnswer.addEventListener("click",()=>{
   if(spAnswer.style.display==="none"){
+    let textToRead="";
     if(spCurrentEntry&&spCurrentEntry.answer){
-      spAnswer.innerHTML='<div class="ans-label">Sample Answer</div><div class="ans-text">'+escapeHtml(spCurrentEntry.answer)+'</div>';
-      spAnswer.style.display=""; btnShowAnswer.textContent="Hide Answer";
+      spAnswer.innerHTML=
+        '<div class="ans-label">Sample Answer '+
+        '<button class="btn-read-aloud" onclick="readAnswerAloud()" title="Read aloud">🔊 Listen</button></div>'+
+        '<div class="ans-text" id="ans-text-content">'+escapeHtml(spCurrentEntry.answer)+'</div>';
+      textToRead=spCurrentEntry.answer;
     }else if(spType==="repeat"){
-      spAnswer.innerHTML='<div class="ans-label">Target Sentence</div><div class="ans-text">'+escapeHtml(spPrompt.textContent)+'</div>';
-      spAnswer.style.display=""; btnShowAnswer.textContent="Hide Answer";
+      spAnswer.innerHTML=
+        '<div class="ans-label">Target Sentence '+
+        '<button class="btn-read-aloud" onclick="readAnswerAloud()" title="Read aloud">🔊 Listen</button></div>'+
+        '<div class="ans-text" id="ans-text-content">'+escapeHtml(spPrompt.textContent)+'</div>';
+      textToRead=spPrompt.textContent;
     }
+    spAnswer.style.display=""; btnShowAnswer.textContent="Hide Answer";
+    // Store text for read-aloud
+    spAnswer.dataset.text=textToRead;
   }else{
     spAnswer.style.display="none"; btnShowAnswer.textContent="Show Answer";
+    window.speechSynthesis.cancel();
   }
 });
+
+// Read answer aloud via TTS
+function readAnswerAloud(){
+  const txt=spAnswer.dataset.text||"";
+  if(!txt||!window.speechSynthesis)return;
+  window.speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(txt);
+  u.lang="en-US"; u.rate=.9;
+  window.speechSynthesis.speak(u);
+}
 
 document.querySelectorAll("#speaking-type-bar .type-btn").forEach(btn=>{ btn.addEventListener("click",()=>{
   document.querySelectorAll("#speaking-type-bar .type-btn").forEach(b=>b.classList.remove("active"));

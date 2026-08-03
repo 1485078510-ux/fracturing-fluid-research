@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我搜索2023-2024年关于CRISPR基因编辑在人类细胞中应用的论文，只要高引用的（>50 citations），返回前10篇，每篇需要包含TLDR摘要",
+    "expected": "应返回≤10篇论文，包含title/authors/year/citationCount/tldr，年份限定在2023-2024，按引用量降序排列，每篇有TLDR"
+  },
+  {
+    "id": 2,
+    "prompt": "我用这篇论文的DOI: 10.1038/nature12373，帮我找出哪些论文引用了它，以及这篇论文引用了哪些参考文献，我想看看它的学术影响力",
+    "expected": "应分两部分呈现：citations（引用该论文的论文列表）和references（该论文引用的文献列表），标注influential citations"
+  },
+  {
+    "id": 3,
+    "prompt": "我对AlphaFold蛋白质结构预测很感兴趣，帮我基于这个方向推荐50篇相关论文",
+    "expected": "应使用S2 Recommendations API，返回推荐论文列表，每篇包含title/authors/year/citationCount，解释推荐依据"
+  }
+]

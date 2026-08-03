@@ -1,0 +1,59 @@
+{
+  "source_file": "ESP-T_final.docx",
+  "extraction_method": "python-docx text extraction",
+  "reading_date": "2026-06-14",
+  "paper_type": "materials",
+  "total_blocks": 29,
+  "blocks": [
+    {"id": "S001", "section": "Abstract", "type": "abstract", "lines": "3-5"},
+    {"id": "S002", "section": "1 Introduction", "type": "body", "paragraph": 1, "lines": "8"},
+    {"id": "S003", "section": "1 Introduction", "type": "body", "paragraph": 2, "lines": "10"},
+    {"id": "S004", "section": "1 Introduction", "type": "body", "paragraph": 3, "lines": "12"},
+    {"id": "S005", "section": "1 Introduction", "type": "body", "paragraph": 4, "lines": "14", "note": "Gap statement — core paragraph"},
+    {"id": "S006", "section": "1 Introduction", "type": "body", "paragraph": 5, "lines": "16", "note": "Research objectives"},
+    {"id": "S007", "section": "2.1 Materials", "type": "methods", "lines": "19"},
+    {"id": "S008", "section": "2.2 nano-Fe₃O₄@SA fabrication", "type": "methods", "lines": "24"},
+    {"id": "S009", "section": "2.3 ESP-T preparation", "type": "methods", "lines": "29"},
+    {"id": "S010", "section": "2.4 Characterization", "type": "methods", "lines": "35-42"},
+    {"id": "S011", "section": "2.5 Tracer Release", "type": "methods", "lines": "43"},
+    {"id": "S012", "section": "2.6 Oil Production Monitoring", "type": "methods", "lines": "47-54"},
+    {"id": "S013", "section": "3.1 SEM", "type": "results", "paragraph": 1, "figure": "Fig 3-1"},
+    {"id": "S014", "section": "3.1 SEM", "type": "results", "paragraph": 2, "figure": "Fig 3-1"},
+    {"id": "S015", "section": "3.1 SEM", "type": "results", "paragraph": 3, "figure": "Fig 3-1"},
+    {"id": "S016", "section": "3.1 SEM", "type": "results", "paragraph": 4, "figure": "Fig 3-2"},
+    {"id": "S017", "section": "3.2 Thermal Stability", "type": "results", "figure": "Fig 3-3", "key_data": "357.27 °C"},
+    {"id": "S018", "section": "3.3 WCA", "type": "results", "figure": "Fig 3-4", "key_data": "72.3° → 104.6°"},
+    {"id": "S019", "section": "3.4 Physical Properties", "type": "results", "figure": "Fig 3-5"},
+    {"id": "S020", "section": "3.5 Conductivity", "type": "results", "table": "Table 3-1", "key_data": "oil: 5m11s"},
+    {"id": "S021", "section": "3.6 Release Kinetics", "type": "results", "figure": "Fig 3-7", "table": "Table 3-2", "key_data": "n=0.45-0.85"},
+    {"id": "S022", "section": "3.7 Monitoring — ADE model", "type": "results", "equation": "Eq 2"},
+    {"id": "S023", "section": "3.7 Monitoring — key data", "type": "results", "figure": "Fig 3-8", "table": "Table 3-3", "key_data": "R²=0.9939, erfc 47%"},
+    {"id": "S024", "section": "3.7 Two-phase flow", "type": "results", "figure": "Fig 3-9/3-10"},
+    {"id": "S025", "section": "3.7 Limitations", "type": "discussion", "note": "Four limitations stated"},
+    {"id": "S026", "section": "4 Conclusions", "type": "conclusion", "paragraph": 1},
+    {"id": "S027", "section": "4 Conclusions", "type": "conclusion", "paragraph": 2},
+    {"id": "S028", "section": "4 Conclusions", "type": "conclusion", "paragraph": 3, "key_data": "R²=0.9939, 47%"},
+    {"id": "S029", "section": "4 Conclusions", "type": "conclusion", "paragraph": 4}
+  ],
+  "figures": [
+    {"id": "F001", "label": "Figure 2-1", "description": "Synthesis schematic of nano-Fe₃O₄@SA", "visual_available": false},
+    {"id": "F002", "label": "Figure 2-2", "description": "Synthesis schematic of ESP-T", "visual_available": false},
+    {"id": "F003", "label": "Figure 3-1", "description": "SEM images of epoxy and ESP-T microspheres", "visual_available": false},
+    {"id": "F004", "label": "Figure 3-2", "description": "EDS Elemental mapping of ESP-T", "visual_available": false},
+    {"id": "F005", "label": "Figure 3-3", "description": "TGA/DTG and DSC curves of ESP-T", "visual_available": false},
+    {"id": "F006", "label": "Figure 3-4", "description": "WCA comparison of epoxy and ESP-T", "visual_available": false},
+    {"id": "F007", "label": "Figure 3-7", "description": "Release curves and K-P model fitting", "visual_available": false},
+    {"id": "F008", "label": "Figure 3-8", "description": "Single-phase tracer breakthrough and ADE fitting", "visual_available": false},
+    {"id": "F009", "label": "Figure 3-9", "description": "Two-phase flow tracer concentration and flux", "visual_available": false}
+  ],
+  "tables": [
+    {"id": "T001", "label": "Table 2-1", "description": "Materials specifications"},
+    {"id": "T002", "label": "Table 3-1", "description": "Oil and Water Passage Time"},
+    {"id": "T003", "label": "Table 3-2", "description": "K-P Model Fitting Parameters"},
+    {"id": "T004", "label": "Table 3-3", "description": "ADE Model Fitted Parameters"}
+  ],
+  "equations": [
+    {"id": "E001", "label": "Eq (1)", "description": "Korsmeyer–Peppas model: C/C₀ = K·tⁿ"},
+    {"id": "E002", "label": "Eq (2)", "description": "Piecewise ADE model with tanh blending"}
+  ]
+}

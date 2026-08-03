@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "我收集了15篇关于间歇性禁食对代谢影响的论文，帮我生成一个带注释的参考文献列表，按主题分组",
+    "expected": "应为每篇论文生成结构化注释（目的/方法/发现/相关性），按主题分组，提供Literature Summary Table概览"
+  },
+  {
+    "id": 2,
+    "prompt": "帮我把这10篇CRISPR论文生成APA格式的annotated bibliography，每篇用简洁模式（1-2段）",
+    "expected": "应使用APA 7th引用格式，每篇生成1-2段简洁注释（覆盖目的/方法/主要发现），格式规范"
+  },
+  {
+    "id": 3,
+    "prompt": "帮我为这5篇核心论文生成详细的注释书目，需要包含完整的方法学细节和风险评估",
+    "expected": "应使用Comprehensive模板，每篇包含完整的PURPOSE/METHODOLOGY/KEY FINDINGS/RELEVANCE/QUALITY ASSESSMENT五个段落"
+  }
+]

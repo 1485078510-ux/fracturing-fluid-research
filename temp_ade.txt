@@ -1,0 +1,26 @@
+[126] The interpretation model is derived from the one-dimensional advection-dispersion equation (ADE): ∂C/∂t + v·∂C/∂x = D·∂²C/∂x², where v = 4Q/(πd²) is the mean flow velocity (cm/min) and D = α·v is the 
+
+[134] cb = background concentration (dimensionless);
+
+[135] A, a = amplitude coefficients for the shut-in slug (A) and sustained matrix release (a);
+
+[136] α = longitudinal dispersivity (cm);
+
+[137] Q = effective oil-phase flow rate (cm³/min);
+
+[138] t₀ = crossover center time (min);
+
+[139] σ = crossover width (min).
+
+[140] In Eq. (2), the rising component Crise captures the advective-dispersive transport of the tracer slug from the proppant-packed section to the sampling point, while the tailing component Cfall describe
+
+[142] The fitted curve is shown in Figure 3-8(b) and the fitted parameters are listed in Table 3-3. The model achieves R² = 0.9939 and RMSE = 0.0210, with residuals randomly distributed within ±2σ across th
+
+[143] Table 3-3 Fitted Parameters of the Piecewise ADE Model and Derived Transport Properties
+
+[145] Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting curve of ESP-T tracer release model (c) Comparison of pump set flow rate and fitted flow rate
+
+[147] To explore the influence of oil–water two-phase flow on ESP-T-based oil production monitoring, the system was maintained in a steady-state flow regime to ensure stable tracer release. Direct observati
+
+[148] Figure 3-9(a) illustrates the relationship between tracer concentration, total two-phase flow rate, and OWR. As shown, tracer concentration gradually decreases with increasing total two-phase flow rat
+

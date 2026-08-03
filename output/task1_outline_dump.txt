@@ -1,0 +1,91 @@
+[TITLE] Title: [TBD — written in Task 12 after all content is final]
+[H1]    Abstract
+[H1]    Keywords
+[H1]    1. Introduction
+[H1]    2. Coupled Release–Transport Model
+  [H2]  2.1 Physical Basis
+  [FIG] [Fig. 1 placeholder — see Figure Captions] — BTC generation schematic
+  [H2]  2.2 Governing Equations
+  [H2]  2.3 Parameter Set and Derived Quantities
+  [H2]  2.4 Validation Strategy: Self-Calibration as Decisive Test
+[H1]    3. Experimental Methods
+  [H2]  3.1 ESP-T Synthesis
+  [H2]  3.2 Material Prerequisites for Model Validity
+  [FIG] [Fig. 2 placeholder — see Figure Captions] — ESP-T characterization summary, 4-panel
+  [H2]  3.3 K-P Batch Release Kinetics
+  [H2]  3.4 Core Displacement: BTC Generation
+  [H2]  3.5 Parameter Estimation Strategy
+[H1]    4. Results and Discussion
+  [H2]  4.1 Model Selection: Single-Process Models Are Insufficient
+  [FIG] [Fig. 3 placeholder — see Figure Captions] — K-P kinetics + model selection overlay
+  [FIG] [Fig. 4 placeholder — see Figure Captions] — 5-model overlay + ΔAICc bar chart
+  [H2]  4.2 Physical Self-Calibration: The Flow-Rate Test
+  [FIG] [Fig. 5 placeholder — see Figure Captions] — CENTERPIECE — BTC decomposition + Q self-calibration bar
+  [H2]  4.3 Comparison with Time-of-Arrival Methods
+  [FIG] [Fig. 6 placeholder — see Figure Captions] — TOA method comparison
+  [H2]  4.4 Independent Corroboration: K-P Kinetics and ADE Peclet Number
+  [FIG] [Fig. 7 placeholder — see Figure Captions] — K-P ↔ Pe independent corroboration dual panel
+  [H2]  4.5 Signal Decomposition and Robustness
+  [FIG] [Fig. 8 placeholder — see Figure Captions] — σ sensitivity analysis
+[H1]    5. Extension to Two-Phase Production Allocation
+  [H2]  5.1 Physical Context
+  [H2]  5.2 The Dilution Problem and the Flux Solution
+  [FIG] [Fig. 9 placeholder — see Figure Captions] — Two-phase flow 3-panel
+  [H2]  5.3 Flux-to-Production-Rate Calibration
+  [H2]  5.4 Coupling to the BTC Framework
+[H1]    6. Field Deployment Pathway
+  [FIG] [Fig. 10 placeholder — see Figure Captions] — Field deployment pathway schematic
+[H1]    7. Conclusions
+[H1]    References
+  [P]   [numbered list, 35 slots — populated in Task 11]
+  [REF] [1]
+  [REF] [2]
+  [REF] [3]
+  [REF] [4]
+  [REF] [5]
+  [REF] [6]
+  [REF] [7]
+  [REF] [8]
+  [REF] [9]
+  [REF] [10]
+  [REF] [11]
+  [REF] [12]
+  [REF] [13]
+  [REF] [14]
+  [REF] [15]
+  [REF] [16]
+  [REF] [17]
+  [REF] [18]
+  [REF] [19]
+  [REF] [20]
+  [REF] [21]
+  [REF] [22]
+  [REF] [23]
+  [REF] [24]
+  [REF] [25]
+  [REF] [26]
+  [REF] [27]
+  [REF] [28]
+  [REF] [29]
+  [REF] [30]
+  [REF] [31]
+  [REF] [32]
+  [REF] [33]
+  [REF] [34]
+  [REF] [35]
+[H1]    Figure Captions
+  [P]   [10 figure caption slots — populated as figures are placed]
+  [P]   [Fig. 1] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 2] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 3] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 4] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 5] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 6] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 7] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 8] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 9] Caption placeholder — populated as figure is placed.
+  [P]   [Fig. 10] Caption placeholder — populated as figure is placed.
+[H1]    Tables
+  [P]   [Table slots — populated as content is written]
+  [P]   [Table 1] Placeholder — material prerequisites summary (see Section 3.2).
+  [P]   [Table 2] Placeholder — model comparison summary (see Section 4.1).

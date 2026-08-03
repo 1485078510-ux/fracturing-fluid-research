@@ -1,0 +1,29 @@
+=== REF CONSISTENCY ===
+[7]: Sustained growth in global energy demand has positioned unconventional oil and gas resources at the center of contemporary petroleum development [2,23-25]. These resources now account for more than 50
+
+[9]: However, the oil production contribution of each fractured interval varies markedly post-stimulation, and interval productivity declines at varying rates as field development proceeds [4]. Accurate, p
+
+[11]: Conventional oil-soluble chemical tracers exhibit limited compatibility with water-based fracturing fluids and cannot sustain long-term monitoring [5-9]. Tracer proppants—composite particles that immo
+
+[13]: Beyond the transport-modeling gap, material-level constraints further limit existing tracer proppants. Coated proppants suffer from high particle density that impedes transport in fracturing fluids, a
+
+[23]: A clean three-necked flask was mounted in a thermostatic water bath and connected to nitrogen purge and mechanical stirring apparatuses. The flask was charged with 100 mL deionized water and heated to
+
+[92]: Notably, the bulk density of both proppants is lower than that of water (1 g/cm³), implying that both can achieve favorable suspension in water‑based fracturing fluids and prevent wellbore blockage re
+
+=== FLOW RATE ===
+[2]: ...g. The fitted flow rate (0.46 mL/min) ag...
+[47]: ...he system at a flow rate of 5 mL/min unt...
+[52]: ...low rates (0.1, 0.2, 0.3, 0.4 mL/min) we...
+[143]: ... the pump-set flow rate (0.50 mL/min) an...
+[152]: ...tal two-phase flow rate = 0.1 mL/min). T...
+[154]: ... ratios at a flow rate of 0.1 mL/min...
+[157]: ...dently fitted flow rate (0.46 mL/min) ag...
+
+=== DEG CHECK ===
+[2] deg->deg OK
+[159] deg->deg OK
+
+=== SPLIT CHECK ===
+[142] length: 1187 chars
+[143] start: The fitted parameters carry several physically significant implications that extend beyond empirical curve-fitting. Firs

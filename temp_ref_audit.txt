@@ -1,0 +1,75 @@
+Ref section at [170]
+
+[1] [1]	MONTGOMERY S L, JARVIE D M, BOWKER K A, et al. Mississippian Barnett Shale, 
+[2] [2]	WANG L, TIAN Y, YU X, et al. Advances in improved/enhanced oil recovery tech
+[3] [3]	MOHR S H, WANG J, ELLEM G, et al. Projection of world fossil fuels by countr
+[4] [4]	CHONG Z R, YANG S H B, BABU P, et al. Review of natural gas hydrates as an e
+[5] [5]	IEA. World Energy Outlook 2024 [R]. Paris: International Energy Agency, 2024
+[6] [6]	BARATI R, LIANG J T. A review of fracturing fluid systems used for hydraulic
+[7] [7]	MEDEIROS F, KURTOGLU B, OZKAN E, et al. Analysis of production data from hyd
+[8] [8]	PATIDAR A K, JOSHI D, DRISTANT U, et al. A review of tracer testing techniqu
+[9] [9]	SANNI M, AL-ABBAD M, KOKAL S, et al. Pushing the envelope of residual oil me
+[10] [10]	SILVA M, STRAY H, BJORNSTAD T. Stability assessment of PITT tracer candidat
+[11] [11]	WATKINS J W, MARDOCK E S. Use of radioactive iodine as a tracer in water-fl
+[12] [12]	YANG H, GUO K, LIN L, et al. Application of micro-substance tracer test in 
+[13] [13]	SHOOK G M, POPE G A, ASAKAWA K. Determining reservoir properties and flood 
+[14] [14]	FONTALVO E M, OLIVEIRA M C, SCHOEGGL F, et al. Physical interpretation of i
+[15] [15]	LIU J, WANG H, ZHANG T, et al. Study on interpretation method of multistage
+[16] [16]	TIAN W, DARNLEY A, DEMPSEY D. Quantifying fracture interference and allocat
+[17] [17]	GONG Z, LI N, QIN M, et al. Magnetic nano-Fe₃O₄-based oleophilic tracer for
+[18] [18]	KRUMBEIN W C, SLOSS L L. Stratigraphy and Sedimentation [M]. 2nd ed. San Fr
+[19] [19]	RITGER P L, PEPPAS N A. A simple equation for description of solute release
+[20] [20]	PEPPAS N A, SAHLIN J J. A simple equation for the description of solute rel
+[21] [21]	VAN GENUCHTEN M T, ALVES W J. Analytical solutions of the one-dimensional c
+[22] [22]	LI J, JIANG H, WANG B, et al. Tracer flowback modeling and characterization
+[23] [23]	ZHAO B, PANTHI K, MOHANTY K K. Tracer eluting proppants for hydraulic fract
+[24] [24]	ZHOU Y, LIU H, GAO J, et al. Coated proppants with self-suspension and trac
+[25] [25]	LI N, CHENG Q, GONG Z, et al. Release kinetics of rare earth tracer from po
+[26] [26]	GONG Z, LI N, KANG W, et al. Novel oleophilic tracer-slow-released proppant
+[27] [27]	WANG G, MA Q, REN L, et al. A comprehensive review of multifunctional propp
+[28] [28]	KRISHNAN M R, LI W, ALHARBI B, et al. In-situ high-strength poly(styrene-me
+[29] [29]	GUO X, WEI K, NI T, et al. Preparation and performance analysis of polyethy
+[30] [30]	LIANG C, LUO W, YAN C, et al. Ultra-lightweight proppant synthesized from P
+[31] [31]	ZOVEIDAVIANPOOR M, GHARIBI A, BIN JAAFAR M Z. Experimental characterization
+[32] [32]	SABINS F, APBLETT A, SHAFER R, et al. Epoxy resin exhibits long-term durabi
+[33] [33]	LI H, LIU Z, LI Y, et al. Evaluation of the release mechanism of sustained-
+[34] [34]	WEI M, WANG Y, DUAN Y, et al. Screening and performance evaluation of epoxy
+
+--- In-text citation order ---
+First: [1] at para [7]
+First: [2] at para [7]
+First: [3] at para [7]
+First: [4] at para [7]
+First: [5] at para [7]
+First: [6] at para [7]
+First: [7] at para [9]
+First: [8] at para [11]
+First: [9] at para [11]
+First: [10] at para [11]
+First: [11] at para [11]
+First: [12] at para [11]
+First: [23] at para [11]
+First: [24] at para [11]
+First: [25] at para [11]
+First: [26] at para [11]
+First: [13] at para [11]
+First: [14] at para [11]
+First: [15] at para [11]
+First: [16] at para [11]
+First: [17] at para [11]
+First: [18] at para [11]
+First: [19] at para [11]
+First: [20] at para [11]
+First: [21] at para [11]
+First: [22] at para [11]
+First: [27] at para [13]
+First: [28] at para [13]
+First: [29] at para [13]
+First: [30] at para [13]
+First: [31] at para [13]
+First: [32] at para [13]
+First: [33] at para [13]
+First: [34] at para [13]
+
+Uncited: []
+Beyond list: []

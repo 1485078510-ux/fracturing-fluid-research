@@ -1,0 +1,7 @@
+[11] cites: ['[8-12]', '[23]', '[24]', '[25]', '[26]', '[13,14]', '[15-22]']
+  [17] [17]	GONG Z, LI N, QIN M, et al. Magnetic nano-Fe₃O₄-based oleophilic tracer for stability studies o
+  [18] [18]	KRUMBEIN W C, SLOSS L L. Stratigraphy and Sedimentation [M]. 2nd ed. San Francisco: W.H. Freema
+  [19] [19]	RITGER P L, PEPPAS N A. A simple equation for description of solute release I. Fickian and non-
+  [20] [20]	PEPPAS N A, SAHLIN J J. A simple equation for the description of solute release. III. Coupling 
+  [21] [21]	VAN GENUCHTEN M T, ALVES W J. Analytical solutions of the one-dimensional convective-dispersive
+  [22] [22]	LI J, JIANG H, WANG B, et al. Tracer flowback modeling and characterization of complex fracture

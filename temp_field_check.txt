@@ -1,0 +1,6 @@
+[151] len=771: During steady-state production, tracer concentrations are inherently low, and the production curve conveys information p
+[152] len=0: (empty)
+[153] len=1532: Figure 3-9(c) compares the normalized FO with the actual oil-phase flow rate at different OWRs (total two-phase flow rat
+[154] len=1240: The practical deployment of this approach in a multi-stage fractured horizontal well would proceed as follows. ESP-T par
+[155] len=267: Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with o
+[156] len=0: (empty)

@@ -1,0 +1,15 @@
+=== [2] ===
+Abstract: Per-interval oil production monitoring is essential for evaluating stimulation effectiveness in unconventional reservoirs, yet existing tracer technologies lack both a quantitative transport model linking release kinetics to production rates and a durable oil-phase monitoring capability. H
+
+=== [11] ===
+Among available diagnostic techniques, tracer-based methods offer a uniquely practical route to per-interval production monitoring: they require no permanent downhole instrumentation, can be deployed during routine fracturing operations, and provide direct chemical evidence of fluid contributions fr
+
+=== [15] ===
+Here we address both gaps. We develop a piecewise advection-dispersion (ADE) model that decomposes the tracer breakthrough curve into two components joined by a smooth tanh transition. The Gaussian pulse component captures the advective-dispersive transport of the tracer slug accumulated during shut
+
+=== [114] ===
+The K-P model, a power-law formulation developed by Korsmeyer and Peppas [23], is widely employed to characterize release kinetics from controlled-release systems. It captures two mechanisms: Fickian diffusion, in which species migrate down a concentration gradient according to Fick's laws, and Case
+
+=== [164] ===
+On the modeling side, the two-component analysis achieves R2 = 0.9939 for single-phase breakthrough curves, with the erfc tail accounting for 47% of the integrated signal. This quantitatively establishes that sustained matrix-diffusion-controlled release, not the initial shut-in pulse, dominates the
+

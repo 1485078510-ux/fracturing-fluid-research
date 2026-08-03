@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我评估一下Smith 2024这篇随机对照试验的方法学质量，它声称新药X比安慰剂更有效",
+    "expected": "应自动选择RoB 2工具，逐域评估5个偏倚域，生成Low/Some Concerns/High评级，输出偏倚总结表"
+  },
+  {
+    "id": 2,
+    "prompt": "这5篇观察性研究都是cohort design，帮我用Newcastle-Ottawa Scale评估它们的质量",
+    "expected": "应选择NOS工具，评估Selection/Comparability/Outcome三大类，计算星级，给出Good/Fair/Poor评级"
+  },
+  {
+    "id": 3,
+    "prompt": "我找到了一篇关于大语言模型在医学诊断中应用的系统综述，帮我用AMSTAR 2检查它的方法学质量",
+    "expected": "应选择AMSTAR 2工具，评估16个条目，区分critical和non-critical弱点，给出High/Moderate/Low/Critically Low信心评级"
+  }
+]

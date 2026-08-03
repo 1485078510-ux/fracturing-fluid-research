@@ -1,0 +1,11 @@
+[139]: σ = crossover width (min).
+[140]: In Eq. (2), the rising component Crise captures the advective-dispersive transport of the tracer slug from the proppant-packed section to the sampling
+[141]: (empty)
+[142]: The fitted curve is shown in Figure 3-8(b) and the fitted parameters are listed in Table 3-3. The model achieves R² = 0.9939 and RMSE = 0.0210, with r
+[143]: The fitted parameters carry several physically significant implications that extend beyond empirical curve-fitting. First, the Peclet number Pe = x/al
+[144]: (empty)
+[145]: Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting curve of ESP-T tracer release model (c) Comparison of
+[146]: (empty)
+[147]: To explore the influence of oil–water two-phase flow on ESP-T-based oil production monitoring, the system was maintained in a steady-state flow regime
+[148]: Figure 3-9(a) illustrates the relationship between tracer concentration, total two-phase flow rate, and OWR. As shown, tracer concentration gradually 
+[149]: (empty)

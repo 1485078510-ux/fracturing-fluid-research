@@ -1,0 +1,9 @@
+Tracer concentration	Total two-phase flow rate	oil£ºwater=4£º1	oil£ºwater=1£º1	oil£ºwater=1£º4	oil£ºwater=4£º1	oil£ºwater=1£º1	oil£ºwater=1£º4	oil£ºwater=4£º1	oil£ºwater=4£º1	oil£ºwater=1£º4	
+\f:Times New Roman(¦Ìg/L)	mL/min										
+	0.1	33.51	31.32	32.74	2.6808	1.566	0.6548	0.841167241920301	0.491371195481644	0.205459679949796	Fit the oil flow rate
+	0.2	17.37	16.67	17.14	2.7792	1.667	0.6856	0.8	0.5	0.2	Experimental oil flow rate
+	0.3	11.54	10.73	10.93	2.7696	1.6095	0.6558				
+	0.4	8.33	8.04	7.97	2.6656	1.608	0.6376				
+									0.8	0.841167241920301	oil£ºwater=4£º1
+									0.5	0.491371195481644	oil£ºwater=4£º1
+									0.2	0.205459679949796	oil£ºwater=1£º4

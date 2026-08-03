@@ -1,0 +1,6 @@
+Model,k,R2,RMSE,AICc,BIC,Delta_AICc
+Dual-component tanh,7,0.9939,0.0210,-139.70,-141.01,0.00
+Single Gaussian,4,0.9482,0.0609,-107.04,-105.36,32.66
+Single erfc,4,0.7159,0.1427,-71.28,-69.60,68.42
+Exponential decay,3,0.7517,0.1334,-77.20,-75.48,62.51
+Korsmeyer-Peppas,3,-0.0193,0.2703,-47.54,-45.82,92.16

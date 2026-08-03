@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "我已经读了20篇关于大语言模型辅助医学诊断的论文，帮我分析一下这个领域还有哪些研究空白",
+    "expected": "应构建覆盖矩阵，识别topic/method/population/outcome四种类型的研究空白，按优先级排序，给出Research Gap Map"
+  },
+  {
+    "id": 2,
+    "prompt": "在CRISPR基因编辑领域，哪些方向已经被充分研究了，哪些还缺少证据？帮我做一个系统的研究空白分析",
+    "expected": "应从论文集合中提取主题/方法/人群/结局维度，构建覆盖度矩阵，检测zero-paper和under-representation空白"
+  },
+  {
+    "id": 3,
+    "prompt": "帮我看看间歇性禁食研究中有哪些相互矛盾的发现，这些矛盾是否指向了尚未解决的研究问题",
+    "expected": "应识别contradiction gaps，分析矛盾可能的原因（人群/方法/结局差异），提出解决这些矛盾的研究建议"
+  }
+]

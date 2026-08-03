@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "我用这篇论文 DOI:10.1038/nature12373 作为起点，帮我画出它的引用关系图谱，我想看看哪些是它引用的前驱文献，哪些是引用它的后续文献",
+    "expected": "应生成DOT或JSON格式的引用图谱，区分prior works和derivative works，标注influential citations，可视化输出"
+  },
+  {
+    "id": 2,
+    "prompt": "帮我把Yann LeCun、Geoffrey Hinton和Yoshua Bengio这三位的引用关系画成一个网络图，看看他们之间有没有共同引用的论文",
+    "expected": "应支持多论文种子图谱，合并重叠节点，标注共享引用，节点大小按引用量缩放"
+  },
+  {
+    "id": 3,
+    "prompt": "我想了解transformer架构的学术谱系，从Attention Is All You Need这篇论文开始追溯，它的思想源头是什么，后来又发展出了哪些方向",
+    "expected": "应构建带深度的引用图谱，Prior Works追溯思想源头，Derivative Works发现GPT/BERT/ViT等后续方向，用时间线或层次布局呈现"
+  }
+]

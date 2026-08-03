@@ -1,0 +1,16 @@
+[13] [13]	ZHAO B, PANTHI K, MOHANTY K K. Tracer eluting proppants for hydraulic fract
+[14] [14]	ZHOU Y, LIU H, GAO J, et al. Coated proppants with self-suspension and trac
+[15] [15]	LI N, CHENG Q, GONG Z, et al. Release kinetics of rare earth tracer from po
+[16] [16]	GONG Z, LI N, KANG W, et al. Novel oleophilic tracer-slow-released proppant
+[17] [17]	SHOOK G M, POPE G A, ASAKAWA K. Determining reservoir properties and flood 
+[18] [18]	FONTALVO E M, OLIVEIRA M C, SCHOEGGL F, et al. Physical interpretation of i
+[19] [19]	LIU J, WANG H, ZHANG T, et al. Study on interpretation method of multistage
+[20] [20]	TIAN W, DARNLEY A, DEMPSEY D. Quantifying fracture interference and allocat
+[21] [21]	GONG Z, LI N, QIN M, et al. Magnetic nano-Fe₃O₄-based oleophilic tracer for
+[22] [22]	KRUMBEIN W C, SLOSS L L. Stratigraphy and Sedimentation [M]. 2nd ed. San Fr
+[23] [23]	RITGER P L, PEPPAS N A. A simple equation for description of solute release
+[24] [24]	PEPPAS N A, SAHLIN J J. A simple equation for the description of solute rel
+[25] [25]	VAN GENUCHTEN M T, ALVES W J. Analytical solutions of the one-dimensional c
+[26] [26]	LI J, JIANG H, WANG B, et al. Tracer flowback modeling and characterization
+[27] [27]	WANG G, MA Q, REN L, et al. A comprehensive review of multifunctional propp
+[28] [28]	KRISHNAN M R, LI W, ALHARBI B, et al. In-situ high-strength poly(styrene-me

@@ -1,0 +1,27 @@
+[138] len=33: t₀ = crossover center time (min);
+[139] len=0: (empty)
+[140] len=924: Figure 3-8(b) shows the fit to a single-phase breakthrough curve; Table 3-3 lists the fitted values.
+[141] len=87: Table 3-3 Fitted Parameters of the Piecewise ADE Model and Derived Transport Properties
+[142] len=0: (empty)
+[143] len=190: Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting cur
+[144] len=952: These numbers tell a consistent story. The flow rate, the residence time, and the Peclet number conv
+[145] len=0: (empty)
+[146] len=727: A fractured well does not produce single-phase oil indefinitely. Formation water eventually breaks t
+[147] len=0: (empty)
+[148] len=597: Figure 3-9(a) plots the tracer concentration against total flow rate for each OWR. Concentration dro
+[149] len=0: (empty)
+[150] len=661: The way around this is to work with tracer flux rather than concentration. We define FO as the mass 
+[151] len=0: (empty)
+[152] len=465: The critical test is whether FO can be converted into a production rate. Figure 3-9(c) normalizes FO
+[153] len=0: (empty)
+[154] len=837: Several boundaries of the present study should be noted. The model assumes one fractured interval wi
+[155] len=0: (empty)
+[156] len=496: Taken together, the single-phase and two-phase results outline a workable approach. The model takes 
+[157] len=0: (empty)
+[158] len=267: Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer
+[159] len=0: (empty)
+[160] len=891: In the field, each fracture stage would receive ESP-T particles doped with a distinct metal (Mn, Zn,
+[161] len=14: 4. Conclusions
+[162] len=527: The central challenge addressed in this work is the disconnect between tracer release kinetics, meas
+[163] len=0: (empty)
+[164] len=859: On the modeling side, the two-component analysis achieves R2 = 0.9939 for single-phase breakthrough 

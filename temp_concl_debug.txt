@@ -1,0 +1,20 @@
+[155]: (empty)
+[156]: Taken together, the single-phase and two-phase results outline a workable approach. The model takes a wellhead concentra
+[157]: (empty)
+[158]: Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with o
+[159]: (empty)
+[160]: In the field, each fracture stage would receive ESP-T particles doped with a distinct metal (Mn, Zn, Cu, or others), cre
+[161]: 4. Conclusions
+[162]: The central challenge addressed in this work is the disconnect between tracer release kinetics, measured in batch experi
+[163]: (empty)
+[164]: On the modeling side, the two-component analysis achieves R2 = 0.9939 for single-phase breakthrough curves, with the erf
+[165]: (empty)
+[166]: The ESP-T proppant, designed as the enabling platform for this model, exhibits a performance profile suited to downhole 
+[167]: (empty)
+[168]: Taken together, the material and modeling contributions establish a framework in which sustained tracer release, governe
+[169]: (empty)
+[170]: References
+[171]: [1]	MONTGOMERY S L, JARVIE D M, BOWKER K A, et al. Mississippian Barnett Shale, Fort Worth basin, north-central Texas: G
+[172]: [2]	WANG L, TIAN Y, YU X, et al. Advances in improved/enhanced oil recovery technologies for tight and shale reservoirs 
+[173]: [3]	MOHR S H, WANG J, ELLEM G, et al. Projection of world fossil fuels by country [J]. Fuel, 2015, 141: 120-135.
+[174]: [4]	CHONG Z R, YANG S H B, BABU P, et al. Review of natural gas hydrates as an energy resource: Prospects and challenges

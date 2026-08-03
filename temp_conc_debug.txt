@@ -1,0 +1,20 @@
+[155] (empty)
+[156] Figure 3-9(a) plots the tracer concentration against total flow rate for each OWR. Concentration drops as flow rate rise
+[157] (empty)
+[158] The way around this is to work with tracer flux rather than concentration. We define FO as the mass of tracer passing th
+[159] (empty)
+[160] The critical test is whether FO can be converted into a production rate. Figure 3-9(c) normalizes FO from the two-phase 
+[161] (empty)
+[162] Several boundaries of the present study should be noted. The model assumes one fractured interval with a uniform proppan
+[163] (empty)
+[164] Taken together, the single-phase and two-phase results outline a workable approach. The model takes a wellhead concentra
+[165] (empty)
+[166] Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with o
+[167] (empty)
+[168] In the field, each fracture stage would receive ESP-T particles doped with a distinct metal (Mn, Zn, Cu, or others), cre
+[169] 4. Conclusions
+[170] The central challenge addressed in this work is the disconnect between tracer release kinetics, measured in batch experi
+[171] (empty)
+[172] On the modeling side, the two-component analysis achieves R2 = 0.9939 for single-phase breakthrough curves, with the erf
+[173] (empty)
+[174] The ESP-T proppant, designed as the enabling platform for this model, exhibits a performance profile suited to downhole 

@@ -1,0 +1,10 @@
+[11] citations: ['[8-12]', '[18]', '[19]', '[20]', '[21]']
+
+New modeling refs (should be 13-17):
+  [13] [13]	SHOOK G M, POPE G A, ASAKAWA K. Determining reservoir properties and flood performance from tra
+  [14] [14]	FONTALVO E M, OLIVEIRA M C, SCHOEGGL F, et al. Physical interpretation of interwell partitionin
+  [15] [15]	LIU J, WANG H, ZHANG T, et al. Study on interpretation method of multistage fracture tracer flo
+  [16] [16]	TIAN W, DARNLEY A, DEMPSEY D. Quantifying fracture interference and allocating load recovery an
+  [17] [17]	LI J, JIANG H, WANG B, et al. Tracer flowback modeling and characterization of complex fracture
+
+Total refs: 34

@@ -1,0 +1,45 @@
+=== SEM [59] ===
+Figure 3-1 presents SEM micrographs of pure epoxy resin microspheres and ESP-T. At low magnification (a, d), both samples show excellent sphericity and high monodispersity, with uniform particle sizes and no inter-particle agglomeration, demonstrating the controllability of the suspension polymeriza
+
+=== SEM [61] ===
+At medium magnification (b), pure epoxy microspheres display subtle surface wrinkles and depressions, typical of thermosetting resins, arising primarily from volume shrinkage during epoxy curing. In contrast, ESP-T microspheres (e) are uniformly covered with micro- and submicron-scale convex protrus
+
+=== SEM [63] ===
+At high magnification, the fine surface microstructure of the microspheres is clearly resolved. Pure epoxy resin microspheres (c) exhibit a relatively dense yet undulating lava-like surface structure, a typical morphological feature of cross-linked epoxy polymer networks. In contrast, ESP-T microsph
+
+=== SEM [65] ===
+These observations suggest the following formation mechanism: the hydrophobically modified nano-Fe₃O₄@SA nanoclusters are uniformly dispersed within epoxy resin droplets after emulsification; as the epoxy cross-linking reaction proceeds, a rigid polymer network forms and immobilizes the nanoclusters
+
+=== K-P [105] ===
+In field applications, formation temperature rises with increasing reservoir depth, impacting the expansion of ESP-T and tracer release behavior. The release profiles of ESP-T at various temperatures are presented in Figure 3-7(a), where C/C0 represents the normalized concentration, C denotes the tr
+
+=== K-P [114] ===
+The K-P model is a power-law formulation developed by Korsmeyer and Peppas [27], widely employed to characterize release kinetics from controlled-release systems. It captures two key mechanisms: Fickian diffusion, in which substances migrate from high- to low-concentration regions in accordance with
+
+=== K-P [116] ===
+The K-P fitting results are presented in Figure 3-7(b) and summarized in Table 3-2. The kinetic constant K increases systematically with temperature, consistent with the thermally activated nature of both diffusion and polymer relaxation. All n values fall within 0.45–0.85, confirming that ESP-T rel
+
+=== K-P [118] ===
+Based on these results, the release mechanism of ESP-T is inferred as follows: nonpolar solvent molecules (e.g., dodecane) permeate into the cross-linked epoxy network, inducing swelling that generates a dual-state structure consisting of an inner glassy core and an outer gel layer. This swelling re
+
+=== 3.7 [140] ===
+In Eq. (2), the rising component Crise captures the advective-dispersive transport of the tracer slug from the proppant-packed section to the sampling point, while the tailing component Cfall describes the sustained release of residual nano-Fe₃O₄@SA from the epoxy matrix into the flowing oil. This t
+
+=== 3.7 [142] ===
+The fitted curve is shown in Figure 3-8(b) and the fitted parameters are listed in Table 3-3. The model achieves R² = 0.9939 and RMSE = 0.0210, with residuals randomly distributed within ±2σ across the full time range. The fitted flow rate (0.46 mL·min⁻¹) agrees closely with the pump-set rate (0.5 m
+
+=== 3.7 [147] ===
+To explore the influence of oil–water two-phase flow on ESP-T-based oil production monitoring, the system was maintained in a steady-state flow regime to ensure stable tracer release. Direct observation of the effluent after two-phase displacement at an oil–water ratio (OWR) of 1:1 revealed a slight
+
+=== 3.7 [150] ===
+During steady-state production, tracer concentration remains low, and the production curve typically only reflects concentration data—interpretation of this regime relies on concentration magnitude and trends. To quantify the single-interval oil flow rate, tracer flux (FO) was introduced. FO is defi
+
+=== 3.7 [152] ===
+Figure 3-9(c) compares the normalized FO with the actual oil-phase flow rate at different OWRs (total two-phase flow rate = 0.1 mL/min). The normalized FO was calibrated against the steady-state FO during single-phase oil displacement (3.187 μg/min). The results demonstrate close agreement between F
+
+=== 2.6 [47] ===
+For the single-phase oil production monitoring experiment of ESP-T, dodecane was employed to simulate crude oil, with the focus on the steady oil production regime of a single fractured interval. A dynamic displacement apparatus was utilized to mimic the dynamic oil production behavior of horizontal
+
+=== 2.6 [52] ===
+For the oil–water two-phase flow produced fluid monitoring experiment, the tracer was maintained in a stable release regime throughout the steady-flow period (i.e., no well shut-in was implemented during sampling and monitoring, with continuous oil well production sustained). The total two-phase flo
+

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我分析一下大语言模型领域最近的研究趋势，哪些方向最热门",
+    "expected": "应使用Heat Score公式计算趋势分数，识别Burst/Sleeper/Steady Classic模式，输出趋势报告（热门论文、新兴主题、上升作者）"
+  },
+  {
+    "id": 2,
+    "prompt": "帮我找一下蛋白质结构预测领域引用增长最快的论文，看看有哪些新兴方向",
+    "expected": "应计算Citation Velocity和Acceleration指标，按Heat Score排序，识别新兴主题聚类和作者迁移模式"
+  },
+  {
+    "id": 3,
+    "prompt": "我想了解CRISPR基因编辑领域2020-2024年的发文量变化，哪些子方向在增长，哪些在衰退",
+    "expected": "应进行年份-发文量分析，计算Growth Rate，识别增长>1.5的新兴方向和衰退方向，生成时间线分析报告"
+  }
+]

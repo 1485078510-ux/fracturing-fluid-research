@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io" version="26.0.0">
+  <diagram name="fig2_工艺流程图">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t2" value="图2  荧光压裂液体系现场施工工艺流程图" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="8" width="450" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="r1a" value="改性荧光粉
++ 分散助剂
++ 去离子水" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="30" y="50" width="140" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r1b" value="高速剪切/超声分散
+→ 荧光母液
+(30~60 g/L)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#B2DFDB;strokeColor=#00897B;" vertex="1" parent="1">
+          <mxGeometry x="210" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c" value="在线计量泵
+→ 静态混合器
+(0.1~2.0 vol%)" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="410" y="50" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ra1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" edge="1" parent="1" source="r1a" target="r1b">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ra2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" edge="1" parent="1" source="r1b" target="r1c">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r2a" value="HPG基液主流
+(稠化剂0.3~1.0 wt%)
++ 交联剂 + 破胶剂
++ 支撑剂" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#B2DFDB;strokeColor=#00897B;" vertex="1" parent="1">
+          <mxGeometry x="30" y="165" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r2b" value="荧光压裂液终液" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="230" y="165" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c" value="压裂泵车
+→ 井口" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#B2DFDB;strokeColor=#00897B;" vertex="1" parent="1">
+          <mxGeometry x="400" y="165" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="r2d" value="目标压裂层段" style="ellipse;rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" vertex="1" parent="1">
+          <mxGeometry x="560" y="165" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="rb1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" edge="1" parent="1" source="r2a" target="r2b">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" edge="1" parent="1" source="r2b" target="r2c">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rb3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" edge="1" parent="1" source="r2c" target="r2d">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="v1" value="母液" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#78909C;strokeWidth=1.5;" edge="1" parent="1" source="r1c" target="r2a">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sum" value="物料流向: 改性荧光粉+分散助剂+水 → 高速剪切/超声分散→荧光母液 → 在线计量泵→静态混合器 → HPG基液+交联剂+破胶剂+支撑剂 → 荧光压裂液终液 → 压裂泵车→井口 → 目标压裂层段" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#78909C;fontSize=7;align=center;" vertex="1" parent="1">
+          <mxGeometry x="30" y="275" width="660" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Page-1">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1150" pageHeight="1320" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="tt" value="图3  压裂裂缝荧光示踪方法四阶段流程框图" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=18;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="150" y="8" width="850" height="36" as="geometry" />
+</mxCell>
+<mxCell id="st1" value="  I. 注入阶段" style="swimlane;startSize=34;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=1.2;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;swimlaneLine=0;rounded=1;" vertex="1" parent="1">
+  <mxGeometry x="60" y="58" width="1030" height="260" as="geometry" />
+</mxCell>
+<mxCell id="st1s0" value="荧光压裂液终液&#xa;+ 支撑剂混合" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st1">
+  <mxGeometry x="30" y="58" width="287" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st1s1" value="压裂泵注系统&#xa;高压泵入目标层段" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st1">
+  <mxGeometry x="341" y="58" width="287" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st1e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st1" source="st1s0" target="st1s1">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st1s2" value="荧光粉随携砂液&#xa;运移至水力裂缝各处" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st1">
+  <mxGeometry x="652" y="58" width="313" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st1e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st1" source="st1s1" target="st1s2">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st1s3" value="PEG空间位阻&#xa;保障颗粒均匀分散" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st1">
+  <mxGeometry x="989" y="58" width="300" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st1e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st1" source="st1s2" target="st1s3">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="a12" value="停泵关井" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#D4743C;strokeWidth=2.2;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#D4743C;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="st1" target="st2">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st2" value="  II. 关井破胶阶段（储层温度 60−150 °C · 密闭 6−48 h · 过硫酸铵氧化环境）" style="swimlane;startSize=34;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=1.2;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;swimlaneLine=0;rounded=1;" vertex="1" parent="1">
+  <mxGeometry x="60" y="350" width="1030" height="260" as="geometry" />
+</mxCell>
+<mxCell id="st2s0" value="过硫酸铵热分解&#xa;产生 SO₄•⁻ 自由基" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st2">
+  <mxGeometry x="30" y="58" width="352" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st2s1" value="有机硼交联键&#xa;氧化断裂 → 冻胶解体" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;opacity=65;strokeWidth=1.5;" vertex="1" parent="st2">
+  <mxGeometry x="406" y="58" width="326" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st2e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st2" source="st2s0" target="st2s1">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st2s2" value="SO₄•⁻ 攻击 PEG&#xa;醚键(C−O−C)氧化断链" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;opacity=65;strokeWidth=1.5;" vertex="1" parent="st2">
+  <mxGeometry x="756" y="58" width="430" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st2e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st2" source="st2s1" target="st2s2">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st2s3" value="PEG外层脱附降解&#xa;暴露KH550−NH₂活性基团" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;opacity=65;strokeWidth=1.5;" vertex="1" parent="st2">
+  <mxGeometry x="1210" y="58" width="417" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st2e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st2" source="st2s2" target="st2s3">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st2s4" value="−NH₂ 与砂岩 Si−OH&#xa;静电吸引+氢键+缩合锚定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;opacity=65;strokeWidth=1.5;" vertex="1" parent="st2">
+  <mxGeometry x="1651" y="58" width="443" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st2e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st2" source="st2s3" target="st2s4">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="s2n" value="PEG脱附三重协同机制: (i) SO₄•⁻ 自由基攻击PEG醚键(C−O−C)引发氧化链断裂，生成低分子量PEG碎片和含氧低聚物；(ii) 低分子量产物的水溶性显著增大，从荧光粉表面向水相溶解释放；(iii) 破胶剂分解产生的酸性微环境（局部pH下降）促使PEG醚氧质子化，削弱PEG与硅烷偶联剂内层的物理吸附。" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=11;fontColor=#7A7A7A;fontStyle=3;" vertex="1" parent="st2">
+  <mxGeometry x="35" y="168" width="960" height="65" as="geometry" />
+</mxCell>
+<mxCell id="a23" value="开井返排" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=2.2;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="st2" target="st3">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st3" value="  III. 返排阶段" style="swimlane;startSize=34;fillColor=#F4F0F8;strokeColor=#8B6DAD;strokeWidth=1.2;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;swimlaneLine=0;rounded=1;" vertex="1" parent="1">
+  <mxGeometry x="60" y="670" width="1030" height="260" as="geometry" />
+</mxCell>
+<mxCell id="st3s0" value="开井返排" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F0F8;strokeColor=#8B6DAD;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st3">
+  <mxGeometry x="30" y="58" width="130" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st3s1" value="破胶残渣 + 未锚定&#xa;荧光粉颗粒 → 排出井筒" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F0F8;strokeColor=#8B6DAD;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st3">
+  <mxGeometry x="184" y="58" width="391" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st3e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st3" source="st3s0" target="st3s1">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st3s2" value="锚定于壁面的&#xa;荧光粉牢固保留" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F4F0F8;strokeColor=#8B6DAD;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;opacity=65;strokeWidth=1.5;" vertex="1" parent="st3">
+  <mxGeometry x="599" y="58" width="274" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st3e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st3" source="st3s1" target="st3s2">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="s3n" value="净残留率（锚定率）
+92.7%  > 90%" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#4A9C7F;fontStyle=1;" vertex="1" parent="st3">
+  <mxGeometry x="780" y="710" width="200" height="40" as="geometry" />
+</mxCell>
+<mxCell id="a34" value="压后取心作业" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=2.2;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="st3" target="st4">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st4" value="  IV. 取心与检测阶段" style="swimlane;startSize=34;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=1.2;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;swimlaneLine=0;rounded=1;" vertex="1" parent="1">
+  <mxGeometry x="60" y="990" width="1030" height="260" as="geometry" />
+</mxCell>
+<mxCell id="st4s0" value="压后取心&#xa;获取含裂缝岩心" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st4">
+  <mxGeometry x="30" y="58" width="248" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st4s1" value="紫外光源照射&#xa;（波长 365 nm）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st4">
+  <mxGeometry x="302" y="58" width="326" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st4e1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st4" source="st4s0" target="st4s1">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st4s2" value="观察 / 拍照记录&#xa;裂缝壁面荧光分布" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="st4">
+  <mxGeometry x="652" y="58" width="326" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st4e2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st4" source="st4s1" target="st4s2">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="st4s3" value="确定压裂液&#xa;实际波及范围" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;opacity=65;strokeWidth=1.5;" vertex="1" parent="st4">
+  <mxGeometry x="1002" y="58" width="248" height="90" as="geometry" />
+</mxCell>
+<mxCell id="st4e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#A0A0A0;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="st4" source="st4s2" target="st4s3">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="s4n" value="绿色荧光信号
+~520 nm 特征发射" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#4A9C7F;fontStyle=1;" vertex="1" parent="st4">
+  <mxGeometry x="830" y="1032" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="kbox" value="核心创新：利用压裂施工自身「注入 → 关井 → 返排」工序时序驱动，无需额外添加触发剂，实现「分散态 → 锚定态」自发功能切换" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=3;opacity=65;strokeWidth=2;" vertex="1" parent="1">
+  <mxGeometry x="180" y="1260" width="790" height="48" as="geometry" />
+</mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

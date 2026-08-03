@@ -1,0 +1,39 @@
+=== [125] ===
+3.7 Tracer Breakthrough Modeling and Production Rate Quantification
+
+=== [126] ===
+The tracer breakthrough curve recorded at the wellhead reflects the superposition of two distinct transport processes: the advective-dispersive migration of the tracer slug accumulated in the proppant pack during the shut-in period, and the sustained, matrix-diffusion-controlled release of residual 
+
+=== [142] ===
+The model was fitted to the single-phase tracer breakthrough curve (Figure 3-8b) and the fitted parameters are summarized in Table 3-3. The model achieves R2 = 0.9939 with RMSE = 0.0210 and residuals randomly distributed within +/- 2 sigma across the full time range. The fitted effective flow rate Q
+
+=== [143] ===
+Table 3-3 Fitted Parameters of the Piecewise ADE Model and Derived Transport Properties
+
+=== [145] ===
+Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting curve of ESP-T tracer release model (c) Comparison of pump set flow rate and fitted flow rate
+
+=== [146] ===
+The fitted parameters carry physical significance beyond the quality of the fit. The independently recovered Q, MRT, and Pe all agree with values predicted from the known pump setting, flow-path geometry, and the non-Fickian release kinetics characterized in Section 3.6. This multi-parameter consist
+
+=== [148] ===
+The single-phase analysis establishes the model's ability to recover the oil production rate from the tracer signal. To evaluate whether this capability extends to two-phase flow, steady-state core displacement experiments were conducted at three oil-water ratios (OWR = 4:1, 1:1, 1:4) and four total
+
+=== [149] ===
+Figure 3-9(a) shows the tracer concentration as a function of total two-phase flow rate and OWR. Across all tested conditions, the tracer concentration decreases systematically with increasing total flow rate, reflecting dilution: at higher flow rates the residence time of each fluid element in the 
+
+=== [151] ===
+Because concentration alone conflates the tracer release rate with the total flow-driven dilution, we introduce the tracer flux FO (mass per unit time), defined as the product of tracer concentration and the oil-phase volumetric flow rate at the sampling point. FO equals the mass of tracer released 
+
+=== [153] ===
+Figure 3-9(c) compares the normalized FO with the actual oil-phase flow rate across the three OWR values at a fixed total flow rate of 0.1 mL/min. Normalization used the steady-state FO from single-phase oil displacement (3.187 micro-g/min) as the reference. The close agreement between normalized FO
+
+=== [154] ===
+Taken together, the single-phase and two-phase results demonstrate a practical workflow for tracer-based production monitoring. The effective flow rate Q, independently validated against the pump setting, serves as a physically grounded proxy for the per-interval oil production rate. Because the mod
+
+=== [155] ===
+Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with oil-water ratio and total two-phase flow (c) Comparison of tracer flux and actual flow under different oil-water ratios at a flow rate of 0.1 mL/min
+
+=== [156] ===
+In field practice, ESP-T particles doped with distinct metal elements (e.g., Mn, Zn, Cu) for each fracture stage are co-injected with the proppant during hydraulic fracturing, enabling simultaneous multi-stage deployment in a single well. The model provides several actionable inputs for operations. 
+

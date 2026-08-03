@@ -1,0 +1,13 @@
+=== INTRO PARA 5 ===
+Here we address this dual gap by (i) developing a piecewise advection-dispersion model with smooth tanh transition that quantitatively links tracer release kinetics to per-interval oil production rates, and (ii) validating this model using a purpose-designed oleophilic tracer proppant (ESP-T) fabricated by encapsulating stearic acid-modified nano-Fe3O4@SA within an epoxy resin matrix via emulsion 
+
+=== REF FIXES SAMPLE ===
+[REF 173] [8]	BARATI R, LIANG J T. A review of fracturing fluid systems used for hydraulic fracturing of oil and gas wells [J]. J Appl Polym Sci, 2014, 131(16): 40735.
+[REF 177] [12]	SILVA M, STRAY H, BJøRNSTAD T. Stability assessment of PITT tracer candidate compounds – The case of pyrazines [J]. Journal of Petroleum Science and Engineering, 2019, 182: 106269.
+[REF 180] [15]	ZHAO B, PANTHI K, MOHANTY K K. Tracer eluting proppants for hydraulic fracture characterization [J]. Journal of Petroleum Science and Engineering, 2020, 190: 107048.
+[REF 181] [16]	ZHOU Y, LIU H, GAO J, et al. Coated proppants with self-suspension and tracer slow-release functions [J]. Journal of Petroleum Science and Engineering, 2022, 208: 109645.
+[REF 183] [18]	LI N, CHENG Q, GONG Z, et al. Release kinetics of rare earth tracer from polymer-coated proppants for hydraulic fracture analysis [J]. Geoenergy Science and Engineering, 2023, 227: 211782.
+[REF 184] [19]	GONG Z, LI N, KANG W, et al. Novel oleophilic tracer-slow-released proppant for monitoring the oil production contribution [J]. Fuel, 2024, 364: 130945.
+[REF 187] [22]	GUO X, WEI K, NI T, et al. Preparation and performance analysis of polyethylene glycol/epoxy resin composite phase change material [J]. Journal of Energy Storage, 2024, 88: 111525.
+[REF 190] [25]	SABINS F, APBLETT A, SHAFER R, et al. Epoxy Resin Exhibits Long-Term Durability and Chemical Stability as a Well Sealant [C]. SPE-204374-MS, SPE International Conference on Oilfield Chemistry, The Woodlands, Texas, 2021.
+[REF 193] [28]	GONG Z, LI N, QIN M, et al. Magnetic nano-Fe₃O₄-based oleophilic tracer for stability studies of nano-tracer in oilfields condition [J]. Colloids and Surfaces A: Physicochemical and Engineering Aspects, 2024, 683: 133085.

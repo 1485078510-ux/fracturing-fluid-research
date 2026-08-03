@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="drawio" version="26.0.0">
+  <diagram name="Page-1">
+    <mxGraphModel dx="1600" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="860" math="0" shadow="0" background="#FFFFFF">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="tt" value="图1  改性稀土铝酸盐荧光粉核壳结构及功能切换示意图" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=18;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="180" y="8" width="940" height="36" as="geometry" />
+</mxCell>
+<mxCell id="pa" value="a" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=15;fontColor=#3A7CB8;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="30" y="62" width="36" height="32" as="geometry" />
+</mxCell>
+<mxCell id="pat" value="颗粒核壳截面结构" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="72" y="64" width="350" height="30" as="geometry" />
+</mxCell>
+<mxCell id="peg1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=85;" vertex="1" parent="1">
+  <mxGeometry x="80" y="130" width="480" height="480" as="geometry" />
+</mxCell>
+<mxCell id="peg2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=80;" vertex="1" parent="1">
+  <mxGeometry x="110" y="160" width="420" height="420" as="geometry" />
+</mxCell>
+<mxCell id="peg3" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=75;" vertex="1" parent="1">
+  <mxGeometry x="125" y="175" width="390" height="390" as="geometry" />
+</mxCell>
+<mxCell id="kh1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=85;" vertex="1" parent="1">
+  <mxGeometry x="135" y="185" width="370" height="370" as="geometry" />
+</mxCell>
+<mxCell id="kh2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=80;" vertex="1" parent="1">
+  <mxGeometry x="155" y="205" width="330" height="330" as="geometry" />
+</mxCell>
+<mxCell id="kh3" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=75;" vertex="1" parent="1">
+  <mxGeometry x="170" y="220" width="300" height="300" as="geometry" />
+</mxCell>
+<mxCell id="core1" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#A0A0A0;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=90;" vertex="1" parent="1">
+  <mxGeometry x="180" y="230" width="280" height="280" as="geometry" />
+</mxCell>
+<mxCell id="core2" value="" style="ellipse;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#A0A0A0;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=0;opacity=85;" vertex="1" parent="1">
+  <mxGeometry x="210" y="260" width="220" height="220" as="geometry" />
+</mxCell>
+<mxCell id="c1" value="SrAl₂O₄" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="240" y="390" width="160" height="32" as="geometry" />
+</mxCell>
+<mxCell id="c2" value="Eu²⁺,Dy³⁺基体" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=11;fontColor=#7A7A7A;fontStyle=0;" vertex="1" parent="1">
+  <mxGeometry x="240" y="420" width="160" height="22" as="geometry" />
+</mxCell>
+<mxCell id="l1_l" value="KH550" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#3A7CB8;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="405" y="296" width="100" height="24" as="geometry" />
+</mxCell>
+<mxCell id="l2_l" value="PEG4000" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#4A9C7F;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="460" y="125" width="100" height="24" as="geometry" />
+</mxCell>
+<mxCell id="d1" value="" style="endArrow=none;html=1;strokeColor=#4A9C7F;strokeWidth=1.0;dashed=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="350" y="222" as="sourcePoint" />
+    <mxPoint x="620" y="100" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="d2" value="" style="endArrow=none;html=1;strokeColor=#3A7CB8;strokeWidth=1.0;dashed=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="315" y="335" as="sourcePoint" />
+    <mxPoint x="620" y="162" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="d3" value="" style="endArrow=none;html=1;strokeColor=#D4743C;strokeWidth=1.0;dashed=1;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="388" y="510" as="sourcePoint" />
+    <mxPoint x="620" y="415" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="r1" value="PEG4000 物理屏蔽层&#xa;空间位阻效应 · 构象熵排斥&#xa;渗透排斥 · 排除体积效应" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=12;fontColor=#4A9C7F;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="632" y="72" width="320" height="56" as="geometry" />
+</mxCell>
+<mxCell id="r2" value="KH550 硅烷偶联剂化学键合层&#xa;Si−O−Al 共价键锚固于基体表面&#xa;为外层PEG提供有机亲和界面" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=12;fontColor=#3A7CB8;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="632" y="148" width="320" height="56" as="geometry" />
+</mxCell>
+<mxCell id="r3" value="−NH₂ 活性氨基官能团（预置位点）&#xa;PEG脱附后暴露于水相&#xa;与砂岩 Si−OH 发生多模式锚定" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=12;fontColor=#D4743C;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="632" y="400" width="320" height="55" as="geometry" />
+</mxCell>
+<mxCell id="sep1" value="" style="endArrow=none;html=1;strokeColor=#F5F5F5;strokeWidth=1.5;" edge="1" parent="1">
+  <mxGeometry relative="1" as="geometry">
+    <mxPoint x="40" y="635" as="sourcePoint" />
+    <mxPoint x="1260" y="635" as="targetPoint" />
+  </mxGeometry>
+</mxCell>
+<mxCell id="pb" value="b" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=15;fontColor=#4A9C7F;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="30" y="658" width="36" height="32" as="geometry" />
+</mxCell>
+<mxCell id="pbt" value="颗粒−岩石界面化学键合细节（放大示意）" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="72" y="660" width="420" height="30" as="geometry" />
+</mxCell>
+<mxCell id="rs" value="砂岩裂缝壁面  ——  Si−OH 硅羟基密集分布" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#A0A0A0;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="70" y="700" width="780" height="40" as="geometry" />
+</mxCell>
+<mxCell id="oh0" value="–OH" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="130" y="688" width="40" height="18" as="geometry" />
+</mxCell>
+<mxCell id="oh1" value="–OH" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="230" y="688" width="40" height="18" as="geometry" />
+</mxCell>
+<mxCell id="oh2" value="–OH" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="360" y="688" width="40" height="18" as="geometry" />
+</mxCell>
+<mxCell id="oh3" value="–OH" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="490" y="688" width="40" height="18" as="geometry" />
+</mxCell>
+<mxCell id="oh4" value="–OH" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="620" y="688" width="40" height="18" as="geometry" />
+</mxCell>
+<mxCell id="oh5" value="–OH" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#A0A0A0;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="740" y="688" width="40" height="18" as="geometry" />
+</mxCell>
+<mxCell id="km1" value="KH550 硅烷偶联剂" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="140" y="610" width="160" height="58" as="geometry" />
+</mxCell>
+<mxCell id="km2" value="KH550 硅烷偶联剂" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="370" y="610" width="160" height="58" as="geometry" />
+</mxCell>
+<mxCell id="km3" value="KH550 硅烷偶联剂" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F9;strokeColor=#3A7CB8;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="610" y="610" width="160" height="58" as="geometry" />
+</mxCell>
+<mxCell id="bo1" value="Si−O−Al 共价键" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#3A7CB8;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="160" y="668" width="110" height="24" as="geometry" />
+</mxCell>
+<mxCell id="bo2" value="Si−O−Al 共价键" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#3A7CB8;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="390" y="668" width="110" height="24" as="geometry" />
+</mxCell>
+<mxCell id="bo3" value="Si−O−Al 共价键" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#3A7CB8;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="630" y="668" width="110" height="24" as="geometry" />
+</mxCell>
+<mxCell id="nh1" value="↑ −NH₂" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#D4743C;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="200" y="572" width="60" height="30" as="geometry" />
+</mxCell>
+<mxCell id="nh2" value="↑ −NH₂" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#D4743C;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="430" y="572" width="60" height="30" as="geometry" />
+</mxCell>
+<mxCell id="nh3" value="↑ −NH₂" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#D4743C;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="670" y="572" width="60" height="30" as="geometry" />
+</mxCell>
+<mxCell id="pg1" value="PEG4000 链段 ~~~~~~~~" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=12;fontColor=#4A9C7F;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="130" y="528" width="200" height="32" as="geometry" />
+</mxCell>
+<mxCell id="pg2" value="PEG4000 链段 ~~~~~~~~" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=12;fontColor=#4A9C7F;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="360" y="528" width="200" height="32" as="geometry" />
+</mxCell>
+<mxCell id="pg3" value="PEG4000 链段 ~~~~~~~~" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=12;fontColor=#4A9C7F;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="600" y="528" width="200" height="32" as="geometry" />
+</mxCell>
+<mxCell id="am" value="锚定机制:&#xa;① 静电吸引 (−NH₃⁺ ↔ −SiO⁻)&#xa;② 氢键 (NH ↔ O−Si)&#xa;③ 可能的 Si−O−Si / Si−N 化学缩合" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=11;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="800" y="530" width="470" height="90" as="geometry" />
+</mxCell>
+<mxCell id="pc" value="c" style="text;html=1;align=center;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=15;fontColor=#D4743C;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="30" y="775" width="36" height="32" as="geometry" />
+</mxCell>
+<mxCell id="pct" value="分散态 → 锚定态 功能切换（利用压裂施工时序驱动）" style="text;html=1;align=left;verticalAlign=middle;fontFamily=Microsoft YaHei;fontSize=14;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="72" y="777" width="550" height="30" as="geometry" />
+</mxCell>
+<mxCell id="ds" value="分散态（注入阶段）&#xa;PEG 空间位阻稳定悬浮" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EDF6F2;strokeColor=#4A9C7F;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="80" y="815" width="230" height="62" as="geometry" />
+</mxCell>
+<mxCell id="sa" value="关井破胶&#xa;PEG脱附降解" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;strokeColor=#D4743C;strokeWidth=2;fontFamily=Microsoft YaHei;fontSize=10;fontColor=#D4743C;fontStyle=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ds" target="as">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="as" value="锚定态（关井破胶后）&#xa;−NH₂ 与 Si−OH 多模式锚定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FDF1E8;strokeColor=#D4743C;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=13;fontColor=#2A2A2A;fontStyle=1;" vertex="1" parent="1">
+  <mxGeometry x="400" y="815" width="250" height="62" as="geometry" />
+</mxCell>
+<mxCell id="tr" value="触发条件: 过硫酸铵 (NH₄)₂S₂O₈ 氧化&#xa;+ 储层温度 60−150 °C + 6−48 h" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#A0A0A0;strokeWidth=0.8;fontFamily=Microsoft YaHei;fontSize=11;fontColor=#2A2A2A;fontStyle=3;" vertex="1" parent="1">
+  <mxGeometry x="700" y="815" width="300" height="62" as="geometry" />
+</mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

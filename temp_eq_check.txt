@@ -1,0 +1,23 @@
+=== [126] ===
+A tracer breakthrough curve carries more information than a single concentration value. Two processes contribute to the shape observed at the wellhead. The first is straightforward: tracer that accumulated in the proppant pack during shut-in is swept out when the well opens, producing a pulse that rises and falls as the slug passes the sampling point. The second is slower and less obvious: residual tracer continues to diffuse out of the epoxy matrix long after the main slug has passed, feeding a sustained, low-level signal into the produced oil. These two contributions overlap in time, and neither can be isolated by simply reading the concentration curve.
+
+We separate them by modeling the transport from first principles. The one-dimensional advection-dispersion equation, dC/dt + v dC/dx = D d2C/dx2, governs the evolution of tracer concentration along the production tubing, with v = 4Q/(pi d2) and D = alpha v. For the shut-in slug the classical instantaneous-injection solution [29] gives a Gaussian pulse: C_rise = (M/A)/sqrt(4 pi D t) exp[-(x - v t)2 / (4 D t)]. For the sustained release the continuous-source solution gives an erfc form: C_fall = (C0/2) erfc[(x - v t) / sqrt(4 D t)]. We blend the two with a tanh weight, w(t) = 1/2 [1 + tanh((t - t0)/sigma)], which shifts smoothly from the pulse-dominated early period to the diffusion-dominated tail. The full model, C(t) = cb + w(t) C_rise + [1 - w(t)] C_fall, is Eq. (2). The parameter sigma is fixed at the sampling interval (4 min); the remaining six parameters are discussed below.
+
+=== [133] ===
+where:
+
+=== [134] ===
+cb = tail-plateau concentration (dimensionless);
+
+=== [135] ===
+A, a = amplitude coefficients for the shut-in slug (A) and sustained matrix release (a);
+
+=== [136] ===
+α = longitudinal dispersivity (cm);
+
+=== [137] ===
+Q = effective oil-phase flow rate (cm³/min);
+
+=== [138] ===
+t₀ = crossover center time (min);
+

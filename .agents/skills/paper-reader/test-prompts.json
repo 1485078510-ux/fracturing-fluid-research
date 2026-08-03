@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我读一下这篇论文，提取关键信息：这篇论文研究了什么？用了什么方法？主要发现是什么？研究对象是谁？",
+    "expected": "应识别论文类型，提取PICO要素（population/intervention/comparison/outcome），列出key_claims及其evidence和strength"
+  },
+  {
+    "id": 2,
+    "prompt": "这是一篇系统综述，帮我提取它搜索了哪些数据库，最终纳入了多少篇研究，主要结论是什么",
+    "expected": "应使用Review Framework模板，提取databases_searched、number_of_studies_reviewed、key_findings、identified_gaps"
+  },
+  {
+    "id": 3,
+    "prompt": "帮我比较这篇论文的方法论和发现，它声称methodology有创新，我想知道具体创新在哪，在哪些benchmark上测试了，结果如何",
+    "expected": "应使用Methods Framework模板，提取proposed_method/key_innovation/evaluation/benchmarks/metrics/results/comparisons"
+  }
+]

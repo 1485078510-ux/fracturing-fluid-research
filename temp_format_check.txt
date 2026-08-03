@@ -1,0 +1,40 @@
+Empty paragraphs: 15
+Single-run paragraphs: 36
+Zero-run paragraphs (with text): 0
+Multi-run (>3) paragraphs: 106
+  P8: 31 runs, text=[现有裂缝诊断技术按其测量原理可分为间接法和直接法两大类。间接法主要包括：（1）微地震监测，通过反演压裂诱发声发射事件的时...]
+  P10: 10 runs, text=[荧光示踪技术为上述问题提供了一条可行的技术路径。Takeuchi等（2025）采用可凝固荧光树脂作为压裂介质，通过套取岩...]
+  P11: 11 runs, text=[Guryanov等（2019）开发的量子点荧光聚合物微球（商业名GeoSplit系统）已在分段压裂产液剖面监测中实现现场...]
+  P12: 21 runs, text=[稀土铝酸盐长余辉荧光粉——以SrAl₂O₄:Eu²⁺,Dy³⁺为典型代表——是Matsuzawa等（1996）首次报道的...]
+  P13: 13 runs, text=[第一，分散稳定性问题。稀土铝酸盐荧光粉密度大（约3.6~4.0 g/cm³），在低粘度水基流体中沉降速率快；其表面具有较...]
+  P14: 20 runs, text=[第二，水解稳定性问题。SrAl₂O₄基质在水性环境中（特别是在高温和酸性/碱性条件下）易发生水合反应，导致晶格破坏和荧光...]
+  P15: 14 runs, text=[第三，也是最为核心的功能矛盾：压裂液注入阶段要求荧光粉在胍胶基液中保持均匀稳定悬浮（分散态），以确保随携砂液有效运移至裂...]
+  P16: 23 runs, text=[基于上述分析，本领域迫切需要开发一种同时满足以下条件的新型荧光示踪技术方案：（a）与常规水力压裂工艺（胍胶基液、硼交联剂...]
+  P19: 11 runs, text=[本发明的目的在于克服现有技术的上述不足，提供一种与常规水力压裂工艺兼容、能够在压裂液破胶返排全过程中保持荧光信号完整性、...]
+  P25: 24 runs, text=[所述稀土铝酸盐长余辉荧光粉基体为SrAl₂O₄:Eu²⁺,Dy³⁺、Sr₄Al₁₄O₂₅:Eu²⁺,Dy³⁺或CaAl₂...]
+  P27: 26 runs, text=[内层为硅烷偶联剂化学键合层，所述硅烷偶联剂含有可与荧光粉表面羟基发生缩合反应的水解性基团（烷氧基），以及可为后续功能切换...]
+  P28: 23 runs, text=[外层为聚乙二醇（PEG）物理屏蔽层，所述聚乙二醇通过氢键、范德华力和/或疏水相互作用物理吸附于内层硅烷偶联剂表面，在注入...]
+  P31: 33 runs, text=[步骤（1）硅烷偶联剂预处理：将稀土铝酸盐荧光粉基体分散于无水乙醇-去离子水混合溶剂（体积比90:10~98:2，优选95...]
+  P32: 29 runs, text=[步骤（2）PEG物理包覆：将步骤（1）得到的硅烷偶联剂化学键合荧光粉分散于去离子水中，加入占荧光粉基体质量1.0~10....]
+  P33: 16 runs, text=[进一步地，所述制备方法还包括步骤（3）：在使用时将步骤（2）得到的改性稀土铝酸盐荧光粉与螯合剂和非离子表面活性剂混合——...]
+
+=== Section headers ===
+P2: [说明书] (1 runs, bold=True)
+P4: [技术领域] (1 runs, bold=True)
+P6: [背景技术] (1 runs, bold=True)
+P17: [发明内容] (1 runs, bold=True)
+P18: [发明目的] (1 runs, bold=True)
+P22: [技术方案] (1 runs, bold=True)
+P53: [有益效果] (1 runs, bold=True)
+P60: [附图说明] (1 runs, bold=True)
+P70: [具体实施方式] (1 runs, bold=True)
+P121: [权利要求书] (1 runs, bold=True)
+P150: [摘要] (1 runs, bold=True)
+P154: [摘要附图] (1 runs, bold=True)
+
+=== Paragraphs with special chars (check formatting) ===
+Paragraphs with subscript/superscript chars in <=2 runs: 0
+
+=== Overall ===
+Total paragraphs: 159
+Total non-empty paragraphs: 144

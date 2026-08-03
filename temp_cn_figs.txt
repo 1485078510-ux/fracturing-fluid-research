@@ -1,0 +1,17 @@
+[33]: Figure 2-1 Schematic illustration for the preparation of stearic acid-modified metal-doped Fe₃O₄ nan
+[39]: Figure 2-2 Schematic illustration for the preparation of Fe₃O₄-encapsulated epoxy resin proppants
+[52]: Figure 2-3 Schematic diagram of the tracer release apparatus at different temperatures
+[58]: Figure 2-4 Schematic diagram of the single-phase oil flow experimental apparatus
+[63]: Figure 2-5 Schematic diagram of the oil–water two-phase flow experimental apparatus
+[76]: Figure 3-1 SEM images of epoxy microspheres and Fe₃O₄@epoxy proppants. The epoxy microspheres are on
+[80]: Figure 3-2 Mapping images of Fe₃O₄@epoxy resin proppant. (a) SEM image of Fe₃O₄@epoxy resin proppant
+[89]: Figure 3-3 TGA/DTG and DSC curves of Fe₃O₄@epoxy resin proppant
+[96]: Figure 3-4 (a) WCA of epoxy resin patch (b) WCA of patch after doping with nano-Fe₃O₄@SA
+[102]: Figure 3-5 Bulk density and apparent density of epoxy microspheres and ESP-T
+[107]: Figure 3-6 Oil-water permeability test of epoxy resin microspheres and ESP-T
+[108]: (a)(b) before and after water passing through epoxy resin microspheres, (c)(d) before and after oil 
+[110]: Table 3-1 Oil and Water Passage Time
+[129]: Figure 3-7 (a) Release curves of ESP-T at different temperatures (b) K-P model fitting curves (c) Re
+[131]: Table 3-2 Fitting Parameters of K-P Model
+[149]: Table 3-3 Fitted Parameters of the Piecewise ADE Model and Derived Transport Properties
+[151]: Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting cur

@@ -1,0 +1,18 @@
+=== ABSTRACT ===
+Abstract: Per-interval oil production monitoring is essential for evaluating stimulation effectiveness in unconventional reservoirs, yet existing tracer technologies lack both a quantitative transport model linking release kinetics to production rates and a durable oil-phase monitoring capability. Here we address this dual gap by (i) developing a piecewise advection-dispersion model with smooth tanh transition that decomposes tracer breakthrough curves into a Gaussian pulse component (shut-in accumulation slug) and an erfc tailing component (matrix-diffusion-controlled sustained release), and (ii) validating this model using an oleophilic tracer proppant (ESP-T) fabricated by encapsulating stearic acid-modified nano-Fe₃O₄ (nano-Fe₃O₄@SA) within an epoxy resin matrix via emulsion polymerization. The model achieves R² = 0.9939 with the erfc tail accounting for 47% of the integrated tracer signal, demonstrating that sustained matrix-diffusion-controlled release dominates long-term monitoring. The fitted flow rate (0.46 mL/min) agrees closely with the pump-set rate (0.50 mL/min, 8% relative error), and the Peclet number (Pe = 0.934) independently corroborates the non-Fickian release mechanism identified via Korsmeyer-Peppas kinetics (n = 0.45-0.85, R² > 0.90). ESP-T exhibits sphericity exceeding 0.9, thermal stability up to 357.27 °C, and a water contact angle of 104.6° (versus 72.3° for neat epoxy), yielding a water-resistant, oil-permeable transport characteristic with oil filtration time reduced by 66.1%. Under steady-state two-phase flow, tracer flux quantitatively tracks oil-phase production rates across varying oil-water ratios. This coupled experimental-modeling framework integrates fracture propping with long-term production allocation, offering a broadly applicable platform for unconventional reservoir management.
+
+=== INTRO FINAL ===
+Here we address this dual gap. First, we develop a piecewise advection-dispersion (ADE) model with smooth hyperbolic-tangent (tanh) transition that decomposes the tracer breakthrough curve into two physically distinct components: a Gaussian pulse representing the advective-dispersive transport of the tracer slug accumulated during the well shut-in period, and an erfc tail representing the sustained, matrix-diffusion-controlled release of residual tracer from the polymer carrier. This decomposition establishes a direct quantitative relationship between the measured tracer concentration history and the per-interval oil production rate, transforming parameters that would otherwise remain as empirical fitting coefficients into physically interpretable quantities. Second, to validate this model we designed and synthesized an oleophilic tracer proppant (ESP-T) in which stearic acid-modified nano-Fe3O4 (nano-Fe3O4@SA) is encapsulated within an epoxy resin matrix via emulsion polymerization. We systematically characterize ESP-T's microstructure, thermal stability, wettability, oil-water transport selectivity, and mechanical integrity; quantify its temperature-dependent release kinetics via the Korsmeyer-Peppas model; and validate the integrated material-model framework through single-phase and steady-state two-phase core displacement experiments. Together, this work establishes a coupled experimental-modeling methodology that translates sustained tracer release signals into quantitative per-interval production allocation—a broadly applicable framework for unconventional reservoir management.
+
+=== CONCLUSION [157] ===
+4. Conclusions
+
+=== CONCLUSION [159] ===
+
+
+=== CONCLUSION [161] ===
+
+
+=== CONCLUSION [163] ===
+
+

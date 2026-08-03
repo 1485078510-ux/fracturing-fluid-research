@@ -1,0 +1,2 @@
+[142]: The fitted curve is shown in Figure 3-8(b) and the fitted parameters are listed in Table 3-3. The model achieves R² = 0.9939 and RMSE = 0.0210, with residuals randomly distributed within ±2σ across th
+[143]: The fitted parameters carry several physically significant implications that extend beyond empirical curve-fitting. First, the Peclet number Pe = x/alpha = 0.934 places the transport regime precisely 

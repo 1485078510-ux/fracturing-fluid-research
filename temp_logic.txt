@@ -1,0 +1,33 @@
+=== [11] ===
+Among available diagnostic techniques, tracer-based methods offer a uniquely practical route to per-interval production monitoring: they require no permanent downhole instrumentation, can be deployed during routine fracturing operations, and provide direct chemical evidence of fluid contributions from each labeled interval. Conventional oil-soluble chemical tracers, however, exhibit limited compat
+
+=== [13] ===
+Compounding the modeling gap, the materials used in existing tracer proppants carry their own limitations. Coated proppants are dense, making them difficult to transport in fracturing fluids, and once the coating dissolves the tracer signal ends. Pure PS microspheres enable oil-phase tracer incorporation but lack the thermal stability and mechanical strength required under downhole conditions [27-
+
+=== [15] ===
+Here we address both gaps. We develop a piecewise advection-dispersion (ADE) model that decomposes the tracer breakthrough curve into two components joined by a smooth tanh transition. The Gaussian pulse component captures the advective-dispersive transport of the tracer slug accumulated during shut-in; the erfc tail component captures the sustained, matrix-diffusion-controlled release of residual
+
+=== [105] ===
+Reservoir temperature increases with depth, and because the release of tracer from the epoxy matrix is a diffusion-controlled process, temperature directly affects the release rate. Figure 3-7(a) shows the release profiles of ESP-T in dodecane at 30, 60, 90, and 120 degC, plotted as normalized concentration C/C0 versus time. Release accelerates with temperature at all time points. The release rate
+
+=== [116] ===
+The K-P model was fitted to the release data at each temperature (Figure 3-7b, Table 3-2). The rate constant K increases systematically from 0.055 at 30 degC to 0.196 at 120 degC, consistent with the thermally activated nature of both diffusion and polymer relaxation. All fitted n values fall within 0.45-0.85, the range corresponding to anomalous transport co-governed by Fickian diffusion and Case
+
+=== [126] ===
+A tracer breakthrough curve carries more information than a single concentration value. Two processes contribute to the shape observed at the wellhead. The first is straightforward: tracer that accumulated in the proppant pack during shut-in is swept out when the well opens, producing a pulse that rises and falls as the slug passes the sampling point. The second is slower and less obvious: residua
+
+=== [142] ===
+
+
+=== [146] ===
+A fractured well does not produce single-phase oil indefinitely. Formation water eventually breaks through, and the produced fluid becomes a mixture whose oil fraction varies from stage to stage and from month to month. The question is whether the analysis developed above, tested so far on single-phase flow, remains useful when both oil and water are moving through the proppant pack. We examined t
+
+=== [151] ===
+
+
+=== [153] ===
+
+
+=== [154] ===
+Several boundaries of the present study should be noted. The model assumes one fractured interval with a uniform proppant pack; real wells have multiple intervals whose tracer signals may overlap, and proppant distribution within a fracture is seldom uniform. The FO calibration derives from steady-state experiments; start-up, shut-in, and rapid drawdown may produce transient conditions where the F
+

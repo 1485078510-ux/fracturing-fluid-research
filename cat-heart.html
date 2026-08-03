@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>小猫比心</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0, #f48fb1);
+    font-family: sans-serif;
+    overflow: hidden;
+  }
+
+  /* 背景漂浮粒子 */
+  .bg-particles {
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 0;
+  }
+  .bg-particle {
+    position: absolute;
+    font-size: 20px;
+    animation: bgFloat linear infinite;
+    opacity: 0.5;
+  }
+  @keyframes bgFloat {
+    0%   { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+  }
+
+  .link {
+    display: inline-block;
+    padding: 16px 44px;
+    font-size: 22px;
+    color: #fff;
+    background: linear-gradient(135deg, #e91e63, #ff6f91);
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 20px rgba(233, 30, 99, 0.4);
+    user-select: none;
+    z-index: 1;
+    animation: btnPulse 2s ease-in-out infinite;
+  }
+  @keyframes btnPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(233,30,99,0.4); }
+    50%      { box-shadow: 0 4px 40px rgba(233,30,99,0.7); }
+  }
+  .link:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 35px rgba(233, 30, 99, 0.7);
+  }
+
+  /* 遮罩 */
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+  }
+  .overlay.show { display: flex; }
+
+  .card {
+    background: linear-gradient(180deg, #fff 0%, #fff5f7 100%);
+    border-radius: 28px;
+    padding: 50px 60px 40px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible;
+  }
+  @keyframes popIn {
+    from { transform: scale(0.3) rotate(-5deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 14px; right: 20px;
+    font-size: 30px;
+    color: #bbb;
+    cursor: pointer;
+    background: none; border: none;
+    transition: all 0.2s;
+    z-index: 10;
+  }
+  .close-btn:hover { color: #333; transform: rotate(90deg); }
+
+  /* ========== 小猫区域 ========== */
+  .cat-scene {
+    position: relative;
+    width: 260px; height: 280px;
+    margin: 0 auto;
+  }
+
+  /* 尾巴 —— 摇来摇去 */
+  .tail {
+    position: absolute;
+    bottom: 70px; right: -8px;
+    width: 60px; height: 16px;
+    background: #ffb74d;
+    border-radius: 50%;
+    transform-origin: 100% 50%;
+    animation: tailWag 0.6s ease-in-out infinite alternate;
+    z-index: 0;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+  .tail::after {
+    content: '';
+    position: absolute;
+    right: -8px; top: -6px;
+    width: 28px; height: 28px;
+    background: #ffb74d;
+    border-radius: 50%;
+    box-shadow: inset -2px -2px 4px rgba(0,0,0,0.1);
+  }
+  @keyframes tailWag {
+    0%   { transform: rotate(15deg); }
+    100% { transform: rotate(-15deg); }
+  }
+
+  /* 身体 */
+  .body {
+    position: absolute;
+    bottom: 10px; left: 50%;
+    transform: translateX(-50%);
+    width: 110px; height: 90px;
+    background: #ffb74d;
+    border-radius: 50% 50% 45% 45%;
+    animation: bodyBounce 3s ease-in-out infinite;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  .body::after {
+    content: '';
+    position: absolute;
+    bottom: 8px; left: 50%;
+    transform: translateX(-50%);
+    width: 60px; height: 35px;
+    background: #fff3e0;
+    border-radius: 50%;
+  }
+  @keyframes bodyBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%      { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  /* 耳朵 */
+  .ear {
+    position: absolute;
+    top: 28px;
+    width: 0; height: 0;
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    border-bottom: 55px solid #ffb74d;
+    z-index: 0;
+  }
+  .ear.left  { left: 42px;  transform: rotate(-12deg); animation: earTwitchL 4s ease-in-out infinite; }
+  .ear.right { right: 42px; transform: rotate(12deg);  animation: earTwitchR 4s ease-in-out infinite; }
+  .ear::after {
+    content: '';
+    position: absolute;
+    top: 12px; left: -14px;
+    width: 0; height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-bottom: 38px solid #ffe0b2;
+  }
+  @keyframes earTwitchL {
+    0%, 90%, 100% { transform: rotate(-12deg); }
+    92% { transform: rotate(-20deg); }
+    95% { transform: rotate(-8deg); }
+  }
+  @keyframes earTwitchR {
+    0%, 90%, 100% { transform: rotate(12deg); }
+    92% { transform: rotate(20deg); }
+    95% { transform: rotate(8deg); }
+  }
+
+  /* 脸 */
+  .face {
+    position: absolute;
+    top: 48px; left: 50%;
+    transform: translateX(-50%);
+    width: 140px; height: 120px;
+    background: #ffb74d;
+    border-radius: 50%;
+    z-index: 1;
+    animation: faceTilt 4s ease-in-out infinite;
+  }
+  @keyframes faceTilt {
+    0%, 100% { transform: translateX(-50%) rotate(0deg); }
+    25%      { transform: translateX(-50%) rotate(2deg); }
+    75%      { transform: translateX(-50%) rotate(-2deg); }
+  }
+
+  /* 眼睛 —— 会左右看 */
+  .eye {
+    position: absolute;
+    top: 36px;
+    width: 20px; height: 24px;
+    background: #333;
+    border-radius: 50%;
+    animation: eyeLook 5s ease-in-out infinite;
+  }
+  .eye.left  { left: 34px; }
+  .eye.right { right: 34px; }
+  .eye::after {
+    content: '';
+    position: absolute;
+    top: 4px; left: 5px;
+    width: 7px; height: 7px;
+    background: #fff;
+    border-radius: 50%;
+  }
+  @keyframes eyeLook {
+    0%, 30%, 100% { transform: translateX(0); }
+    35%, 40% { transform: translateX(3px); }
+    42%, 50% { transform: translateX(-3px); }
+    55%, 60% { transform: translateX(0); }
+  }
+  /* 眨眼覆盖 */
+  .eyelid {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: transparent;
+    border-radius: 50%;
+    animation: eyelidBlink 4s ease-in-out infinite;
+  }
+  @keyframes eyelidBlink {
+    0%, 44%, 48%, 100% { box-shadow: none; }
+    46% { box-shadow: inset 0 -12px 0 0 #ffb74d; }
+  }
+
+  /* 鼻子 */
+  .nose {
+    position: absolute;
+    top: 56px; left: 50%;
+    transform: translateX(-50%);
+    width: 16px; height: 12px;
+    background: #f48fb1;
+    border-radius: 50%;
+    z-index: 2;
+  }
+
+  /* 嘴巴 —— 动态微笑 */
+  .mouth-wrap {
+    position: absolute;
+    top: 64px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .mouth {
+    width: 30px; height: 16px;
+    border-bottom: 3px solid #555;
+    border-radius: 0 0 50px 50px;
+    animation: mouthSmile 5s ease-in-out infinite;
+  }
+  @keyframes mouthSmile {
+    0%, 60%, 100% { border-radius: 0 0 50px 50px; height: 16px; }
+    65%, 75% { border-radius: 50px 50px 0 0; height: 12px; border-bottom: none; border-top: 3px solid #555; }
+  }
+
+  /* 胡须 */
+  .whisker {
+    position: absolute;
+    top: 52px;
+    width: 44px; height: 2px;
+    background: #999;
+    border-radius: 2px;
+  }
+  .whisker.l1 { left: -46px; transform: rotate(6deg);  }
+  .whisker.l2 { left: -44px; transform: rotate(-6deg); top: 60px; }
+  .whisker.r1 { right: -46px; transform: rotate(-6deg); }
+  .whisker.r2 { right: -44px; transform: rotate(6deg);  top: 60px; }
+
+  /* 前爪 —— 比心动作 */
+  .paws {
+    position: absolute;
+    bottom: 70px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 30px;
+  }
+  .paw {
+    width: 38px; height: 32px;
+    background: #ffb74d;
+    border-radius: 50% 50% 40% 40%;
+    position: relative;
+  }
+  .paw::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    width: 14px; height: 14px;
+    background: #ffe0b2;
+    border-radius: 50%;
+  }
+  .paw.left { animation: pawLeft 0.8s ease-in-out infinite; }
+  .paw.left::after  { left: 6px; }
+  .paw.right { animation: pawRight 0.8s ease-in-out infinite; }
+  .paw.right::after { right: 6px; }
+
+  @keyframes pawLeft {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50%      { transform: translateX(18px) rotate(-15deg); }
+  }
+  @keyframes pawRight {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50%      { transform: translateX(-18px) rotate(15deg); }
+  }
+
+  /* 爱心 —— 两爪之间冒出来 */
+  .heart {
+    position: absolute;
+    bottom: 85px; left: 50%;
+    transform: translateX(-50%);
+    width: 44px; height: 40px;
+    z-index: 4;
+    animation: heartBeat 0.7s ease-in-out infinite, heartGrow 1.5s ease-in-out infinite;
+  }
+  .heart::before,
+  .heart::after {
+    content: '';
+    position: absolute;
+    width: 24px; height: 38px;
+    background: #e91e63;
+    border-radius: 50px 50px 0 0;
+    top: 0;
+  }
+  .heart::before { left: 24px; transform: rotate(-45deg); transform-origin: 0 100%; }
+  .heart::after  { right: 24px; transform: rotate(45deg); transform-origin: 100% 100%; }
+  /* 高光 */
+  .heart-shine {
+    position: absolute;
+    top: 6px; left: 14px;
+    width: 10px; height: 6px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: rotate(-20deg);
+    z-index: 5;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    14% { transform: translateX(-50%) scale(1.25); }
+    28% { transform: translateX(-50%) scale(1); }
+    42% { transform: translateX(-50%) scale(1.18); }
+    56% { transform: translateX(-50%) scale(1); }
+  }
+  @keyframes heartGrow {
+    0%, 100% { bottom: 85px; }
+    50%      { bottom: 95px; }
+  }
+
+  /* 标题 */
+  .title {
+    font-size: 24px;
+    color: #e91e63;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: titleShine 2s ease-in-out infinite;
+  }
+  @keyframes titleShine {
+    0%, 100% { color: #e91e63; }
+    50%      { color: #ff6f91; }
+  }
+
+  /* 小星星环绕 */
+  .sparkle {
+    position: absolute;
+    font-size: 18px;
+    pointer-events: none;
+    animation: sparkleOrbit 3s linear infinite;
+  }
+  @keyframes sparkleOrbit {
+    0%   { transform: rotate(0deg) translateX(130px) rotate(0deg); opacity: 0; }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { transform: rotate(360deg) translateX(130px) rotate(-360deg); opacity: 0; }
+  }
+
+  /* 漂浮爱心 */
+  .floating-heart {
+    position: fixed;
+    font-size: 30px;
+    pointer-events: none;
+    animation: floatUp var(--dur) ease-out forwards;
+    z-index: 200;
+  }
+  @keyframes floatUp {
+    0%   { opacity: 1; transform: translateY(0) scale(0.5) rotate(0deg); }
+    50%  { opacity: 1; transform: translateY(calc(-50vh)) scale(1) rotate(180deg); }
+    100% { opacity: 0; transform: translateY(calc(-100vh)) scale(1.3) rotate(360deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- 背景漂浮粒子 -->
+<div class="bg-particles" id="bgParticles"></div>
+
+<a class="link" onclick="openCat(event)">🐱 点我看看 →</a>
+
+<div class="overlay" id="overlay" onclick="closeCat(event)">
+  <div class="card" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeCat()">✕</button>
+
+    <div class="cat-scene" id="catScene">
+      <!-- 环绕星星 -->
+      <span class="sparkle" style="top:40%;left:50%;animation-delay:0s">✨</span>
+      <span class="sparkle" style="top:40%;left:50%;animation-delay:0.75s">⭐</span>
+      <span class="sparkle" style="top:40%;left:50%;animation-delay:1.5s">💫</span>
+      <span class="sparkle" style="top:40%;left:50%;animation-delay:2.25s">✨</span>
+
+      <!-- 尾巴 -->
+      <div class="tail"></div>
+
+      <!-- 身体 -->
+      <div class="body"></div>
+
+      <!-- 耳朵 -->
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+
+      <!-- 脸 -->
+      <div class="face">
+        <div class="eye left"><div class="eyelid"></div></div>
+        <div class="eye right"><div class="eyelid"></div></div>
+        <div class="nose"></div>
+        <div class="mouth-wrap"><div class="mouth"></div></div>
+        <div class="whisker l1"></div>
+        <div class="whisker l2"></div>
+        <div class="whisker r1"></div>
+        <div class="whisker r2"></div>
+      </div>
+
+      <!-- 爱心 + 高光 -->
+      <div class="heart"><div class="heart-shine"></div></div>
+
+      <!-- 两只前爪 -->
+      <div class="paws">
+        <div class="paw left"></div>
+        <div class="paw right"></div>
+      </div>
+    </div>
+
+    <div class="title">小猫比心 ❤️</div>
+  </div>
+</div>
+
+<script>
+// === 背景粒子 ===
+(function initBg() {
+  const container = document.getElementById('bgParticles');
+  const emojis = ['❤️','💕','💗','🐾','🌸','💫','🐱','✨'];
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('span');
+    el.className = 'bg-particle';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + '%';
+    el.style.fontSize = (16 + Math.random() * 24) + 'px';
+    el.style.animationDuration = (8 + Math.random() * 15) + 's';
+    el.style.animationDelay = Math.random() * 15 + 's';
+    container.appendChild(el);
+  }
+})();
+
+// === 弹窗 ===
+function openCat(e) {
+  e.preventDefault();
+  document.getElementById('overlay').classList.add('show');
+  continuousHearts();
+}
+
+function closeCat(e) {
+  if (e) e.preventDefault();
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// === 持续飘爱心 ===
+let heartTimer = null;
+function continuousHearts() {
+  spawnBurst();
+  heartTimer = setInterval(spawnBurst, 1200);
+  // 监听关闭以停止
+  const overlay = document.getElementById('overlay');
+  const stop = () => {
+    clearInterval(heartTimer);
+    heartTimer = null;
+    overlay.removeEventListener('transitionend', stop);
+  };
+  // 用 MutationObserver 监听 overlay 隐藏
+  const obs = new MutationObserver(() => {
+    if (!overlay.classList.contains('show') && heartTimer) {
+      clearInterval(heartTimer);
+      heartTimer = null;
+    }
+  });
+  obs.observe(overlay, { attributes: true, attributeFilter: ['class'] });
+}
+
+function spawnBurst() {
+  const hearts = ['❤️','💕','💗','💖','💝','🐱','🌸','💫'];
+  for (let i = 0; i < 8; i++) {
+    setTimeout(() => {
+      const el = document.createElement('span');
+      el.className = 'floating-heart';
+      el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      el.style.setProperty('--dur', (2 + Math.random() * 3) + 's');
+      el.style.left = (25 + Math.random() * 50) + '%';
+      el.style.bottom = '10%';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3500);
+    }, i * 100);
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeCat();
+});
+</script>
+
+</body>
+</html>

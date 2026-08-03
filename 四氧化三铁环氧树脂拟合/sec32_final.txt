@@ -1,0 +1,8 @@
+[74] 3.2 Thermal Stability
+
+[75] As depicted in Figure 3-3, thermal analysis of the proppant reveals three distinct decomposition stages. The first stage (50–350 °C) corresponds to a minor weight loss of 5.70%, attributed to the removal of adsorbed surface water and residual ethanol employed as a diluent during synthesis. The second stage (350–400 °C) constitutes the primary thermal decomposition region, arising from cleavage of C–O–C and C–C bonds within the epoxy molecular chains and degradation of the cross-linked network, accompanied by the release of CO₂ and small-molecule hydrocarbons. The DTG curve indicates a maximum weight-loss rate at 357.27 °C, with a mass loss of 72.5%. In the third stage (>400 °C), the residual mass stabilizes; the remaining weight loss originates from oxidative combustion of carbonaceous residues formed in the second stage. The final residue comprises hollow glass microspheres, thermally stable nano-Fe₃O₄@SA, and a minor carbonaceous fraction from epoxy decomposition. The corresponding DSC profile confirms an endothermic decomposition initiating at 332.41 C and peaking at 357.27 C, consistent with the TGA/DTG results.
+
+[79] The initial decomposition temperature of ESP-T is 357.27 °C, which is far higher than the typical downhole temperature of oil–gas wells (80–150 °C, up to 200 °C for deep wells). Only trace moisture volatilization occurs below 200 °C without any degradation of the epoxy matrix, fully satisfying the thermal stability requirements for long‑term downhole service. This further validates the reliability of ESP-T as a high‑performance fracturing proppant.
+
+[81] Figure 3-3 TGA/DTG and DSC curves of Fe₃O₄@epoxy resin proppant
+

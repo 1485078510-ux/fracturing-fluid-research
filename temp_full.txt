@@ -1,0 +1,127 @@
+[0] An Oleophilic Epoxy/Fe3O4 Tracer Proppant and Breakthrough Signal Analysis: A Framework for Production Monitoring in Fractured Wells
+[2] Abstract: Per-interval oil production monitoring is essential for evaluating stimulation effectiveness in unconventional reservoirs, yet existing tracer technologies lack both a quantitative transport
+[4] Key words: Unconventional oil and gas reservoirs; Hydraulic fracturing; Tracer proppant; Epoxy resin; Fe₃O₄ nanoparticles; Advection-dispersion model; Piecewise modeling; Production allocation; Releas
+[6] 1 Introduction
+[7] Sustained growth in global energy demand has positioned unconventional oil and gas resources at the center of contemporary petroleum development [1-4]. These resources now account for more than 50% of
+[9] However, a persistent operational challenge follows stimulation: the oil production contribution of each fractured interval varies markedly, and interval productivity declines at different rates as fi
+[11] Among available diagnostic techniques, tracer-based methods offer a uniquely practical route to per-interval production monitoring: they require no permanent downhole instrumentation, can be deployed 
+[13] Compounding this methodological gap, the materials employed in existing tracer proppants face their own practical limitations. Coated proppants suffer from high particle density that impedes transport
+[15] Here we address this dual gap. First, we develop a piecewise advection-dispersion (ADE) model with smooth hyperbolic-tangent (tanh) transition that decomposes the tracer breakthrough curve into two ph
+[16] 2 Experiments
+[17] 2.1 Materials
+[18] All chemical reagents used in the experiments were of analytical grade or industrial grade and used without further purification. Analytical Grade (AR) reagents, including ethanol (purity ≥99.7%), fer
+[20] Table 2-1 Specifications and sources of experimental materials
+[22] 2.2 Fabrication of stearic acid-modified nano-Fe₃O₄ (nano-Fe₃O₄@SA)
+[23] A clean three-necked flask was mounted in a thermostatic water bath and connected to nitrogen purge and mechanical stirring apparatuses. The flask was charged with 100 mL deionized water and heated to
+[25] Figure 2-1 Schematic illustration for the preparation of stearic acid-modified metal-doped Fe₃O₄ nanoparticles
+[27] 2.3 Preparation of Epoxy Resin Microspheres and ESP-T
+[28] A SiO₂ aqueous dispersion was prepared by adding 0.3 g of 20 nm SiO₂ to 150 mL deionized water under stirring at 380 RPM. Separately, 0.9 g guar gum and 0.5 g of 45 μm SiO₂ were weighed. An epoxy pre-
+[31] Figure 2-2 Schematic illustration for the preparation of Fe₃O₄-encapsulated epoxy resin proppants
+[33] 2.4 Characterization Methods
+[34] The microstructure, elemental composition and distribution of neat epoxy resin microspheres and ESP-T were analyzed by scanning electron microscopy (SEM, ZEISS-Sigma 500). Samples were sputter-coated 
+[36] Surface morphology and particle dispersion of neat epoxy resin microspheres and ESP-T were examined using an optical microscope (Leica DM2700P). Thermogravimetric analysis (TGA, TA Instruments Q500, U
+[38] Water contact angle (WCA) measurements were carried out using a video optical contact angle analyzer (OCA20, Germany). Pressed proppant flakes were placed on the test stage, and a 5 μL droplet of deio
+[40] The physical and mechanical properties as well as field applicability of the proppants were comprehensively evaluated using roundness, sphericity, bulk density, apparent density, acid solubility, and 
+[41] 2.5 Tracer Release Behavior at Different Temperatures
+[42] Glass vials containing 100 mL dodecane were placed in thermostatic oil baths set at 30 °C, 60 °C, 90 °C, and 120 °C, respectively, followed by the addition of 5 g of 40–70 mesh ESP-T. The vials were t
+[44] Figure 2-3 Schematic diagram of the tracer release apparatus at different temperatures
+[46] 2.6 Core Displacement Experiments for Production Monitoring
+[47] For the single-phase oil production monitoring experiment of ESP-T, dodecane was employed to simulate crude oil, with the focus on the steady oil production regime of a single fractured interval. A dy
+[50] Figure 2-4 Schematic diagram of the single-phase oil flow experimental apparatus
+[52] For the oil–water two-phase flow produced fluid monitoring experiment, the tracer was maintained in a stable release regime throughout the steady-flow period (i.e., no well shut-in was implemented dur
+[55] Figure 2-5 Schematic diagram of the oil–water two-phase flow experimental apparatus
+[57] 3 Results and Discussion
+[58] 3.1 SEM Characterization
+[59] Figure 3-1 presents SEM micrographs of pure epoxy resin microspheres and ESP-T. At low magnification (a, d), both samples show excellent sphericity and high monodispersity, with uniform particle sizes
+[61] At medium magnification (b), pure epoxy microspheres display subtle surface wrinkles and depressions, typical of thermosetting resins, arising primarily from volume shrinkage during epoxy curing. In c
+[63] At high magnification, the fine surface microstructure of the microspheres is clearly resolved. Pure epoxy resin microspheres (c) exhibit a relatively dense yet undulating lava-like surface structure,
+[65] These observations suggest the following formation mechanism: the hydrophobically modified nano-Fe₃O₄@SA nanoclusters are uniformly dispersed within epoxy resin droplets after emulsification; as the e
+[68] Figure 3-1 SEM images of epoxy microspheres and Fe₃O₄@epoxy proppants. The epoxy microspheres are on the top of the figure, and the Fe₃O₄@epoxy proppants are at the bottom. (a) and (d) are SEM images 
+[70] SEM elemental mapping (Figure 3-2) visually illustrates the distribution of the primary Fe and Si elements within the proppant. The Fe elemental signal, represented in the yellow mapping image, is dis
+[72] Figure 3-2 Mapping images of Fe₃O₄@epoxy resin proppant. (a) SEM image of Fe₃O₄@epoxy resin proppant, (b) Distribution of Fe element, (c) Distribution of Si element
+[74] 3.2 Thermal Stability
+[75] As depicted in Figure 3-3, thermal analysis of the proppant reveals three distinct decomposition stages. The first stage (50–350 °C) corresponds to a minor weight loss of 5.70%, attributed to the remo
+[79] The initial decomposition temperature of ESP-T is 357.27 °C, which is far higher than the typical downhole temperature of oil–gas wells (80–150 °C, up to 200 °C for deep wells). Only trace moisture vo
+[81] Figure 3-3 TGA/DTG and DSC curves of Fe₃O₄@epoxy resin proppant
+[83] 3.3 Water Contact Angle (WCA)
+[84] Surface wettability of the two proppants was characterized using a video optical contact angle analyzer (OCA20, Germany). Five replicate measurements were conducted for each sample, and the average va
+[85] In contrast, the average WCA of ESP-T reaches 104.6°, corresponding to a distinct hydrophobic surface—an increment of 32.3° relative to neat epoxy microspheres, representing a significant wettability 
+[86] The surface enrichment of nano-Fe₃O₄@SA nanoclusters observed via SEM further enhances this hydrophobic effect. The synergistic action of abundant hydrophobic alkyl chains drastically reduces the surf
+[88] Figure 3-4 (a) WCA of epoxy resin patch (b) WCA of patch after doping with nano-Fe₃O₄@SA
+[90] 3.4 Physical and Mechanical Properties
+[91] Figure 3-5 presents the bulk density and apparent density results of the two proppants. The average bulk density and apparent density of neat epoxy resin microspheres are 0.6179 g/cm³ and 1.02 g/cm³, 
+[92] Notably, the bulk density of both proppants is lower than that of water (1 g/cm³), implying that both can achieve favorable suspension in water‑based fracturing fluids and prevent wellbore blockage re
+[94] Figure 3-5 Bulk density and apparent density of epoxy microspheres and ESP-T
+[96] 3.5 Proppant Pack Conductivity
+[97] Proppant pack conductivity can be indirectly assessed via oil-water filtration time: shorter filtration times correspond to lower flow resistance and higher conductivity. The water filtration time of 
+[99] Figure 3-6 Oil-water permeability test of epoxy resin microspheres and ESP-T
+[100] (a)(b) before and after water passing through epoxy resin microspheres, (c)(d) before and after oil passing through epoxy resin microspheres, (e)(f) before and after water passing through ESP-T, (g)(h
+[102] Table 3-1 Oil and Water Passage Time
+[104] 3.6 Tracer Release Behavior at Different Temperatures
+[105] In field applications, formation temperature rises with increasing reservoir depth, influencing tracer release behavior through its effect on solvent permeation and polymer chain mobility. The release
+[107] where:
+[108] C = tracer concentration at time t (mg/L);
+[109] C0 = maximum (equilibrium) release concentration (mg/L);
+[110] K = kinetic rate constant;
+[111] t = release time (h);
+[112] n = diffusion exponent (dimensionless).
+[114] The K-P model is a power-law formulation developed by Korsmeyer and Peppas [27], widely employed to characterize release kinetics from controlled-release systems. It captures two key mechanisms: Ficki
+[116] The K-P fitting results are presented in Figure 3-7(b) and summarized in Table 3-2. The kinetic constant K increases systematically with temperature, consistent with the thermally activated nature of 
+[118] Based on these results, the release mechanism of ESP-T is inferred as follows: nonpolar solvent molecules (e.g., dodecane) permeate into the cross-linked epoxy network, inducing swelling that generate
+[121] Figure 3-7 (a) Release curves of ESP-T at different temperatures (b) K-P model fitting curves (c) Release rate change curves of ESP-T
+[123] Table 3-2 Fitting Parameters of K-P Model
+[125] 3.7 Tracer Breakthrough Modeling and Production Rate Quantification
+[126] The interpretation model is derived from the one-dimensional advection-dispersion equation (ADE): ∂C/∂t + v·∂C/∂x = D·∂²C/∂x², where v = 4Q/(πd²) is the mean flow velocity (cm/min) and D = α·v is the 
+[133] where:
+[134] cb = tail-plateau concentration (dimensionless);
+[135] A, a = amplitude coefficients for the shut-in slug (A) and sustained matrix release (a);
+[136] α = longitudinal dispersivity (cm);
+[137] Q = effective oil-phase flow rate (cm³/min);
+[138] t₀ = crossover center time (min);
+[140] In Eq. (2), the rising component Crise captures the advective-dispersive transport of the tracer slug from the proppant-packed section to the sampling point, while the tailing component Cfall describe
+[142] The fitted curve is shown in Figure 3-8(b) and the fitted parameters are listed in Table 3-3. The model achieves R² = 0.9939 and RMSE = 0.0210, with residuals randomly distributed within ±2σ across th
+[143] Table 3-3 Fitted Parameters of the Piecewise ADE Model and Derived Transport Properties
+[145] Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting curve of ESP-T tracer release model (c) Comparison of pump set flow rate and fitted flow rate
+[146] The fitted parameters carry several physically significant implications that extend beyond empirical curve-fitting. First, the Peclet number Pe = x/alpha = 0.934 places the transport regime precisely 
+[148] To explore the influence of oil–water two-phase flow on ESP-T-based oil production monitoring, the system was maintained in a steady-state flow regime to ensure stable tracer release. Direct observati
+[149] Figure 3-9(a) illustrates the relationship between tracer concentration, total two-phase flow rate, and OWR. As shown, tracer concentration gradually decreases with increasing total two-phase flow rat
+[151] During steady-state production, tracer concentrations are inherently low, and the production curve conveys information primarily through the magnitude and temporal trend of the concentration signal. T
+[153] Figure 3-9(c) compares the normalized FO with the actual oil-phase flow rate at different OWRs (total two-phase flow rate = 0.1 mL/min). The normalized FO was calibrated against the steady-state FO du
+[154] The engineering significance of this modeling approach for field applications is threefold. First, it provides a quantitative link between the tracer signal measured at the wellhead and the per-interv
+[155] Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with oil-water ratio and total two-phase flow (c) Comparison of tracer flux and actual
+[156] By doping the Fe3O4 core with distinct metal elements (e.g., Mn, Zn, Cu) for each fracture stage, ESP-T particles carrying stage-specific chemical signatures can be deployed simultaneously across mult
+[157] 4. Conclusions
+[158] The central challenge addressed in this work is the disconnect between tracer release kinetics—measured in batch experiments and fitted with empirical models—and the quantitative interpretation of tra
+[160] On the modeling side, the two-component transport analysis achieves R2 = 0.9939 for single-phase tracer breakthrough curves, with the erfc tail component contributing 47% of the integrated signal. Thi
+[162] The ESP-T proppant designed as the validation platform for this model exhibits a performance profile consistent with downhole deployment requirements. The stearic acid modification of nano-Fe3O4@SA im
+[164] Taken together, the material and modeling contributions establish a coupled experimental-transport framework in which sustained tracer release, governed by matrix-diffusion kinetics, is quantitatively
+[166] References
+[167] [1]	MONTGOMERY S L, JARVIE D M, BOWKER K A, et al. Mississippian Barnett Shale, Fort Worth basin, north-central Texas: Gas-shale play with multi-trillion cubic foot potential [J]. AAPG Bulletin, 2005,
+[168] [2]	WANG L, TIAN Y, YU X, et al. Advances in improved/enhanced oil recovery technologies for tight and shale reservoirs [J]. Fuel, 2017, 210: 425-445.
+[169] [3]	MOHR S H, WANG J, ELLEM G, et al. Projection of world fossil fuels by country [J]. Fuel, 2015, 141: 120-135.
+[170] [4]	CHONG Z R, YANG S H B, BABU P, et al. Review of natural gas hydrates as an energy resource: Prospects and challenges [J]. Applied Energy, 2016, 162: 1633-1652.
+[171] [5]	IEA. World Energy Outlook 2024 [R]. Paris: International Energy Agency, 2024.
+[172] [6]	BARATI R, LIANG J T. A review of fracturing fluid systems used for hydraulic fracturing of oil and gas wells [J]. Journal of Applied Polymer Science, 2014, 131(16): 40735.
+[173] [7]	MEDEIROS F, KURTOGLU B, OZKAN E, et al. Analysis of production data from hydraulically fractured horizontal wells in shale reservoirs [J]. SPE Reservoir Evaluation & Engineering, 2010, 13(3): 559-
+[174] [8]	PATIDAR A K, JOSHI D, DRISTANT U, et al. A review of tracer testing techniques in porous media specially attributed to the oil and gas industry [J]. Journal of Petroleum Exploration and Production
+[175] [9]	SANNI M, AL-ABBAD M, KOKAL S, et al. Pushing the envelope of residual oil measurement: A field case study of a new class of inter-well chemical tracers [J]. Journal of Petroleum Science and Engine
+[176] [10]	SILVA M, STRAY H, BJORNSTAD T. Stability assessment of PITT tracer candidate compounds - The case of pyrazines [J]. Journal of Petroleum Science and Engineering, 2019, 182: 106269.
+[177] [11]	WATKINS J W, MARDOCK E S. Use of radioactive iodine as a tracer in water-flooding operations [J]. Journal of Petroleum Technology, 1954, 6(9): 117-124.
+[178] [12]	YANG H, GUO K, LIN L, et al. Application of micro-substance tracer test in fractured horizontal wells [J]. Journal of Petroleum Exploration and Production Technology, 2024, 14(5): 1235-1246.
+[179] [13]	ZHAO B, PANTHI K, MOHANTY K K. Tracer eluting proppants for hydraulic fracture characterization [J]. Journal of Petroleum Science and Engineering, 2020, 190: 107048.
+[180] [14]	ZHOU Y, LIU H, GAO J, et al. Coated proppants with self-suspension and tracer slow-release functions [J]. Journal of Petroleum Science and Engineering, 2022, 208: 109645.
+[181] [15]	LI N, CHENG Q, GONG Z, et al. Release kinetics of rare earth tracer from polymer-coated proppants for hydraulic fracture analysis [J]. Geoenergy Science and Engineering, 2023, 227: 211782.
+[182] [16]	GONG Z, LI N, KANG W, et al. Novel oleophilic tracer-slow-released proppant for monitoring the oil production contribution [J]. Fuel, 2024, 364: 130945.
+[183] [17]	WANG G, MA Q, REN L, et al. A comprehensive review of multifunctional proppants [J]. ACS Omega, 2024, 9(44): 44120-44133.
+[184] [18]	KRISHNAN M R, LI W, ALHARBI B, et al. In-situ high-strength poly(styrene-methyl methacrylate)-2D nanofiller composite microbeads as potential proppants in hydraulic fracturing [J]. Geoenergy Scie
+[185] [19]	GUO X, WEI K, NI T, et al. Preparation and performance analysis of polyethylene glycol/epoxy resin composite phase change material [J]. Journal of Energy Storage, 2024, 88: 111525.
+[186] [20]	LIANG C, LUO W, YAN C, et al. Ultra-lightweight proppant synthesized from PMMA/pine bark composite: Low-cost material and outstanding properties [J]. Chemistry Letters, 2016, 45(8): 994-996.
+[187] [21]	ZOVEIDAVIANPOOR M, GHARIBI A, BIN JAAFAR M Z. Experimental characterization of a new high-strength ultra-lightweight composite proppant derived from renewable resources [J]. Journal of Petroleum 
+[188] [22]	SABINS F, APBLETT A, SHAFER R, et al. Epoxy resin exhibits long-term durability and chemical stability as a well sealant [C]. SPE-204374-MS, SPE International Conference on Oilfield Chemistry, Th
+[189] [23]	LI H, LIU Z, LI Y, et al. Evaluation of the release mechanism of sustained-release tracers and its application in horizontal well inflow profile monitoring [J]. ACS Omega, 2021, 6(29): 19269-1928
+[190] [24]	WEI M, WANG Y, DUAN Y, et al. Screening and performance evaluation of epoxy resin long-term sustained-release solid tracer [J]. International Journal of Oil, Gas and Coal Technology, 2024, 36(2):
+[191] [25]	GONG Z, LI N, QIN M, et al. Magnetic nano-Fe₃O₄-based oleophilic tracer for stability studies of nano-tracer in oilfields condition [J]. Colloids and Surfaces A: Physicochemical and Engineering A
+[192] [26]	KRUMBEIN W C, SLOSS L L. Stratigraphy and Sedimentation [M]. 2nd ed. San Francisco: W.H. Freeman and Company, 1963.
+[193] [27]	RITGER P L, PEPPAS N A. A simple equation for description of solute release I. Fickian and non-Fickian release from non-swellable devices in the form of slabs, spheres, cylinders or discs [J]. Jo
+[194] [28]	PEPPAS N A, SAHLIN J J. A simple equation for the description of solute release. III. Coupling of diffusion and relaxation [J]. International Journal of Pharmaceutics, 1989, 57(2): 169-172.
+[195] [29]	VAN GENUCHTEN M T, ALVES W J. Analytical solutions of the one-dimensional convective-dispersive solute transport equation [R]. USDA Technical Bulletin No. 1661, U.S. Department of Agriculture, 19

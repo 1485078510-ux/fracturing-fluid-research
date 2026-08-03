@@ -1,0 +1,9 @@
+[156] len=0: EMPTY
+[157] len=14: '4. Conclusions'
+[158] len=1075: 'This study addressed the dual challenge of quantitative tracer-signal interpretation and durable oil'
+[159] len=0: EMPTY
+[160] len=723: 'ESP-T delivers a balanced performance profile suited to downhole conditions: bulk density of 0.646 g'
+[161] len=0: EMPTY
+[162] len=859: 'Tracer release from ESP-T at 30-120 °C follows the Korsmeyer-Peppas model (R² > 0.90) with diffusion'
+[163] len=0: EMPTY
+[164] len=726: 'In summary, this work establishes a coupled experimental-modeling framework in which a physically gr'

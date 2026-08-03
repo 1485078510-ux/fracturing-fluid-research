@@ -1,0 +1,49 @@
+<mxfile host="Electron">
+  <diagram name="fig2_工艺流程图" id="0">
+    <mxGraphModel dx="934" dy="722" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="r1a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;改性荧光粉 + 分散助剂 + 去离子水&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="30" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r1b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#B2DFDB;strokeColor=#00897B;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;高速剪切/超声分散 → 荧光母液 (30~60 g/L)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="210" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="r1c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;在线计量泵 → 静态混合器 (0.1~2.0 vol%)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="160" x="410" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="ra1" edge="1" parent="1" source="r1a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" target="r1b" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ra2" edge="1" parent="1" source="r1b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" target="r1c" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r2a" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#B2DFDB;strokeColor=#00897B;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;荧光基液 (稠化剂0.3~1.0 wt%) +&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;&amp;nbsp;交联剂 + 破胶剂 + 支撑剂&lt;/font&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="160" x="30" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="r2b" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;荧光压裂液终液&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="130" x="230" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="r2c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#B2DFDB;strokeColor=#00897B;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;压裂泵车 → 井口&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="120" x="400" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="r2d" parent="1" style="ellipse;rounded=1;whiteSpace=wrap;html=1;fontSize=10;fontStyle=1;fillColor=#E3F2FD;strokeColor=#1565C0;" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;目标压裂层段&lt;/font&gt;" vertex="1">
+          <mxGeometry height="70" width="130" x="560" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="rb1" edge="1" parent="1" source="r2a" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" target="r2b" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb2" edge="1" parent="1" source="r2b" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" target="r2c" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rb3" edge="1" parent="1" source="r2c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78909C;" target="r2d" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="v1" edge="1" parent="1" source="r1c" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#78909C;strokeWidth=1.5;" target="r2a" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;&lt;b&gt;母液&lt;/b&gt;&lt;/font&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

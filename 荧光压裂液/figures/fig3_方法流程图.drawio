@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="draw.io" version="26.0.0">
+  <diagram name="fig3_方法流程图">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t3" value="图3  压裂裂缝荧光示踪方法流程框图" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=15;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="8" width="420" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="start" value="压裂施工开始" style="ellipse;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="45" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="680" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_title" value="注入阶段" style="text;html=1;strokeColor=none;fillColor=#1565C0;fontColor=#FFFFFF;align=center;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="100" width="95" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_i0" value="荧光压裂液终液 + 支撑剂 混合" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1565C0;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="142" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_a0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#1565C0;" edge="1" parent="1" source="s1_i0" target="s1_i1">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s1_i1" value="通过压裂泵注系统泵入目标压裂层段" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1565C0;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="194" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_a1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#1565C0;" edge="1" parent="1" source="s1_i1" target="s1_i2">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s1_i2" value="荧光粉随携砂液运移至水力裂缝各处 (分散态)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="246" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_note" value="母液添加段位:
+前置液段/携砂液段/顶替液段
+(优选前置液+携砂液连续添加)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1565C0;strokeWidth=1;fontSize=8;align=center;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="150" width="190" height="161" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s1s2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="s1_bg" target="s2_bg">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s2_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#00897B;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="341" width="680" height="278" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_title" value="关井破胶阶段" style="text;html=1;strokeColor=none;fillColor=#00897B;fontColor=#FFFFFF;align=center;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="341" width="95" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_i0" value="停泵关井 -&gt; 储层温度60~150C, 密闭维持6~48 h" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="383" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_a0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#00897B;" edge="1" parent="1" source="s2_i0" target="s2_i1">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s2_i1" value="过硫酸铵热分解 -&gt; SO&lt;sub&gt;4&lt;/sub&gt;&lt;sup&gt;.-&lt;/sup&gt; 攻击PEG醚键 -&gt; 氧化链断裂" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="435" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_a1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#00897B;" edge="1" parent="1" source="s2_i1" target="s2_i2">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s2_i2" value="PEG外层脱附降解 -&gt; 暴露KH550活性氨基(-NH&lt;sub&gt;2&lt;/sub&gt;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="487" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_a2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#00897B;" edge="1" parent="1" source="s2_i2" target="s2_i3">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s2_i3" value="-NH&lt;sub&gt;2&lt;/sub&gt; + 砂岩Si-OH -&gt; 静电吸引/氢键/化学缩合 -&gt; 牢固锚定" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="539" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_note" value="功能切换核心机制:
+1.PEG牺牲响应层-氧化脱附
+2.KH550活性氨基暴露
+3.氨基与砂岩硅羟基
+多点协同锚定
+4.过硫酸铵破胶剂触发
+(无需额外触发剂)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=1;fontSize=8;align=center;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="391" width="190" height="213" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s2s3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="s2_bg" target="s3_bg">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s3_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="634" width="680" height="174" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_title" value="返排阶段" style="text;html=1;strokeColor=none;fillColor=#1565C0;fontColor=#FFFFFF;align=center;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="634" width="95" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_i0" value="开井返排 -&gt; 携带破胶残渣及未锚定游离荧光粉排出井筒" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1565C0;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="676" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_a0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#1565C0;" edge="1" parent="1" source="s3_i0" target="s3_i1">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s3_i1" value="已锚定荧光粉牢固保留于裂缝壁面 (净残留率 &gt; 90%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="728" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_note" value="动态驱替实验:
+锚定率 = 92.7 +/- 1.8%
+n=3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#1565C0;strokeWidth=1;fontSize=8;align=center;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="684" width="190" height="109" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s3s4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="s3_bg" target="s4_bg">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#00897B;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="823" width="680" height="226" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_title" value="取心与检测阶段" style="text;html=1;strokeColor=none;fillColor=#00897B;fontColor=#FFFFFF;align=center;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="823" width="95" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_i0" value="压后取心作业 -&gt; 获取含裂缝岩心" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="865" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_a0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#00897B;" edge="1" parent="1" source="s4_i0" target="s4_i1">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4_i1" value="紫外光源365 nm照射 -&gt; 绿色荧光发射(~520 nm)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;fontSize=9;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="917" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_a1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#00897B;" edge="1" parent="1" source="s4_i1" target="s4_i2">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s4_i2" value="观察/拍照记录裂缝壁面荧光分布 -&gt; 确定压裂液波及范围" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=9;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="85" y="969" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_note" value="荧光分布区域 =
+压裂液实际波及范围
+(定性-半定量实物验证)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=1;fontSize=8;align=center;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="530" y="873" width="190" height="161" as="geometry" />
+        </mxCell>
+        <mxCell id="a_s4e" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="s4_bg" target="end">
+          <mxGeometry relative="1" as="geometry">
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="end" value="获得压裂裂缝的可实物验证荧光标记" style="ellipse;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00897B;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="230" y="1079" width="340" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,18 @@
+=== Empty paragraphs with context ===
+P1: EMPTY | prev=[一种用于压裂裂缝荧光示踪的改性稀土铝酸盐荧光粉、荧光压裂液体系及其应用方法] | next=[说明书]
+P3: EMPTY | prev=[说明书] | next=[技术领域]
+P63: EMPTY | prev=[] | next=[图2：本发明荧光压裂液体系的"母液预配+在线稀释"现场施工工艺流程图。图中标示了改性荧光粉、分散助剂]
+P66: EMPTY | prev=[] | next=[图3：本发明压裂裂缝荧光示踪方法的流程框图。图中标示了注入阶段（荧光压裂液+支撑剂→泵入目标层段→荧]
+P69: EMPTY | prev=[] | next=[具体实施方式]
+P122: EMPTY | prev=[权利要求书] | next=[1. 一种改性稀土铝酸盐荧光粉，其特征在于，包括稀土铝酸盐长余辉荧光粉基体和包覆于所述基体表面的双层]
+P151: EMPTY | prev=[摘要] | next=[本发明公开了一种用于压裂裂缝荧光示踪的改性稀土铝酸盐荧光粉、含该荧光粉的压裂液体系及其应用方法。所述]
+P155: EMPTY | prev=[摘要附图] | next=[摘要附图为本发明说明书的图1（改性稀土铝酸盐荧光粉的结构示意图）。该图直观展示了荧光粉基体-硅烷偶联]
+
+=== Paragraphs with ghost runs (empty runs but text present) ===
+Paragraphs with ghost runs: 0
+
+=== Comparison section paragraph formats ===
+P112: 10 runs, font=Times New Roman, size=None
+  text[:80]: 对比例1：单层KH550硅烷化改性SrAl₂O₄:Eu²⁺,Dy³⁺荧光粉（无PEG外层）的制备
+P114: 7 runs, font=Times New Roman, size=None
+  text[:80]: 实施例7：单层改性（对比例1）与双层改性（实施例1）的分散与锚定性能系统对比

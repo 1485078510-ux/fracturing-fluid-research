@@ -1,0 +1,82 @@
+//////////////////////////////////////////////////////////////////////////////
+// Origin LabTalk Script — Run in Origin: Script Window → Paste → Enter
+// Creates Figure S1 (σ sensitivity) and Figure S2 (model comparison)
+//////////////////////////////////////////////////////////////////////////////
+
+// ---- Set default font ----
+page.option(LT=14, FT="Times New Roman", FS=22);
+
+//////////////////////////////////////////////////////////////////////////////
+// FIGURE S1 — σ Sensitivity Analysis
+//////////////////////////////////////////////////////////////////////////////
+
+// Import data
+newbook;
+impASC file:="C:\Users\郝\Desktop\claude\Figure_S1_data.csv" options.ImpMode:=1 options.Names.AutoNames:=1;
+wks.col1.label$ = "σ (min)";
+wks.col2.label$ = "σ/σ_fit";
+wks.col3.label$ = "Gaussian (%)";
+wks.col4.label$ = "erfc Tail (%)";
+
+// Create graph
+plotxy iy:=[%(strWks$)]4 plottype:=201 xcol:=1 ogl:=[<new>];
+layer.x.label.text$ = "σ (min)";
+layer.y.label.text$ = "erfc Tail Contribution (%)";
+layer.x.label.font$ = "Times New Roman";
+layer.y.label.font$ = "Times New Roman";
+layer.x.label.fsize = 22;
+layer.y.label.fsize = 22;
+
+// Format axes
+range rr = [%(strWks$)]!col(4);
+set %C -w 1200;  // window width
+layer.x.from = 1;
+layer.x.to = 12;
+layer.y.from = 44;
+layer.y.to = 50;
+
+// Style the line+symbol plot
+set %C -c 4;      // blue
+set %C -z 1;      // connect line
+set %C -k 3;      // solid symbol
+set %C -ks 8;     // symbol size
+
+// Add vertical reference at fitted sigma
+draw -n VRef -l -v 3.96;
+VRef.color = 2;   // red
+
+// Add label
+label -s -xa 6 -ya 45.5 -n SigmaLabel "Range: 46.8-47.5%\nSpan: 0.7 pp";
+SigmaLabel.fsize = 16;
+SigmaLabel.font$ = "Times New Roman";
+
+// Save figure
+expGraph type:=pdf filename:="C:\Users\郝\Desktop\claude\Figure_S1_Origin.pdf" tr:=1;
+
+//////////////////////////////////////////////////////////////////////////////
+// FIGURE S2 — Model Comparison
+//////////////////////////////////////////////////////////////////////////////
+
+// Import data
+newbook;
+impASC file:="C:\Users\郝\Desktop\claude\Figure_S2_data.csv" options.ImpMode:=1 options.Names.AutoNames:=1;
+
+// Create horizontal bar chart for ΔAICc
+plotxy iy:=[%(strWks$)]7 plottype:=206 xcol:=1 ogl:=[<new>];
+layer.x.label.text$ = "ΔAICc";
+layer.y.label.text$ = "";
+layer.x.label.font$ = "Times New Roman";
+layer.x.label.fsize = 22;
+
+// Set bar colors
+set %C -c 2;  // red for best model
+
+// Add F-test annotation
+label -s -xa 80 -ya 1 -n FLabel "F-test (Dual vs Gaussian):\nF(3,14) = 34.7\np = 1.2e-6";
+FLabel.fsize = 16;
+FLabel.font$ = "Times New Roman";
+
+// Save
+expGraph type:=pdf filename:="C:\Users\郝\Desktop\claude\Figure_S2_Origin.pdf" tr:=1;
+
+type "Done! Figures saved to desktop.";

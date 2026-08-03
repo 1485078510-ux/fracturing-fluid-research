@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "skills": {
+    "academic-paper": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "skillPath": "academic-paper/SKILL.md",
+      "computedHash": "02feeca42f61685178ca5e2081dc559d0884aa29e9e28f9afe017631d2166dd2"
+    },
+    "academic-paper-reviewer": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "skillPath": "academic-paper-reviewer/SKILL.md",
+      "computedHash": "c48933e2d31023c9498f0187c2471bd2d30bf04840330166e71d6124ae39c2e5"
+    },
+    "academic-pipeline": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "skillPath": "academic-pipeline/SKILL.md",
+      "computedHash": "4b795221ddf5b910c5f756fa62d12fcd29059d73c46f09a6b27f252ce59d96fc"
+    },
+    "academic-writing-skills": {
+      "source": "WenyuChiou/academic-writing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/academic-writing-skills/SKILL.md",
+      "computedHash": "7ca5a971081e91d41bdacc8449122d5b51d60e46f0731f0afedad33c4e98c86c"
+    },
+    "annotated-bibliography": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/annotated-bibliography/SKILL.md",
+      "computedHash": "7ed96e9cf5331751197fa210f4e3b8caf13e39d5202cd9729966864f63e634d2"
+    },
+    "author-network": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/author-network/SKILL.md",
+      "computedHash": "6bbe2bc4cdf52d3f75f2231b1c901f72fc59371d787ba7749609a2000b07995a"
+    },
+    "citation-graph": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/citation-graph/SKILL.md",
+      "computedHash": "28f847c49b1d360fac1ba11fe20be2da169cf57d023c502e1754e184f4845ebf"
+    },
+    "deep-research": {
+      "source": "Imbad0202/academic-research-skills",
+      "sourceType": "github",
+      "skillPath": "deep-research/SKILL.md",
+      "computedHash": "3e3aee45efb1c618c6d4029ebf52a34531a210febdac78f0dc25befb587c042a"
+    },
+    "evidence-synthesis": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/evidence-synthesis/SKILL.md",
+      "computedHash": "10b2bc8ce3c3d6b2ee30c7c700a4e7ee8e373f067d7c487a98a5cb0c066043d4"
+    },
+    "paper-comparison": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/paper-comparison/SKILL.md",
+      "computedHash": "219bcf25158bdb66a3a683d431ea8af87956d60a6ad20a5d53df67c6933bd204"
+    },
+    "paper-reader": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/paper-reader/SKILL.md",
+      "computedHash": "e3c1a26fe44f6d1914b4b395774169f2ca17c221912ad991109f6aaacae95b3a"
+    },
+    "paper-review": {
+      "source": "WenyuChiou/academic-writing-skills",
+      "sourceType": "github",
+      "skillPath": "skills/paper-review/SKILL.md",
+      "computedHash": "4bbb24660bc76e23315394d55af0ad9900409ba11f833f8e8ffacc0fa89cfe08"
+    },
+    "paper-writing": {
+      "source": "SNL-UCSB/paper-writing-skill",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "7055fe5d799635b13b93f5f6f803f3d4efeb180ef2cffdd54f856e5d238c59d8"
+    },
+    "quality-assessment": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/quality-assessment/SKILL.md",
+      "computedHash": "51516db59dc43dbc65c169a0da484cf8b12526198ac2241d7646fbda0941281d"
+    },
+    "research-gaps": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/research-gaps/SKILL.md",
+      "computedHash": "3d2d3b90f7b950d8110e8d5fca1f23657def7eeadface9290144cb8aa05d520b"
+    },
+    "research-trends": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/research-trends/SKILL.md",
+      "computedHash": "195c4307558134959c0e11abd2002e8a911e2fa37ea13d6cf9cd028079d8e7df"
+    },
+    "semantic-scholar": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/semantic-scholar/SKILL.md",
+      "computedHash": "6f80a94f6a121256fea53aa946d15bd41c7dd7e55796668c6059c3b1d854adc3"
+    },
+    "systematic-screening": {
+      "source": "biocheming/literature-research",
+      "sourceType": "github",
+      "skillPath": "skills/systematic-screening/SKILL.md",
+      "computedHash": "d4736aa14f80a0eb26d3c4180fce39c31cf821394ae922537b2a8e893c9c5466"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+================================================================================
+SUPPLEMENTARY MATERIAL — ESP-T Manuscript
+================================================================================
+
+Table S1. Model selection statistics for breakthrough curve fitting.
+---------------------------------------------------------------------------
+Model                      k    R²      RMSE    AICc      BIC       ΔAICc
+---------------------------------------------------------------------------
+Dual-component tanh        7    0.9939  0.0210  -139.70   -141.01    0.00
+Single Gaussian            4    0.9482  0.0609  -107.04   -105.36   32.66
+Single erfc                4    0.7159  0.1427   -71.28    -69.60   68.42
+Exponential decay          3    0.7517  0.1334   -77.20    -75.48   62.51
+Korsmeyer-Peppas           3   -0.0193  0.2703   -47.54    -45.82   92.16
+---------------------------------------------------------------------------
+k = number of fitted parameters. AICc = bias-corrected Akaike Information
+Criterion. BIC = Bayesian Information Criterion. F-test (Dual vs Gaussian):
+F(3, 14) = 34.70, p = 1.2×10⁻⁶.
+
+Table S2. σ sensitivity analysis: Effect of tanh transition width on signal
+decomposition.
+---------------------------------------------------------------------------
+σ (min)   σ/σ_fit   Gaussian component (%)   erfc tail component (%)
+---------------------------------------------------------------------------
+1.98      0.50×     53.2                     46.8
+2.97      0.75×     53.1                     46.9
+3.96      1.00×     53.1                     46.9  ← fitted value
+4.95      1.25×     53.0                     47.0
+5.94      1.50×     52.9                     47.1
+6.94      1.75×     52.8                     47.2
+7.93      2.00×     52.8                     47.2
+8.92      2.25×     52.7                     47.3
+9.91      2.50×     52.6                     47.4
+10.90     2.75×     52.5                     47.5
+11.89     3.00×     52.5                     47.5
+---------------------------------------------------------------------------
+At σ = 4.0 min (sampling interval): erfc tail = 46.9% (identical to best-fit).
+
+Figure S1. σ sensitivity analysis. (a) erfc tail fraction vs. σ, showing
+< 1 pp variation over a six-fold range. (b) Component decomposition at the
+fitted σ. (c) Overlay of blended breakthrough curves at varying σ.
+[See sigma_sensitivity.png]
+
+Figure S2. Model comparison. (a) Fits of all five candidate models to the
+breakthrough data. (b) AICc comparison (horizontal bar chart) with Akaike
+weights. [See model_comparison.png]
+
+Table S3. Quantitative comparison of ESP-T with previously reported tracer
+proppants.
+--------------------------------------------------------------------------------
+Property              ESP-T      Gong 2024   Li 2023     Zhou 2022    Zhao 2020
+                                [26]        [25]        [24]         [23]
+--------------------------------------------------------------------------------
+Matrix material       Epoxy      Polystyrene Polymer-    Polymer-     PVA-
+                                (PS)        coated       coated       modified
+                                                         ceramic      ceramic
+Tracer type           nano-      nano-       Rare-earth   Carbon       Rhodamine
+                      Fe₃O₄@SA   Fe₃O₄       tracer       quantum      6G
+                                                                  dots
+Oil/water selectivity Oleophilic Oleophilic  Water-phase  Water-phase  Water-phase
+Bulk density (g/cm³)  0.646      ~0.65*      ~1.5*        ~1.4*        ~1.6*
+Sphericity            >0.9       >0.8*       >0.8*        >0.7*        NR
+Thermal stability(°C) 357        <200*       <300*        <250*        NR
+WCA (°)               104.6      NR          NR           NR           NR
+Crush rate (% @52MPa) 2.9        NR          NR           <5*          NR
+Acid solubility (%)   3.3        NR          NR           NR           NR
+Release model         K-P        K-P         K-P          K-P          K-P
+Transport model       Dual ADE   None        None         None         None
+Production allocation Yes(FO)    No          No           No           No
+† NR = Not reported. * = Estimated from published data (not directly comparable;
+testing conditions may differ). References in brackets correspond to the
+manuscript reference list.
+--------------------------------------------------------------------------------
+
+================================================================================
+END OF SUPPLEMENTARY MATERIAL
+================================================================================

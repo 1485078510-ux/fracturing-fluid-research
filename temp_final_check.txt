@@ -1,0 +1,28 @@
+=== SECTION HEADERS ===
+  [2] Abstract: Per-interval oil production monitoring is essentia
+  [6] 1 Introduction
+  [16] 2 Experiments
+  [57] 3 Results and Discussion
+  [170] References
+
+Figures: 18, Tables: 4
+
+Cited refs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+Listed refs: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
+Uncited (in list but not text): []
+Unlisted (in text but not list): []
+
+Body text word count: ~5917
+  OVERCLAIM [47]: first
+  OVERCLAIM [52]: first
+  OVERCLAIM [59]: first
+  OVERCLAIM [75]: first
+  OVERCLAIM [105]: first
+  OVERCLAIM [126]: first
+  OVERCLAIM [172]: prove
+  UNIT [2]:  degC found
+  UNIT [2]: degC found
+
+=== INTRO FINAL vs CONCLUSION OPENING ===
+Intro: Here we address this dual gap. We develop a piecewise advection-dispersion (ADE) model in which the tracer breakthrough ...
+Concl: Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with o...

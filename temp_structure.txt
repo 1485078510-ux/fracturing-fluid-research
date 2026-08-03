@@ -1,0 +1,17 @@
+[140]: In Eq. (2), the rising component Crise captures the advective-dispersive transport of the tracer slug from the proppant-
+[141]: (empty)
+[142]: The fitted curve is shown in Figure 3-8(b) and the fitted parameters are listed in Table 3-3. The model achieves R² = 0.
+[143]: Table 3-3 Fitted Parameters of the Piecewise ADE Model and Derived Transport Properties
+
+The fitted parameters carry sev
+[144]: (empty)
+[145]: Figure 3-8 (a) Tracer release production curve of ESP-T single-phase flow monitoring (b) Fitting curve of ESP-T tracer r
+[146]: (empty)
+[147]: To explore the influence of oil–water two-phase flow on ESP-T-based oil production monitoring, the system was maintained
+[148]: Figure 3-9(a) illustrates the relationship between tracer concentration, total two-phase flow rate, and OWR. As shown, t
+[149]: (empty)
+[150]: During steady-state production, tracer concentrations are inherently low, and the production curve conveys information p
+[151]: (empty)
+[152]: Figure 3-9(c) compares the normalized FO with the actual oil-phase flow rate at different OWRs (total two-phase flow rat
+[153]: (empty)
+[154]: Figure 3-9 (a) Tracer concentration changes with oil-water ratio and total two-phase flow (b) Tracer flux changes with o

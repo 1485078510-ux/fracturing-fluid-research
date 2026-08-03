@@ -1,0 +1,21 @@
+=== [75] ===
+Thermal analysis (Figure 3-3) identifies three decomposition stages. The first, 50-350 degC, involves a minor weight loss of 5.70%, attributable to adsorbed water and residual ethanol. The second stage, 350-400 degC, constitutes the primary decomposition: cleavage of C-O-C and C-C bonds in the epoxy
+
+=== [79] ===
+The initial decomposition temperature of 357.27 degC is far above the temperature range encountered in oil and gas wells (typically 80-150 degC, reaching 200 degC in deep wells). Below 200 degC the material loses only trace moisture, with no detectable degradation of the epoxy matrix. This thermal m
+
+=== [91] ===
+Figure 3-5 compares the bulk and apparent densities of the two materials. Pure epoxy microspheres have a bulk density of 0.6179 g/cm3 and an apparent density of 1.02 g/cm3; ESP-T gives 0.646 and 1.072 g/cm3, respectively. The increase reflects the higher density of nano-Fe3O4@SA (approximately 5.18 
+
+=== [105] ===
+Reservoir temperature increases with depth, and because the release of tracer from the epoxy matrix is a diffusion-controlled process, temperature directly affects the release rate. Figure 3-7(a) shows the release profiles of ESP-T in dodecane at 30, 60, 90, and 120 degC, plotted as normalized conce
+
+=== [114] ===
+The K-P model, a power-law formulation developed by Korsmeyer and Peppas [23], is widely employed to characterize release kinetics from controlled-release systems. It captures two mechanisms: Fickian diffusion, in which species migrate down a concentration gradient according to Fick's laws, and Case
+
+=== [116] ===
+The K-P model was fitted to the release data at each temperature (Figure 3-7b, Table 3-2). The rate constant K increases systematically from 0.055 at 30 degC to 0.196 at 120 degC, consistent with the thermally activated nature of both diffusion and polymer relaxation. All fitted n values fall within
+
+=== [118] ===
+The physical picture that emerges is one of solvent-driven swelling. Dodecane molecules permeate into the cross-linked epoxy network, generating a dual-state structure with an inner glassy core and an outer gel layer. Swelling reduces polymer chain entanglement, creating expanded transport channels 
+

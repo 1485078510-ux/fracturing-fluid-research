@@ -1,0 +1,17 @@
+[15] First, ...First, we develop a piecewise advection-dispersion (ADE) model with smooth hyperbolic-tangent (tanh)
+[15] Second, ...Second, to validate this model we designed and synthesized an oleophilic tracer proppant (ESP-T) in 
+[47] First, ...First, the pore spaces of a steel core were packed with ESP-T, and both ends of the steel core were 
+[52] First, ...First, the proppant-packed steel core was placed into a core holder, and a confining pressure of 5 M
+[146] First, ...First, the Peclet number Pe = x/alpha = 0.934 places the transport regime precisely at the transitio
+[146] Second, ...Second, the tanh blending function provides a physically motivated, continuously differentiable tran
+[146] Third, ...Third, the close agreement between the pump-set flow rate (0.50 mL/min) and the independently fitted
+[146] Fourth, ...Fourth, the 47% erfc tail contribution quantitatively confirms that nearly half of the total detecta
+[146] Fifth, ...Fifth, the fitted tail-plateau concentration cb, though treated as a constant in the present single-
+[146] Sixth, ...Sixth, the agreement between the independently fitted mean residence time (MRT = 37.4 min) and the c
+[153] First, ...First, the piecewise ADE model assumes a single fractured interval and uniform proppant-pack propert
+[153] Second, ...Second, the tracer flux calibration relies on steady-state flow; during transient flow regimes (e.g.
+[153] Third, ...Third, the laboratory-scale validation used dodecane as a model oil; crude oil compositional effects
+[153] Fourth, ...Fourth, at temperatures exceeding 120 °C or in the presence of aggressive formation fluids (high sal
+[154] First, ...First, it provides a quantitative link between the tracer signal measured at the wellhead and the pe
+[154] Second, ...Second, the decomposition into Gaussian-pulse and erfc-tail components distinguishes two sources of 
+[154] Third, ...Third, because the model parameters (Q, Pe, MRT) are physically constrained rather than purely empir

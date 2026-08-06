@@ -1,0 +1,5 @@
+Parameter,Value,Unit
+F_O_ref,3.187,ug/min
+F_O_ref_std,0.15,ug/min
+Correlation_r,0.97,dimensionless
+RMSD,8.3,percent

@@ -1,0 +1,10 @@
+Parameter,Value_mL_per_min
+Pump_set,0.50
+Fitted_Q,0.4689
+Deviation_percent,6.2
+MRT_fitted_min,1.67
+MRT_pump_geometry_min,1.57
+Pe,0.833
+R2,0.9900
+Gaussian_pct,8
+erfc_pct,92

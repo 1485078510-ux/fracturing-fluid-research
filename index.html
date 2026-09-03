@@ -197,9 +197,58 @@ h1{
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important}
 }
-</style>
 
+/* ===== 模块化导航 ===== */
+.tabs{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;gap:8px;background:var(--ground);padding:10px 0 12px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.tabs button{font:inherit;font-size:13px;font-weight:700;padding:8px 16px;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s,color .15s}
+.tabs button:hover{border-color:var(--accent)}
+.tabs button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.mod[hidden]{display:none}
+/* ===== 题库浏览(模块折叠) ===== */
+.qview-tools{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 10px}
+.qview-tools button{font:inherit;font-size:12.4px;font-weight:600;padding:6px 13px;border:1px solid var(--line);border-radius:2px;background:var(--surface);cursor:pointer}
+.qview-tools button:hover{border-color:var(--accent);color:var(--accent)}
+.qmodx{background:var(--surface);border:1px solid var(--line);border-radius:2px;margin-bottom:10px}
+.qmodx>summary{cursor:pointer;list-style:none;padding:12px 15px;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.qmodx>summary::-webkit-details-marker{display:none}
+.qmodx>summary h3{font-size:15px;font-weight:700;margin:0}
+.qmodx>summary .qc{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}
+.qmodx>summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--accent);font-weight:700;font-size:15px}
+.qmodx[open]>summary::after{content:"−"}
+.qmodx[open]>summary{border-bottom:1px solid var(--line)}
+.qmodx .ql-body{padding:12px 15px 14px}
+.qmodx .ql-body .qmeta{margin:0 0 10px;font-size:11.5px;color:var(--muted)}
+/* ===== 模拟考 ===== */
+.sim-bar{position:sticky;top:56px;z-index:40;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:10px 14px;margin-bottom:12px}
+.sim-bar .prog{font-size:12.5px;color:var(--muted);font-weight:600}
+.sim-bar .timer{font-family:"IBM Plex Mono",monospace;font-size:19px;font-weight:700;color:var(--accent);letter-spacing:.04em}
+.sim-bar .mod-tag{justify-self:end;font-size:11.6px;color:var(--muted);background:var(--ground);border:1px solid var(--line);padding:3px 9px}
+.sim-q{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:2px;padding:20px 22px;font-size:16.5px;line-height:1.8;font-weight:500;min-height:96px}
+.sim-ans{background:var(--ground);border:1px solid var(--line);border-radius:2px;padding:13px 16px;margin-top:10px;font-size:13.6px;line-height:1.8;color:var(--muted)}
+.sim-ans b{color:var(--accent);font-weight:700}
+.sim-ctl{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.sim-btn{font:inherit;font-size:13.4px;font-weight:700;padding:10px 18px;border:1px solid var(--line);border-radius:2px;background:var(--surface);cursor:pointer}
+.sim-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.sim-btn.warn{background:var(--t-warm);border-color:var(--t-warm);color:#fff}
+.sim-setup{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:16px 18px;display:grid;gap:14px}
+.sim-setup .row{display:grid;grid-template-columns:86px 1fr;gap:4px 10px;align-items:center}
+.sim-setup .row .k{font-size:12.6px;color:var(--muted);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip2{font:inherit;font-size:12.4px;font-weight:600;padding:6px 13px;border:1px solid var(--line);border-radius:2px;background:var(--ground);cursor:pointer;color:var(--ink)}
+.chip2.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.sim-last{font-size:12.4px;color:var(--muted)}
+.sim-res{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:16px 18px;display:grid;gap:12px}
+.sim-res .score{font-family:"IBM Plex Mono",monospace;font-size:30px;font-weight:700;color:var(--accent)}
+.sim-res table{width:100%;border-collapse:collapse;font-size:12.8px}
+.sim-res th,.sim-res td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.sim-res th{background:var(--ground);color:var(--muted);font-weight:600}
+.sim-wrong{display:grid;gap:8px;margin-top:4px}
+.sim-wrong .wq{background:var(--ground);border:1px solid var(--line);border-left:3px solid var(--t-warm);padding:10px 12px;font-size:12.7px;line-height:1.7}
+.sim-wrong .wq b{color:var(--accent)}
+
+</style>
 <div class="wrap">
+
   <div class="rule"></div>
   <div class="mast">
     <div>
@@ -209,10 +258,19 @@ h1{
         定位:工程式 13 条投递线 · <b>点击卡片内「去投递」直达官方报名页</b>
       </div>
     </div>
-    <div class="font-mono" style="font-size:12px;color:var(--muted)">板面 v1 · 2026-09-03</div>
+    <div class="font-mono" style="font-size:12px;color:var(--muted)">板面 v2 · 模块化 · 2026-09-03</div>
   </div>
-  <p class="sub">每一条线都标注了定位、窗口与要点;跳转均为官方入口。网申前先看末节「口径与电话」。</p>
+  <p class="sub">每一条线都标注了定位、窗口与要点;跳转均为官方入口。切换上方位:总览 / 笔试题库 / 笔试模拟 / 面试题库 / 口径电话。</p>
 
+
+  <nav class="tabs" id="modnav">
+    <button data-v="over" class="on">总览</button>
+    <button data-v="write">笔试题库</button>
+    <button data-v="sim">笔试模拟</button>
+    <button data-v="inter">面试题库</button>
+    <button data-v="mouth">口径电话</button>
+  </nav>
+<section class="mod" id="mod-over">
   <div class="sec-eyebrow">总闸 · 官方平台</div>
   <div class="gate">
     <a href="https://zhaopin.cnpc.com.cn/" target="_blank" rel="noopener">中国石油招聘平台<small>zhaopin.cnpc.com.cn</small></a>
@@ -399,7 +457,9 @@ h1{
     <div class="w"><span class="d font-mono">27/03-05</span><span class="t">春招补录(仅全年 5%);延长春招(去年 04/24-05/07)</span></div>
     <div class="w"><span class="d font-mono">27/06-07</span><span class="t">延长夏招兜底(去年至 07/05,399 人)——永不落空</span></div>
   </div>
+  </section>
 
+<section class="mod" id="mod-write" hidden>
   <div class="sec-eyebrow">笔试 · 题型总览(2026届实考 · 非官方大纲)</div>
   <div class="egrid">
 
@@ -450,274 +510,66 @@ h1{
     </div>
 
   </div>
-
-  <div class="sec-eyebrow">笔试 · 题库(行测 57 题 + 专业 48 题 + 文化时政 44 题 = 149 题)</div>
-  <p class="notes">点击任意题面展开答案与解析,自测后再对答案。<b>通用能力(行测)</b>:常识/言语/数量/判断/资料;专业笔试按石油工程基础、油藏、采油、钻井、储运;文化与思想素质全覆盖。均为真题风格整理,文化类表述以各企业官网最新版本为准。</p>
-  <div class="egrid">
-
-    <div class="qmod">
-      <h3>① 通用能力 · 常识判断(15 题 · 能源与行业常识)</h3>
-      <div class="qmeta font-mono">能源常识 / 石油知识 / 时政常识 · 三桶油+管网均考 · 送分题,正确率目标 90%+</div>
-      <div class="qlist">
-        <details class="qitem"><summary>我国最大的陆上油田是哪个?</summary><div class="qans"><b>长庆油田</b>(鄂尔多斯盆地,陕甘宁交界;大庆是大庆精神的大油田,但产量第一是长庆)</div></details>
-        <details class="qitem"><summary>原油的主要化学成分是?</summary><div class="qans"><b>碳氢化合物(烃类)</b>,并含少量硫、氮、氧等杂原子化合物</div></details>
-        <details class="qitem"><summary>天然气的主要成分是?</summary><div class="qans"><b>甲烷</b>(通常占 70% 以上,另含乙烷、丙烷、N₂、CO₂ 等)</div></details>
-        <details class="qitem"><summary>按硫含量分类,含硫量大于 2% 的石油属于?</summary><div class="qans"><b>高硫石油</b>(低硫 &lt;0.5%、含硫 0.5%~2%、高硫 &gt;2%)</div></details>
-        <details class="qitem"><summary>衡量原油流动难易程度的物性指标是?</summary><div class="qans"><b>粘度</b>(稠油粘度大、流动困难,需热采/降粘)</div></details>
-        <details class="qitem"><summary>下列不属于石油主要加工产品的是?</summary><div class="qans"><b>纯碱</b>(汽油、柴油、煤油、沥青、石蜡均为石油产品)</div></details>
-        <details class="qitem"><summary>「西气东输」管道输送的是什么?</summary><div class="qans"><b>天然气</b>(气态管道输送;LNG 是-162℃ 液化后船舶/槽车运输)</div></details>
-        <details class="qitem"><summary>我国现阶段一次能源的主体是?</summary><div class="qans"><b>化石能源</b>(煤炭为主,石油天然气占比紧随其后)</div></details>
-        <details class="qitem"><summary>「碳达峰」的含义是?</summary><div class="qans">温室气体排放量达到<b>峰值</b>后进入<b>持续下降</b>通道</div></details>
-        <details class="qitem"><summary>地震勘探中激发地震波依靠什么?</summary><div class="qans"><b>人工震源</b>(震源车可控震源/炸药激发,采集反射波)</div></details>
-        <details class="qitem"><summary>页岩气实现经济开发的关键技术是?</summary><div class="qans"><b>水平井 + 水力压裂</b>(长水平段分段压裂造缝网)</div></details>
-        <details class="qitem"><summary>「三桶油」指哪三家?</summary><div class="qans"><b>中石油(CNPC)、中石化(SINOPEC)、中海油(CNOOC)</b></div></details>
-        <details class="qitem"><summary>我国首个自营超深水大气田是?</summary><div class="qans"><b>深海一号</b>(南海陵水 17-2,水深约 1500 m,2021 年投产)</div></details>
-        <details class="qitem"><summary>我国最大的海上原油生产基地是?</summary><div class="qans"><b>渤海油田</b>(中国海油旗下,国产原油海上主产区)</div></details>
-        <details class="qitem"><summary>国家安全生产方针是什么?</summary><div class="qans"><b>安全第一、预防为主、综合治理</b>(通用方针;中石油专属核心理念是「一切事故都可以预防」,别混淆)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>② 通用能力 · 言语理解(10 题)</h3>
-      <div class="qmeta font-mono">逻辑填空 4 / 主旨 3 / 排序 1 / 病句 2 · 中石油约 20 题该模块</div>
-      <div class="qlist">
-        <details class="qitem"><summary>逻辑填空:贯彻新发展理念,要_______尊重、顺应、保护自然。</summary><div class="qans"><b>完整、准确、全面</b>贯彻(固定搭配,高频原题)</div></details>
-        <details class="qitem"><summary>逻辑填空:能源转型要「先立后破」——先_______新能源供给能力,再逐步_______传统产能。</summary><div class="qans"><b>建立/替代</b></div></details>
-        <details class="qitem"><summary>主旨题:文段称我国化石能源消费占比仍高但逐年下降,新能源增幅最大。主旨?</summary><div class="qans"><b>能源结构绿色低碳转型稳步推进</b>(抓「虽然…但…」转折)</div></details>
-        <details class="qitem"><summary>排序题:①采出油气经井口 ②进集输管网 ③计量分离 ④外输。正确顺序?</summary><div class="qans"><b>①②③④</b>——按生产流程排</div></details>
-        <details class="qitem"><summary>病句:「由于油价持续波动,造成了炼化企业盈利空间收窄。」问题在哪?</summary><div class="qans"><b>「由于…造成」句式杂糅</b>,删「造成」或改为「使得」</div></details>
-        <details class="qitem"><summary>逻辑填空:「三老四严」的四严:严格的要求、严密的组织、严肃的态度、______。</summary><div class="qans"><b>严明的纪律</b>(「严厉的惩罚」是常见干扰项)</div></details>
-        <details class="qitem"><summary>主旨题:某安全会议提出「安全是底线、环保是红线、质量是生命线」。主旨?</summary><div class="qans">生产经营必须<b>守住底线、不碰红线</b></div></details>
-        <details class="qitem"><summary>成语题:非常规油气开发风险高、见效慢,应______,不能一蹴而就。</summary><div class="qans"><b>循序渐进</b>(排除急功近利/盲目冒进类)</div></details>
-        <details class="qitem"><summary>病句题:下列搭配不当的是?</summary><div class="qans">「<b>提高</b>污染排放强度」——应为「降低/控制」,「提高排放」动宾不当</div></details>
-        <details class="qitem"><summary>排序题:②先提出背景 ①再讲具体措施 ③最后总结意义。正确顺序?</summary><div class="qans"><b>②①③</b>(背景→措施→意义)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>③ 通用能力 · 数量关系(12 题)</h3>
-      <div class="qmeta font-mono">工程 / 增长率 / 数列 / 浓度 / 行程 / 利润 · 中石油约 15-23 题、延长占比最高</div>
-      <div class="qlist">
-        <details class="qitem"><summary>甲乙两队抢修输油管道,甲 8 天、乙 12 天,合作需几天?</summary><div class="qans"><b>4.8 天</b>(1/8+1/12 = 5/24 → 24/5)</div></details>
-        <details class="qitem"><summary>某装置年处理原油 1200 万吨,年增 5%,第 3 年末约多少?</summary><div class="qans"><b>≈1389 万吨</b>(1200×1.05³=1389.15)</div></details>
-        <details class="qitem"><summary>某油田月产 1200 吨,上旬 40%、中旬 35%,下旬需产多少?</summary><div class="qans"><b>300 吨</b>(剩余 25%)</div></details>
-        <details class="qitem"><summary>某井日产油 20 吨、含水率 50%,产液量为?</summary><div class="qans"><b>40 吨</b>(产液量 = 产油量 ÷ (1−含水率))</div></details>
-        <details class="qitem"><summary>数列:2, 5, 10, 17, 26, ?</summary><div class="qans"><b>37</b>(通项 n²+1)</div></details>
-        <details class="qitem"><summary>数列:3, 7, 15, 31, ?</summary><div class="qans"><b>63</b>(×2+1 递推)</div></details>
-        <details class="qitem"><summary>10% 的盐水 200 kg 加入清水 100 kg,浓度变为?</summary><div class="qans"><b>≈6.7%</b>(溶质 20 kg ÷ 300 kg)</div></details>
-        <details class="qitem"><summary>甲单独 10 天完成、乙单独 15 天完成,合作需几天?</summary><div class="qans"><b>6 天</b>(1/10+1/15=1/6)</div></details>
-        <details class="qitem"><summary>去程 60 km/h、回程 40 km/h,全程平均速度?</summary><div class="qans"><b>48 km/h</b>(2uv/(u+v),≠50,平均速陷阱)</div></details>
-        <details class="qitem"><summary>三班产量比 4:3:2,共 360 吨,产量最多的班是多少?</summary><div class="qans"><b>160 吨</b>(4/(4+3+2)×360)</div></details>
-        <details class="qitem"><summary>进价 100 元,加价 30% 定价,再打 8 折出售,毛利率?</summary><div class="qans"><b>4%</b>(130×0.8=104)</div></details>
-        <details class="qitem"><summary>圆半径增大 10%,圆面积增大?</summary><div class="qans"><b>21%</b>(1.1²=1.21,平方关系勿用 20%)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>④ 通用能力 · 判断推理(12 题)</h3>
-      <div class="qmeta font-mono">命题推理 / 真假话 / 定义判断 / 类比 / 削弱加强 / 图形运算 · 中石油约 15 题</div>
-      <div class="qlist">
-        <details class="qitem"><summary>「若完成培训则上岗」逻辑等价于?</summary><div class="qans"><b>未完成培训或已上岗</b>(若 A 则 B ≡ 非A或B,高频考点)</div></details>
-        <details class="qitem"><summary>传递推理:升职→绩效优;绩效优→态度好。已知某员工态度不好,可推出?</summary><div class="qans"><b>该员工不能升职</b>(逆否链)</div></details>
-        <details class="qitem"><summary>真假话:四人,只有一人说真。甲:全部检修完成;乙:我完成了;丙:我完成了;丁:甲说的不对。</summary><div class="qans"><b>甲与丁矛盾</b>必有一真,故乙丙为假;唯一真是<b>丁</b>(符合「并非全部完成」)</div></details>
-        <details class="qitem"><summary>定义判断:井网密度的定义是?</summary><div class="qans"><b>单位含油面积上的油井数(口/km²)</b></div></details>
-        <details class="qitem"><summary>定义判断:采收率的定义是?</summary><div class="qans"><b>可采储量 / 地质储量</b></div></details>
-        <details class="qitem"><summary>类比:压裂:增产 = ?</summary><div class="qans"><b>酸化:解堵</b>(均为增产/改善渗流措施-作用)</div></details>
-        <details class="qitem"><summary>类比:输油管道:泵站 = 输气管道:?</summary><div class="qans"><b>压气站(压缩机组)</b>(均为增压输送设备)</div></details>
-        <details class="qitem"><summary>图形推理:题干封闭区间数 1,2,3,4,5,下一图?</summary><div class="qans"><b>6</b>(数封闭空间数,常见规律:平移/旋转/对称/线条数/点数)</div></details>
-        <details class="qitem"><summary>削弱:结论「高温导致某井产率下降」,最能削弱的一项是?</summary><div class="qans"><b>该井同期停产检修</b>(另有他因)</div></details>
-        <details class="qitem"><summary>加强:结论「智能巡检可减少事故」,最能加强的一项是?</summary><div class="qans"><b>试点场站连续 12 个月事故率下降 40%</b>(直接数据支撑)</div></details>
-        <details class="qitem"><summary>归纳:某油田数字化后钻井周期缩短、事故减少、人均产量上升,最合理概括?</summary><div class="qans"><b>数字技术推动油田效率与安全双提升</b></div></details>
-        <details class="qitem"><summary>选言推理:「本次作业要么整改,要么停工」,已知不停工,可推出?</summary><div class="qans"><b>必须整改</b>(否定选言支→肯定另一支)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑤ 通用能力 · 资料分析(8 题)</h3>
-      <div class="qmeta font-mono">中石油约 15 题 · 中海油约 20 题 · 先读题干后定位,每题 ≤1.5 分钟</div>
-      <div class="qlist">
-        <details class="qitem"><summary>估算:42034 × 28% ≈ ?</summary><div class="qans"><b>≈11770</b>(截位:4.2×0.28≈1.18 万)</div></details>
-        <details class="qitem"><summary>占比从 21.5% 升至 26.3%,提高了?</summary><div class="qans"><b>4.8 个百分点</b>(「百分点」≠「%」,最常设错点)</div></details>
-        <details class="qitem"><summary>产量从 350 万吨增至 518 万吨,增长率为?</summary><div class="qans"><b>48%</b>((518−350)/350)</div></details>
-        <details class="qitem"><summary>表格单位是「千吨/年」,题干问「万吨」,怎么处理?</summary><div class="qans"><b>数值 ÷10</b>;先摘单位再算,单位陷阱必扣分</div></details>
-        <details class="qitem"><summary>2023 年为 Q,2024 年降 2%、2025 年再增 5%,2025 年约为?</summary><div class="qans"><b>1.029Q</b>(0.98×1.05≈1.029,约增 2.9%)</div></details>
-        <details class="qitem"><summary>年均增长率怎么快速估算?</summary><div class="qans">现期/基期 开 n 次方再 −1;<b>用选项代入验算</b>代替硬开方</div></details>
-        <details class="qitem"><summary>柱状图问「增幅最大的一年」,看什么?</summary><div class="qans">看<b>相对增幅(环比/同比百分比)</b>,不是绝对增量——绝对量最大≠增幅最大</div></details>
-        <details class="qitem"><summary>「12 月环比」与「12 月同比」分别和谁比?</summary><div class="qans"><b>同比</b>=上年 12 月;<b>环比</b>=同年 11 月</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑥ 专业 · 石油工程基础(10 题 · 单选高频)</h3>
-      <div class="qmeta font-mono">三桶油 / 延长技术岗通考 · 送分题,必须全对</div>
-      <div class="qlist">
-        <details class="qitem"><summary>石油工程主要包括哪四大板块?</summary><div class="qans"><b>钻井、采油(采气)、油藏工程、地面建设工程</b></div></details>
-        <details class="qitem"><summary>钻井液的主要作用不包括?</summary><div class="qans"><b>提高原油产量</b>(作用:携带岩屑、冷却钻头、平衡地层压力、稳定井壁)</div></details>
-        <details class="qitem"><summary>防止井喷最关键的是哪套井口装置?</summary><div class="qans"><b>防喷器(井控装置)</b></div></details>
-        <details class="qitem"><summary>钻井液密度过高会导致?过低会导致?</summary><div class="qans">过高 → <b>井漏</b>;过低 → <b>井涌/井喷</b>(按地层压力平衡选择)</div></details>
-        <details class="qitem"><summary>欠平衡钻井的关键设备是?</summary><div class="qans"><b>旋转防喷器(旋转控制头)</b></div></details>
-        <details class="qitem"><summary>陆上钻井常用的钻井液循环方式是?</summary><div class="qans"><b>正循环</b>(内管下返地层)</div></details>
-        <details class="qitem"><summary>下列不属于完井方法的是?</summary><div class="qans"><b>注水完井</b>(常见:射孔完井、裸眼完井、砾石充填完井)</div></details>
-        <details class="qitem"><summary>井控的核心是什么?</summary><div class="qans"><b>控制井口压力、严防井喷事故</b></div></details>
-        <details class="qitem"><summary>三牙轮钻头与 PDC 钻头分别怎么破碎地层?</summary><div class="qans">牙轮:钻压+滚动<b>冲击压碎</b>;PDC:金刚石切削<b>剪切破碎</b></div></details>
-        <details class="qitem"><summary>油气藏形成的「四要素」是什么?</summary><div class="qans"><b>油气源(烃源岩)、储集层、盖层、圈闭</b></div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑦ 专业 · 油藏工程(12 题)</h3>
-      <div class="qmeta font-mono">你报考开发方向最对口 · 驱动方式 / 采收率 / 试井 / 注水</div>
-      <div class="qlist">
-        <details class="qitem"><summary>孔隙度与渗透率分别描述什么?</summary><div class="qans"><b>孔隙度</b>=储层储存流体的空间占比;<b>渗透率</b>=流体流动能力——一个是「能装多少」,一个是「好不好流」</div></details>
-        <details class="qitem"><summary>采收率的定义式?</summary><div class="qans">采收率 = <b>可采储量 / 地质储量</b></div></details>
-        <details class="qitem"><summary>定容封闭油藏、无注水补充、持续开采,地层压力走势?</summary><div class="qans"><b>持续下降</b>(能量来自弹性能量,无补充则压力不断亏空)</div></details>
-        <details class="qitem"><summary>油藏驱动方式中,采收率较高的是?</summary><div class="qans"><b>水压驱动</b>(边底水/人工注水能量补充)</div></details>
-        <details class="qitem"><summary>确定井间连通性的试井方法是?</summary><div class="qans"><b>干扰试井</b>(激动井+观察井)</div></details>
-        <details class="qitem"><summary>井网密度「密度」指什么?主要影响什么?</summary><div class="qans">单位面积<b>井数(口/km²)</b>;主要影响<b>采收率</b>(密度过小采不出,过大不经济)</div></details>
-        <details class="qitem"><summary>「见水」现象指什么?</summary><div class="qans"><b>边水、底水或注入水突破至井筒</b>,产液中出现水</div></details>
-        <details class="qitem"><summary>油藏数值模拟的主要用途?</summary><div class="qans"><b>动态预测与开发方案比选</b>(产量、压力、含水预测)</div></details>
-        <details class="qitem"><summary>低渗油藏提高采收率的有效措施?</summary><div class="qans"><b>水平井分段压裂 + 合理注水保持能量</b></div></details>
-        <details class="qitem"><summary>物质平衡方程主要用于什么油藏?</summary><div class="qans"><b>定容封闭油藏</b>储量核算与驱动能量评价</div></details>
-        <details class="qitem"><summary>产油 20 吨/日、含水率 50%,产液量怎么算?</summary><div class="qans">产液量 = 产油 ÷(1−含水率)= <b>40 吨</b></div></details>
-        <details class="qitem"><summary>常用注水方式有哪些?低渗/裂缝油藏多采用哪种?</summary><div class="qans">边缘注水、切割注水、<b>面积(行列)注水</b>、点状注水;低渗、裂缝发育油藏多采用<b>面积/点状(不规则)注水</b></div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑧ 专业 · 采油工程(10 题)</h3>
-      <div class="qmeta font-mono">人工举升 / 压裂酸化 / EOR 高区分点</div>
-      <div class="qlist">
-        <details class="qitem"><summary>下列属于无杆抽油设备的是?</summary><div class="qans"><b>电动潜油离心泵(电潜泵)</b>(皮带式、游梁式、链条式均为有杆)</div></details>
-        <details class="qitem"><summary>下列属于机械采油(人工举升)方式的是?</summary><div class="qans"><b>螺杆泵采油</b>(也属人工举升;与之并列:有杆泵、电潜泵、气举)</div></details>
-        <details class="qitem"><summary>水力压裂的目的是?</summary><div class="qans"><b>形成人工裂缝、提高储层渗透能力</b>,改善渗流、提高单井产量</div></details>
-        <details class="qitem"><summary>EOR(提高采收率)方法不包括?</summary><div class="qans"><b>机械采油</b>(EOR:热力驱、化学驱、气驱、微生物驱)</div></details>
-        <details class="qitem"><summary>一次采油利用的是什么能量?</summary><div class="qans"><b>天然能量</b>:弹性、溶解气、边底水、重力(不注水不注气)</div></details>
-        <details class="qitem"><summary>下列属于增产措施的是?</summary><div class="qans"><b>压裂、酸化</b>——注水是维持地层压力的开发手段,不算井筒增产措施</div></details>
-        <details class="qitem"><summary>酸化增产的原理?</summary><div class="qans">酸液<b>溶蚀岩石矿物与近井堵塞物</b>,扩大/连通渗流通道(盐酸/土酸,HF 防砂酸)</div></details>
-        <details class="qitem"><summary>常用人工举升方式如何分类?</summary><div class="qans"><b>有杆</b>:游梁(皮带/链条)抽油机、有杆(螺杆)泵;<b>无杆</b>:电潜泵、水力泵、气举</div></details>
-        <details class="qitem"><summary>游梁式抽油机(磕头机)最适用于?</summary><div class="qans">需要<b>人工举升的中低产、机抽井</b>(低渗/能量不足油藏为主)</div></details>
-        <details class="qitem"><summary>油井生产系统的组成范围?</summary><div class="qans"><b>井筒管柱 + 井口装置 + 地面集输管汇(计量)</b>;不含炼油/加工环节</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑨ 专业 · 钻井工程(8 题)</h3>
-      <div class="qmeta font-mono">井控 / 定向井 / 固井 · 与基础模块互补</div>
-      <div class="qlist">
-        <details class="qitem"><summary>定向井/水平井的主要价值?</summary><div class="qans">轨迹<b>贯穿多套储层、增大单井控制的泄油(泄气)面积</b>,提高单井产量与采收率</div></details>
-        <details class="qitem"><summary>页岩气井普遍采用什么钻井+完井方案?</summary><div class="qans"><b>水平井 + 分段压裂</b></div></details>
-        <details class="qitem"><summary>固井的主要目的是?</summary><div class="qans">用水泥浆<b>封隔地层与环空、支撑套管</b>,防止窜槽与井壁坍塌</div></details>
-        <details class="qitem"><summary>钻井液失水量过大的危害?</summary><div class="qans">滤液大量侵入储层→<b>粘土膨胀、水锁等储层伤害</b></div></details>
-        <details class="qitem"><summary>定向井实时监控井眼轨迹的设备?</summary><div class="qans"><b>MWD/LWD</b>(随钻测量/随钻测井,井下遥测)</div></details>
-        <details class="qitem"><summary>地层压力随深度的总体趋势?</summary><div class="qans">随井深<b>增大</b>(异常高压/超压带除外)</div></details>
-        <details class="qitem"><summary>井斜控制的目的?</summary><div class="qans">按设计轨迹钻进、<b>防止井段偏离设计靶区</b>与井下复杂</div></details>
-        <details class="qitem"><summary>钻井速度与机械钻速的关系?</summary><div class="qans">机械钻速=单位纯钻时间钻进米数;<b>提高钻头性能与钻进参数</b>是提速核心(送分易错:别与总钻速混淆)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑩ 专业 · 油气储运(8 题 · 管网对口)</h3>
-      <div class="qmeta font-mono">国家管网笔试重点 · 管道 / 储气库 / LNG</div>
-      <div class="qlist">
-        <details class="qitem"><summary>地下储气库的作用?</summary><div class="qans"><b>季节调峰、应急供气储备</b>(利用枯竭气藏/盐穴/含水层存储)</div></details>
-        <details class="qitem"><summary>LNG(液化天然气)常压液化温度?</summary><div class="qans">约<b>-162 ℃</b></div></details>
-        <details class="qitem"><summary>管道输送的特点?</summary><div class="qans"><b>连续、密闭、运量大、成本低</b>,是天然气/成品油干线主力</div></details>
-        <details class="qitem"><summary>「兰郑长」管道输送什么?</summary><div class="qans"><b>成品油</b>(兰州—郑州—长沙,国家管网运营)</div></details>
-        <details class="qitem"><summary>中俄东线输送什么?</summary><div class="qans"><b>天然气</b>(中俄东线天然气管道,进口俄气主力通道)</div></details>
-        <details class="qitem"><summary>输气站(压气站)的核心功能?</summary><div class="qans"><b>增压</b>,补偿沿线压损、维持输送量</div></details>
-        <details class="qitem"><summary>输油管道泄漏检测的常用手段?</summary><div class="qans">SCADA <b>压力/流量突变检测</b>、巡线无人机+人工、负压波/音波泄漏定位</div></details>
-        <details class="qitem"><summary>油气交接计量依据什么?</summary><div class="qans"><b>定期标定合格的流量计</b> + 油品化验(密度/含水/温度修正)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑪ 文化思想素质 · 中石油(10 题 · 原题重复率高)</h3>
-      <div class="qmeta font-mono">企业精神 / 宗旨 / 三老四严 / 大庆·铁人精神 · 必背</div>
-      <div class="qlist">
-        <details class="qitem"><summary>中国石油的企业精神?</summary><div class="qans"><b>爱国、创业、求实、奉献</b>(1981 年表述为「献身」,1990 年江泽民同志改为「奉献」;干扰项常出「献身」)</div></details>
-        <details class="qitem"><summary>中国石油的企业宗旨?</summary><div class="qans"><b>奉献能源、创造和谐</b></div></details>
-        <details class="qitem"><summary>「三老」指?</summary><div class="qans">当<b>老实人</b>、说<b>老实话</b>、办<b>老实事</b></div></details>
-        <details class="qitem"><summary>「四严」指?</summary><div class="qans"><b>严格的要求、严密的组织、严肃的态度、严明的纪律</b>(「严厉的惩罚」常见干扰项)</div></details>
-        <details class="qitem"><summary>大庆精神、铁人精神起源于?铁人是谁?</summary><div class="qans">起源于<b>大庆石油会战</b>;铁人=<b>王进喜</b>;新时期铁人=<b>王启民</b></div></details>
-        <details class="qitem"><summary>中国石油核心价值观?</summary><div class="qans"><b>诚信、创新、业绩、和谐、安全</b>(以官网现行表述为准;干扰项常混入「高效」)</div></details>
-        <details class="qitem"><summary>核心经营管理理念?</summary><div class="qans"><b>诚信是基石、创新是动力、业绩是目标、和谐是保障、安全是前提</b></div></details>
-        <details class="qitem"><summary>核心安全理念?</summary><div class="qans"><b>一切事故都可以预防</b>(通用方针是「安全第一、预防为主、综合治理」,别混淆)</div></details>
-        <details class="qitem"><summary>QHSE 理念?</summary><div class="qans"><b>环保优先、安全第一、质量至上、以人为本</b></div></details>
-        <details class="qitem"><summary>中国石油英文简称?</summary><div class="qans"><b>CNPC</b>(中石化 SINOPEC / 中海油 CNOOC)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑫ 文化思想素质 · 中石化(8 题)</h3>
-      <div class="qmeta font-mono">使命 / 愿景 / 核心价值观 / 一基两翼三新 · 思想素质题量占比最大</div>
-      <div class="qlist">
-        <details class="qitem"><summary>中国石化企业使命?</summary><div class="qans"><b>为美好生活加油</b></div></details>
-        <details class="qitem"><summary>中国石化企业愿景?</summary><div class="qans">建设成为<b>人民满意、世界一流能源化工公司</b></div></details>
-        <details class="qitem"><summary>中国石化核心价值观?</summary><div class="qans"><b>人本、责任、诚信、精细、创新、共赢</b>(以官网最新表述为准)</div></details>
-        <details class="qitem"><summary>中国石化企业精神?</summary><div class="qans"><b>爱我中华、振兴石化</b>(司歌同名)</div></details>
-        <details class="qitem"><summary>中国石化企业作风?</summary><div class="qans"><b>严细实</b></div></details>
-        <details class="qitem"><summary>品牌口号?</summary><div class="qans"><b>每一滴油都是承诺</b></div></details>
-        <details class="qitem"><summary>「一基两翼三新」指什么?</summary><div class="qans"><b>一基</b>=石油化工基础产业;<b>两翼</b>=清洁能源、高端材料;<b>三新</b>=新能源、新材料、新经济</div></details>
-        <details class="qitem"><summary>「三商」战略指?</summary><div class="qans"><b>市场商、技术商、服务商</b></div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑬ 文化思想素质 · 中海油(6 题)</h3>
-      <div class="qmeta font-mono">成立背景 / 主战场 · 近年笔试取消英语、综合只考时政+海油文化</div>
-      <div class="qlist">
-        <details class="qitem"><summary>中国海油成立于哪一年?</summary><div class="qans"><b>1982 年</b>,国务院授权对外合作开采海洋石油;1999 年改制为股份公司</div></details>
-        <details class="qitem"><summary>中国海油的定位?</summary><div class="qans">我国<b>最大的海上油气生产商</b>,世界 500 强</div></details>
-        <details class="qitem"><summary>我国最大海上原油生产基地?</summary><div class="qans"><b>渤海油田</b></div></details>
-        <details class="qitem"><summary>我国首个自营超深水大气田?</summary><div class="qans"><b>「深海一号」(陵水 17-2)</b>,南海,水深约 1500 m</div></details>
-        <details class="qitem"><summary>中国海油总部所在地?</summary><div class="qans"><b>北京</b>(三大基地:天津/深圳/湛江,作业区入海口)</div></details>
-        <details class="qitem"><summary>我国海上油气勘探开发主要海域?</summary><div class="qans"><b>渤海、东海、南海</b>(南海东部/南海西部)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑭ 文化思想素质 · 国家管网(8 题)</h3>
-      <div class="qmeta font-mono">挂牌 / 宗旨 / 战略(党建+六化) / 干线 · 笔试含「企业核心知识专项题库」</div>
-      <div class="qlist">
-        <details class="qitem"><summary>国家管网集团正式挂牌时间?</summary><div class="qans"><b>2019 年 12 月 9 日</b>(党中央、国务院批准组建)</div></details>
-        <details class="qitem"><summary>国家管网企业宗旨?</summary><div class="qans"><b>服务国家战略、服务人民需要、服务行业发展</b>(「服务效益优先」是干扰项)</div></details>
-        <details class="qitem"><summary>「十四五」发展战略?</summary><div class="qans">党建引领、战略驱动、<b>安全立网、创新强网、人才兴网、文化润网</b>(「逐利扩张」干扰项)</div></details>
-        <details class="qitem"><summary>国家管网运营的主干管网包括?</summary><div class="qans"><b>西气东输一/二/三线、中俄东线、中缅油气管道、陕京输气系统、兰郑长成品油管道</b>等国家级干线</div></details>
-        <details class="qitem"><summary>「全国一张网」指的是?</summary><div class="qans">统筹<b>全国油气干线管网</b>,统一规划、建设、调配,保障能源安全</div></details>
-        <details class="qitem"><summary>国家管网地下储气库规模(参考)?</summary><div class="qans"><b>超 30 座</b>,调峰总工作气量<b>超 220 亿立方米</b>(对外口径为准)</div></details>
-        <details class="qitem"><summary>管网公平开放机制内容?</summary><div class="qans"><b>公开剩余运力、无差别开放管输服务、统一执行核定费率</b></div></details>
-        <details class="qitem"><summary>国家管网的使命定位?</summary><div class="qans"><b>保障国家能源安全</b>(国家能源动脉)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑮ 文化思想素质 · 延长石油(4 题)</h3>
-      <div class="qmeta font-mono">百年延长 · 企业文化历年大量原题重复</div>
-      <div class="qlist">
-        <details class="qitem"><summary>中国陆上第一口油井?</summary><div class="qans"><b>延一井</b>(1907 年钻成,陕西延长县)</div></details>
-        <details class="qitem"><summary>延长石油始创年份?</summary><div class="qans"><b>1905 年</b>,中国石油工业的摇篮(1905 设厂勘探、1907 延一井出油)</div></details>
-        <details class="qitem"><summary>延长石油企业精神?</summary><div class="qans"><b>埋头苦干、开拓创新</b></div></details>
-        <details class="qitem"><summary>延长石油企业使命?</summary><div class="qans"><b>汇聚能源、延长价值</b>(核心价值观:兴业报国、富民强企、以人为本、和谐发展,以官网为准)</div></details>
-      </div>
-    </div>
-
-    <div class="qmod">
-      <h3>⑯ 时政 · 双碳与能源安全(8 题)</h3>
-      <div class="qmeta font-mono">三桶油/管网全部考 · 考前 3 个月时政更新</div>
-      <div class="qlist">
-        <details class="qitem"><summary>我国「双碳」目标?</summary><div class="qans"><b>2030 年碳达峰、2060 年碳中和</b></div></details>
-        <details class="qitem"><summary>CCUS 指什么?</summary><div class="qans"><b>碳捕集、利用与封存</b>(Carbon Capture, Utilization and Storage)</div></details>
-        <details class="qitem"><summary>「绿氢」的定义?</summary><div class="qans"><b>可再生能源发电电解水制氢</b>(灰氢=天然气制氢、蓝氢=灰氢+CCUS)</div></details>
-        <details class="qitem"><summary>我国对外依存度最高的一次能源是?</summary><div class="qans"><b>石油</b>(约 70%,供应安全最受关注;天然气次之)</div></details>
-        <details class="qitem"><summary>能源安全新战略「四个革命、一个合作」指?</summary><div class="qans"><b>能源消费、供给、技术、体制革命</b> + <b>全方位国际合作</b></div></details>
-        <details class="qitem"><summary>新型能源体系特征?</summary><div class="qans"><b>清洁低碳、安全高效</b>(含风光为主体、传统能源兜底)</div></details>
-        <details class="qitem"><summary>智能油田(数字油田)典型应用?</summary><div class="qans">AI 巡检、<b>数字孪生</b>、生产优化决策、无人值守场站</div></details>
-        <details class="qitem"><summary>深海油气开发标志性装备/工程?</summary><div class="qans"><b>「深海一号」大气田、「海葵一号」圆筒型 FPSO</b>、半潜式深水钻井平台</div></details>
-      </div>
-    </div>
-
+  <div class="qview-tools">
+    <button id="qview-open">展开全部模块</button>
+    <button id="qview-close">收起全部</button>
+    <span style="font-size:12.2px;color:var(--muted)">共 16 模块 149 题 · 点击模块条展开</span>
   </div>
+  <div id="qview"></div>
+  </section>
 
+<section class="mod" id="mod-sim" hidden>
+
+  <div class="sec-eyebrow">笔试 · 模拟考(组卷自测 · 149 题数据源)</div>
+  <div class="sim-setup" id="sim-setup">
+    <div class="row"><span class="k">考试范围</span><span class="chips" id="sc-scope">
+      <button class="chip2 on" data-v="all">全部 149 题</button>
+      <button class="chip2" data-v="xing">行测 57 题</button>
+      <button class="chip2" data-v="zhuan">专业 48 题</button>
+      <button class="chip2" data-v="wenhua">文化时政 44 题</button>
+    </span></div>
+    <div class="row"><span class="k">题量</span><span class="chips" id="sc-count">
+      <button class="chip2" data-v="10">10 题</button>
+      <button class="chip2" data-v="20">20 题</button>
+      <button class="chip2 on" data-v="30">30 题</button>
+      <button class="chip2" data-v="50">50 题</button>
+      <button class="chip2" data-v="all">全部</button>
+    </span></div>
+    <div class="row"><span class="k">计时</span><span class="chips" id="sc-time">
+      <button class="chip2" data-v="120">120 分钟(全真)</button>
+      <button class="chip2" data-v="60">60 分钟</button>
+      <button class="chip2 on" data-v="30">30 分钟</button>
+      <button class="chip2" data-v="0">不计时</button>
+    </span></div>
+    <div class="row"><span class="k">题序</span><span class="chips" id="sc-order">
+      <button class="chip2 on" data-v="rand">随机(推荐)</button>
+      <button class="chip2" data-v="seq">按题库顺序</button>
+    </span></div>
+    <div class="row"><span class="k">历史</span><span class="sim-last" id="sim-last">暂无记录</span></div>
+    <div class="row"><span class="k"></span><button class="sim-btn primary" id="sim-start">开始模拟</button></div>
+  </div>
+  <div id="sim-run" hidden>
+    <div class="sim-bar">
+      <span class="prog" id="sim-prog">第 1 / 30 题</span>
+      <span class="timer" id="sim-timer">30:00</span>
+      <span class="mod-tag" id="sim-modtag">行测</span>
+    </div>
+    <div class="sim-q" id="sim-q"></div>
+    <div class="sim-ans" id="sim-ans" hidden></div>
+    <div class="sim-ctl">
+      <button class="sim-btn" id="sim-reveal">查看答案</button>
+      <button class="sim-btn primary" id="sim-ok" hidden>✓ 答对了(下一题)</button>
+      <button class="sim-btn warn" id="sim-no" hidden>✗ 答错了(进错题本)</button>
+      <button class="sim-btn" id="sim-skip">跳过</button>
+      <button class="sim-btn" id="sim-prev">上一题</button>
+      <button class="sim-btn" id="sim-submit">交卷</button>
+    </div>
+    <p class="notes">先自行作答 → 点「查看答案」→ 按实际情况点 ✓/✗ 自动进下一题;不展开答案点「跳过」。键盘 ← → 也可翻题。</p>
+  </div>
+  <div id="sim-res" class="sim-res" hidden></div>
+  </section>
+
+<section class="mod" id="mod-inter" hidden>
   <div class="sec-eyebrow">面试 · 通用六维(半结构化 20 题)</div>
   <div class="qgrid">
 
@@ -889,7 +741,9 @@ h1{
     <div class="qcard"><span class="qlabel">Shell · HR</span><b>Why Shell / why energy / location flexibility</b><span class="a">答「能源转型中的系统思维」+ 你的<b>案例/课程</b>为证;外企必问<b>工作地灵活度</b>——答可接受全球调配(考虑家庭因素可答「优先中国区」但别直接拒绝);重复问 3 次是压力测试,保持稳定</span></div>
 
   </div>
+  </section>
 
+<section class="mod" id="mod-mouth" hidden>
   <div class="sec-eyebrow">口径与电话 · 网申前必读</div>
   <div class="notes">
     <span><span class="k">专业名称</span>石油与天然气工程(按学信网)</span>
@@ -899,12 +753,14 @@ h1{
     <span><span class="k">新疆油田 HR</span><a href="tel:09906889921">0990-6889921</a> · <a href="mailto:xjytzp@126.com">xjytzp@126.com</a></span>
     <span><span class="k">安东 HR</span><a href="mailto:hr2@antonoil.com">hr2@antonoil.com</a>(9/18 现场为主)</span>
   </div>
+  </section>
 
   <p class="foot">
     所有日期为 2026 届实际数据或第三方预测值、题量结构为历年实考的参考口径,秋招具体公告与考试大纲以各官网为准。<br>
     笔试/面试题型整理自公开备考资料与考生面经(高顿、中公、牛客、豆瓣、Glassdoor 等),<b>非官方大纲</b>;每年题型有微调,刷题时以最新真题为准。<br>
     配套文件(工作区根目录):求职跟踪表_2027届秋招.xlsx · 简历_油气田开发岗_专业硕士_v1.docx(框架版,内容自填)。
   </p>
+
 </div>
 
 <script>
@@ -943,4 +799,193 @@ h1{
   });
   renderDone();
 })();
+</script>
+<script>
+
+(function(){
+  const MODS=[{"n": "① 通用能力 · 常识判断(15 题 · 能源与行业常识)", "g": "行测", "meta": "能源常识 / 石油知识 / 时政常识 · 三桶油+管网均考 · 送分题,正确率目标 90%+"}, {"n": "② 通用能力 · 言语理解(10 题)", "g": "行测", "meta": "逻辑填空 4 / 主旨 3 / 排序 1 / 病句 2 · 中石油约 20 题该模块"}, {"n": "③ 通用能力 · 数量关系(12 题)", "g": "行测", "meta": "工程 / 增长率 / 数列 / 浓度 / 行程 / 利润 · 中石油约 15-23 题、延长占比最高"}, {"n": "④ 通用能力 · 判断推理(12 题)", "g": "行测", "meta": "命题推理 / 真假话 / 定义判断 / 类比 / 削弱加强 / 图形运算 · 中石油约 15 题"}, {"n": "⑤ 通用能力 · 资料分析(8 题)", "g": "行测", "meta": "中石油约 15 题 · 中海油约 20 题 · 先读题干后定位,每题 ≤1.5 分钟"}, {"n": "⑥ 专业 · 石油工程基础(10 题 · 单选高频)", "g": "专业", "meta": "三桶油 / 延长技术岗通考 · 送分题,必须全对"}, {"n": "⑦ 专业 · 油藏工程(12 题)", "g": "专业", "meta": "你报考开发方向最对口 · 驱动方式 / 采收率 / 试井 / 注水"}, {"n": "⑧ 专业 · 采油工程(10 题)", "g": "专业", "meta": "人工举升 / 压裂酸化 / EOR 高区分点"}, {"n": "⑨ 专业 · 钻井工程(8 题)", "g": "专业", "meta": "井控 / 定向井 / 固井 · 与基础模块互补"}, {"n": "⑩ 专业 · 油气储运(8 题 · 管网对口)", "g": "专业", "meta": "国家管网笔试重点 · 管道 / 储气库 / LNG"}, {"n": "⑪ 文化思想素质 · 中石油(10 题 · 原题重复率高)", "g": "文化", "meta": "企业精神 / 宗旨 / 三老四严 / 大庆·铁人精神 · 必背"}, {"n": "⑫ 文化思想素质 · 中石化(8 题)", "g": "文化", "meta": "使命 / 愿景 / 核心价值观 / 一基两翼三新 · 思想素质题量占比最大"}, {"n": "⑬ 文化思想素质 · 中海油(6 题)", "g": "文化", "meta": "成立背景 / 主战场 · 近年笔试取消英语、综合只考时政+海油文化"}, {"n": "⑭ 文化思想素质 · 国家管网(8 题)", "g": "文化", "meta": "挂牌 / 宗旨 / 战略(党建+六化) / 干线 · 笔试含「企业核心知识专项题库」"}, {"n": "⑮ 文化思想素质 · 延长石油(4 题)", "g": "文化", "meta": "百年延长 · 企业文化历年大量原题重复"}, {"n": "⑯ 时政 · 双碳与能源安全(8 题)", "g": "文化", "meta": "三桶油/管网全部考 · 考前 3 个月时政更新"}];
+  const BANK=[{"mi": 0, "g": "行测", "q": "我国最大的陆上油田是哪个?", "a": "<b>长庆油田</b>(鄂尔多斯盆地,陕甘宁交界;大庆是大庆精神的大油田,但产量第一是长庆)"}, {"mi": 0, "g": "行测", "q": "原油的主要化学成分是?", "a": "<b>碳氢化合物(烃类)</b>,并含少量硫、氮、氧等杂原子化合物"}, {"mi": 0, "g": "行测", "q": "天然气的主要成分是?", "a": "<b>甲烷</b>(通常占 70% 以上,另含乙烷、丙烷、N₂、CO₂ 等)"}, {"mi": 0, "g": "行测", "q": "按硫含量分类,含硫量大于 2% 的石油属于?", "a": "<b>高硫石油</b>(低硫 &lt;0.5%、含硫 0.5%~2%、高硫 &gt;2%)"}, {"mi": 0, "g": "行测", "q": "衡量原油流动难易程度的物性指标是?", "a": "<b>粘度</b>(稠油粘度大、流动困难,需热采/降粘)"}, {"mi": 0, "g": "行测", "q": "下列不属于石油主要加工产品的是?", "a": "<b>纯碱</b>(汽油、柴油、煤油、沥青、石蜡均为石油产品)"}, {"mi": 0, "g": "行测", "q": "「西气东输」管道输送的是什么?", "a": "<b>天然气</b>(气态管道输送;LNG 是-162℃ 液化后船舶/槽车运输)"}, {"mi": 0, "g": "行测", "q": "我国现阶段一次能源的主体是?", "a": "<b>化石能源</b>(煤炭为主,石油天然气占比紧随其后)"}, {"mi": 0, "g": "行测", "q": "「碳达峰」的含义是?", "a": "温室气体排放量达到<b>峰值</b>后进入<b>持续下降</b>通道"}, {"mi": 0, "g": "行测", "q": "地震勘探中激发地震波依靠什么?", "a": "<b>人工震源</b>(震源车可控震源/炸药激发,采集反射波)"}, {"mi": 0, "g": "行测", "q": "页岩气实现经济开发的关键技术是?", "a": "<b>水平井 + 水力压裂</b>(长水平段分段压裂造缝网)"}, {"mi": 0, "g": "行测", "q": "「三桶油」指哪三家?", "a": "<b>中石油(CNPC)、中石化(SINOPEC)、中海油(CNOOC)</b>"}, {"mi": 0, "g": "行测", "q": "我国首个自营超深水大气田是?", "a": "<b>深海一号</b>(南海陵水 17-2,水深约 1500 m,2021 年投产)"}, {"mi": 0, "g": "行测", "q": "我国最大的海上原油生产基地是?", "a": "<b>渤海油田</b>(中国海油旗下,国产原油海上主产区)"}, {"mi": 0, "g": "行测", "q": "国家安全生产方针是什么?", "a": "<b>安全第一、预防为主、综合治理</b>(通用方针;中石油专属核心理念是「一切事故都可以预防」,别混淆)"}, {"mi": 1, "g": "行测", "q": "逻辑填空:贯彻新发展理念,要_______尊重、顺应、保护自然。", "a": "<b>完整、准确、全面</b>贯彻(固定搭配,高频原题)"}, {"mi": 1, "g": "行测", "q": "逻辑填空:能源转型要「先立后破」——先_______新能源供给能力,再逐步_______传统产能。", "a": "<b>建立/替代</b>"}, {"mi": 1, "g": "行测", "q": "主旨题:文段称我国化石能源消费占比仍高但逐年下降,新能源增幅最大。主旨?", "a": "<b>能源结构绿色低碳转型稳步推进</b>(抓「虽然…但…」转折)"}, {"mi": 1, "g": "行测", "q": "排序题:①采出油气经井口 ②进集输管网 ③计量分离 ④外输。正确顺序?", "a": "<b>①②③④</b>——按生产流程排"}, {"mi": 1, "g": "行测", "q": "病句:「由于油价持续波动,造成了炼化企业盈利空间收窄。」问题在哪?", "a": "<b>「由于…造成」句式杂糅</b>,删「造成」或改为「使得」"}, {"mi": 1, "g": "行测", "q": "逻辑填空:「三老四严」的四严:严格的要求、严密的组织、严肃的态度、______。", "a": "<b>严明的纪律</b>(「严厉的惩罚」是常见干扰项)"}, {"mi": 1, "g": "行测", "q": "主旨题:某安全会议提出「安全是底线、环保是红线、质量是生命线」。主旨?", "a": "生产经营必须<b>守住底线、不碰红线</b>"}, {"mi": 1, "g": "行测", "q": "成语题:非常规油气开发风险高、见效慢,应______,不能一蹴而就。", "a": "<b>循序渐进</b>(排除急功近利/盲目冒进类)"}, {"mi": 1, "g": "行测", "q": "病句题:下列搭配不当的是?", "a": "「<b>提高</b>污染排放强度」——应为「降低/控制」,「提高排放」动宾不当"}, {"mi": 1, "g": "行测", "q": "排序题:②先提出背景 ①再讲具体措施 ③最后总结意义。正确顺序?", "a": "<b>②①③</b>(背景→措施→意义)"}, {"mi": 2, "g": "行测", "q": "甲乙两队抢修输油管道,甲 8 天、乙 12 天,合作需几天?", "a": "<b>4.8 天</b>(1/8+1/12 = 5/24 → 24/5)"}, {"mi": 2, "g": "行测", "q": "某装置年处理原油 1200 万吨,年增 5%,第 3 年末约多少?", "a": "<b>≈1389 万吨</b>(1200×1.05³=1389.15)"}, {"mi": 2, "g": "行测", "q": "某油田月产 1200 吨,上旬 40%、中旬 35%,下旬需产多少?", "a": "<b>300 吨</b>(剩余 25%)"}, {"mi": 2, "g": "行测", "q": "某井日产油 20 吨、含水率 50%,产液量为?", "a": "<b>40 吨</b>(产液量 = 产油量 ÷ (1−含水率))"}, {"mi": 2, "g": "行测", "q": "数列:2, 5, 10, 17, 26, ?", "a": "<b>37</b>(通项 n²+1)"}, {"mi": 2, "g": "行测", "q": "数列:3, 7, 15, 31, ?", "a": "<b>63</b>(×2+1 递推)"}, {"mi": 2, "g": "行测", "q": "10% 的盐水 200 kg 加入清水 100 kg,浓度变为?", "a": "<b>≈6.7%</b>(溶质 20 kg ÷ 300 kg)"}, {"mi": 2, "g": "行测", "q": "甲单独 10 天完成、乙单独 15 天完成,合作需几天?", "a": "<b>6 天</b>(1/10+1/15=1/6)"}, {"mi": 2, "g": "行测", "q": "去程 60 km/h、回程 40 km/h,全程平均速度?", "a": "<b>48 km/h</b>(2uv/(u+v),≠50,平均速陷阱)"}, {"mi": 2, "g": "行测", "q": "三班产量比 4:3:2,共 360 吨,产量最多的班是多少?", "a": "<b>160 吨</b>(4/(4+3+2)×360)"}, {"mi": 2, "g": "行测", "q": "进价 100 元,加价 30% 定价,再打 8 折出售,毛利率?", "a": "<b>4%</b>(130×0.8=104)"}, {"mi": 2, "g": "行测", "q": "圆半径增大 10%,圆面积增大?", "a": "<b>21%</b>(1.1²=1.21,平方关系勿用 20%)"}, {"mi": 3, "g": "行测", "q": "「若完成培训则上岗」逻辑等价于?", "a": "<b>未完成培训或已上岗</b>(若 A 则 B ≡ 非A或B,高频考点)"}, {"mi": 3, "g": "行测", "q": "传递推理:升职→绩效优;绩效优→态度好。已知某员工态度不好,可推出?", "a": "<b>该员工不能升职</b>(逆否链)"}, {"mi": 3, "g": "行测", "q": "真假话:四人,只有一人说真。甲:全部检修完成;乙:我完成了;丙:我完成了;丁:甲说的不对。", "a": "<b>甲与丁矛盾</b>必有一真,故乙丙为假;唯一真是<b>丁</b>(符合「并非全部完成」)"}, {"mi": 3, "g": "行测", "q": "定义判断:井网密度的定义是?", "a": "<b>单位含油面积上的油井数(口/km²)</b>"}, {"mi": 3, "g": "行测", "q": "定义判断:采收率的定义是?", "a": "<b>可采储量 / 地质储量</b>"}, {"mi": 3, "g": "行测", "q": "类比:压裂:增产 = ?", "a": "<b>酸化:解堵</b>(均为增产/改善渗流措施-作用)"}, {"mi": 3, "g": "行测", "q": "类比:输油管道:泵站 = 输气管道:?", "a": "<b>压气站(压缩机组)</b>(均为增压输送设备)"}, {"mi": 3, "g": "行测", "q": "图形推理:题干封闭区间数 1,2,3,4,5,下一图?", "a": "<b>6</b>(数封闭空间数,常见规律:平移/旋转/对称/线条数/点数)"}, {"mi": 3, "g": "行测", "q": "削弱:结论「高温导致某井产率下降」,最能削弱的一项是?", "a": "<b>该井同期停产检修</b>(另有他因)"}, {"mi": 3, "g": "行测", "q": "加强:结论「智能巡检可减少事故」,最能加强的一项是?", "a": "<b>试点场站连续 12 个月事故率下降 40%</b>(直接数据支撑)"}, {"mi": 3, "g": "行测", "q": "归纳:某油田数字化后钻井周期缩短、事故减少、人均产量上升,最合理概括?", "a": "<b>数字技术推动油田效率与安全双提升</b>"}, {"mi": 3, "g": "行测", "q": "选言推理:「本次作业要么整改,要么停工」,已知不停工,可推出?", "a": "<b>必须整改</b>(否定选言支→肯定另一支)"}, {"mi": 4, "g": "行测", "q": "估算:42034 × 28% ≈ ?", "a": "<b>≈11770</b>(截位:4.2×0.28≈1.18 万)"}, {"mi": 4, "g": "行测", "q": "占比从 21.5% 升至 26.3%,提高了?", "a": "<b>4.8 个百分点</b>(「百分点」≠「%」,最常设错点)"}, {"mi": 4, "g": "行测", "q": "产量从 350 万吨增至 518 万吨,增长率为?", "a": "<b>48%</b>((518−350)/350)"}, {"mi": 4, "g": "行测", "q": "表格单位是「千吨/年」,题干问「万吨」,怎么处理?", "a": "<b>数值 ÷10</b>;先摘单位再算,单位陷阱必扣分"}, {"mi": 4, "g": "行测", "q": "2023 年为 Q,2024 年降 2%、2025 年再增 5%,2025 年约为?", "a": "<b>1.029Q</b>(0.98×1.05≈1.029,约增 2.9%)"}, {"mi": 4, "g": "行测", "q": "年均增长率怎么快速估算?", "a": "现期/基期 开 n 次方再 −1;<b>用选项代入验算</b>代替硬开方"}, {"mi": 4, "g": "行测", "q": "柱状图问「增幅最大的一年」,看什么?", "a": "看<b>相对增幅(环比/同比百分比)</b>,不是绝对增量——绝对量最大≠增幅最大"}, {"mi": 4, "g": "行测", "q": "「12 月环比」与「12 月同比」分别和谁比?", "a": "<b>同比</b>=上年 12 月;<b>环比</b>=同年 11 月"}, {"mi": 5, "g": "专业", "q": "石油工程主要包括哪四大板块?", "a": "<b>钻井、采油(采气)、油藏工程、地面建设工程</b>"}, {"mi": 5, "g": "专业", "q": "钻井液的主要作用不包括?", "a": "<b>提高原油产量</b>(作用:携带岩屑、冷却钻头、平衡地层压力、稳定井壁)"}, {"mi": 5, "g": "专业", "q": "防止井喷最关键的是哪套井口装置?", "a": "<b>防喷器(井控装置)</b>"}, {"mi": 5, "g": "专业", "q": "钻井液密度过高会导致?过低会导致?", "a": "过高 → <b>井漏</b>;过低 → <b>井涌/井喷</b>(按地层压力平衡选择)"}, {"mi": 5, "g": "专业", "q": "欠平衡钻井的关键设备是?", "a": "<b>旋转防喷器(旋转控制头)</b>"}, {"mi": 5, "g": "专业", "q": "陆上钻井常用的钻井液循环方式是?", "a": "<b>正循环</b>(内管下返地层)"}, {"mi": 5, "g": "专业", "q": "下列不属于完井方法的是?", "a": "<b>注水完井</b>(常见:射孔完井、裸眼完井、砾石充填完井)"}, {"mi": 5, "g": "专业", "q": "井控的核心是什么?", "a": "<b>控制井口压力、严防井喷事故</b>"}, {"mi": 5, "g": "专业", "q": "三牙轮钻头与 PDC 钻头分别怎么破碎地层?", "a": "牙轮:钻压+滚动<b>冲击压碎</b>;PDC:金刚石切削<b>剪切破碎</b>"}, {"mi": 5, "g": "专业", "q": "油气藏形成的「四要素」是什么?", "a": "<b>油气源(烃源岩)、储集层、盖层、圈闭</b>"}, {"mi": 6, "g": "专业", "q": "孔隙度与渗透率分别描述什么?", "a": "<b>孔隙度</b>=储层储存流体的空间占比;<b>渗透率</b>=流体流动能力——一个是「能装多少」,一个是「好不好流」"}, {"mi": 6, "g": "专业", "q": "采收率的定义式?", "a": "采收率 = <b>可采储量 / 地质储量</b>"}, {"mi": 6, "g": "专业", "q": "定容封闭油藏、无注水补充、持续开采,地层压力走势?", "a": "<b>持续下降</b>(能量来自弹性能量,无补充则压力不断亏空)"}, {"mi": 6, "g": "专业", "q": "油藏驱动方式中,采收率较高的是?", "a": "<b>水压驱动</b>(边底水/人工注水能量补充)"}, {"mi": 6, "g": "专业", "q": "确定井间连通性的试井方法是?", "a": "<b>干扰试井</b>(激动井+观察井)"}, {"mi": 6, "g": "专业", "q": "井网密度「密度」指什么?主要影响什么?", "a": "单位面积<b>井数(口/km²)</b>;主要影响<b>采收率</b>(密度过小采不出,过大不经济)"}, {"mi": 6, "g": "专业", "q": "「见水」现象指什么?", "a": "<b>边水、底水或注入水突破至井筒</b>,产液中出现水"}, {"mi": 6, "g": "专业", "q": "油藏数值模拟的主要用途?", "a": "<b>动态预测与开发方案比选</b>(产量、压力、含水预测)"}, {"mi": 6, "g": "专业", "q": "低渗油藏提高采收率的有效措施?", "a": "<b>水平井分段压裂 + 合理注水保持能量</b>"}, {"mi": 6, "g": "专业", "q": "物质平衡方程主要用于什么油藏?", "a": "<b>定容封闭油藏</b>储量核算与驱动能量评价"}, {"mi": 6, "g": "专业", "q": "产油 20 吨/日、含水率 50%,产液量怎么算?", "a": "产液量 = 产油 ÷(1−含水率)= <b>40 吨</b>"}, {"mi": 6, "g": "专业", "q": "常用注水方式有哪些?低渗/裂缝油藏多采用哪种?", "a": "边缘注水、切割注水、<b>面积(行列)注水</b>、点状注水;低渗、裂缝发育油藏多采用<b>面积/点状(不规则)注水</b>"}, {"mi": 7, "g": "专业", "q": "下列属于无杆抽油设备的是?", "a": "<b>电动潜油离心泵(电潜泵)</b>(皮带式、游梁式、链条式均为有杆)"}, {"mi": 7, "g": "专业", "q": "下列属于机械采油(人工举升)方式的是?", "a": "<b>螺杆泵采油</b>(也属人工举升;与之并列:有杆泵、电潜泵、气举)"}, {"mi": 7, "g": "专业", "q": "水力压裂的目的是?", "a": "<b>形成人工裂缝、提高储层渗透能力</b>,改善渗流、提高单井产量"}, {"mi": 7, "g": "专业", "q": "EOR(提高采收率)方法不包括?", "a": "<b>机械采油</b>(EOR:热力驱、化学驱、气驱、微生物驱)"}, {"mi": 7, "g": "专业", "q": "一次采油利用的是什么能量?", "a": "<b>天然能量</b>:弹性、溶解气、边底水、重力(不注水不注气)"}, {"mi": 7, "g": "专业", "q": "下列属于增产措施的是?", "a": "<b>压裂、酸化</b>——注水是维持地层压力的开发手段,不算井筒增产措施"}, {"mi": 7, "g": "专业", "q": "酸化增产的原理?", "a": "酸液<b>溶蚀岩石矿物与近井堵塞物</b>,扩大/连通渗流通道(盐酸/土酸,HF 防砂酸)"}, {"mi": 7, "g": "专业", "q": "常用人工举升方式如何分类?", "a": "<b>有杆</b>:游梁(皮带/链条)抽油机、有杆(螺杆)泵;<b>无杆</b>:电潜泵、水力泵、气举"}, {"mi": 7, "g": "专业", "q": "游梁式抽油机(磕头机)最适用于?", "a": "需要<b>人工举升的中低产、机抽井</b>(低渗/能量不足油藏为主)"}, {"mi": 7, "g": "专业", "q": "油井生产系统的组成范围?", "a": "<b>井筒管柱 + 井口装置 + 地面集输管汇(计量)</b>;不含炼油/加工环节"}, {"mi": 8, "g": "专业", "q": "定向井/水平井的主要价值?", "a": "轨迹<b>贯穿多套储层、增大单井控制的泄油(泄气)面积</b>,提高单井产量与采收率"}, {"mi": 8, "g": "专业", "q": "页岩气井普遍采用什么钻井+完井方案?", "a": "<b>水平井 + 分段压裂</b>"}, {"mi": 8, "g": "专业", "q": "固井的主要目的是?", "a": "用水泥浆<b>封隔地层与环空、支撑套管</b>,防止窜槽与井壁坍塌"}, {"mi": 8, "g": "专业", "q": "钻井液失水量过大的危害?", "a": "滤液大量侵入储层→<b>粘土膨胀、水锁等储层伤害</b>"}, {"mi": 8, "g": "专业", "q": "定向井实时监控井眼轨迹的设备?", "a": "<b>MWD/LWD</b>(随钻测量/随钻测井,井下遥测)"}, {"mi": 8, "g": "专业", "q": "地层压力随深度的总体趋势?", "a": "随井深<b>增大</b>(异常高压/超压带除外)"}, {"mi": 8, "g": "专业", "q": "井斜控制的目的?", "a": "按设计轨迹钻进、<b>防止井段偏离设计靶区</b>与井下复杂"}, {"mi": 8, "g": "专业", "q": "钻井速度与机械钻速的关系?", "a": "机械钻速=单位纯钻时间钻进米数;<b>提高钻头性能与钻进参数</b>是提速核心(送分易错:别与总钻速混淆)"}, {"mi": 9, "g": "专业", "q": "地下储气库的作用?", "a": "<b>季节调峰、应急供气储备</b>(利用枯竭气藏/盐穴/含水层存储)"}, {"mi": 9, "g": "专业", "q": "LNG(液化天然气)常压液化温度?", "a": "约<b>-162 ℃</b>"}, {"mi": 9, "g": "专业", "q": "管道输送的特点?", "a": "<b>连续、密闭、运量大、成本低</b>,是天然气/成品油干线主力"}, {"mi": 9, "g": "专业", "q": "「兰郑长」管道输送什么?", "a": "<b>成品油</b>(兰州—郑州—长沙,国家管网运营)"}, {"mi": 9, "g": "专业", "q": "中俄东线输送什么?", "a": "<b>天然气</b>(中俄东线天然气管道,进口俄气主力通道)"}, {"mi": 9, "g": "专业", "q": "输气站(压气站)的核心功能?", "a": "<b>增压</b>,补偿沿线压损、维持输送量"}, {"mi": 9, "g": "专业", "q": "输油管道泄漏检测的常用手段?", "a": "SCADA <b>压力/流量突变检测</b>、巡线无人机+人工、负压波/音波泄漏定位"}, {"mi": 9, "g": "专业", "q": "油气交接计量依据什么?", "a": "<b>定期标定合格的流量计</b> + 油品化验(密度/含水/温度修正)"}, {"mi": 10, "g": "文化", "q": "中国石油的企业精神?", "a": "<b>爱国、创业、求实、奉献</b>(1981 年表述为「献身」,1990 年江泽民同志改为「奉献」;干扰项常出「献身」)"}, {"mi": 10, "g": "文化", "q": "中国石油的企业宗旨?", "a": "<b>奉献能源、创造和谐</b>"}, {"mi": 10, "g": "文化", "q": "「三老」指?", "a": "当<b>老实人</b>、说<b>老实话</b>、办<b>老实事</b>"}, {"mi": 10, "g": "文化", "q": "「四严」指?", "a": "<b>严格的要求、严密的组织、严肃的态度、严明的纪律</b>(「严厉的惩罚」常见干扰项)"}, {"mi": 10, "g": "文化", "q": "大庆精神、铁人精神起源于?铁人是谁?", "a": "起源于<b>大庆石油会战</b>;铁人=<b>王进喜</b>;新时期铁人=<b>王启民</b>"}, {"mi": 10, "g": "文化", "q": "中国石油核心价值观?", "a": "<b>诚信、创新、业绩、和谐、安全</b>(以官网现行表述为准;干扰项常混入「高效」)"}, {"mi": 10, "g": "文化", "q": "核心经营管理理念?", "a": "<b>诚信是基石、创新是动力、业绩是目标、和谐是保障、安全是前提</b>"}, {"mi": 10, "g": "文化", "q": "核心安全理念?", "a": "<b>一切事故都可以预防</b>(通用方针是「安全第一、预防为主、综合治理」,别混淆)"}, {"mi": 10, "g": "文化", "q": "QHSE 理念?", "a": "<b>环保优先、安全第一、质量至上、以人为本</b>"}, {"mi": 10, "g": "文化", "q": "中国石油英文简称?", "a": "<b>CNPC</b>(中石化 SINOPEC / 中海油 CNOOC)"}, {"mi": 11, "g": "文化", "q": "中国石化企业使命?", "a": "<b>为美好生活加油</b>"}, {"mi": 11, "g": "文化", "q": "中国石化企业愿景?", "a": "建设成为<b>人民满意、世界一流能源化工公司</b>"}, {"mi": 11, "g": "文化", "q": "中国石化核心价值观?", "a": "<b>人本、责任、诚信、精细、创新、共赢</b>(以官网最新表述为准)"}, {"mi": 11, "g": "文化", "q": "中国石化企业精神?", "a": "<b>爱我中华、振兴石化</b>(司歌同名)"}, {"mi": 11, "g": "文化", "q": "中国石化企业作风?", "a": "<b>严细实</b>"}, {"mi": 11, "g": "文化", "q": "品牌口号?", "a": "<b>每一滴油都是承诺</b>"}, {"mi": 11, "g": "文化", "q": "「一基两翼三新」指什么?", "a": "<b>一基</b>=石油化工基础产业;<b>两翼</b>=清洁能源、高端材料;<b>三新</b>=新能源、新材料、新经济"}, {"mi": 11, "g": "文化", "q": "「三商」战略指?", "a": "<b>市场商、技术商、服务商</b>"}, {"mi": 12, "g": "文化", "q": "中国海油成立于哪一年?", "a": "<b>1982 年</b>,国务院授权对外合作开采海洋石油;1999 年改制为股份公司"}, {"mi": 12, "g": "文化", "q": "中国海油的定位?", "a": "我国<b>最大的海上油气生产商</b>,世界 500 强"}, {"mi": 12, "g": "文化", "q": "我国最大海上原油生产基地?", "a": "<b>渤海油田</b>"}, {"mi": 12, "g": "文化", "q": "我国首个自营超深水大气田?", "a": "<b>「深海一号」(陵水 17-2)</b>,南海,水深约 1500 m"}, {"mi": 12, "g": "文化", "q": "中国海油总部所在地?", "a": "<b>北京</b>(三大基地:天津/深圳/湛江,作业区入海口)"}, {"mi": 12, "g": "文化", "q": "我国海上油气勘探开发主要海域?", "a": "<b>渤海、东海、南海</b>(南海东部/南海西部)"}, {"mi": 13, "g": "文化", "q": "国家管网集团正式挂牌时间?", "a": "<b>2019 年 12 月 9 日</b>(党中央、国务院批准组建)"}, {"mi": 13, "g": "文化", "q": "国家管网企业宗旨?", "a": "<b>服务国家战略、服务人民需要、服务行业发展</b>(「服务效益优先」是干扰项)"}, {"mi": 13, "g": "文化", "q": "「十四五」发展战略?", "a": "党建引领、战略驱动、<b>安全立网、创新强网、人才兴网、文化润网</b>(「逐利扩张」干扰项)"}, {"mi": 13, "g": "文化", "q": "国家管网运营的主干管网包括?", "a": "<b>西气东输一/二/三线、中俄东线、中缅油气管道、陕京输气系统、兰郑长成品油管道</b>等国家级干线"}, {"mi": 13, "g": "文化", "q": "「全国一张网」指的是?", "a": "统筹<b>全国油气干线管网</b>,统一规划、建设、调配,保障能源安全"}, {"mi": 13, "g": "文化", "q": "国家管网地下储气库规模(参考)?", "a": "<b>超 30 座</b>,调峰总工作气量<b>超 220 亿立方米</b>(对外口径为准)"}, {"mi": 13, "g": "文化", "q": "管网公平开放机制内容?", "a": "<b>公开剩余运力、无差别开放管输服务、统一执行核定费率</b>"}, {"mi": 13, "g": "文化", "q": "国家管网的使命定位?", "a": "<b>保障国家能源安全</b>(国家能源动脉)"}, {"mi": 14, "g": "文化", "q": "中国陆上第一口油井?", "a": "<b>延一井</b>(1907 年钻成,陕西延长县)"}, {"mi": 14, "g": "文化", "q": "延长石油始创年份?", "a": "<b>1905 年</b>,中国石油工业的摇篮(1905 设厂勘探、1907 延一井出油)"}, {"mi": 14, "g": "文化", "q": "延长石油企业精神?", "a": "<b>埋头苦干、开拓创新</b>"}, {"mi": 14, "g": "文化", "q": "延长石油企业使命?", "a": "<b>汇聚能源、延长价值</b>(核心价值观:兴业报国、富民强企、以人为本、和谐发展,以官网为准)"}, {"mi": 15, "g": "文化", "q": "我国「双碳」目标?", "a": "<b>2030 年碳达峰、2060 年碳中和</b>"}, {"mi": 15, "g": "文化", "q": "CCUS 指什么?", "a": "<b>碳捕集、利用与封存</b>(Carbon Capture, Utilization and Storage)"}, {"mi": 15, "g": "文化", "q": "「绿氢」的定义?", "a": "<b>可再生能源发电电解水制氢</b>(灰氢=天然气制氢、蓝氢=灰氢+CCUS)"}, {"mi": 15, "g": "文化", "q": "我国对外依存度最高的一次能源是?", "a": "<b>石油</b>(约 70%,供应安全最受关注;天然气次之)"}, {"mi": 15, "g": "文化", "q": "能源安全新战略「四个革命、一个合作」指?", "a": "<b>能源消费、供给、技术、体制革命</b> + <b>全方位国际合作</b>"}, {"mi": 15, "g": "文化", "q": "新型能源体系特征?", "a": "<b>清洁低碳、安全高效</b>(含风光为主体、传统能源兜底)"}, {"mi": 15, "g": "文化", "q": "智能油田(数字油田)典型应用?", "a": "AI 巡检、<b>数字孪生</b>、生产优化决策、无人值守场站"}, {"mi": 15, "g": "文化", "q": "深海油气开发标志性装备/工程?", "a": "<b>「深海一号」大气田、「海葵一号」圆筒型 FPSO</b>、半潜式深水钻井平台"}];
+
+  /* ===== 模块切换 ===== */
+  var secs={over:document.getElementById('mod-over'),write:document.getElementById('mod-write'),
+            sim:document.getElementById('mod-sim'),inter:document.getElementById('mod-inter'),
+            mouth:document.getElementById('mod-mouth')};
+  function show(k){
+    Object.keys(secs).forEach(function(t){secs[t].hidden=(t!==k)});
+    document.querySelectorAll('#modnav button').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-v')===k)});
+    window.scrollTo(0,0);
+    try{history.replaceState(null,'','#'+k)}catch(e){}
+  }
+  document.querySelectorAll('#modnav button').forEach(function(b){
+    b.addEventListener('click',function(){show(b.getAttribute('data-v'))});
+  });
+  if(location.hash){var h=location.hash.slice(1); if(secs[h]) show(h);}
+
+  /* ===== 题库浏览(按模块折叠) ===== */
+  var qview=document.getElementById('qview');
+  var byM={};
+  BANK.forEach(function(it){(byM[it.mi]=byM[it.mi]||[]).push(it);});
+  Object.keys(byM).forEach(function(k){
+    var mod=MODS[k]; var qs=byM[k];
+    var d=document.createElement('details'); d.className='qmodx';
+    var s=document.createElement('summary');
+    s.innerHTML='<h3>'+mod.n+'</h3><span class="qc">'+qs.length+' 题 · '+mod.g+'</span>';
+    d.appendChild(s);
+    var body=document.createElement('div'); body.className='ql-body';
+    var meta=document.createElement('div'); meta.className='qmeta font-mono'; meta.textContent=mod.meta;
+    body.appendChild(meta);
+    var list=document.createElement('div'); list.className='qlist';
+    qs.forEach(function(it){
+      var dt=document.createElement('details'); dt.className='qitem';
+      var sm=document.createElement('summary'); sm.textContent=it.q;
+      var an=document.createElement('div'); an.className='qans'; an.innerHTML='<b>答案 ·</b> '+it.a;
+      dt.appendChild(sm); an&&dt.appendChild(an); list.appendChild(dt);
+    });
+    body.appendChild(list); d.appendChild(body); qview.appendChild(d);
+  });
+  document.getElementById('qview-open').addEventListener('click',function(){
+    qview.querySelectorAll('.qmodx').forEach(function(d){d.open=true});
+  });
+  document.getElementById('qview-close').addEventListener('click',function(){
+    qview.querySelectorAll('.qmodx').forEach(function(d){d.open=false});
+  });
+
+  /* ===== 模拟考 ===== */
+  var st={scope:'all',count:'30',time:30,order:'rand'};
+  function setChips(id,v){document.querySelectorAll('#'+id+' .chip2').forEach(function(c){
+    c.classList.toggle('on',c.getAttribute('data-v')===String(v));});}
+  [['sc-scope','scope'],['sc-count','count'],['sc-time','time'],['sc-order','order']].forEach(function(p){
+    document.querySelectorAll('#'+p[0]+' .chip2').forEach(function(c){
+      c.addEventListener('click',function(){st[p[1]]=c.getAttribute('data-v');setChips(p[0],st[p[1]]);});
+    });
+  });
+  var hist=[]; try{hist=JSON.parse(localStorage.getItem('qiuzhao-sim-hist')||'[]');}catch(e){}
+  function saveHist(){try{localStorage.setItem('qiuzhao-sim-hist',JSON.stringify(hist));}catch(e){}}
+  function drawHist(){
+    var el=document.getElementById('sim-last');
+    if(!hist.length){el.textContent='暂无记录';return;}
+    var h=hist[hist.length-1];
+    el.innerHTML='上次 '+h.t+' · '+h.label+' · 对 <b style="color:var(--accent)">'+h.ok+'</b>/'+h.n2+' ('+h.rate+'%)';
+  }
+  drawHist();
+
+  var run=null, timerId=null;
+  function stopTimer(){if(timerId){clearInterval(timerId);timerId=null;}}
+  function fmt(sec){var m=Math.floor(sec/60),s=sec%60;return (m<10?'0':'')+m+':'+(s<10?'0':'')+s;}
+
+  function start(){
+    var pool=BANK.filter(function(it){return st.scope==='all'||it.g===st.scope;});
+    if(st.order==='rand'){
+      for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;} }
+    var n=st.count==='all'?pool.length:Math.min(parseInt(st.count,10),pool.length);
+    run={qs:pool.slice(0,n),i:0,verdicts:new Array(n).fill(null),revealed:false,used:0};
+    document.getElementById('sim-setup').hidden=true;
+    document.getElementById('sim-res').hidden=true;
+    document.getElementById('sim-run').hidden=false;
+    var tm=parseInt(st.time,10)||0;
+    stopTimer();
+    if(tm){
+      run.left=tm*60; run.total=tm*60;
+      document.getElementById('sim-timer').textContent=fmt(run.left);
+      timerId=setInterval(function(){
+        run.left--; run.used=run.total-run.left;
+        document.getElementById('sim-timer').textContent=fmt(Math.max(run.left,0));
+        if(run.left<=0){stopTimer();submit();}
+      },1000);
+    }else{
+      run.left=null;
+      document.getElementById('sim-timer').textContent='--:--';
+    }
+    renderQ();
+  }
+  function renderQ(){
+    var it=run.qs[run.i]; var md=MODS[it.mi];
+    document.getElementById('sim-q').textContent=it.q;
+    var an=document.getElementById('sim-ans');
+    an.innerHTML='<b>'+md.g+' · '+md.n.split('(')[0]+'</b><br>'+it.a;
+    an.hidden=true; run.revealed=false;
+    document.getElementById('sim-prog').textContent='第 '+(run.i+1)+' / '+run.qs.length+' 题';
+    document.getElementById('sim-modtag').textContent=md.g;
+    document.getElementById('sim-reveal').hidden=false;
+    document.getElementById('sim-ok').hidden=true;
+    document.getElementById('sim-no').hidden=true;
+    document.getElementById('sim-prev').disabled=(run.i===0);
+  }
+  function advance(){
+    if(run.i<run.qs.length-1){run.i++;renderQ();}else{submit();}
+  }
+  document.getElementById('sim-start').addEventListener('click',start);
+  document.getElementById('sim-reveal').addEventListener('click',function(){
+    document.getElementById('sim-ans').hidden=false;
+    document.getElementById('sim-reveal').hidden=true;
+    document.getElementById('sim-ok').hidden=false;
+    document.getElementById('sim-no').hidden=false;
+    run.revealed=true;
+  });
+  document.getElementById('sim-ok').addEventListener('click',function(){run.verdicts[run.i]=1;advance();});
+  document.getElementById('sim-no').addEventListener('click',function(){run.verdicts[run.i]=0;advance();});
+  document.getElementById('sim-skip').addEventListener('click',function(){if(!run.revealed)run.verdicts[run.i]=null;else run.verdicts[run.i]=null;advance();});
+  document.getElementById('sim-prev').addEventListener('click',function(){if(run.i>0){run.i--;renderQ();}});
+  document.getElementById('sim-submit').addEventListener('click',submit);
+  document.addEventListener('keydown',function(e){
+    if(!run||document.getElementById('sim-run').hidden)return;
+    if(e.key==='ArrowRight'){run.revealed?advance():document.getElementById('sim-reveal').click();}
+    if(e.key==='ArrowLeft'&&run.i>0){run.i--;renderQ();}
+  });
+
+  function submit(){
+    stopTimer();
+    if(!run)return;
+    var ok=0,bad=0,skip=0; var by={};
+    var nm={};
+    run.qs.forEach(function(it,i){
+      var v=run.verdicts[i];
+      var key=MODS[it.mi].n.split('(')[0].replace(/^[①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯]\s*/,'')+' · '+it.g;
+      nm[key]=nm[key]||{name:key,ok:0,bad:0,skip:0};
+      if(v===1){ok++;nm[key].ok++;}
+      else if(v===0){bad++;nm[key].bad++;}
+      else{skip++;nm[key].skip++;}
+    });
+    var n2=ok+bad; var rate=n2?Math.round(ok*100/n2):0;
+    var now=new Date();
+    function pad(x){return (x<10?'0':'')+x;}
+    var t=pad(now.getMonth()+1)+'-'+pad(now.getDate())+' '+pad(now.getHours())+':'+pad(now.getMinutes());
+    var label=(st.scope==='all'?'全部':st.scope)+' '+run.qs.length+' 题';
+    hist.push({t:t,label:label,n:run.qs.length,ok:ok,n2:n2,rate:rate});
+    if(hist.length>5)hist=hist.slice(-5);
+    saveHist(); drawHist();
+    var used=run.left===null?'—':fmt(run.used);
+    var html='<div class="score">'+rate+'%</div>'+
+      '<div style="font-size:13px;color:var(--muted)">答对 <b style="color:var(--accent)">'+ok+'</b> · 答错 '+bad+' · 跳过 '+skip+' · 共 '+run.qs.length+' 题 · 范围:全体'+(st.scope==='all'?'(整体)':st.scope)+' · 计时: '+(parseInt(st.time,10)?st.time+' 分钟(用时 '+used+')':'不计时')+'</div>';
+    var keys=Object.keys(nm);
+    if(keys.length>1){
+      html+='<table><tr><th>模块</th><th>对</th><th>错</th><th>跳</th><th>准确率</th></tr>';
+      keys.forEach(function(k){
+        var m=nm[k], r=m.ok+m.bad?(Math.round(m.ok*100/(m.ok+m.bad))):'—';
+        html+='<tr><td>'+m.name+'</td><td>'+m.ok+'</td><td>'+m.bad+'</td><td>'+m.skip+'</td><td>'+r+'%</td></tr>';
+      });
+      html+='</table>';
+    }
+    var wrong=[];
+    run.qs.forEach(function(it,i){ if(run.verdicts[i]===0) wrong.push(it); });
+    if(wrong.length){
+      html+='<div><b style="font-size:13.6px">错题本('+wrong.length+' · 点击题干先后查看)</b></div><div class="sim-wrong">';
+      wrong.forEach(function(it){
+        html+='<div class="wq"><b>'+MODS[it.mi].g+' · '+MODS[it.mi].n.split('(')[0]+'</b><br>'+it.q+'<br><b>答案 ·</b> '+it.a+'</div>';
+      });
+      html+='</div>';
+    }
+    html+='<div class="sim-ctl"><button class="sim-btn" id="res-back">返回设置</button><button class="sim-btn primary" id="res-again">再来一套(同设置)</button></div>';
+    var res=document.getElementById('sim-res');
+    res.innerHTML=html;
+    document.getElementById('sim-run').hidden=true;
+    res.hidden=false;
+    document.getElementById('res-back').addEventListener('click',function(){
+      res.hidden=true; document.getElementById('sim-setup').hidden=false;
+    });
+    document.getElementById('res-again').addEventListener('click',start);
+    res.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+})();
+
 </script>

@@ -159,6 +159,22 @@ h1{
 .notes .k::before{content:"▸ "}
 .notes.mono-note{font-family:"IBM Plex Mono",monospace;font-size:12px}
 .foot{margin-top:34px;font-size:12px;color:var(--muted);line-height:1.9}
+/* ===== 笔试 & 面试 ===== */
+.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:12px}
+.exam{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;align-self:start}
+.exam h3{font-size:15px;font-weight:700}
+.exam .sub-t{font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.xrow{display:grid;grid-template-columns:86px 1fr;gap:4px 8px;font-size:12.6px;padding:5px 0;border-bottom:1px dashed var(--line);align-items:start}
+.xrow:last-of-type{border-bottom:none}
+.xrow .k{color:var(--muted);font-weight:600;padding-top:1px}
+.xrow .v{line-height:1.65}
+.xrow .v b{color:var(--ink)}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:11px 13px;display:flex;flex-direction:column;gap:5px}
+.qlabel{font-size:11px;color:var(--muted);letter-spacing:.14em;font-weight:700}
+.qcard b{font-size:13.6px;font-weight:700;line-height:1.5}
+.qcard .a{font-size:12.4px;color:var(--muted);line-height:1.7}
+.qcard .a em{font-style:normal;color:var(--t-warm);font-weight:600}
 @media (max-width:760px){
   .mast{flex-direction:column;align-items:flex-start}
   .meta{text-align:left}
@@ -372,6 +388,137 @@ h1{
     <div class="w"><span class="d font-mono">27/06-07</span><span class="t">延长夏招兜底(去年至 07/05,399 人)——永不落空</span></div>
   </div>
 
+  <div class="sec-eyebrow">笔试 · 题型总览(2026届实考 · 非官方大纲)</div>
+  <div class="egrid">
+
+    <div class="exam">
+      <div class="sub-t font-mono">中石油 · 统一笔试 · 机考 120 分钟</div>
+      <h3>思想素质 30 分 + 通用能力 70 分(行测)</h3>
+      <div class="xrow"><span class="k">去年时间</span><span class="v">2026 届秋考 2025-11-09;春考 5/23(预测今年同档)</span></div>
+      <div class="xrow"><span class="k">通用能力</span><span class="v">言语≈20 / 数量≈15 / 判断≈15 / 资料≈15 + 常识 5-10;近 80% 题目带能源、油田产量、油价背景</span></div>
+      <div class="xrow"><span class="k">思想素质</span><span class="v">职场应变≈30 题 + 时政 + 企业文化必背:<b>大庆精神铁人精神、三老四严、爱国创业求实奉献、石油精神</b></span></div>
+      <div class="xrow"><span class="k">英语</span><span class="v">未过四级/六级者加试(阅读+选词);单科单独计时、不可回退</span></div>
+      <div class="xrow"><span class="k">策略</span><span class="v">≈60% 类公考行测(选项对比、估算法)+≈40% 石油特有;你<b>没有免笔试资格,行测是唯一硬门槛</b>——9-10 月每天刷题</span></div>
+    </div>
+
+    <div class="exam">
+      <div class="sub-t font-mono">中石化 · 统一初选 · 95 分钟 · 双视角监考</div>
+      <h3>思想素质 40 分 + 思维能力 60 分</h3>
+      <div class="xrow"><span class="k">思想素质</span><span class="v">企业文化≈50%:使命<b>「为美好生活加油」</b>、核心价值观<b>人本·责任·诚信·精细·创新·共赢</b>、「一基两翼三新」;时政(双碳/OPEC+/近3月能源);情景判断≈60%:选<b>「严细实」</b>——严谨排隐患、及时上报、集体决策、责任&gt;个人</span></div>
+      <div class="xrow"><span class="k">思维能力</span><span class="v">行测≈70%(言语10-15/判断20-25/数量10-15/资料≈5)+ 创新≈30%:<b>物理力学(齿轮/滑轮)、漫画分析、三视图、数独、开放设计(如氢能储运)、限时应急(管道泄漏5分钟)</b></span></div>
+      <div class="xrow"><span class="k">策略</span><span class="v">情景题先定价值观再选;物理力学务必复习(文科生失分点);全真 95 分钟两科切换模考</span></div>
+    </div>
+
+    <div class="exam">
+      <div class="sub-t font-mono">中海油 · 线上机考 · 120 分钟 / 100 分</div>
+      <h3>行测≈55% + 思想素质≈25% + 英语≈20%</h3>
+      <div class="xrow"><span class="k">去年时间</span><span class="v">秋考 11/10、春考 4/26 14:00-16:00(预测今年同档)</span></div>
+      <div class="xrow"><span class="k">行测</span><span class="v">言语/数量/逻辑/资料,平均<b>≈50 秒/题</b>;场景含油气储运成本、采收率计算</span></div>
+      <div class="xrow"><span class="k">思想素质</span><span class="v">时政(近3个月,能源政策为主)+ 企业文化:<b>深海一号、海洋石油981、CNOOC 标志含义、新时代海油精神(爱国·创新·担当·奋斗)</b></span></div>
+      <div class="xrow"><span class="k">英语</span><span class="v">完形 1 篇 + 阅读 2-3 篇,<b>六级难度</b>,能源术语;部分技术岗加专业测试</span></div>
+      <div class="xrow"><span class="k">策略</span><span class="v">速度优先(50s/题);官网新闻过一遍「深海一号/绿色低碳」;时政考前 3 天突击</span></div>
+    </div>
+
+    <div class="exam">
+      <div class="sub-t font-mono">国家管网 · 线上统考 · 题量小但淘汰率高</div>
+      <h3>行测≈65 题(76%) + 综合≈20 题(24%)</h3>
+      <div class="xrow"><span class="k">特色</span><span class="v">行测含<b>≈15 道多选题</b>;数量近两年固定 20 题(管道输气量/工程进度);资料 2 篇 10 题(管输周转量/天然气消费量)</span></div>
+      <div class="xrow"><span class="k">综合</span><span class="v">时政必考≈10 题(近 1-3 月能源+方针:「四个自信」「四个意识」)+ 企业文化(智慧互联大管网)约 10 题——<b>考点未固定</b>(2023 考企业文化、2024 考方针政策,两头都备)</span></div>
+      <div class="xrow"><span class="k">可能加考</span><span class="v">能源管道专业(水露点/管道完整性管理/氢脆)、英语阅读、不计分心理测评</span></div>
+      <div class="xrow"><span class="k">策略</span><span class="v">行测仍是主场;多选专项练习;资格审查<b>研究生需过英语六级</b>——你已达标</span></div>
+    </div>
+
+    <div class="exam">
+      <div class="sub-t font-mono">延长石油 · 线下机考 · 约 120 分钟 · 合格线约 60</div>
+      <h3>行测 50-60% + 综合 30-40% + 不计分性格测试</h3>
+      <div class="xrow"><span class="k">行测</span><span class="v"><b>数学计算占比明显高于其他央企</b>(数字推理+运算)——计算是拉分点,优先刷数量关系</span></div>
+      <div class="xrow"><span class="k">必背</span><span class="v">企业精神<b>埋头苦干、开拓创新</b>;使命<b>汇聚能源,延长价值</b>;1905 始建、1907 延一井(中国陆上第一口油井);核心价值观<b>兴业报国·富民强企·以人为本·和谐发展</b></span></div>
+      <div class="xrow"><span class="k">其他</span><span class="v">时政(双碳/能源安全/陕北油气开发)+ 公基(安全生产法/管道保护法);技术岗考<b>达西定律/储量计算/采收率/压裂注水</b>(与面试专业题重叠)</span></div>
+      <div class="xrow"><span class="k">策略</span><span class="v">企业文化历年<b>大量原题重复</b>,考前 3 天过官网文化栏;性格测试避免极端选项(技术岗显「细致严谨」);每批限 1 岗——先核岗位表再报</span></div>
+    </div>
+
+  </div>
+
+  <div class="sec-eyebrow">面试 · 通用六维(半结构化 20 题)</div>
+  <div class="qgrid">
+
+    <div class="qcard"><span class="qlabel">自我介绍</span><b>1-3 分钟自我介绍怎么搭</b><span class="a">结构:<b>学历背景(学校/专业/成绩)+ 核心项目(一句话+量化成果)+ 技能证书(托福90/软件)+ 岗位匹配表达</b>;忌流水账,经理手里有简历</span></div>
+    <div class="qcard"><span class="qlabel">自我介绍</span><b>你的优缺点是什么</b><span class="a">优点挂实例、挂钩岗位(抗压/细致/数据);<em>缺点要说 + 改进措施</em>,忌「没有缺点」</span></div>
+    <div class="qcard"><span class="qlabel">自我认知</span><b>你的性格适合这个岗位吗</b><span class="a">用实践经历佐证:坐得住现场、耐得住重复、能和外协打交道</span></div>
+    <div class="qcard"><span class="qlabel">自我认知</span><b>你觉得自己最大的优势是什么</b><span class="a">聚焦岗位所需:专业(开发方案/压裂/示踪剂)+ 英语(托福 90)+ 项目经历,用数据说话</span></div>
+    <div class="qcard"><span class="qlabel">自我认知</span><b>为什么读研 / 为什么读专硕</b><span class="a">讲清能力成长+实践导向(项目多、现场多),忌「本科找不到工作」</span></div>
+    <div class="qcard"><span class="qlabel">职业认知</span><b>为什么选择我们公司/油田</b><span class="a"><em>忌空谈「国企稳定」</em>;四维展开:行业认同+企业了解(说出该油田具体数据)+专业匹配+地域;新疆油田线可以说「新疆籍+回疆」</span></div>
+    <div class="qcard"><span class="qlabel">职业认知</span><b>长期驻外/倒班能接受吗</b><span class="a">真诚+例证(野外实习/一线经历),把行业特性说成成长机会,答「这是我选这行的前提」</span></div>
+    <div class="qcard"><span class="qlabel">职业认知</span><b>你的专业能为公司创造什么价值</b><span class="a">说具体场景:井间示踪剂监测水驱、压裂液改进降低伤害、开发方案精细分析——落到岗位动作</span></div>
+    <div class="qcard"><span class="qlabel">职业认知</span><b>三年内职业规划</b><span class="a">踏实路线:基层技术员→独立负责单井/区块;忌「两年转管理」「随时跳槽」</span></div>
+    <div class="qcard"><span class="qlabel">综合分析</span><b>怎么看新能源对传统石油的冲击</b><span class="a">辩证:石油是能源安全<b>压舱石</b>;「油气+新能源」协同;井场光伏/风电、CCUS 是转型明证</span></div>
+    <div class="qcard"><span class="qlabel">综合分析</span><b>怎么看 AI / 数字油田</b><span class="a">数据+算法辅助油藏分析、自动生成方案,但现场经验和决策判断仍是人的;体现不保守不夸大</span></div>
+    <div class="qcard"><span class="qlabel">综合分析</span><b>油价波动怎么看</b><span class="a">低成本开发、精细管理、技术降本(压裂提效/注水优化/数字化)——落到岗位认知</span></div>
+    <div class="qcard"><span class="qlabel">人际沟通</span><b>领导布置了错事却责怪你怎么办</b><span class="a">先处理事情、不当场争辩,执行中找机会澄清+事后复盘;<em>禁止情绪化、禁止越级告状</em></span></div>
+    <div class="qcard"><span class="qlabel">人际沟通</span><b>能力出众但任务交给同事,怎么办</b><span class="a">找准定位、主动补位、请示合理分工;团队成果 &gt; 个人表现</span></div>
+    <div class="qcard"><span class="qlabel">人际沟通</span><b>与导师/同事意见不合</b><span class="a">倾听→用数据对比→开小会讨论;你的示踪剂项目数据就是「以数据说话」的素材</span></div>
+    <div class="qcard"><span class="qlabel">应急应变</span><b>重要任务对方部门不配合</b><span class="a">先了解对方障碍→找共同利益(双赢说法)→必要的上级协调;<b>全程记录留痕</b></span></div>
+    <div class="qcard"><span class="qlabel">应急应变</span><b>已买机票旅游,领导突然委派任务</b><span class="a">工作优先+说明安排;体现责任感和可调动性(油田行业常见情景)</span></div>
+    <div class="qcard"><span class="qlabel">应急应变</span><b>现场突发安全事故(井口泄漏等)</b><span class="a"><b>先人后事</b>:撤离警戒→上报→按 HSE 应急预案处置;强调流程合规而非个人英雄</span></div>
+    <div class="qcard"><span class="qlabel">计划组织</span><b>让你筹办一次开放日/宣讲活动</b><span class="a">框架:目标→方案→分工→宣传→执行→复盘;说清时间线和人头</span></div>
+    <div class="qcard"><span class="qlabel">计划组织</span><b>多任务冲突怎么排</b><span class="a">四象限+轻重缓急+及时向领导汇报调整;忌自己扛到爆</span></div>
+
+  </div>
+
+  <div class="sec-eyebrow">面试 · 专业题库(油气田开发岗 30 题)</div>
+  <div class="qgrid">
+
+    <div class="qcard"><span class="qlabel">渗流基础</span><b>达西定律及其适用条件</b><span class="a">Q=KAΔP/(μL);适用:单相、层流、等温;低渗地层出现启动压力梯度时偏离达西</span></div>
+    <div class="qcard"><span class="qlabel">渗流基础</span><b>孔隙度与渗透率的区别</b><span class="a">孔隙度=储集能力,渗透率=流动能力;<em>并非必然正相关</em>(致密砂岩孔隙高、渗透率低)</span></div>
+    <div class="qcard"><span class="qlabel">渗流基础</span><b>绝对/有效/相对渗透率</b><span class="a">绝对=单相 100% 饱和;有效=多相共存时该相;相对=有效/绝对,随饱和度变化,油水相渗透率和常 &lt;1(毛管力)</span></div>
+    <div class="qcard"><span class="qlabel">渗流基础</span><b>启动压力梯度/非达西渗流</b><span class="a">低渗油藏存在启动压力梯度→必须压裂/超前注水;川渝、长庆开发关键词</span></div>
+    <div class="qcard"><span class="qlabel">渗流基础</span><b>流度与流度比</b><span class="a">流度 λ=k/μ;水油流度比&gt;1 时水驱指进、波及系数下降——调剖堵水的理论依据</span></div>
+    <div class="qcard"><span class="qlabel">渗流基础</span><b>物质平衡方程</b><span class="a">采出量=弹性产储量+水侵量-注入量(综合驱动);可反推地质储量和水侵</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>驱动类型有哪些</b><span class="a">刚性水驱/弹性水驱/溶解气驱/气顶驱动/重力驱动/混合驱动,直接决定采收率高低</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>三次采油采收率口径</b><span class="a">一次 10-15% / 二次(注水)25-40% / 三次(化学驱·气驱·热力驱)40-60%</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>水驱曲线与含水率</b><span class="a">含水率 98% 为经济极限;水驱规律曲线(甲型/乙型)用于预测水驱采收率</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>产量递减分析方法</b><span class="a">Arps 递减(指数/调和/双曲);用于生产预测与产能评估</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>注采井网设计要点</b><span class="a">反九点/五点/七点井网;注采比、压力保持水平、边底水影响——开发方案核心</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>注水开发主要矛盾</b><span class="a">水淹不均、波及体积小、边水突进;对策:调剖堵水、分注、换向注水</span></div>
+    <div class="qcard"><span class="qlabel">油藏工程</span><b>试井能求什么</b><span class="a">压力恢复/降落试井→渗透率、表皮系数 S、地层压力(FE=流动效率);S&gt;0 即污染</span></div>
+    <div class="qcard"><span class="qlabel">压裂改造</span><b>水力压裂原理与适用</b><span class="a">高压流体致裂缝+支撑剂防闭合;降低渗流阻力、扩大泄油面积;低渗/致密/页岩必压裂</span></div>
+    <div class="qcard"><span class="qlabel">压裂改造</span><b>压裂施工流程</b><span class="a">设计(液型/砂量/排量/铺砂浓度)→施工→排液→效果评估;增产率+裂缝导流能力评价</span></div>
+    <div class="qcard"><span class="qlabel">压裂改造</span><b>裂缝导流能力</b><span class="a">Kf·Wf(缝内渗透率×缝宽);取决于支撑剂强度与铺砂浓度,决定投产产能</span></div>
+    <div class="qcard"><span class="qlabel">压裂改造</span><b>水平井分段压裂原理</b><span class="a">桥塞/封隔器分段+射孔+携砂压裂形成多条裂缝;<b>暂堵转向、可溶桥塞</b>控缝;页岩油气常态打法</span></div>
+    <div class="qcard"><span class="qlabel">压裂改造</span><b>压裂液类型与要求</b><span class="a">滑溜水/瓜胶(交联压裂液);要求:携砂强、低伤害、易返排、与岩性温度配伍</span></div>
+    <div class="qcard"><span class="qlabel">压裂改造</span><b>破裂压力影响因素</b><span class="a">地应力大小方位、岩石强度、射孔段、压裂液性质——与段数/方案设计直接相关</span></div>
+    <div class="qcard"><span class="qlabel">采油工程</span><b>举升方式怎么选</b><span class="a">自喷/气举/有杆泵/电泵;依据:产液量、井深、黏度、气液比、经济性</span></div>
+    <div class="qcard"><span class="qlabel">采油工程</span><b>稠油热采机理</b><span class="a">蒸汽吞吐/蒸汽驱:降粘+热膨胀+蒸馏+泵效改善等综合作用</span></div>
+    <div class="qcard"><span class="qlabel">采油工程</span><b>调剖/堵水有什么用</b><span class="a">封堵高渗窜流层,提高波及系数;<b>与井间示踪剂配合</b>:先示踪测窜流通道,再调剖</span></div>
+    <div class="qcard"><span class="qlabel">采油工程</span><b>油层伤害机理与保护</b><span class="a">粘土膨胀、入井液不配伍沉淀、滤液毛细效应、固相颗粒堵塞;对策:配伍性试验+低伤害液</span></div>
+    <div class="qcard"><span class="qlabel">示踪剂监测</span><b>井间示踪剂解决什么问题</b><span class="a">水驱方向、推进速度、波及体积、窜流通道识别——注水方案调整的依据</span></div>
+    <div class="qcard"><span class="qlabel">示踪剂监测</span><b>示踪剂主要类型</b><span class="a">放射性(氚水)、化学(碘/荧光素)、荧光微球与纳米颗粒;用量按试井/注水体积设计</span></div>
+    <div class="qcard"><span class="qlabel">示踪剂监测</span><b>溶质运移 AD 方程</b><span class="a">对流-弥散方程(对流项+扩散项);拟合产出 BTC 曲线反推流速、弥散度、孔隙度、注入量——你的毕设主线,<em>讲 3 分钟版</em></span></div>
+    <div class="qcard"><span class="qlabel">示踪剂监测</span><b>BTC 曲线形态说明什么</b><span class="a">单峰=正常推进;多峰/长拖尾=多条窜流通道或死区(不动水/传质受限)——对应你的分段过渡模型</span></div>
+    <div class="qcard"><span class="qlabel">示踪剂监测</span><b>荧光示踪剂优势</b><span class="a">灵敏度高、本底低、可多源区分、安全环保;吸附与降解需标定——你做的改性荧光粉课题正好回答</span></div>
+    <div class="qcard"><span class="qlabel">前沿方向</span><b>CCUS 是什么</b><span class="a">碳捕集+埋存/驱油;CO₂ 驱提高采收率+封碳双收益;油田转型关键技术</span></div>
+    <div class="qcard"><span class="qlabel">前沿方向</span><b>页岩气/致密油开发核心</b><span class="a">水平井+体积压裂(分段/密集段/大排量);中国主力:川南页岩气、鄂尔多斯致密油</span></div>
+
+  </div>
+
+  <div class="sec-eyebrow">面试 · 英文面(外企/中海油服) · 群面与行为面</div>
+  <div class="qgrid">
+
+    <div class="qcard"><span class="qlabel">英文面</span><b>2 分钟英文自我介绍模板</b><span class="a">Education(GPA/专业)→ Project(一句成果,用简单词 STAR)→ Skills(TOEFL 90/软件)→ Why this company(技术认可)→ Attitude(能吃苦、能上现场)</span></div>
+    <div class="qcard"><span class="qlabel">英文面</span><b>Why our company?</b><span class="a">技术领先(油服:井下工具/数字钻机;壳牌:global energy)→ 全球平台 → 明确的学习路径;禁空喊口号</span></div>
+    <div class="qcard"><span class="qlabel">英文面</span><b>Describe your research project</b><span class="a">STAR 简化版:做了什么-怎么做-得到什么;主动控制词汇难度,盯对方表情确认听懂</span></div>
+    <div class="qcard"><span class="qlabel">英文面</span><b>Willing to work in remote sites?</b><span class="a">明确 yes + 例证(野外/戈壁经历);油服公司 100% 问</span></div>
+    <div class="qcard"><span class="qlabel">英文面</span><b>What about energy transition / CCUS?</b><span class="a">有立场:石油是压舱石,技术路线在转型(CCUS、数字化),你在追踪</span></div>
+    <div class="qcard"><span class="qlabel">英文面</span><b>Conflict with a teammate?</b><span class="a">Listen → data → discuss → agree on next step;体现协作</span></div>
+    <div class="qcard"><span class="qlabel">英文面</span><b>英文专业词汇清单(必背)</b><span class="a">fracturing / stimulation / completion / D&amp;C / EOR / WOR / borehole / reservoir pressure / fluid loss / screen-out / casing / tracer</span></div>
+    <div class="qcard"><span class="qlabel">外企机制</span><b>外企笔试/面试流程</b><span class="a"><b>贝克休斯</b>:笔试 2h(1h 四级水平英语 + 1h 英文 IQ)→ 当天下午全英面试;<b>SLB</b>:群面 2 分钟英文自介(10-20 人/组)→ 中文二轮 → 打断式自介 → 北京终面;Glassdoor 统计:一对一 24%/性格测试 12%/技能测试 12%</span></div>
+    <div class="qcard"><span class="qlabel">群面</span><b>无领导小组怎么做</b><span class="a">五大角色轮着做(时间记录/总结),<b>先亮观点再展开</b>,推进讨论+倾听他人;忌抢话、忌沉默、忌全组无结论</span></div>
+    <div class="qcard"><span class="qlabel">群面</span><b>群面评分维度</b><span class="a">观点质量 / 团队推进贡献 / 倾听与合作 / 时间纪律;有数据支撑的观点提分</span></div>
+    <div class="qcard"><span class="qlabel">备面</span><b>项目深挖怎么准备</b><span class="a">每个项目各准备<b>1 分钟版 + 3 分钟版</b>(背景-方法-结果-你的贡献-难点);半结构化必追问简历细节</span></div>
+    <div class="qcard"><span class="qlabel">备面</span><b>反问环节问什么</b><span class="a">培养路径(怎么进油藏/压裂团队)、调度制度、老员工带教机制——是「真问题」,不是客套</span></div>
+
+  </div>
+
   <div class="sec-eyebrow">口径与电话 · 网申前必读</div>
   <div class="notes">
     <span><span class="k">专业名称</span>石油与天然气工程(按学信网)</span>
@@ -383,7 +530,8 @@ h1{
   </div>
 
   <p class="foot">
-    所有日期为 2026 届实际数据或第三方预测值,秋招具体公告以各官网为准。<br>
+    所有日期为 2026 届实际数据或第三方预测值、题量结构为历年实考的参考口径,秋招具体公告与考试大纲以各官网为准。<br>
+    笔试/面试题型整理自公开备考资料与考生面经(高顿、中公、牛客、豆瓣、Glassdoor 等),<b>非官方大纲</b>;每年题型有微调,刷题时以最新真题为准。<br>
     配套文件(工作区根目录):求职跟踪表_2027届秋招.xlsx · 简历_油气田开发岗_专业硕士_v1.docx(框架版,内容自填)。
   </p>
 </div>

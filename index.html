@@ -1,0 +1,427 @@
+<title>秋招闸口</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
+<style>
+/* ===== 设计:矿区操作面板 — 深青“工程绿” + 钢墨 + 琥珀警示阶;衬线做铭牌,等宽做数据 ===== */
+:root{
+  --ground:#EDF0EF;
+  --surface:#F7F9F8;
+  --surface-2:#E7EBEA;
+  --ink:#17262E;
+  --muted:#5C6B72;
+  --line:#D3DAD8;
+  --accent:#0B6E5A;
+  --accent-ink:#FFFFFF;
+  --accent-2:#407F9E;
+  /* 分级语义色(与强调色分开) */
+  --t-chong-fg:#9A4B06; --t-chong-bg:#FCEFDB;
+  --t-wen-fg:#1E7046;   --t-wen-bg:#DFF0E6;
+  --t-bao-fg:#2C5C9C;   --t-bao-bg:#E1EBF7;
+  --t-cai-fg:#63558F;   --t-cai-bg:#ECE8F5;
+  --t-bei-fg:#48636E;   --t-bei-bg:#E5ECEF;
+  --t-gao-fg:#0B6C82;   --t-gao-bg:#DDF0F3;
+  --t-warm:#B45309;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#10171B;
+    --surface:#182026;
+    --surface-2:#1F2A31;
+    --ink:#E6ECEE;
+    --muted:#8FA0A7;
+    --line:#2C3A41;
+    --accent:#35A98B;
+    --accent-ink:#0B1512;
+    --accent-2:#6FA8C4;
+    --t-chong-fg:#F0A45A; --t-chong-bg:#4A3313;
+    --t-wen-fg:#7BC99A;   --t-wen-bg:#1D3A2B;
+    --t-bao-fg:#93B8E6;   --t-bao-bg:#1E2F49;
+    --t-cai-fg:#B7A7E0;   --t-cai-bg:#2D2650;
+    --t-bei-fg:#9DB6C0;   --t-bei-bg:#25333B;
+    --t-gao-fg:#7ECBDD;   --t-gao-bg:#15333B;
+    --t-warm:#E08B3E;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#10171B; --surface:#182026; --surface-2:#1F2A31; --ink:#E6ECEE;
+  --muted:#8FA0A7; --line:#2C3A41; --accent:#35A98B; --accent-ink:#0B1512; --accent-2:#6FA8C4;
+  --t-chong-fg:#F0A45A; --t-chong-bg:#4A3313; --t-wen-fg:#7BC99A; --t-wen-bg:#1D3A2B;
+  --t-bao-fg:#93B8E6; --t-bao-bg:#1E2F49; --t-cai-fg:#B7A7E0; --t-cai-bg:#2D2650;
+  --t-bei-fg:#9DB6C0; --t-bei-bg:#25333B; --t-gao-fg:#7ECBDD; --t-gao-bg:#15333B;
+  --t-warm:#E08B3E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  line-height:1.55; font-size:15px;
+}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px;border-radius:2px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px 64px}
+.font-mono{font-family:"IBM Plex Mono",ui-monospace,Consolas,monospace;font-variant-numeric:tabular-nums}
+
+/* ===== 井站铭牌式页眉 ===== */
+.rule{height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-2));margin-bottom:26px}
+.mast{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+h1{
+  font-family:"Noto Serif SC",serif;font-weight:900;font-size:34px;
+  letter-spacing:.04em;text-wrap:balance;
+}
+.meta{font-size:12.5px;color:var(--muted);line-height:1.9;text-align:right}
+.meta b{color:var(--ink);font-weight:700}
+.sub{color:var(--muted);font-size:13px;margin-bottom:26px}
+
+/* ===== 总闸:官方平台 ===== */
+.sec-eyebrow{
+  font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--muted);
+  margin:40px 0 14px;display:flex;align-items:center;gap:12px;
+}
+.sec-eyebrow::before{content:"";width:22px;height:2px;background:var(--accent-2)}
+.gate{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.gate a{
+  display:block;background:var(--surface);border:1px solid var(--line);border-radius:2px;
+  padding:14px 16px;font-weight:700;font-size:15px;color:var(--ink);
+  transition:border-color .15s ease;
+}
+.gate a small{display:block;font-weight:500;font-size:11.5px;color:var(--muted);margin-top:2px}
+.gate a:hover{border-color:var(--accent);text-decoration:none}
+
+/* ===== 分级图例 ===== */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--ink);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:4px 12px;cursor:pointer;
+  font-variant-numeric:tabular-nums;
+}
+.chip .dot{width:8px;height:8px;border-radius:50%}
+.chip.active{border-color:var(--accent);background:var(--accent);color:var(--accent-ink)}
+.chip.active .dot{background:var(--accent-ink)}
+.legend-note{font-size:12px;color:var(--muted);margin-left:2px}
+
+/* ===== 投递线卡片 ===== */
+.summary{
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;
+  margin-bottom:14px;font-size:13px;color:var(--muted);
+}
+.summary b{color:var(--ink);font-variant-numeric:tabular-nums}
+.summary button.marker{
+  background:none;border:none;color:var(--muted);font-size:12.5px;cursor:pointer;
+  font-family:inherit;padding:2px 4px;
+}
+.summary button.marker:hover{color:var(--warm,#B45309);text-decoration:underline}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:2px;
+  padding:16px 16px 14px;display:flex;flex-direction:column;gap:9px;
+}
+.card[hidden]{display:none}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.lineno{font-size:11.5px;color:var(--muted);letter-spacing:.08em}
+.tag{
+  font-size:11.5px;font-weight:700;border-radius:2px;padding:2.5px 9px;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:5px;
+}
+.card h3{font-size:16px;font-weight:700;line-height:1.4;text-wrap:balance}
+.card h3 .unit{font-weight:500}
+.quote{font-size:12.5px;color:var(--muted)}
+.window{
+  font-size:12px;color:var(--ink);background:var(--surface-2);
+  padding:5px 9px;border-radius:2px;align-self:flex-start;
+}
+.card-actions{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:6px}
+.btn{
+  display:inline-block;background:var(--accent);color:var(--accent-ink);
+  padding:8px 18px;border-radius:2px;font-weight:700;font-size:14px;
+  transition:filter .15s ease;
+}
+.btn:hover{filter:brightness(1.08);text-decoration:none}
+.btn.ghost{
+  background:transparent;border:1px solid var(--line);color:var(--ink);font-weight:600;font-size:13px;
+  padding:8px 13px;background:var(--surface);
+}
+.btn.ghost.on{border-color:var(--accent);color:var(--accent)}
+.tier-pick{margin-left:auto}
+
+/* ===== 时间轴 ===== */
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
+.tl .w{display:flex;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:7px}
+.tl .d{min-width:104px;font-size:12px;color:var(--accent);font-weight:600;padding-top:1px}
+.tl .t{font-size:13px}
+.tl .t b{font-weight:700}
+
+/* ===== 口径 ===== */
+.notes{
+  background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:18px 20px;
+  font-size:13.5px;display:grid;grid-template-columns:1fr 1fr;gap:6px 36px;
+}
+.notes .k{font-weight:700;margin-right:6px}
+.notes .k::before{content:"▸ "}
+.notes.mono-note{font-family:"IBM Plex Mono",monospace;font-size:12px}
+.foot{margin-top:34px;font-size:12px;color:var(--muted);line-height:1.9}
+@media (max-width:760px){
+  .mast{flex-direction:column;align-items:flex-start}
+  .meta{text-align:left}
+  .tl{grid-template-columns:1fr}
+  .notes{grid-template-columns:1fr}
+  h1{font-size:27px}
+}
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+
+<div class="wrap">
+  <div class="rule"></div>
+  <div class="mast">
+    <div>
+      <h1>秋招闸口</h1>
+      <div class="meta" style="margin-top:4px">
+        2027 届 · 成都理工大学 · 石油与天然气工程（专业硕士）· 油气田开发方向<br>
+        定位:工程式 13 条投递线 · <b>点击卡片内「去投递」直达官方报名页</b>
+      </div>
+    </div>
+    <div class="font-mono" style="font-size:12px;color:var(--muted)">板面 v1 · 2026-09-03</div>
+  </div>
+  <p class="sub">每一条线都标注了定位、窗口与要点;跳转均为官方入口。网申前先看末节「口径与电话」。</p>
+
+  <div class="sec-eyebrow">总闸 · 官方平台</div>
+  <div class="gate">
+    <a href="https://zhaopin.cnpc.com.cn/" target="_blank" rel="noopener">中国石油招聘平台<small>zhaopin.cnpc.com.cn</small></a>
+    <a href="https://job.sinopec.com" target="_blank" rel="noopener">中国石化人才招聘<small>job.sinopec.com</small></a>
+    <a href="https://cnooc.zhaopin.com" target="_blank" rel="noopener">中国海油校招平台<small>cnooc.zhaopin.com</small></a>
+    <a href="https://zhaopin.pipechina.com.cn/" target="_blank" rel="noopener">国家管网招聘<small>zhaopin.pipechina.com.cn</small></a>
+    <a href="https://www.sxycpc.com" target="_blank" rel="noopener">延长石油官网<small>人力资源 → 招聘信息</small></a>
+    <a href="https://cdutjy.cdut.edu.cn/" target="_blank" rel="noopener">成都理工就业网<small>双选会 · 宣讲日历</small></a>
+  </div>
+
+  <div class="sec-eyebrow">13 条投递线 · 分级定位</div>
+  <div class="legend" id="filters">
+    <button class="chip active" data-g="all"><span class="dot" style="background:var(--muted)"></span>全部</button>
+    <button class="chip" data-g="chong"><span class="dot" style="background:var(--t-chong-fg)"></span>攻关 · 冲</button>
+    <button class="chip" data-g="wen"><span class="dot" style="background:var(--t-wen-fg)"></span>主力盘 · 稳</button>
+    <button class="chip" data-g="diudi"><span class="dot" style="background:var(--t-bao-fg)"></span>兜底 · 保</button>
+    <button class="chip" data-g="waika"><span class="dot" style="background:var(--t-gao-fg)"></span>政策 · 外卡</button>
+    <span class="legend-note">冲=高竞争 稳=名额大体量大 保=机会确定 外卡=英语政策型双击</span>
+  </div>
+  <div class="summary">
+    <span>已投 <b id="done">0</b> / 13 条闸线</span>
+    <button class="marker" id="clearmark">清除已投标记</button>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <div class="card" data-g="wen" id="c01">
+      <div class="card-top"><span class="lineno">线 01</span><span class="tag" style="color:var(--t-wen-fg);background:var(--t-wen-bg)">主力盘 · 稳</span></div>
+      <h3>新疆油田分公司 <span class="unit">· 油气田开发/工程技术岗（克拉玛依）</span></h3>
+      <p class="quote">2025 秋招 360 人,名额最大;新疆籍+回疆意愿双加分;HR 0990-6889921</p>
+      <span class="window font-mono">网申 09/12–10/30 · 笔试约 11 月中</span>
+      <div class="card-actions">
+        <a class="btn" href="https://zhaopin.cnpc.com.cn/" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c01">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="chong" id="c02">
+      <div class="card-top"><span class="lineno">线 02</span><span class="tag" style="color:var(--t-chong-fg);background:var(--t-chong-bg)">攻关 · 冲</span></div>
+      <h3>西南油气田分公司 <span class="unit">· 工程技术岗 · 压裂/试油方向（川渝）</span></h3>
+      <p class="quote">2026 春工程岗仅 6 人;项目匹配度全场最高,预期落点:采气厂/工艺所技术岗</p>
+      <span class="window font-mono">同批网申 09/12–10/30</span>
+      <div class="card-actions">
+        <a class="btn" href="https://zhaopin.cnpc.com.cn/" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c02">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="chong" id="c03">
+      <div class="card-top"><span class="lineno">线 03</span><span class="tag" style="color:var(--t-chong-fg);background:var(--t-chong-bg)">攻关 · 冲</span></div>
+      <h3>中石化·西南油气分公司 <span class="unit">· 气田开发岗（成都）</span></h3>
+      <p class="quote">留川大本营;竞争烈度略低于中石油西南油气田</p>
+      <span class="window font-mono">公告约 09/25 后 · 发布即投</span>
+      <div class="card-actions">
+        <a class="btn" href="https://job.sinopec.com" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c03">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="wen" id="c04">
+      <div class="card-top"><span class="lineno">线 04</span><span class="tag" style="color:var(--t-wen-fg);background:var(--t-wen-bg)">主力盘 · 稳</span></div>
+      <h3>西北油田（轮台）或 中原石油工程 <span class="unit">· 开发岗 / 压裂·油田化学岗</span></h3>
+      <p class="quote">中石化坑 2:回疆通道之二;中原往年硕士安家费 8 万（参考）</p>
+      <span class="window font-mono">同批网申 9 月底–11 月中</span>
+      <div class="card-actions">
+        <a class="btn" href="https://job.sinopec.com" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c04">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="wen" id="c05">
+      <div class="card-top"><span class="lineno">线 05</span><span class="tag" style="color:var(--t-wen-fg);background:var(--t-wen-bg)">主力盘 · 稳</span></div>
+      <h3>中海油服 COSL <span class="unit">· 油藏服务/增产作业（天津/湛江/深圳）</span></h3>
+      <p class="quote">平台津贴;需过晕船/色盲要求;关注 cosl.com.cn 专栏</p>
+      <span class="window font-mono">预计 09/20–10/31</span>
+      <div class="card-actions">
+        <a class="btn" href="https://cnooc.zhaopin.com" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c05">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="wen" id="c06">
+      <div class="card-top"><span class="lineno">线 06</span><span class="tag" style="color:var(--t-wen-fg);background:var(--t-wen-bg)">稳-优</span></div>
+      <h3>海油发展 <span class="unit">· 油田化学/压裂技术服务（天津）</span></h3>
+      <p class="quote">油化服务大本营,海油系里对专业硕士友善度最高的一扇门</p>
+      <span class="window font-mono">同批网申 09/20–10/31</span>
+      <div class="card-actions">
+        <a class="btn" href="https://cnooc.zhaopin.com" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c06">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="wen" id="c07">
+      <div class="card-top"><span class="lineno">线 07</span><span class="tag" style="color:var(--muted);background:var(--surface-2)">顺带走</span></div>
+      <h3>天津 / 湛江分公司 <span class="unit">· 开发生产岗</span></h3>
+      <p class="quote">专业对口的主力岗,不额外占资源,可填即在</p>
+      <span class="window font-mono">同批网申 09/20–10/31</span>
+      <div class="card-actions">
+        <a class="btn" href="https://cnooc.zhaopin.com" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c07">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="waika" id="c08">
+      <div class="card-top"><span class="lineno">线 08</span><span class="tag" style="color:var(--t-cai-fg);background:var(--t-cai-bg)">政策彩票</span></div>
+      <h3>国家管网·西部管道公司 <span class="unit">· 工艺/运行岗（乌鲁木齐）</span></h3>
+      <p class="quote">新疆生源明文优先录取;主招储运岗,期望最低,先打电话核对方向再投</p>
+      <span class="window font-mono">09–10 月 · 初选笔试约 10 月底</span>
+      <div class="card-actions">
+        <a class="btn" href="https://zhaopin.pipechina.com.cn/" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c08">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="diudi" id="c09">
+      <div class="card-top"><span class="lineno">线 09</span><span class="tag" style="color:var(--t-bao-fg);background:var(--t-bao-bg)">定心桩 · 保</span></div>
+      <h3>延长油田股份有限公司 <span class="unit">· 专业技术岗（085706）（陕西）</span></h3>
+      <p class="quote">2026 年同岗 80 人且岗位表明确含 085706——为你而写;硕士≤28 周岁;每批限 1 岗</p>
+      <span class="window font-mono">预计 11/25–12/08 · 岗位表出先核代码</span>
+      <div class="card-actions">
+        <a class="btn" href="https://www.sxycpc.com" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c09">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="diudi" id="c10">
+      <div class="card-top"><span class="lineno">线 10</span><span class="tag" style="color:var(--t-bei-fg);background:var(--t-bei-bg)">高薪备胎</span></div>
+      <h3>安东石油技术集团 <span class="unit">· 技术服务/项目管理（油藏/压裂）</span></h3>
+      <p class="quote">27 届已开放;硕士 10–15k/月;9/18 14:30 成都理工宣讲会现场投命中率最高</p>
+      <span class="window font-mono">已开放 · 宣讲 09/18 成都理工</span>
+      <div class="card-actions">
+        <a class="btn" href="https://hotjob.cn/wt/antonoil/web/index/contentIndex100?brandCode=1" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c10">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="diudi" id="c11">
+      <div class="card-top"><span class="lineno">线 11</span><span class="tag" style="color:var(--t-bei-fg);background:var(--t-bei-bg)">高薪备胎</span></div>
+      <h3>杰瑞股份 <span class="unit">· 油服工程师/技术研发/海外服务</span></h3>
+      <p class="quote">现场 13–16 万/年;研发类硕士 24 万起;海外 25–30 万(新托福 90 已解锁)</p>
+      <span class="window font-mono">9 月正式批启动</span>
+      <div class="card-actions">
+        <a class="btn" href="https://jereh.zhiye.com/campus" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c11">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="waika" id="c12">
+      <div class="card-top"><span class="lineno">线 12</span><span class="tag" style="color:var(--t-gao-fg);background:var(--t-gao-bg)">外卡 · 高优</span></div>
+      <h3>斯伦贝谢 / 贝克休斯 / 壳牌 <span class="unit">· 校招工程/技术岗</span></h3>
+      <p class="quote">不评学科,只考英语+工程能力;新托福 90 = 硬门槛达标,成都理工在其目标校</p>
+      <span class="window font-mono">09–11 月 校园宣讲 · 看就业网日历</span>
+      <div class="card-actions">
+        <a class="btn" href="https://cdutjy.cdut.edu.cn/" target="_blank" rel="noopener">去投递 →</a>
+        <button class="btn ghost tier-pick" data-for="c12">标记已投</button>
+      </div>
+    </div>
+
+    <div class="card" data-g="diudi" id="c13">
+      <div class="card-top"><span class="lineno">线 13</span><span class="tag" style="color:var(--t-bei-fg);background:var(--t-bei-bg)">地面</span></div>
+      <h3>成都理工大学双选会 <span class="unit">· 09/16 对接会 + 11/11 大型双选会</span></h3>
+      <p class="quote">带 20 份简历;专找不上平台的中小油服、检测机构、设计院</p>
+      <span class="window font-mono">09/16 14:30-17:00 · 11/11 14:30-17:00</span>
+      <div class="card-actions">
+        <a class="btn" href="https://cdutjy.cdut.edu.cn/" target="_blank" rel="noopener">查看双选会 →</a>
+        <button class="btn ghost tier-pick" data-for="c13">标记已投</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-eyebrow">时间轴 · 窗口即闸</div>
+  <div class="tl">
+    <div class="w"><span class="d font-mono">09/01-11</span><span class="t">准备期:简历定稿 · 平台注册 · 行测开刷(<b>无免笔试资格,笔试是硬门槛</b>) · 致电新疆油田 HR</span></div>
+    <div class="w"><span class="d font-mono">09/12-30</span><span class="t">中石油网申两坑用满(新疆油田+西南油气田);中海油/管网公告跟进</span></div>
+    <div class="w"><span class="d font-mono">09/16 三</span><span class="t">14:30-17:00 校精准对接会(第一场)——第一场地面战</span></div>
+    <div class="w"><span class="d font-mono">09/18 五</span><span class="t">14:30-16:00 安东石油成都理工宣讲会——现场投</span></div>
+    <div class="w"><span class="d font-mono">09/25-11中</span><span class="t">中石化 2 岗 · 中海油 3 岗 · 管网;外企宣讲看就业网日历</span></div>
+    <div class="w"><span class="d font-mono">10底-11中</span><span class="t">笔试月:管网→中海油→中石油→中石化(行测+思想素质)</span></div>
+    <div class="w"><span class="d font-mono">11/11 三</span><span class="t">14:30-17:00 大型双选会(学校体育场西区)——全场地面战</span></div>
+    <div class="w"><span class="d font-mono">11/25-12/08</span><span class="t">延长秋招网申:延长油田专技岗(085706)先核对再报;每批限 1 岗</span></div>
+    <div class="w"><span class="d font-mono">11底-27/01</span><span class="t">面试季:半结构化+专业提问;项目讲 3 分钟版</span></div>
+    <div class="w"><span class="d font-mono">12-01月</span><span class="t">体检·公示·签约;手里有保底再谈冲刺</span></div>
+    <div class="w"><span class="d font-mono">27/03-05</span><span class="t">春招补录(仅全年 5%);延长春招(去年 04/24-05/07)</span></div>
+    <div class="w"><span class="d font-mono">27/06-07</span><span class="t">延长夏招兜底(去年至 07/05,399 人)——永不落空</span></div>
+  </div>
+
+  <div class="sec-eyebrow">口径与电话 · 网申前必读</div>
+  <div class="notes">
+    <span><span class="k">专业名称</span>石油与天然气工程(按学信网)</span>
+    <span><span class="k">学位类型</span>专业学位(下拉选「专业学位」)</span>
+    <span><span class="k">外语栏</span>选「托福」填 90(三桶油门槛 ≥70)</span>
+    <span><span class="k">年龄线</span>三桶油硕士 ≤30;延长硕士 ≤28</span>
+    <span><span class="k">新疆油田 HR</span><a href="tel:09906889921">0990-6889921</a> · <a href="mailto:xjytzp@126.com">xjytzp@126.com</a></span>
+    <span><span class="k">安东 HR</span><a href="mailto:hr2@antonoil.com">hr2@antonoil.com</a>(9/18 现场为主)</span>
+  </div>
+
+  <p class="foot">
+    所有日期为 2026 届实际数据或第三方预测值,秋招具体公告以各官网为准。<br>
+    配套文件(工作区根目录):求职跟踪表_2027届秋招.xlsx · 简历_油气田开发岗_专业硕士_v1.docx(框架版,内容自填)。
+  </p>
+</div>
+
+<script>
+(function(){
+  var STORE_KEY="qiuzhao-2027-done";
+  function load(){try{return JSON.parse(localStorage.getItem(STORE_KEY)||"{}")}catch(e){return {}}}
+  function save(v){try{localStorage.setItem(STORE_KEY,JSON.stringify(v))}catch(e){}}
+  var done=load();
+  function renderDone(){
+    var n=Object.keys(done).filter(function(k){return done[k]}).length;
+    document.getElementById("done").textContent=n;
+    document.querySelectorAll(".tier-pick").forEach(function(b){
+      var id=b.getAttribute("data-for");
+      b.classList.toggle("on",!!done[id]);
+      b.textContent=done[id]?"已投 ✓":"标记已投";
+    });
+  }
+  document.querySelectorAll(".tier-pick").forEach(function(b){
+    b.addEventListener("click",function(){
+      var id=b.getAttribute("data-for");
+      done[id]=!done[id];save(done);renderDone();
+    });
+  });
+  document.getElementById("clearmark").addEventListener("click",function(){
+    done={};save(done);renderDone();
+  });
+  document.querySelectorAll("#filters .chip").forEach(function(ch){
+    ch.addEventListener("click",function(){
+      document.querySelectorAll("#filters .chip").forEach(function(c){c.classList.remove("active")});
+      ch.classList.add("active");
+      var g=ch.getAttribute("data-g");
+      document.querySelectorAll("#grid .card").forEach(function(c){
+        c.hidden=(g!=="all"&&c.getAttribute("data-g")!==g);
+      });
+    });
+  });
+  renderDone();
+})();
+</script>

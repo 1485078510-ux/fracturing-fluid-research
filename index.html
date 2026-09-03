@@ -175,6 +175,18 @@ h1{
 .qcard b{font-size:13.6px;font-weight:700;line-height:1.5}
 .qcard .a{font-size:12.4px;color:var(--muted);line-height:1.7}
 .qcard .a em{font-style:normal;color:var(--t-warm);font-weight:600}
+/* ===== 笔试题库(点击展开) ===== */
+.qmod{grid-column:1/-1;background:var(--surface);border:1px solid var(--line);border-radius:2px;padding:14px 16px;display:flex;flex-direction:column;gap:0}
+.qmod h3{font-size:15px;font-weight:700}
+.qmod .qmeta{font-size:11.5px;color:var(--muted);font-weight:600;margin:2px 0 10px}
+.qlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px}
+.qitem{background:var(--ground);border:1px solid var(--line);border-left:3px solid var(--accent);padding:10px 12px;font-size:12.8px;line-height:1.7}
+.qitem summary{cursor:pointer;font-weight:600;line-height:1.6;list-style:none}
+.qitem summary::-webkit-details-marker{display:none}
+.qitem summary::before{content:"+";color:var(--accent);font-family:"IBM Plex Mono",monospace;font-weight:700;margin-right:7px}
+.qitem[open] summary::before{content:"−"}
+.qitem .qans{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);color:var(--muted);font-size:12.3px;line-height:1.75}
+.qitem .qans b{color:var(--accent)}
 @media (max-width:760px){
   .mast{flex-direction:column;align-items:flex-start}
   .meta{text-align:left}
@@ -439,34 +451,269 @@ h1{
 
   </div>
 
-  <div class="sec-eyebrow">笔试 · 真题样例(行测 6 题 · 含解析思路)</div>
+  <div class="sec-eyebrow">笔试 · 题库(行测 57 题 + 专业 48 题 + 文化时政 44 题 = 149 题)</div>
+  <p class="notes">点击任意题面展开答案与解析,自测后再对答案。<b>通用能力(行测)</b>:常识/言语/数量/判断/资料;专业笔试按石油工程基础、油藏、采油、钻井、储运;文化与思想素质全覆盖。均为真题风格整理,文化类表述以各企业官网最新版本为准。</p>
   <div class="egrid">
 
-    <div class="exam">
-      <div class="sub-t font-mono">数量关系 · 3 例(行业背景)</div>
-      <h3>工程/产量/增长类必考</h3>
-      <div class="xrow"><span class="k">例1</span><span class="v">甲乙两队抢修输油管道,甲 8 天、乙 12 天,合作需几天?<b>答案 4.8 天</b>(1/8+1/12=5/24)</span></div>
-      <div class="xrow"><span class="k">例2</span><span class="v">某装置年处理原油 1200 万吨,年增 5%,第 3 年末约多少?<b>≈1389 万吨</b>(1200×1.05³)</span></div>
-      <div class="xrow"><span class="k">例3</span><span class="v">某油田月产 1200 吨,上旬 40%、中旬 35%,下旬需多少?<b>300 吨</b>(剩余 25%)</span></div>
-      <div class="xrow"><span class="k">考点</span><span class="v">工程问题(效率×时间)、增长率/指数、数列、利润、比例——<b>先列式再估算</b>,复杂题果断跳过、留时间给资料分析</span></div>
+    <div class="qmod">
+      <h3>① 通用能力 · 常识判断(15 题 · 能源与行业常识)</h3>
+      <div class="qmeta font-mono">能源常识 / 石油知识 / 时政常识 · 三桶油+管网均考 · 送分题,正确率目标 90%+</div>
+      <div class="qlist">
+        <details class="qitem"><summary>我国最大的陆上油田是哪个?</summary><div class="qans"><b>长庆油田</b>(鄂尔多斯盆地,陕甘宁交界;大庆是大庆精神的大油田,但产量第一是长庆)</div></details>
+        <details class="qitem"><summary>原油的主要化学成分是?</summary><div class="qans"><b>碳氢化合物(烃类)</b>,并含少量硫、氮、氧等杂原子化合物</div></details>
+        <details class="qitem"><summary>天然气的主要成分是?</summary><div class="qans"><b>甲烷</b>(通常占 70% 以上,另含乙烷、丙烷、N₂、CO₂ 等)</div></details>
+        <details class="qitem"><summary>按硫含量分类,含硫量大于 2% 的石油属于?</summary><div class="qans"><b>高硫石油</b>(低硫 &lt;0.5%、含硫 0.5%~2%、高硫 &gt;2%)</div></details>
+        <details class="qitem"><summary>衡量原油流动难易程度的物性指标是?</summary><div class="qans"><b>粘度</b>(稠油粘度大、流动困难,需热采/降粘)</div></details>
+        <details class="qitem"><summary>下列不属于石油主要加工产品的是?</summary><div class="qans"><b>纯碱</b>(汽油、柴油、煤油、沥青、石蜡均为石油产品)</div></details>
+        <details class="qitem"><summary>「西气东输」管道输送的是什么?</summary><div class="qans"><b>天然气</b>(气态管道输送;LNG 是-162℃ 液化后船舶/槽车运输)</div></details>
+        <details class="qitem"><summary>我国现阶段一次能源的主体是?</summary><div class="qans"><b>化石能源</b>(煤炭为主,石油天然气占比紧随其后)</div></details>
+        <details class="qitem"><summary>「碳达峰」的含义是?</summary><div class="qans">温室气体排放量达到<b>峰值</b>后进入<b>持续下降</b>通道</div></details>
+        <details class="qitem"><summary>地震勘探中激发地震波依靠什么?</summary><div class="qans"><b>人工震源</b>(震源车可控震源/炸药激发,采集反射波)</div></details>
+        <details class="qitem"><summary>页岩气实现经济开发的关键技术是?</summary><div class="qans"><b>水平井 + 水力压裂</b>(长水平段分段压裂造缝网)</div></details>
+        <details class="qitem"><summary>「三桶油」指哪三家?</summary><div class="qans"><b>中石油(CNPC)、中石化(SINOPEC)、中海油(CNOOC)</b></div></details>
+        <details class="qitem"><summary>我国首个自营超深水大气田是?</summary><div class="qans"><b>深海一号</b>(南海陵水 17-2,水深约 1500 m,2021 年投产)</div></details>
+        <details class="qitem"><summary>我国最大的海上原油生产基地是?</summary><div class="qans"><b>渤海油田</b>(中国海油旗下,国产原油海上主产区)</div></details>
+        <details class="qitem"><summary>国家安全生产方针是什么?</summary><div class="qans"><b>安全第一、预防为主、综合治理</b>(通用方针;中石油专属核心理念是「一切事故都可以预防」,别混淆)</div></details>
+      </div>
     </div>
 
-    <div class="exam">
-      <div class="sub-t font-mono">资料分析 · 3 例(表格/文字)</div>
-      <h3>读表快、算率准</h3>
-      <div class="xrow"><span class="k">例1</span><span class="v">材料:2024 年营收同比增 4.2%,2025Q1 新能源装机同比增 <b>28%</b>——答案文中直接定位,别自己算</span></div>
-      <div class="xrow"><span class="k">例2</span><span class="v">四类品 2025 总产 1070 - 2024 年 950 = <b>增 120 万吨</b>;乙烯 180×1.15=<b>207 万吨</b>(表内加减乘)</span></div>
-      <div class="xrow"><span class="k">例3</span><span class="v">「占比提高 5 个百分点」:先求 2023 总量再乘新占比——<b>「百分点」≠「%」</b>,最常设错点</span></div>
-      <div class="xrow"><span class="k">技巧</span><span class="v">先读题干再定位;截位直除/尾数法;单位陷阱(万吨 vs 吨);<b>每题 ≤1.5 分钟</b></span></div>
+    <div class="qmod">
+      <h3>② 通用能力 · 言语理解(10 题)</h3>
+      <div class="qmeta font-mono">逻辑填空 4 / 主旨 3 / 排序 1 / 病句 2 · 中石油约 20 题该模块</div>
+      <div class="qlist">
+        <details class="qitem"><summary>逻辑填空:贯彻新发展理念,要_______尊重、顺应、保护自然。</summary><div class="qans"><b>完整、准确、全面</b>贯彻(固定搭配,高频原题)</div></details>
+        <details class="qitem"><summary>逻辑填空:能源转型要「先立后破」——先_______新能源供给能力,再逐步_______传统产能。</summary><div class="qans"><b>建立/替代</b></div></details>
+        <details class="qitem"><summary>主旨题:文段称我国化石能源消费占比仍高但逐年下降,新能源增幅最大。主旨?</summary><div class="qans"><b>能源结构绿色低碳转型稳步推进</b>(抓「虽然…但…」转折)</div></details>
+        <details class="qitem"><summary>排序题:①采出油气经井口 ②进集输管网 ③计量分离 ④外输。正确顺序?</summary><div class="qans"><b>①②③④</b>——按生产流程排</div></details>
+        <details class="qitem"><summary>病句:「由于油价持续波动,造成了炼化企业盈利空间收窄。」问题在哪?</summary><div class="qans"><b>「由于…造成」句式杂糅</b>,删「造成」或改为「使得」</div></details>
+        <details class="qitem"><summary>逻辑填空:「三老四严」的四严:严格的要求、严密的组织、严肃的态度、______。</summary><div class="qans"><b>严明的纪律</b>(「严厉的惩罚」是常见干扰项)</div></details>
+        <details class="qitem"><summary>主旨题:某安全会议提出「安全是底线、环保是红线、质量是生命线」。主旨?</summary><div class="qans">生产经营必须<b>守住底线、不碰红线</b></div></details>
+        <details class="qitem"><summary>成语题:非常规油气开发风险高、见效慢,应______,不能一蹴而就。</summary><div class="qans"><b>循序渐进</b>(排除急功近利/盲目冒进类)</div></details>
+        <details class="qitem"><summary>病句题:下列搭配不当的是?</summary><div class="qans">「<b>提高</b>污染排放强度」——应为「降低/控制」,「提高排放」动宾不当</div></details>
+        <details class="qitem"><summary>排序题:②先提出背景 ①再讲具体措施 ③最后总结意义。正确顺序?</summary><div class="qans"><b>②①③</b>(背景→措施→意义)</div></details>
+      </div>
     </div>
 
-    <div class="exam">
-      <div class="sub-t font-mono">言语/判断/常识 · 考点清单</div>
-      <h3>保证正确率的软性板块</h3>
-      <div class="xrow"><span class="k">言语</span><span class="v">逻辑填空(积累:未雨绸缪/相辅相成/循序渐进等高频成语)、片段阅读抓主旨词(然而/因此)、语句排序</span></div>
-      <div class="xrow"><span class="k">判断</span><span class="v">图形推理(位置/对称/数量)、定义判断、类比、逻辑判断(削弱加强;<b>if A then B ≡ 非A或B</b>)</span></div>
-      <div class="xrow"><span class="k">常识</span><span class="v">石油常识:油气当量、采收率、注水开发、非常规能源;法律(安全生产法)、时政(双碳/能源安全)</span></div>
-      <div class="xrow"><span class="k">提醒</span><span class="v">网络题库部分<b>答案标注有误</b>(以上解析已复核);以理解思路为主,别背答案</span></div>
+    <div class="qmod">
+      <h3>③ 通用能力 · 数量关系(12 题)</h3>
+      <div class="qmeta font-mono">工程 / 增长率 / 数列 / 浓度 / 行程 / 利润 · 中石油约 15-23 题、延长占比最高</div>
+      <div class="qlist">
+        <details class="qitem"><summary>甲乙两队抢修输油管道,甲 8 天、乙 12 天,合作需几天?</summary><div class="qans"><b>4.8 天</b>(1/8+1/12 = 5/24 → 24/5)</div></details>
+        <details class="qitem"><summary>某装置年处理原油 1200 万吨,年增 5%,第 3 年末约多少?</summary><div class="qans"><b>≈1389 万吨</b>(1200×1.05³=1389.15)</div></details>
+        <details class="qitem"><summary>某油田月产 1200 吨,上旬 40%、中旬 35%,下旬需产多少?</summary><div class="qans"><b>300 吨</b>(剩余 25%)</div></details>
+        <details class="qitem"><summary>某井日产油 20 吨、含水率 50%,产液量为?</summary><div class="qans"><b>40 吨</b>(产液量 = 产油量 ÷ (1−含水率))</div></details>
+        <details class="qitem"><summary>数列:2, 5, 10, 17, 26, ?</summary><div class="qans"><b>37</b>(通项 n²+1)</div></details>
+        <details class="qitem"><summary>数列:3, 7, 15, 31, ?</summary><div class="qans"><b>63</b>(×2+1 递推)</div></details>
+        <details class="qitem"><summary>10% 的盐水 200 kg 加入清水 100 kg,浓度变为?</summary><div class="qans"><b>≈6.7%</b>(溶质 20 kg ÷ 300 kg)</div></details>
+        <details class="qitem"><summary>甲单独 10 天完成、乙单独 15 天完成,合作需几天?</summary><div class="qans"><b>6 天</b>(1/10+1/15=1/6)</div></details>
+        <details class="qitem"><summary>去程 60 km/h、回程 40 km/h,全程平均速度?</summary><div class="qans"><b>48 km/h</b>(2uv/(u+v),≠50,平均速陷阱)</div></details>
+        <details class="qitem"><summary>三班产量比 4:3:2,共 360 吨,产量最多的班是多少?</summary><div class="qans"><b>160 吨</b>(4/(4+3+2)×360)</div></details>
+        <details class="qitem"><summary>进价 100 元,加价 30% 定价,再打 8 折出售,毛利率?</summary><div class="qans"><b>4%</b>(130×0.8=104)</div></details>
+        <details class="qitem"><summary>圆半径增大 10%,圆面积增大?</summary><div class="qans"><b>21%</b>(1.1²=1.21,平方关系勿用 20%)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>④ 通用能力 · 判断推理(12 题)</h3>
+      <div class="qmeta font-mono">命题推理 / 真假话 / 定义判断 / 类比 / 削弱加强 / 图形运算 · 中石油约 15 题</div>
+      <div class="qlist">
+        <details class="qitem"><summary>「若完成培训则上岗」逻辑等价于?</summary><div class="qans"><b>未完成培训或已上岗</b>(若 A 则 B ≡ 非A或B,高频考点)</div></details>
+        <details class="qitem"><summary>传递推理:升职→绩效优;绩效优→态度好。已知某员工态度不好,可推出?</summary><div class="qans"><b>该员工不能升职</b>(逆否链)</div></details>
+        <details class="qitem"><summary>真假话:四人,只有一人说真。甲:全部检修完成;乙:我完成了;丙:我完成了;丁:甲说的不对。</summary><div class="qans"><b>甲与丁矛盾</b>必有一真,故乙丙为假;唯一真是<b>丁</b>(符合「并非全部完成」)</div></details>
+        <details class="qitem"><summary>定义判断:井网密度的定义是?</summary><div class="qans"><b>单位含油面积上的油井数(口/km²)</b></div></details>
+        <details class="qitem"><summary>定义判断:采收率的定义是?</summary><div class="qans"><b>可采储量 / 地质储量</b></div></details>
+        <details class="qitem"><summary>类比:压裂:增产 = ?</summary><div class="qans"><b>酸化:解堵</b>(均为增产/改善渗流措施-作用)</div></details>
+        <details class="qitem"><summary>类比:输油管道:泵站 = 输气管道:?</summary><div class="qans"><b>压气站(压缩机组)</b>(均为增压输送设备)</div></details>
+        <details class="qitem"><summary>图形推理:题干封闭区间数 1,2,3,4,5,下一图?</summary><div class="qans"><b>6</b>(数封闭空间数,常见规律:平移/旋转/对称/线条数/点数)</div></details>
+        <details class="qitem"><summary>削弱:结论「高温导致某井产率下降」,最能削弱的一项是?</summary><div class="qans"><b>该井同期停产检修</b>(另有他因)</div></details>
+        <details class="qitem"><summary>加强:结论「智能巡检可减少事故」,最能加强的一项是?</summary><div class="qans"><b>试点场站连续 12 个月事故率下降 40%</b>(直接数据支撑)</div></details>
+        <details class="qitem"><summary>归纳:某油田数字化后钻井周期缩短、事故减少、人均产量上升,最合理概括?</summary><div class="qans"><b>数字技术推动油田效率与安全双提升</b></div></details>
+        <details class="qitem"><summary>选言推理:「本次作业要么整改,要么停工」,已知不停工,可推出?</summary><div class="qans"><b>必须整改</b>(否定选言支→肯定另一支)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑤ 通用能力 · 资料分析(8 题)</h3>
+      <div class="qmeta font-mono">中石油约 15 题 · 中海油约 20 题 · 先读题干后定位,每题 ≤1.5 分钟</div>
+      <div class="qlist">
+        <details class="qitem"><summary>估算:42034 × 28% ≈ ?</summary><div class="qans"><b>≈11770</b>(截位:4.2×0.28≈1.18 万)</div></details>
+        <details class="qitem"><summary>占比从 21.5% 升至 26.3%,提高了?</summary><div class="qans"><b>4.8 个百分点</b>(「百分点」≠「%」,最常设错点)</div></details>
+        <details class="qitem"><summary>产量从 350 万吨增至 518 万吨,增长率为?</summary><div class="qans"><b>48%</b>((518−350)/350)</div></details>
+        <details class="qitem"><summary>表格单位是「千吨/年」,题干问「万吨」,怎么处理?</summary><div class="qans"><b>数值 ÷10</b>;先摘单位再算,单位陷阱必扣分</div></details>
+        <details class="qitem"><summary>2023 年为 Q,2024 年降 2%、2025 年再增 5%,2025 年约为?</summary><div class="qans"><b>1.029Q</b>(0.98×1.05≈1.029,约增 2.9%)</div></details>
+        <details class="qitem"><summary>年均增长率怎么快速估算?</summary><div class="qans">现期/基期 开 n 次方再 −1;<b>用选项代入验算</b>代替硬开方</div></details>
+        <details class="qitem"><summary>柱状图问「增幅最大的一年」,看什么?</summary><div class="qans">看<b>相对增幅(环比/同比百分比)</b>,不是绝对增量——绝对量最大≠增幅最大</div></details>
+        <details class="qitem"><summary>「12 月环比」与「12 月同比」分别和谁比?</summary><div class="qans"><b>同比</b>=上年 12 月;<b>环比</b>=同年 11 月</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑥ 专业 · 石油工程基础(10 题 · 单选高频)</h3>
+      <div class="qmeta font-mono">三桶油 / 延长技术岗通考 · 送分题,必须全对</div>
+      <div class="qlist">
+        <details class="qitem"><summary>石油工程主要包括哪四大板块?</summary><div class="qans"><b>钻井、采油(采气)、油藏工程、地面建设工程</b></div></details>
+        <details class="qitem"><summary>钻井液的主要作用不包括?</summary><div class="qans"><b>提高原油产量</b>(作用:携带岩屑、冷却钻头、平衡地层压力、稳定井壁)</div></details>
+        <details class="qitem"><summary>防止井喷最关键的是哪套井口装置?</summary><div class="qans"><b>防喷器(井控装置)</b></div></details>
+        <details class="qitem"><summary>钻井液密度过高会导致?过低会导致?</summary><div class="qans">过高 → <b>井漏</b>;过低 → <b>井涌/井喷</b>(按地层压力平衡选择)</div></details>
+        <details class="qitem"><summary>欠平衡钻井的关键设备是?</summary><div class="qans"><b>旋转防喷器(旋转控制头)</b></div></details>
+        <details class="qitem"><summary>陆上钻井常用的钻井液循环方式是?</summary><div class="qans"><b>正循环</b>(内管下返地层)</div></details>
+        <details class="qitem"><summary>下列不属于完井方法的是?</summary><div class="qans"><b>注水完井</b>(常见:射孔完井、裸眼完井、砾石充填完井)</div></details>
+        <details class="qitem"><summary>井控的核心是什么?</summary><div class="qans"><b>控制井口压力、严防井喷事故</b></div></details>
+        <details class="qitem"><summary>三牙轮钻头与 PDC 钻头分别怎么破碎地层?</summary><div class="qans">牙轮:钻压+滚动<b>冲击压碎</b>;PDC:金刚石切削<b>剪切破碎</b></div></details>
+        <details class="qitem"><summary>油气藏形成的「四要素」是什么?</summary><div class="qans"><b>油气源(烃源岩)、储集层、盖层、圈闭</b></div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑦ 专业 · 油藏工程(12 题)</h3>
+      <div class="qmeta font-mono">你报考开发方向最对口 · 驱动方式 / 采收率 / 试井 / 注水</div>
+      <div class="qlist">
+        <details class="qitem"><summary>孔隙度与渗透率分别描述什么?</summary><div class="qans"><b>孔隙度</b>=储层储存流体的空间占比;<b>渗透率</b>=流体流动能力——一个是「能装多少」,一个是「好不好流」</div></details>
+        <details class="qitem"><summary>采收率的定义式?</summary><div class="qans">采收率 = <b>可采储量 / 地质储量</b></div></details>
+        <details class="qitem"><summary>定容封闭油藏、无注水补充、持续开采,地层压力走势?</summary><div class="qans"><b>持续下降</b>(能量来自弹性能量,无补充则压力不断亏空)</div></details>
+        <details class="qitem"><summary>油藏驱动方式中,采收率较高的是?</summary><div class="qans"><b>水压驱动</b>(边底水/人工注水能量补充)</div></details>
+        <details class="qitem"><summary>确定井间连通性的试井方法是?</summary><div class="qans"><b>干扰试井</b>(激动井+观察井)</div></details>
+        <details class="qitem"><summary>井网密度「密度」指什么?主要影响什么?</summary><div class="qans">单位面积<b>井数(口/km²)</b>;主要影响<b>采收率</b>(密度过小采不出,过大不经济)</div></details>
+        <details class="qitem"><summary>「见水」现象指什么?</summary><div class="qans"><b>边水、底水或注入水突破至井筒</b>,产液中出现水</div></details>
+        <details class="qitem"><summary>油藏数值模拟的主要用途?</summary><div class="qans"><b>动态预测与开发方案比选</b>(产量、压力、含水预测)</div></details>
+        <details class="qitem"><summary>低渗油藏提高采收率的有效措施?</summary><div class="qans"><b>水平井分段压裂 + 合理注水保持能量</b></div></details>
+        <details class="qitem"><summary>物质平衡方程主要用于什么油藏?</summary><div class="qans"><b>定容封闭油藏</b>储量核算与驱动能量评价</div></details>
+        <details class="qitem"><summary>产油 20 吨/日、含水率 50%,产液量怎么算?</summary><div class="qans">产液量 = 产油 ÷(1−含水率)= <b>40 吨</b></div></details>
+        <details class="qitem"><summary>常用注水方式有哪些?低渗/裂缝油藏多采用哪种?</summary><div class="qans">边缘注水、切割注水、<b>面积(行列)注水</b>、点状注水;低渗、裂缝发育油藏多采用<b>面积/点状(不规则)注水</b></div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑧ 专业 · 采油工程(10 题)</h3>
+      <div class="qmeta font-mono">人工举升 / 压裂酸化 / EOR 高区分点</div>
+      <div class="qlist">
+        <details class="qitem"><summary>下列属于无杆抽油设备的是?</summary><div class="qans"><b>电动潜油离心泵(电潜泵)</b>(皮带式、游梁式、链条式均为有杆)</div></details>
+        <details class="qitem"><summary>下列属于机械采油(人工举升)方式的是?</summary><div class="qans"><b>螺杆泵采油</b>(也属人工举升;与之并列:有杆泵、电潜泵、气举)</div></details>
+        <details class="qitem"><summary>水力压裂的目的是?</summary><div class="qans"><b>形成人工裂缝、提高储层渗透能力</b>,改善渗流、提高单井产量</div></details>
+        <details class="qitem"><summary>EOR(提高采收率)方法不包括?</summary><div class="qans"><b>机械采油</b>(EOR:热力驱、化学驱、气驱、微生物驱)</div></details>
+        <details class="qitem"><summary>一次采油利用的是什么能量?</summary><div class="qans"><b>天然能量</b>:弹性、溶解气、边底水、重力(不注水不注气)</div></details>
+        <details class="qitem"><summary>下列属于增产措施的是?</summary><div class="qans"><b>压裂、酸化</b>——注水是维持地层压力的开发手段,不算井筒增产措施</div></details>
+        <details class="qitem"><summary>酸化增产的原理?</summary><div class="qans">酸液<b>溶蚀岩石矿物与近井堵塞物</b>,扩大/连通渗流通道(盐酸/土酸,HF 防砂酸)</div></details>
+        <details class="qitem"><summary>常用人工举升方式如何分类?</summary><div class="qans"><b>有杆</b>:游梁(皮带/链条)抽油机、有杆(螺杆)泵;<b>无杆</b>:电潜泵、水力泵、气举</div></details>
+        <details class="qitem"><summary>游梁式抽油机(磕头机)最适用于?</summary><div class="qans">需要<b>人工举升的中低产、机抽井</b>(低渗/能量不足油藏为主)</div></details>
+        <details class="qitem"><summary>油井生产系统的组成范围?</summary><div class="qans"><b>井筒管柱 + 井口装置 + 地面集输管汇(计量)</b>;不含炼油/加工环节</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑨ 专业 · 钻井工程(8 题)</h3>
+      <div class="qmeta font-mono">井控 / 定向井 / 固井 · 与基础模块互补</div>
+      <div class="qlist">
+        <details class="qitem"><summary>定向井/水平井的主要价值?</summary><div class="qans">轨迹<b>贯穿多套储层、增大单井控制的泄油(泄气)面积</b>,提高单井产量与采收率</div></details>
+        <details class="qitem"><summary>页岩气井普遍采用什么钻井+完井方案?</summary><div class="qans"><b>水平井 + 分段压裂</b></div></details>
+        <details class="qitem"><summary>固井的主要目的是?</summary><div class="qans">用水泥浆<b>封隔地层与环空、支撑套管</b>,防止窜槽与井壁坍塌</div></details>
+        <details class="qitem"><summary>钻井液失水量过大的危害?</summary><div class="qans">滤液大量侵入储层→<b>粘土膨胀、水锁等储层伤害</b></div></details>
+        <details class="qitem"><summary>定向井实时监控井眼轨迹的设备?</summary><div class="qans"><b>MWD/LWD</b>(随钻测量/随钻测井,井下遥测)</div></details>
+        <details class="qitem"><summary>地层压力随深度的总体趋势?</summary><div class="qans">随井深<b>增大</b>(异常高压/超压带除外)</div></details>
+        <details class="qitem"><summary>井斜控制的目的?</summary><div class="qans">按设计轨迹钻进、<b>防止井段偏离设计靶区</b>与井下复杂</div></details>
+        <details class="qitem"><summary>钻井速度与机械钻速的关系?</summary><div class="qans">机械钻速=单位纯钻时间钻进米数;<b>提高钻头性能与钻进参数</b>是提速核心(送分易错:别与总钻速混淆)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑩ 专业 · 油气储运(8 题 · 管网对口)</h3>
+      <div class="qmeta font-mono">国家管网笔试重点 · 管道 / 储气库 / LNG</div>
+      <div class="qlist">
+        <details class="qitem"><summary>地下储气库的作用?</summary><div class="qans"><b>季节调峰、应急供气储备</b>(利用枯竭气藏/盐穴/含水层存储)</div></details>
+        <details class="qitem"><summary>LNG(液化天然气)常压液化温度?</summary><div class="qans">约<b>-162 ℃</b></div></details>
+        <details class="qitem"><summary>管道输送的特点?</summary><div class="qans"><b>连续、密闭、运量大、成本低</b>,是天然气/成品油干线主力</div></details>
+        <details class="qitem"><summary>「兰郑长」管道输送什么?</summary><div class="qans"><b>成品油</b>(兰州—郑州—长沙,国家管网运营)</div></details>
+        <details class="qitem"><summary>中俄东线输送什么?</summary><div class="qans"><b>天然气</b>(中俄东线天然气管道,进口俄气主力通道)</div></details>
+        <details class="qitem"><summary>输气站(压气站)的核心功能?</summary><div class="qans"><b>增压</b>,补偿沿线压损、维持输送量</div></details>
+        <details class="qitem"><summary>输油管道泄漏检测的常用手段?</summary><div class="qans">SCADA <b>压力/流量突变检测</b>、巡线无人机+人工、负压波/音波泄漏定位</div></details>
+        <details class="qitem"><summary>油气交接计量依据什么?</summary><div class="qans"><b>定期标定合格的流量计</b> + 油品化验(密度/含水/温度修正)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑪ 文化思想素质 · 中石油(10 题 · 原题重复率高)</h3>
+      <div class="qmeta font-mono">企业精神 / 宗旨 / 三老四严 / 大庆·铁人精神 · 必背</div>
+      <div class="qlist">
+        <details class="qitem"><summary>中国石油的企业精神?</summary><div class="qans"><b>爱国、创业、求实、奉献</b>(1981 年表述为「献身」,1990 年江泽民同志改为「奉献」;干扰项常出「献身」)</div></details>
+        <details class="qitem"><summary>中国石油的企业宗旨?</summary><div class="qans"><b>奉献能源、创造和谐</b></div></details>
+        <details class="qitem"><summary>「三老」指?</summary><div class="qans">当<b>老实人</b>、说<b>老实话</b>、办<b>老实事</b></div></details>
+        <details class="qitem"><summary>「四严」指?</summary><div class="qans"><b>严格的要求、严密的组织、严肃的态度、严明的纪律</b>(「严厉的惩罚」常见干扰项)</div></details>
+        <details class="qitem"><summary>大庆精神、铁人精神起源于?铁人是谁?</summary><div class="qans">起源于<b>大庆石油会战</b>;铁人=<b>王进喜</b>;新时期铁人=<b>王启民</b></div></details>
+        <details class="qitem"><summary>中国石油核心价值观?</summary><div class="qans"><b>诚信、创新、业绩、和谐、安全</b>(以官网现行表述为准;干扰项常混入「高效」)</div></details>
+        <details class="qitem"><summary>核心经营管理理念?</summary><div class="qans"><b>诚信是基石、创新是动力、业绩是目标、和谐是保障、安全是前提</b></div></details>
+        <details class="qitem"><summary>核心安全理念?</summary><div class="qans"><b>一切事故都可以预防</b>(通用方针是「安全第一、预防为主、综合治理」,别混淆)</div></details>
+        <details class="qitem"><summary>QHSE 理念?</summary><div class="qans"><b>环保优先、安全第一、质量至上、以人为本</b></div></details>
+        <details class="qitem"><summary>中国石油英文简称?</summary><div class="qans"><b>CNPC</b>(中石化 SINOPEC / 中海油 CNOOC)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑫ 文化思想素质 · 中石化(8 题)</h3>
+      <div class="qmeta font-mono">使命 / 愿景 / 核心价值观 / 一基两翼三新 · 思想素质题量占比最大</div>
+      <div class="qlist">
+        <details class="qitem"><summary>中国石化企业使命?</summary><div class="qans"><b>为美好生活加油</b></div></details>
+        <details class="qitem"><summary>中国石化企业愿景?</summary><div class="qans">建设成为<b>人民满意、世界一流能源化工公司</b></div></details>
+        <details class="qitem"><summary>中国石化核心价值观?</summary><div class="qans"><b>人本、责任、诚信、精细、创新、共赢</b>(以官网最新表述为准)</div></details>
+        <details class="qitem"><summary>中国石化企业精神?</summary><div class="qans"><b>爱我中华、振兴石化</b>(司歌同名)</div></details>
+        <details class="qitem"><summary>中国石化企业作风?</summary><div class="qans"><b>严细实</b></div></details>
+        <details class="qitem"><summary>品牌口号?</summary><div class="qans"><b>每一滴油都是承诺</b></div></details>
+        <details class="qitem"><summary>「一基两翼三新」指什么?</summary><div class="qans"><b>一基</b>=石油化工基础产业;<b>两翼</b>=清洁能源、高端材料;<b>三新</b>=新能源、新材料、新经济</div></details>
+        <details class="qitem"><summary>「三商」战略指?</summary><div class="qans"><b>市场商、技术商、服务商</b></div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑬ 文化思想素质 · 中海油(6 题)</h3>
+      <div class="qmeta font-mono">成立背景 / 主战场 · 近年笔试取消英语、综合只考时政+海油文化</div>
+      <div class="qlist">
+        <details class="qitem"><summary>中国海油成立于哪一年?</summary><div class="qans"><b>1982 年</b>,国务院授权对外合作开采海洋石油;1999 年改制为股份公司</div></details>
+        <details class="qitem"><summary>中国海油的定位?</summary><div class="qans">我国<b>最大的海上油气生产商</b>,世界 500 强</div></details>
+        <details class="qitem"><summary>我国最大海上原油生产基地?</summary><div class="qans"><b>渤海油田</b></div></details>
+        <details class="qitem"><summary>我国首个自营超深水大气田?</summary><div class="qans"><b>「深海一号」(陵水 17-2)</b>,南海,水深约 1500 m</div></details>
+        <details class="qitem"><summary>中国海油总部所在地?</summary><div class="qans"><b>北京</b>(三大基地:天津/深圳/湛江,作业区入海口)</div></details>
+        <details class="qitem"><summary>我国海上油气勘探开发主要海域?</summary><div class="qans"><b>渤海、东海、南海</b>(南海东部/南海西部)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑭ 文化思想素质 · 国家管网(8 题)</h3>
+      <div class="qmeta font-mono">挂牌 / 宗旨 / 战略(党建+六化) / 干线 · 笔试含「企业核心知识专项题库」</div>
+      <div class="qlist">
+        <details class="qitem"><summary>国家管网集团正式挂牌时间?</summary><div class="qans"><b>2019 年 12 月 9 日</b>(党中央、国务院批准组建)</div></details>
+        <details class="qitem"><summary>国家管网企业宗旨?</summary><div class="qans"><b>服务国家战略、服务人民需要、服务行业发展</b>(「服务效益优先」是干扰项)</div></details>
+        <details class="qitem"><summary>「十四五」发展战略?</summary><div class="qans">党建引领、战略驱动、<b>安全立网、创新强网、人才兴网、文化润网</b>(「逐利扩张」干扰项)</div></details>
+        <details class="qitem"><summary>国家管网运营的主干管网包括?</summary><div class="qans"><b>西气东输一/二/三线、中俄东线、中缅油气管道、陕京输气系统、兰郑长成品油管道</b>等国家级干线</div></details>
+        <details class="qitem"><summary>「全国一张网」指的是?</summary><div class="qans">统筹<b>全国油气干线管网</b>,统一规划、建设、调配,保障能源安全</div></details>
+        <details class="qitem"><summary>国家管网地下储气库规模(参考)?</summary><div class="qans"><b>超 30 座</b>,调峰总工作气量<b>超 220 亿立方米</b>(对外口径为准)</div></details>
+        <details class="qitem"><summary>管网公平开放机制内容?</summary><div class="qans"><b>公开剩余运力、无差别开放管输服务、统一执行核定费率</b></div></details>
+        <details class="qitem"><summary>国家管网的使命定位?</summary><div class="qans"><b>保障国家能源安全</b>(国家能源动脉)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑮ 文化思想素质 · 延长石油(4 题)</h3>
+      <div class="qmeta font-mono">百年延长 · 企业文化历年大量原题重复</div>
+      <div class="qlist">
+        <details class="qitem"><summary>中国陆上第一口油井?</summary><div class="qans"><b>延一井</b>(1907 年钻成,陕西延长县)</div></details>
+        <details class="qitem"><summary>延长石油始创年份?</summary><div class="qans"><b>1905 年</b>,中国石油工业的摇篮(1905 设厂勘探、1907 延一井出油)</div></details>
+        <details class="qitem"><summary>延长石油企业精神?</summary><div class="qans"><b>埋头苦干、开拓创新</b></div></details>
+        <details class="qitem"><summary>延长石油企业使命?</summary><div class="qans"><b>汇聚能源、延长价值</b>(核心价值观:兴业报国、富民强企、以人为本、和谐发展,以官网为准)</div></details>
+      </div>
+    </div>
+
+    <div class="qmod">
+      <h3>⑯ 时政 · 双碳与能源安全(8 题)</h3>
+      <div class="qmeta font-mono">三桶油/管网全部考 · 考前 3 个月时政更新</div>
+      <div class="qlist">
+        <details class="qitem"><summary>我国「双碳」目标?</summary><div class="qans"><b>2030 年碳达峰、2060 年碳中和</b></div></details>
+        <details class="qitem"><summary>CCUS 指什么?</summary><div class="qans"><b>碳捕集、利用与封存</b>(Carbon Capture, Utilization and Storage)</div></details>
+        <details class="qitem"><summary>「绿氢」的定义?</summary><div class="qans"><b>可再生能源发电电解水制氢</b>(灰氢=天然气制氢、蓝氢=灰氢+CCUS)</div></details>
+        <details class="qitem"><summary>我国对外依存度最高的一次能源是?</summary><div class="qans"><b>石油</b>(约 70%,供应安全最受关注;天然气次之)</div></details>
+        <details class="qitem"><summary>能源安全新战略「四个革命、一个合作」指?</summary><div class="qans"><b>能源消费、供给、技术、体制革命</b> + <b>全方位国际合作</b></div></details>
+        <details class="qitem"><summary>新型能源体系特征?</summary><div class="qans"><b>清洁低碳、安全高效</b>(含风光为主体、传统能源兜底)</div></details>
+        <details class="qitem"><summary>智能油田(数字油田)典型应用?</summary><div class="qans">AI 巡检、<b>数字孪生</b>、生产优化决策、无人值守场站</div></details>
+        <details class="qitem"><summary>深海油气开发标志性装备/工程?</summary><div class="qans"><b>「深海一号」大气田、「海葵一号」圆筒型 FPSO</b>、半潜式深水钻井平台</div></details>
+      </div>
     </div>
 
   </div>
